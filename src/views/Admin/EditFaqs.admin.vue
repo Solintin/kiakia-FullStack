@@ -1,142 +1,118 @@
 <template>
   <div>
-    <!-- Header  -->
+       <!-- Header  -->
     <header>
-      <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
-      </div>
-      <div class="menu">
-        <div>
-          <a href="">
-            <i class="fas fa-envelope fa-lg icon"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
-              >3</span
-            >
-          </a>
+        <div class="logo">
+            <img src="../asset/Layer 6.svg" alt="">
         </div>
-        <div>
-          <span>
-            <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
-              >3</span
-            >
-          </span>
+        <div class="menu">
+            <div>
+                <a href="">
+                    <i class="fas fa-envelope fa-lg icon"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
+                </a>
+            </div>
+            <div>
+                <span> <i class="far fa-bell"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
+                </span>
+            </div>
+            <div>
+                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
+            </div>
+            <div>
+                <span>David Alenoghena</span>
+            </div>
+
+
         </div>
-        <div>
-          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
-        </div>
-        <div>
-          <span>David Alenoghena</span>
-        </div>
-      </div>
+
     </header>
     <!-- E Header  -->
 
     <!-- SideBar  -->
     <div class="sidebar">
-      <div class="dashboard">
-        <p>Dashboard</p>
-      </div>
-      <div class="active post">
-        <p>Post(s)</p>
-        <p>10</p>
-      </div>
-      <ul>
-        <li>All posts</li>
-        <li><a href="">Add New post</a></li>
-        <li><a href="">Categories</a></li>
-      </ul>
-      <div class="support">
-        <p>Support</p>
-      </div>
-      <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
-      </ul>
-      <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
-      </div>
+        <div class="dashboard">
+            <p>Dashboard</p>
+        </div>
+        <div class="post">
+            <p>Post(s)</p>
+            <p>10</p>
+        </div>
+        <ul>
+            <li>All posts</li>
+            <li><a href="">Add New post</a></li>
+            <li><a href="">Categories</a></li>
+        </ul>
+        <div class="active support">
+            <p>Support</p>
+        </div>
+        <ul>
+            <li class="fw-bold">FAQ </li>
+            <li>Privacy Policy</li>
+            <li>Cookie Declarartion</li>
+            <li>Terms of Service</li>
+        </ul>
+        <div id="log-out">
+            <span>
+                <h6>Log Out</h6>
+            </span>
+        </div>
     </div>
     <!-- E SideBar  -->
     <form>
-      <!-- Main  -->
-      <div class="main">
-        <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Edit Post</h6>
 
-          <strong>Title</strong>
-          <input
-            type="text"
-            id="title"
-            value="How to start a cooking gass business in Nigeria"
-          />
+        <!-- Main  -->
+        <div class="main">
+            <div class="main-content">
+                <h6 class="fs-4 text-center mb-5">Frequently Asked Questions</h6>
 
-          <strong>Author</strong>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            value="Uwandu Emmanuel"
-          />
+                <strong>Question</strong>
+                <input type="text" id="title" >
 
-          <strong>Cateogory</strong>
-          <div class="category">
-            <ul>
-              <li class="active">Company</li>
-              <li>Product</li>
-              <li>Social Impact</li>
-            </ul>
-          </div>
 
-          <strong>Description</strong>
-          <textarea id="desc" name="desc" cols="30" rows="10">
-Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea
-          >
+                <strong>Answer</strong>
+                <textarea  id="desc" name="desc" cols="30" rows="10">Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
+                </textarea>
 
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" id="input" name="input" />
+
+            </div>
+
         </div>
-      </div>
-      <!-- E Main  -->
+        <!-- E Main  -->
 
-      <!-- Right Sidebar -->
-      <div class="right-sidebar">
-        <div class="buttons">
-          <button class="btn btn-primary text-center">Update</button>
-          <button class="btn btn-secondary text-center">Preview Changes</button>
-          <button class="btn btn-outline-danger text-center">Delete</button>
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="buttons">
+                <button class="btn btn-primary text-center">Update</button>
+                <button class="btn btn-outline-danger text-center">Delete</button>
+            </div>
+            <div class="content">
+                <div class="split-content">
+                    <div> Visibility : <span>Public</span></div>
+                    <div class="fw-bold">Edit</div>
+                </div>
+                <div class="split-content">
+                    <div> Status : <span>Published</span>
+                    </div>
+                    <div class="fw-bold">Edit</div>
+                </div>
+                <div>Revision : <span>3</span></div>
+                <div>Published : <span>Jan, 25, 2021</span></div>
+            </div>
         </div>
-        <div class="content">
-          <div class="split-content">
-            <div>Visibility : <span>Public</span></div>
-            <div class="fw-bold">Edit</div>
-          </div>
-          <div class="split-content">
-            <div>Status : <span>Published</span></div>
-            <div class="fw-bold">Edit</div>
-          </div>
-          <div>Revision : <span>3</span></div>
-          <div>Published : <span>Jan, 25, 2021</span></div>
-        </div>
-      </div>
-      <!-- E Right Sidebar -->
+        <!-- E Right Sidebar -->
+
     </form>
   </div>
 </template>
 
 <script>
-
 export default {
-   
-  name: "EditPost",
+ name: "Faqs Admin",
   metaInfo() {
     return {
-      title: "Admin Panel - Edit Post || KiaKia Gas ",
+      title: "Admin Panel - Edit FAQ|| KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -156,7 +132,7 @@ export default {
   mounted() {
        CKEDITOR.replace('desc');
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -244,6 +220,10 @@ header {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
+  p{
+    margin: 0;
+    padding: 0;
+  }
 }
 
 #log-out {
@@ -284,11 +264,7 @@ header {
       width: 100%;
       margin: 10px 0;
     }
-    input:last-of-type {
-      background: none;
-      margin-left: 0;
-      padding: 0;
-    }
+   
     .category {
       ul {
         margin-top: 10px;
@@ -301,7 +277,7 @@ header {
           border-radius: 5px;
           padding: 5px 10px;
         }
-        li.active {
+        li.active{
           color: #fff;
           background: var(--lightblue-color);
         }
@@ -323,22 +299,23 @@ header {
   top: 0;
   right: 0;
   background: #fff;
-  .buttons {
-    button {
+  .buttons{
+    button{
       width: 100%;
       display: inline-block;
       margin-bottom: 15px;
     }
   }
-  .content {
-    .split-content {
+  .content{
+    .split-content{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      div:nth-child(2) {
+      div:nth-child(2){
         cursor: pointer;
       }
     }
   }
 }
+
 </style>

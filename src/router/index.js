@@ -9,7 +9,7 @@ import Cookie from "../views/Cookie.vue";
 import Faqs from "../views/Faqs.vue";
 import PrivacyPolicy from "../views/PrivacyPolicy.vue";
 import TOS from "../views/Tos.vue";
-import Admin from "../views/Admin/BlogCrud.admin..vue";
+import Admin from "../views/Admin/BlogCrud.admin.vue";
 
 Vue.use(VueRouter);
 
@@ -69,7 +69,7 @@ const routes = [
     
   },
   {
-    path: '/support/admin',
+    path: '/admin',
     name: 'Admin',
     component : Admin
     
