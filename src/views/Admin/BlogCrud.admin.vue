@@ -1,21 +1,28 @@
 <template>
   <div>
-       <header>
+             <!-- Header  -->
+    <header>
         <div class="logo">
             <img src="../asset/Layer 6.svg" alt="">
         </div>
+
         <div class="menu">
-            <div>
-                <a href="">
-                    <i class="fas fa-envelope fa-lg icon"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </a>
-            </div>
-            <div>
-                <span> <i class="far fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </span>
-            </div>
+          <div>
+          <a href="">
+            <i class="fas fa-envelope "></i>
+            <span class="badge rounded-pill badge-notification r"
+              >3</span
+            >
+          </a>
+        </div>
+        <div>
+          <span>
+            <i class="far fa-bell"></i>
+            <span class="badge rounded-pill badge-notification r"
+              >3</span
+            >
+          </span>
+        </div>
             <div>
                 <span> <i class="fas fa-user-circle fa-2x"></i> </span>
             </div>
@@ -28,13 +35,12 @@
 
     </header>
     <!-- E Header  -->
-
     <!-- SideBar  -->
     <div class="sidebar">
         <div class="dashboard">
             <p>Dashboard</p>
         </div>
-        <div class="active post">
+        <div class="activeH post">
             <p>Post(s)</p>
             <p>10</p>
         </div>
@@ -275,9 +281,7 @@ export default {
         // ],
       };
     },
-      mounted() {
-       CKEDITOR.replace('desc');
-  },
+ 
 
 }
 </script>
@@ -317,10 +321,10 @@ header {
   z-index: 1000;
 
   .logo {
-    flex: 1;
+    flex: 1 !important;
   }
   .menu {
-    display: flex;
+    display: flex!important;
     justify-content: space-between;
     align-items: center;
     div {
@@ -348,8 +352,10 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
-  ul {
-    margin-top: 8px;
+   ul {
+    margin: 10px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
   }
 }
 .post {
@@ -364,20 +370,31 @@ header {
   }
 }
 .support {
-  margin-left: 15px;
+  margin-bottom: 10px  ;
+  margin-top: 0  ;
+  margin-left: 15px ;
   font-weight: 500;
   cursor: pointer;
 }
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 #log-out {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: #c4c4c4;
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
+  width: 100%;
+  color: rgb(48, 47, 47);
 }
 
 // Main
@@ -386,6 +403,7 @@ header {
   width: auto;
   margin-top: 3.3rem;
   margin-left: 255px;
+  margin-right: 0 !important;
 
   z-index: 1;
   height: 100vh;
@@ -412,9 +430,11 @@ header {
         flex: 1;
         ul {
           padding: 5px 0;
-          margin-bottom: -15px;
+          margin-bottom: -10px  !important;
         }
         li {
+          background:  none !important;
+          border-radius: 0 !important;
           color: var(--purple-color);
           display: inline-block !important;
           margin: 0 7px;
@@ -426,8 +446,8 @@ header {
 
         .list-active {
           font-weight: 600;
-          border-bottom: 2px solid black;
-          padding-bottom: 10px;
+          border-bottom: 2px solid black !important;
+          padding-bottom: 10px !important;
           // width: 20px;
         }
       }
@@ -443,9 +463,10 @@ header {
           color: var(--purple-color);
           border: none;
           outline: none;
-          padding: 5px;
+          padding: 5px !important;
           background: transparent;
           width: 80%;
+          margin: 0;
           font-size: 14px;
         }
       }
@@ -496,7 +517,7 @@ header {
           position: absolute;
           width: 5px;
           height: 5px;
-          top: 10px;
+          top: 12px;
           left: 5px;
           background: #4a4aff;
           border-radius: 50%;
@@ -517,7 +538,7 @@ header {
           position: absolute;
           width: 5px;
           height: 5px;
-          top: 10px;
+          top: 12px;
           left: 5px;
           background: #3789EC;   
          border-radius: 50%;
@@ -537,7 +558,7 @@ header {
           position: absolute;
           width: 5px;
           height: 5px;
-          top: 10px;
+          top: 12px;
           left: 5px;
           background: #FAAE08;         
             border-radius: 50%;

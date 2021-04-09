@@ -7,16 +7,21 @@
         </div>
         <div class="menu">
             <div>
-                <a href="">
-                    <i class="fas fa-envelope fa-lg icon"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </a>
-            </div>
-            <div>
-                <span> <i class="far fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </span>
-            </div>
+          <a href="">
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </a>
+        </div>
+        <div>
+          <span>
+            <i class="far fa-bell"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </span>
+        </div>
             <div>
                 <span> <i class="fas fa-user-circle fa-2x"></i> </span>
             </div>
@@ -35,7 +40,7 @@
         <div class="dashboard">
             <p>Dashboard</p>
         </div>
-        <div class="active post">
+        <div class="activeH post">
             <p>Post(s)</p>
             <p>10</p>
         </div>
@@ -214,8 +219,10 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
-  ul {
-    margin-top: 8px;
+ ul {
+    margin: 15px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
   }
 }
 .post {
@@ -227,6 +234,9 @@ header {
   cursor: pointer;
   p {
     margin: 0;
+    &:nth-of-type(2){
+      padding-right: 15px;
+    }
   }
 }
 .support {
@@ -234,17 +244,27 @@ header {
   font-weight: 500;
   cursor: pointer;
 }
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 
 #log-out {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+
+
 }
 .icon {
   color: black;
@@ -279,6 +299,7 @@ header {
       padding: 0;
     }
     .category {
+      padding: 8px 0 !important;
       ul {
         margin-top: 10px;
         margin-left: 0;
@@ -293,6 +314,7 @@ header {
         li.active{
           color: #fff;
           background: var(--lightblue-color);
+          width: min-content;
         }
       }
     }
@@ -320,6 +342,8 @@ header {
     }
   }
   .content{
+    display: block !important;
+
     .split-content{
       display: flex;
       justify-content: space-between;

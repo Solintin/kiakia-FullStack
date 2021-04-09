@@ -297,7 +297,7 @@
     <!-- Support -->
     <div class="container">
         <div class="support">
-            <h6 class="text-uppercase head  text-center">Support</h6>
+            <h6 class="text-uppercase head text-center">Support</h6>
             <h3 class="text-center">Frequently asked questions</h3>
 
 
@@ -832,8 +832,8 @@ body {
   width: 450px;
 }
 .support {
-  width: 60%;
-  margin: 40px auto;
+  width: 60%  !important;
+  margin: 40px auto !important;
 }
 /* ==================footer===================== */
 .footer {

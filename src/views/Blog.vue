@@ -57,7 +57,7 @@
         <div class="tab-mobile-menu">
             <div>
                 <select name="dropdown" id="dropdown">
-                    <option class="tab-btn active" value="all" selected data-id="all">ALL</option>
+                    <option class="tab-btn active-high" value="all" selected data-id="all">ALL</option>
                     <option class="tab-btn" value="company" data-id="company">Company</option>
                     <option class="tab-btn" value="product" data-id="product">Product</option>
                     <option class="tab-btn" value="social" data-id="social">Social</option>
@@ -65,7 +65,7 @@
             </div>
             <div class="py-auto position-relative">
                 <form>
-                    <input type="text" name="search" id="search">
+                    <input type="text" name="search-d" id="search-d">
                     <i class=" icon fa fa-search"></i>
                 </form>
             </div>
@@ -73,13 +73,13 @@
 
         <div class="tab-mobile">
 
-            <div class="tab-btn py-auto active" data-id="all">All Posts</div>
+            <div class="tab-btn py-auto active-high" data-id="all">All Posts</div>
             <div class="tab-btn py-auto" data-id="company">Company</div>
             <div class="tab-btn py-auto" data-id="product">Product</div>
             <div class="tab-btn py-auto" data-id="social">Social Impact</div>
             <div class="tab-btn py-auto position-relative">
                 <form>
-                    <input type="text" name="search" id="search">
+                    <input type="text" name="search-m" id="search-m">
                     <i class=" icon fa fa-search"></i>
                 </form>
             </div>
@@ -88,7 +88,7 @@
         </div>
 
         <div class="blog container py-5">
-            <div class="content active" id="all">
+            <div class="content active-high" id="all">
 
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mb-3">
@@ -424,7 +424,7 @@ menuBar.addEventListener("click", () => {
 const questions = document.querySelectorAll(".question");
 
 questions.forEach(function (question) {
-  const btn = question.querySelector(".question-btn");
+  const btn = question.querySelector(".question-title");
   // console.log(btn);
 
   btn.addEventListener("click", function () {
@@ -449,20 +449,20 @@ blog.addEventListener("click", function (e) {
   if (id || selectOption) {
     // remove selected from other buttons
     btns.forEach(function (btn) {
-      btn.classList.remove("active");
+      btn.classList.remove("active-high");
     });
-    e.target.classList.add("active");
+    e.target.classList.add("active-high");
     // hide other articles
     articles.forEach(function (article) {
       console.log(article);
-      article.classList.remove("active");
+      article.classList.remove("active-high");
     });
     if (id) {
       const element = document.getElementById(id);
-      element.classList.add("active");
+      element.classList.add("active-high");
     } else {
       const element2 = document.getElementById(selectOption.value);
-      element2.classList.add("active");
+      element2.classList.add("active-high");
     }
   }
 });
@@ -470,7 +470,9 @@ blog.addEventListener("click", function (e) {
 }
 </script>
 
-<style>
+<style lang="scss" >
+
+
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
 :root {
   --primary: #3789ec;
@@ -632,7 +634,7 @@ body {
 }
 
 .btn-container {
-  display: block;
+  display: block !important;
 }
 .tab-btn {
   margin-bottom: 2rem;
@@ -643,32 +645,32 @@ body {
   letter-spacing: 1px;
   transition: all 0.5s ease-in-out;
 }
-.tab-btn:hover:not(.active) {
+.tab-btn:hover:not(.active-high) {
   background: white;
   color: #000;
 }
 
 /* hide content */
 .content {
-  display: none;
+  display: none !important;
 }
-.tab-btn.active {
+.tab-btn.active-high {
   background: #e9f2fc;
   border-right: 2px solid var(--primary);
   padding: 7px;
 }
-.content.active {
-  display: block;
+.content.active-high {
+  display: block !important;
 }
 
 .tab-mobile {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
   border-bottom: 0.5px solid #d9dbe1;
 }
-.tab-btn.active {
+.tab-btn.active-high {
   background: #fff;
   border-bottom: 3px solid var(--primary);
   padding: 4px;
@@ -703,7 +705,7 @@ input[type="text"]:focus {
   left: 0;
 }
 .tab-mobile-menu {
-  display: none;
+  display: none !important;
 }
 
 @media screen and (max-width: 992px) {

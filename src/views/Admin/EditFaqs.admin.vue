@@ -6,17 +6,22 @@
             <img src="../asset/Layer 6.svg" alt="">
         </div>
         <div class="menu">
-            <div>
-                <a href="">
-                    <i class="fas fa-envelope fa-lg icon"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </a>
-            </div>
-            <div>
-                <span> <i class="far fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </span>
-            </div>
+          <div>
+          <a href="">
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </a>
+        </div>
+        <div>
+          <span>
+            <i class="far fa-bell"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </span>
+        </div>
             <div>
                 <span> <i class="fas fa-user-circle fa-2x"></i> </span>
             </div>
@@ -44,7 +49,7 @@
             <li><a href="">Add New post</a></li>
             <li><a href="">Categories</a></li>
         </ul>
-        <div class="active support">
+        <div class="activeH support">
             <p>Support</p>
         </div>
         <ul>
@@ -202,7 +207,9 @@ header {
     font-weight: 500;
   }
   ul {
-    margin-top: 8px;
+    margin: 15px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
   }
 }
 .post {
@@ -214,6 +221,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
+    padding-right: 10px;
   }
 }
 .support {
@@ -230,12 +238,13 @@ header {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+  width: 100% !important;
 }
 .icon {
   color: black;
@@ -280,6 +289,7 @@ header {
         li.active{
           color: #fff;
           background: var(--lightblue-color);
+          width: min-content;
         }
       }
     }
@@ -287,7 +297,14 @@ header {
 }
 
 // Right SideBar
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 .right-sidebar {
   width: 255px;
   margin-top: 3.3rem;
@@ -307,6 +324,7 @@ header {
     }
   }
   .content{
+    display: block !important;
     .split-content{
       display: flex;
       justify-content: space-between;

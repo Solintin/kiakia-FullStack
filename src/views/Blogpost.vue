@@ -360,7 +360,7 @@ menuBar.addEventListener("click", () => {
 const questions = document.querySelectorAll(".question");
 
 questions.forEach(function (question) {
-  const btn = question.querySelector(".question-btn");
+  const btn = question.querySelector(".question-title");
   // console.log(btn);
 
   btn.addEventListener("click", function () {

@@ -3,18 +3,14 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img
-          src="../asset/Layer 6.svg"
-          height="auto"
-          width="auto"
-          alt=""
-        />
+        <img src="../asset/Layer 6.svg" height="auto" width="auto" alt="" />
       </div>
+
       <div class="menu">
         <div>
           <a href="">
-            <i class="fas fa-envelope fa-lg icon"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification"
               >3</span
             >
           </a>
@@ -22,7 +18,7 @@
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
+            <span class="badge rounded-pill badge-notification"
               >3</span
             >
           </span>
@@ -51,7 +47,7 @@
         <li><a href="">Add New post</a></li>
         <li><a href="">Categories</a></li>
       </ul>
-      <div class="active support">
+      <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
@@ -130,8 +126,8 @@ export default {
       // ],
     };
   },
-    mounted() {
-       CKEDITOR.replace('desc');
+  mounted() {
+    CKEDITOR.replace("desc");
   },
 };
 </script>
@@ -160,7 +156,7 @@ a {
 header {
   background: #fff;
   padding: 0.6rem 1.5rem 0.6rem 0.8rem;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c1c1c1;
@@ -203,7 +199,9 @@ header {
     font-weight: 500;
   }
   ul {
-    margin-top: 8px;
+    margin: 15px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
   }
 }
 .post {
@@ -215,6 +213,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
+    padding-right: 10px;
   }
 }
 .support {
@@ -226,17 +225,25 @@ header {
     padding: 0;
   }
 }
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 #log-out {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+  width: 100% !important;
 }
 .icon {
   color: black;
@@ -308,6 +315,8 @@ header {
     }
   }
   .content {
+    display: block !important;
+
     .split-content {
       display: flex;
       justify-content: space-between;

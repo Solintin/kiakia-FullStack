@@ -7,16 +7,21 @@
         </div>
         <div class="menu">
             <div>
-                <a href="">
-                    <i class="fas fa-envelope fa-lg icon"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </a>
-            </div>
-            <div>
-                <span> <i class="far fa-bell"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                </span>
-            </div>
+          <a href="">
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </a>
+        </div>
+        <div>
+          <span>
+            <i class="far fa-bell"></i>
+            <span class="badge rounded-pill badge-notification"
+              >3</span
+            >
+          </span>
+        </div>
             <div>
                 <span> <i class="fas fa-user-circle fa-2x"></i> </span>
             </div>
@@ -68,25 +73,25 @@
             <div class="main-content">
                 <a href="">
                     <div>
-                        <i class="icon fa fa-question-circle fa-4x text-center" aria-hidden="true"></i>
+                        <i class="fa fa-question-circle fa-4x text-center" aria-hidden="true"></i>
                         Frequently Asked Questions
                     </div>
                 </a>
                 <a href="">
                     <div>
-                        <i class="icon fa-4x text-center fas fa-cookie"></i>
+                        <i class="fa-4x text-center fas fa-cookie"></i>
                         Cookie Declaration
                     </div>
                 </a>
                 <a href="">
                     <div>
-                        <i class="icon fa-4x text-center fas fa-shield-alt"></i>
+                        <i class="fa-4x text-center fas fa-shield-alt"></i>
                         Privacy of Policy
                     </div>
                 </a>
                 <a href="">
                     <div>
-                        <i class="icon fa-4x text-center fas fa-edit"></i>
+                        <i class="fa-4x text-center fas fa-edit"></i>
                         Terms of Services
                     </div>
                 </a>
@@ -96,11 +101,6 @@
         </div>
         <!-- E Main  -->
 
-        <!-- Right Sidebar -->
-        <div class="right-sidebar">
-
-        </div>
-        <!-- E Right Sidebar -->
 
     </form>
   </div>
@@ -128,9 +128,7 @@ export default {
       // ],
     };
   },
-  mounted() {
-       CKEDITOR.replace('desc');
-  },
+
 }
 </script>
 
@@ -150,6 +148,14 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
 }
 a {
   text-decoration: none;
@@ -201,7 +207,10 @@ header {
     font-weight: 500;
   }
   ul {
-    margin-top: 8px;
+    margin: 15px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
+    
   }
 }
 .post {
@@ -232,12 +241,14 @@ header {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+    width: 100%;
+
 }
 .icon {
   color: black;
@@ -291,20 +302,6 @@ header {
   }
 }
 
-// Right SideBar
 
-.right-sidebar {
-  width: 255px;
-  margin-top: 3.3rem;
-  padding-left: 10px;
-  padding-right: 30px;
-  padding-top: 148px;
-  height: calc(100vh - 3.3rem);
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: #fff;
- 
-}
 
 </style>

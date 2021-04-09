@@ -8,8 +8,8 @@
       <div class="menu">
         <div>
           <a href="">
-            <i class="fas fa-envelope fa-lg icon"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
+            <i class="fas fa-envelope "></i>
+            <span class="badge rounded-pill badge-notification "
               >3</span
             >
           </a>
@@ -17,7 +17,7 @@
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger"
+            <span class="badge rounded-pill badge-notification "
               >3</span
             >
           </span>
@@ -37,7 +37,7 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="active post">
+      <div class="activeH post">
         <p>Post(s)</p>
         <p>10</p>
       </div>
@@ -226,7 +226,9 @@ header {
     font-weight: 500;
   }
   ul {
-    margin-top: 8px;
+    margin: 15px 30px !important;
+    font-size: 17px;
+    font-weight: 400;
   }
 }
 .post {
@@ -238,6 +240,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
+    padding-right: 10px;
   }
 }
 .support {
@@ -250,7 +253,7 @@ header {
   margin-top: 100px;
   margin-left: 15px;
 }
-.active {
+.activeH {
   background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
@@ -260,7 +263,14 @@ header {
 .icon {
   color: black;
 }
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 // Main
 .main {
   width: auto;
@@ -290,6 +300,7 @@ header {
       padding: 0;
     }
     .category {
+      padding: 8px 0;
       ul {
         margin-top: 10px;
         margin-left: 0;
@@ -331,6 +342,8 @@ header {
     }
   }
   .content {
+    display: block !important;
+
     .split-content {
       display: flex;
       justify-content: space-between;
