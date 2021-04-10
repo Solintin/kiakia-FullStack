@@ -1,289 +1,193 @@
 <template>
   <div>
-             <!-- Header  -->
+    <!-- Header  -->
     <header>
-        <div class="logo">
-            <img src="../asset/Layer 6.svg" alt="">
-        </div>
+      <div class="logo">
+        <img src="../asset/Layer 6.svg" alt="" />
+      </div>
 
-        <div class="menu">
-          <div>
+      <div class="menu">
+        <div>
           <a href="">
             <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification r"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification r">0</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification r"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification r">0</span>
           </span>
         </div>
-            <div>
-                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
-            </div>
-            <div>
-                <span>David Alenoghena</span>
-            </div>
-
-
+        <div>
+          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
-
+        <div>
+          <span>David Alenoghena</span>
+        </div>
+      </div>
     </header>
     <!-- E Header  -->
     <!-- SideBar  -->
     <div class="sidebar">
-        <div class="dashboard">
-            <p>Dashboard</p>
-        </div>
-        <div class="activeH post">
-            <p>Post(s)</p>
-            <p>10</p>
-        </div>
-        <ul>
-            <li class="activePost">All posts</li>
-            <li><a href="">Add New post</a></li>
-            <li><a href="">Categories</a></li>
-        </ul>
-        <div class="support">
-            <p>Support</p>
-        </div>
-        <ul>
-            <li><a href="">FAQ</a> </li>
-            <li><a href="">Privacy Policy</a></li>
-            <li><a href="">Cookie Declarartion</a></li>
-            <li><a href="">Terms of Service</a></li>
-        </ul>
-        <div id="log-out">
-            <span>
-                <h6>Log Out</h6>
-            </span>
-        </div>
+      <div class="dashboard">
+        <p>Dashboard</p>
+      </div>
+      <div class="activeH post">
+        <p>{{ this.posts.length > 0 ? "Posts" : "Post" }}</p>
+        <p>{{ this.posts.length }}</p>
+      </div>
+      <ul>
+        <li class="activePost">All posts</li>
+        <li><a href="">Add New post</a></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+      <div class="support">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li><a href="">FAQ</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Cookie Declarartion</a></li>
+        <li><a href="">Terms of Service</a></li>
+      </ul>
+      <div id="log-out">
+        <span>
+          <h6>Log Out</h6>
+        </span>
+      </div>
     </div>
     <!-- E SideBar  -->
 
     <!-- Main  -->
     <div class="main">
+      <div class="main-content">
+        <span>
+          Blog posts
+        </span>
+        <router-link to="/admin/new-post">
+          <button class="btn btn-primary ">Add Post</button></router-link
+        >
 
-        <div class="main-content">
+        <div class="menu-bar">
+          <div class="category">
+            <ul>
+              <li class="list-active">All</li>
+              <li>Company</li>
+              <li>Product</li>
+              <li>Social Impact</li>
+            </ul>
+          </div>
+          <div class="search-bar">
             <span>
-                Blog posts
+              <i class="fas fa-search"></i>
             </span>
-            <button class="btn btn-primary ">Add Post</button>
-
-            <div class="menu-bar">
-                <div class="category">
-                    <ul>
-                        <li class="list-active">All</li>
-                        <li>Company</li>
-                        <li>Product</li>
-                        <li>Social Impact</li>
-                    </ul>
-                </div>
-                <div class="search-bar">
-                    <span>
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="search" placeholder="Search blog by Name, category or Date">
-                </div>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>title</td>
-                        <td>Categories</td>
-                        <td>Author/last updated</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="product">Product</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="social-impact">Social impact</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox"></td>
-                        <td>How to start a cooking gas business in Nigeria</td>
-                        <td><span class="company">Company</span></td>
-                        <td>
-                            <p>Uwandu Emmanuel</p>
-                            <p>
-                                25/01/2021
-                            </p>
-                        </td>
-                        <td class="action"><span class="edit">Edit</span>
-                            <span class="delete">Delete</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="paging my-2">
-
-            </div>
-            
-                
-            
+            <input
+              type="search"
+              placeholder="Search blog by Name, category or Date"
+            />
+          </div>
         </div>
+
+        <table>
+          <thead>
+            <tr>
+              <td><input type="checkbox" /></td>
+              <td>title</td>
+              <td>Categories</td>
+              <td>Author/last updated</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(post, key) in posts" :key="key">
+              <td><input type="checkbox" /></td>
+              <td>{{ post.data().title }}</td>
+              <td>
+                <span :class="post.data().category">
+                  {{ post.data().category }}
+                </span>
+              </td>
+              <td>
+                <p>{{ post.data().authoredBy }}</p>
+                <p>
+                  {{ post.data().createdOn }}
+                </p>
+              </td>
+              <td class="action">
+                <span class="edit">
+                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                    >Edit</router-link
+                  ></span
+                >
+                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+              </td>
+            </tr>
+
+            <!-- <tr>
+              <td><input type="checkbox" /></td>
+              <td>How to start a cooking gas business in Nigeria</td>
+              <td><span class="company">Company</span></td>
+              <td>
+                <p>Uwandu Emmanuel</p>
+                <p>
+                  25/01/2021
+                </p>
+              </td>
+              <td class="action">
+                <span class="edit">Edit</span>
+                <span class="delete">Delete</span>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+        <div class="paging my-2"></div>
+      </div>
     </div>
     <!-- E Main  -->
-
-
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-    name : "BlogCrud",
-    metaInfo() {
-      return {
-        title: "Admin Panel - Dashboard || KiaKia Gas ",
-        // meta: [
-        //   {
-        //     name: "description",
-        //     content:
-        //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-        //   },
-        //   {
-        //     property: "og:title",
-        //     content: "Epiloge - Build your network in your field of interest",
-        //   },
-        //   { property: "og:site_name", content: "Epiloge" },
-        //   { property: "og:type", content: "website" },
-        //   { name: "robots", content: "index,follow" },
-        // ],
-      };
-    },
- 
+  name: "BlogCrud",
+  metaInfo() {
+    return {
+      title: "Admin Panel - Dashboard || KiaKia Gas ",
+      // meta: [
+      //   {
+      //     name: "description",
+      //     content:
+      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
+      //   },
+      //   {
+      //     property: "og:title",
+      //     content: "Epiloge - Build your network in your field of interest",
+      //   },
+      //   { property: "og:site_name", content: "Epiloge" },
+      //   { property: "og:type", content: "website" },
+      //   { name: "robots", content: "index,follow" },
+      // ],
+    };
+  },
 
-}
+  created() {
+    this.getPost();
+    console.log(this.posts);
+  },
+  computed: {
+    ...mapState(["posts"]),
+  },
+  methods: {
+    getPost() {
+      this.$store.dispatch("GET_POST");
+    },
+    deletePosts(id) {
+      this.$store.dispatch("deletePost", id);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -324,7 +228,7 @@ header {
     flex: 1 !important;
   }
   .menu {
-    display: flex!important;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     div {
@@ -352,7 +256,7 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
-   ul {
+  ul {
     margin: 10px 30px !important;
     font-size: 17px;
     font-weight: 400;
@@ -370,9 +274,9 @@ header {
   }
 }
 .support {
-  margin-bottom: 10px  ;
-  margin-top: 0  ;
-  margin-left: 15px ;
+  margin-bottom: 10px;
+  margin-top: 0;
+  margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -389,12 +293,12 @@ header {
   margin-left: 15px;
 }
 .activeH {
-  background: #c4c4c4;
+  background: var(--lightblue-color);
   border-radius: 5px;
   margin: 0;
   padding: 8px 15px;
   width: 100%;
-  color: rgb(48, 47, 47);
+  color: #fff;
 }
 
 // Main
@@ -430,10 +334,10 @@ header {
         flex: 1;
         ul {
           padding: 5px 0;
-          margin-bottom: -10px  !important;
+          margin-bottom: -10px !important;
         }
         li {
-          background:  none !important;
+          background: none !important;
           border-radius: 0 !important;
           color: var(--purple-color);
           display: inline-block !important;
@@ -475,7 +379,7 @@ header {
       width: 100%;
       thead {
         tr {
-          td {   
+          td {
             background: #f4f2ff;
             padding: 10px 0;
             font-weight: 600;
@@ -485,7 +389,6 @@ header {
           }
         }
         td:nth-of-type(1) {
-          
           border-radius: 5px 0 0 5px;
           width: 5%;
         }
@@ -522,16 +425,15 @@ header {
           background: #4a4aff;
           border-radius: 50%;
         }
-    }
+      }
       .product {
         position: relative;
-        background: #E8ECFD;      
+        background: #e8ecfd;
         width: 76px;
         height: 19px;
         border-radius: 15px;
         padding: 2px 10px 5px 20px;
-        color: #3789EC
-        ;
+        color: #3789ec;
 
         &::before {
           content: "";
@@ -540,18 +442,18 @@ header {
           height: 5px;
           top: 12px;
           left: 5px;
-          background: #3789EC;   
-         border-radius: 50%;
+          background: #3789ec;
+          border-radius: 50%;
         }
-    }
+      }
       .social-impact {
         position: relative;
-        background: #FFF4E6;        
+        background: #fff4e6;
         width: 76px;
         height: 19px;
         border-radius: 15px;
         padding: 2px 10px 5px 20px;
-        color: #FAAE08;
+        color: #faae08;
 
         &::before {
           content: "";
@@ -560,8 +462,8 @@ header {
           height: 5px;
           top: 12px;
           left: 5px;
-          background: #FAAE08;         
-            border-radius: 50%;
+          background: #faae08;
+          border-radius: 50%;
         }
       }
       td:nth-of-type(1) {
@@ -578,10 +480,12 @@ header {
           align-self: center;
           margin-right: 50px;
           color: var(--lightblue-color);
+          cursor: pointer;
         }
         .delete {
-            align-self: center;
+          align-self: center;
           color: var(--red-color);
+          cursor: pointer;
         }
       }
       tbody {
@@ -602,11 +506,8 @@ header {
       margin-bottom: 40px;
     }
   }
-
 }
 .icon {
   color: black;
 }
-
-    
 </style>

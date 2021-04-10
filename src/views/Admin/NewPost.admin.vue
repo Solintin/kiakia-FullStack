@@ -1,133 +1,147 @@
 <template>
   <div>
-      <!-- Header  -->
+    <!-- Header  -->
     <header>
-        <div class="logo">
-            <img src="../asset/Layer 6.svg" alt="">
-        </div>
-        <div class="menu">
-            <div>
+      <div class="logo">
+        <img src="../asset/Layer 6.svg" alt="" />
+      </div>
+      <div class="menu">
+        <div>
           <a href="">
             <i class="fas fa-envelope"></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification">3</span>
           </span>
         </div>
-            <div>
-                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
-            </div>
-            <div>
-                <span>David Alenoghena</span>
-            </div>
-
-
+        <div>
+          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
-
+        <div>
+          <span>David Alenoghena</span>
+        </div>
+      </div>
     </header>
     <!-- E Header  -->
 
     <!-- SideBar  -->
     <div class="sidebar">
-        <div class="dashboard">
-            <p>Dashboard</p>
-        </div>
-        <div class="activeH post">
-            <p>Post(s)</p>
-            <p>10</p>
-        </div>
-        <ul>
-            <li>All posts</li>
-            <li><a href="">Add New post</a></li>
-            <li><a href="">Categories</a></li>
-        </ul>
-        <div class="support">
-            <p>Support</p>
-        </div>
-        <ul>
-            <li><a href="">FAQ</a> </li>
-            <li><a href="">Privacy Policy</a></li>
-            <li><a href="">Cookie Declarartion</a></li>
-            <li><a href="">Terms of Service</a></li>
-        </ul>
-        <div id="log-out">
-            <span>
-                <h6>Log Out</h6>
-            </span>
-        </div>
+      <div class="dashboard">
+        <p>Dashboard</p>
+      </div>
+      <div class="activeH post">
+        <p>Post(s)</p>
+        <p>10</p>
+      </div>
+      <ul>
+        <li>All posts</li>
+        <li><a href="">Add New post</a></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+      <div class="support">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li><a href="">FAQ</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Cookie Declarartion</a></li>
+        <li><a href="">Terms of Service</a></li>
+      </ul>
+      <div id="log-out">
+        <span>
+          <h6>Log Out</h6>
+        </span>
+      </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    <form @submit.prevent>
+      <!-- Main  -->
+      <div class="main">
+        <div class="main-content">
+          <h6 class="fs-4 text-center mb-5">Add New Post</h6>
 
-        <!-- Main  -->
-        <div class="main">
-            <div class="main-content">
-                <h6 class="fs-4 text-center mb-5">Add New Post</h6>
+          <strong>Title</strong>
+          <input type="text" id="title" v-model="title" />
 
-                <strong>Title</strong>
-                <input type="text" id="title" >
+          <strong>Author</strong>
 
-                <strong>Author</strong>
-                <input type="text" id="author" name="author" >
+          <input type="text" id="author" name="author" v-model="authoredBy" />
 
-                <strong>Cateogory</strong>
-                <div class="category">
-                    <ul>
-                        <li class="active">Company</li>
-                        <li>Product</li>
-                        <li>Social Impact</li>
-                    </ul>
-                </div>
+          <strong>Cateogory</strong>
+          <div class="category">
+            <ul>
+              <li
+                v-for="(category, index) in categories"
+                :key="index"
+                :class="{ active: category.isClicked }"
+                @click="chooseCategory(category)"
+              >
+                {{ category.categ }}
+              </li>
+              <!-- <li class="active">Company</li>
+              <li>Product</li>
+              <li>Social Impact</li> -->
+            </ul>
+          </div>
 
-                <strong>Description</strong>
-                <textarea id="desc" name="desc" cols="30" rows="10"></textarea>
+          <strong>Description</strong>
+          <vue-editor v-model="post"></vue-editor>
 
-                <p class="mt-4 mb-0" > <strong>Featured Image</strong>
-                </p> <input type="file" id="input" name="input">
-
-
-            </div>
-
+          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
+          <input type="file" @change="uploadImage" >
         </div>
-        <!-- E Main  -->
+      </div>
+      <!-- E Main  -->
 
-        <!-- Right Sidebar -->
-        <div class="right-sidebar">
-            <div class="buttons">
-                <button class="btn btn-primary text-center">Add Post</button>
-            
-            </div>
-            <div class="content">
-                <div class="split-content">
-                    <div> Visibility : <span>Public</span></div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div class="split-content">
-                    <div> Status : <span>Published</span>
-                    </div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div>Revision : <span>3</span></div>
-                <div>Published : <span>Jan, 25, 2021</span></div>
-            </div>
+      <!-- Right Sidebar -->
+      <div class="right-sidebar">
+        <div class="buttons">
+          <button class="btn btn-primary text-center" @click="publishPost">
+            Add Post
+          </button>
         </div>
-        <!-- E Right Sidebar -->
-
+        <div class="content">
+          <div class="split-content">
+            <div>Visibility : <span>Public</span></div>
+            <div class="fw-bold">Edit</div>
+          </div>
+          <div class="split-content">
+            <div>Status : <span>Published</span></div>
+            <div class="fw-bold">Edit</div>
+          </div>
+          <div>Revision : <span>3</span></div>
+          <div>Published : <span>Jan, 25, 2021</span></div>
+        </div>
+      </div>
+      <!-- E Right Sidebar -->
     </form>
   </div>
 </template>
 
 <script>
+import { VueEditor } from 'vue2-editor'
 export default {
- name: "NewPost",
+  name: "NewPost",
+  components :{
+    VueEditor,
+  },
+  data() {
+    return {
+      title: "",
+      post: "",
+      authoredBy: "",
+      categories: [
+        { categ: "product", isClicked: false },
+        { categ: "company", isClicked: false },
+        { categ: "social-impact", isClicked: false },
+      ],
+      selectCategory: "",
+    };
+  },
   metaInfo() {
     return {
       title: "Admin Panel - New Post || KiaKia Gas ",
@@ -147,10 +161,28 @@ export default {
       // ],
     };
   },
-  mounted() {
-       CKEDITOR.replace('desc');
+ 
+ methods: {
+    publishPost() {
+    const form = {
+      post: this.post,
+      authoredBy: this.authoredBy,
+      title: this.title,
+      category: this.selectCategory,
+    };
+    this.$store.dispatch("PUBLISH_POST", form);
   },
-}
+  chooseCategory(cat) {
+    this.selectCategory = cat.categ;
+    console.log(cat);
+    cat.isClicked = !cat.isClicked;
+
+  },
+  uploadImage(e){
+    console.log(e.target.files[0]);
+  }
+ },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -219,7 +251,7 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
- ul {
+  ul {
     margin: 15px 30px !important;
     font-size: 17px;
     font-weight: 400;
@@ -234,7 +266,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    &:nth-of-type(2){
+    &:nth-of-type(2) {
       padding-right: 15px;
     }
   }
@@ -263,8 +295,6 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-
-
 }
 .icon {
   color: black;
@@ -310,8 +340,13 @@ header {
           background: #f4f2ff;
           border-radius: 5px;
           padding: 5px 10px;
+          cursor: pointer;
+          &:hover {
+            background: var(--lightblue-color);
+            color: #fff;
+          }
         }
-        li.active{
+        li.active {
           color: #fff;
           background: var(--lightblue-color);
           width: min-content;
@@ -334,25 +369,24 @@ header {
   top: 0;
   right: 0;
   background: #fff;
-  .buttons{
-    button{
+  .buttons {
+    button {
       width: 100%;
       display: inline-block;
       margin-bottom: 15px;
     }
   }
-  .content{
+  .content {
     display: block !important;
 
-    .split-content{
+    .split-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      div:nth-child(2){
+      div:nth-child(2) {
         cursor: pointer;
       }
     }
   }
 }
-
 </style>

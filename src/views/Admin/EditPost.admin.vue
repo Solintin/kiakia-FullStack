@@ -9,17 +9,13 @@
         <div>
           <a href="">
             <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification "
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification ">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification "
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification ">3</span>
           </span>
         </div>
         <div>
@@ -62,44 +58,39 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    <form  @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
           <h6 class="fs-4 text-center mb-5">Edit Post</h6>
 
           <strong>Title</strong>
-          <input
-            type="text"
-            id="title"
-            value="How to start a cooking gass business in Nigeria"
-          />
+          <input type="text" v-model="incomingData.title" />
 
           <strong>Author</strong>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            value="Uwandu Emmanuel"
-          />
+          <input type="text" v-model="incomingData.authoredBy" />
 
           <strong>Cateogory</strong>
           <div class="category">
             <ul>
-              <li class="active">Company</li>
-              <li>Product</li>
-              <li>Social Impact</li>
+              <li
+                v-for="(category, index) in incomingData.categories"
+                :key="index"
+                :class="{ active: category.isClicked }"
+                @click="chooseCategory(category)"
+              >
+                {{ category.categ }}
+              </li>
             </ul>
           </div>
 
           <strong>Description</strong>
-          <textarea id="desc" name="desc" cols="30" rows="10">
-Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea
-          >
+          <vue-editor v-model="incomingData.post">
+            {{ incomingData.post }}
+          </vue-editor>
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" id="input" name="input" />
+          <input type="file" @change="uploadImage" />
         </div>
       </div>
       <!-- E Main  -->
@@ -107,7 +98,12 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center">Update</button>
+          <button
+            class="btn btn-primary text-center"
+            @click="modifyPost(incomingData)"
+          >
+            Update
+          </button>
           <button class="btn btn-secondary text-center">Preview Changes</button>
           <button class="btn btn-outline-danger text-center">Delete</button>
         </div>
@@ -130,10 +126,15 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
+// import router from ".";
 
 export default {
-   
   name: "EditPost",
+
+  components: {
+    VueEditor,
+  },
   metaInfo() {
     return {
       title: "Admin Panel - Edit Post || KiaKia Gas ",
@@ -153,8 +154,48 @@ export default {
       // ],
     };
   },
-  mounted() {
-       CKEDITOR.replace('desc');
+  data() {
+    return {
+      incomingData: {
+        title: "",
+        post: "",
+        authoredBy: "",
+        categories: [
+          { categ: "product", isClicked: false },
+          { categ: "company", isClicked: false },
+          { categ: "social-impact", isClicked: false },
+        ],
+        selectCategory: "",
+        activeItem: null,
+      },
+    };
+  },
+  methods: {
+    chooseCategory(cat) {
+      this.incomingData.selectCategory = cat.categ;
+      console.log(cat);
+      cat.isClicked = !cat.isClicked;
+    },
+    uploadImage(e){
+      e.target.files[0]
+    },
+
+    modifyPost(data) {
+      this.$store.dispatch("editPost", data);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.incomingData.title = "";
+          this.incomingData.authoredBy = "";
+          this.incomingData.post = "";
+          resolve();
+        }, 1500);
+      });
+    },
+  },
+  created() {
+    this.incomingData = this.$route.query.data.data();
+    this.incomingData.activeItem = this.$route.query.data.id;
+    console.log(this.incomingData.activeItem);
   },
 };
 </script>
@@ -355,3 +396,4 @@ header {
   }
 }
 </style>
+
