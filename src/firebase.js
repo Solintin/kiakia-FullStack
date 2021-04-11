@@ -29,7 +29,7 @@ const db = firebase.firestore()
 
 const postsCollection = db.collection('posts')
 const faqsCollection = db.collection('faqs')
-const cookieCollection = db.collection('coookie')
+const cookieCollection = db.collection('cookie')
 const privacyCollection = db.collection('privacy')
 const tosCollection = db.collection('tos')
 

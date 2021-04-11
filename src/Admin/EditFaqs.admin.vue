@@ -81,10 +81,10 @@
           <button
             class="btn btn-primary text-center"
             @click="modifyFaqs(incomingData)"
+             :disabled="updateSuccess"
           >
             Update
           </button>
-          <button class="btn btn-outline-danger text-center">Delete</button>
         </div>
         <div class="content">
           <div class="split-content">

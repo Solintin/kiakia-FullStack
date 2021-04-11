@@ -87,7 +87,7 @@ const routes = [
   },
   //terms of service in support
   {
-    path: '/support/terms-of-service',
+    path: '/support/tos',
     name: 'TOS',
     component : TOS
     
@@ -108,14 +108,14 @@ const routes = [
   },
   //PrivacyPolicy Crud in Admin
   {
-    path: '/admin/privacy-policy',
+    path: '/admin/policy',
     name: 'AdminPrivacy',
     component : AdminPrivacy
     
   },
   //TosCrud in Admin
   {
-    path: '/admin/terms-of-service',
+    path: '/admin/tos',
     name: 'AdminTos',
     component : AdminTos
     
@@ -129,41 +129,40 @@ const routes = [
   },
   //EditFaqs in Admin
   {
-    path: '/admin/edit-faqs',
+    path: '/admin/edit/faqs',
     name: 'EditFaqs',
     component : EditFaqs
     
   },
     //EditPost in Admin
   {
-    path: '/admin/edit-post',
+    path: '/admin/edit/post',
     name: 'EditPost',
     component : EditPost
     
   },
     //EditCookie in Admin
   {
-    path: '/admin/edit-cookie',
+    path: '/admin/edit/cookie',
     name: 'EditCookie',
     component : EditCookie
     
   },
     //EditPrivacyPolicy in Admin
   {
-    path: '/admin/edit-privacy-policy',
+    path: '/admin/edit/policy',
     name: 'EditPrivacy',
     component : EditPrivacy
     
   },
     //EditTos in Admin
   {
-    path: '/admin/edit-terms-of-service',
+    path: '/admin/edit/tos',
     name: 'EditTos',
     component : EditTos
     
   },
-    //NewFaqs in Admin
-  
+    //NewFaqs in Admin 
   {
     path: '/admin/new/faqs',
     name: 'NewFaqs',
@@ -179,14 +178,14 @@ const routes = [
   },
     //NewPrivacyPolicy in Admin
   {
-    path: '/admin/new/privacy-policy',
+    path: '/admin/new/policy',
     name: 'NewPrivacy',
     component : NewPrivacy
     
   },
     //NewTOS in Admin
   {
-    path: '/admin/new/terms-of-service',
+    path: '/admin/new/tos',
     name: 'NewTos',
     component : NewTos
     

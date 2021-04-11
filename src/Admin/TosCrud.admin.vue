@@ -34,12 +34,12 @@
         <p>Dashboard</p>
       </div>
       <div class="activeH post">
-        <p>{{ this.faqs.length > 0 ? "Faqs" : "Faq" }}</p>
-        <p>{{ this.faqs.length }}</p>
+        <p>{{ this.terms.length > 0 ? "Terms" : "Term" }}</p>
+        <p>{{ this.terms.length }}</p>
       </div>
       <ul>
-        <li class="activePost">All Faqs</li>
-        <li><a href="">Add New Faqs</a></li>
+        <li class="activePost">All terms</li>
+        <li><a href="">Add New terms</a></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
@@ -49,7 +49,8 @@
         <li class="fw-bold"><a href="">FAQ</a></li>
         <li><a href="">Privacy Policy</a></li>
         <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><a href="">Terms of Service</a
+        ></li>
       </ul>
       <div id="log-out">
         <span>
@@ -64,10 +65,10 @@
       <div class="main-content">
         <div class="mb-4">
             <span>
-        All Frequently Asked Questions
+      Terms of Service
         </span>
         <router-link to="/admin/new-post">
-          <button class="btn btn-primary ">Add More Faqs</button></router-link
+          <button class="btn btn-primary ">Add More terms</button></router-link
         >
 
         </div>
@@ -102,23 +103,23 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(faq, key) in faqs" :key="key">
+            <tr v-for="(tos, key) in terms" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ faq.data().question }}</td>
+              <td>{{ tos.data().tos.substring(0, 100) }}...</td>
            
               <td>
               
                 <p>
-                  {{ faq.data().createdOn }}
+                  {{ tos.data().createdOn }}
                 </p>
               </td>
               <td class="action">
                 <span class="edit">
-                  <router-link :to="{ name: 'EditFaqs', query: { data: faq } }"
+                  <router-link :to="{ name: 'EditTos', query: { data: tos } }"
                     >Edit</router-link
                   ></span
                 >
-                <span @click="deleteFaqs(faq.id)" class="delete">Delete</span>
+                <span @click="deleteTos(tos.id)" class="delete">Delete</span>
               </td>
             </tr>
 
@@ -134,10 +135,10 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "FaqsCrud",
+  name: "termsCrud",
   metaInfo() {
     return {
-      title: "Admin Panel - FAQS || KiaKia Gas ",
+      title: "Admin Panel - terms || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -156,17 +157,17 @@ export default {
   },
 
   created() {
-    this.getFaqs();
+    this.getTos();
   },
   computed: {
-    ...mapState(["faqs"]),
+    ...mapState(["terms"]),
   },
   methods: {
-    getFaqs() {
-      this.$store.dispatch("GET_FAQS");
+    getTos() {
+      this.$store.dispatch("GET_TOS");
     },
-    deleteFaqs(id) {
-      this.$store.dispatch("DELETE_FAQS", id);
+    deleteTos(id) {
+      this.$store.dispatch("DELETE_TOS", id);
     },
   },
 };

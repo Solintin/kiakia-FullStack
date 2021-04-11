@@ -62,20 +62,17 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    <form @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
           <h6 class="fs-4 text-center mb-5">Privacy Policy</h6>
 
-          <strong>Description</strong>
-          <textarea id="desc" name="desc" cols="30" rows="10">
-Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea
-          >
+         <strong>Description</strong>
+            <vue-editor v-model="policy">
+          
+          </vue-editor>
 
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" id="input" name="input" />
         </div>
       </div>
       <!-- E Main  -->
@@ -83,7 +80,7 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center">Update</button>
+          <button class="btn btn-primary text-center" @click="publishPrivacyPolicy">Update</button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -104,8 +101,23 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor"
 export default {
   name: "PrivacyPolicy",
+  
+  components: {
+    VueEditor,
+  },
+  data() {
+    return {
+     policy: " ",
+    };
+  }, 
+  methods: {
+    publishPrivacyPolicy() {
+      this.$store.dispatch("PUBLISH_POLICY", this.policy);
+    },
+  },
   metaInfo() {
     return {
       title: "Admin Panel - Privacy Policy|| KiaKia Gas ",
@@ -125,9 +137,8 @@ export default {
       // ],
     };
   },
-  mounted() {
-    CKEDITOR.replace("desc");
-  },
+    
+
 };
 </script>
 

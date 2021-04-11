@@ -3,23 +3,20 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img src="../assets/Layer 6.svg" alt="" />
+        <img src="../assets/Layer 6.svg" height="auto" width="auto" alt="" />
       </div>
+
       <div class="menu">
         <div>
           <a href="">
-            <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification">3</span>
           </span>
         </div>
         <div>
@@ -52,8 +49,8 @@
       <ul>
         <li><a href="">FAQ</a></li>
         <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li class="fw-bold"><a href="">Terms of Service</a></li>
+        <li class="fw-bold"><a href="">Cookie Declarartion</a></li>
+        <li><a href="">Terms of Service</a></li>
       </ul>
       <div id="log-out">
         <span>
@@ -62,20 +59,18 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    <form @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Cookie Declaration</h6>
+          <h6 class="fs-4 text-center mb-5">Terms Of services</h6>
 
-          <strong>Description</strong>
-          <textarea id="desc" name="desc" cols="30" rows="10">
-Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea
-          >
+          <strong>TOS</strong>
+            <vue-editor v-model="tos">
+          
+          </vue-editor>
 
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" id="input" name="input" />
+        
         </div>
       </div>
       <!-- E Main  -->
@@ -83,7 +78,7 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center">Update</button>
+          <button class="btn btn-primary text-center" @click="publishTos">Add TOS</button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -104,11 +99,26 @@ Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
 export default {
-  name: "Terms-of-service",
+  name: "terms-of-service-admin",
+  components: {
+    VueEditor,
+  },
+  data() {
+    return {
+      tos: " ",
+    };
+  },
+  methods: {
+    publishTos() {
+      this.$store.dispatch("PUBLISH_TOS", this.tos);
+    },
+  },
+
   metaInfo() {
     return {
-      title: "Admin Panel - terms and condition || KiaKia Gas ",
+      title: "Admin Panel - Terms of Service || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -125,13 +135,10 @@ export default {
       // ],
     };
   },
-  mounted() {
-    CKEDITOR.replace("desc");
-  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :root {
   --red-color: #fb6464;
   --purple-color: #6e6893;
@@ -155,7 +162,7 @@ a {
 header {
   background: #fff;
   padding: 0.6rem 1.5rem 0.6rem 0.8rem;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c1c1c1;
@@ -212,9 +219,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    &:nth-of-type(2) {
-      padding-right: 15px;
-    }
+    padding-right: 10px;
   }
 }
 .support {
@@ -234,7 +239,6 @@ header {
   background-color: var(--red-color);
   color: white;
 }
-
 #log-out {
   margin-top: 100px;
   margin-left: 15px;
@@ -245,7 +249,7 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-  width: 100%;
+  width: 100% !important;
 }
 .icon {
   color: black;

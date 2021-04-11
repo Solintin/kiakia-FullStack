@@ -59,7 +59,7 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    <form @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
@@ -78,7 +78,7 @@
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center">Add Cookie</button>
+          <button class="btn btn-primary text-center" @click="publishCookie">Add Cookie</button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -111,7 +111,7 @@ export default {
     };
   },
   methods: {
-    publishFaqs() {
+    publishCookie() {
       this.$store.dispatch("PUBLISH_COOKIE", this.description);
     },
   },

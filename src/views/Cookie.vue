@@ -53,22 +53,10 @@
 
     <!-- E Landing Page -->
     <!-- Body -->
-    <div class="container">
-        <p>This website uses cookies. We use cookies for basic functionality and optimizing your experience. You can
-            enable or disable cookies as desired. See our Cookie Policy for more detai</p>ls.
-
-        <p>Cookies are small text files that can be used by websites to make a user's experience more efficient.
-        </p>
-        <p>The law states that we can store cookies on your device if they are strictly necessary for the operation of
-            this site. For all other types of cookies we need your permission.
-        </p>
-        <p>This site uses different types of cookies. Some cookies are placed by third party services that appear on our
-            pages.
-        </p>
-        <p> You can at any time change or withdraw your consent from the Cookie Declaration on our website.
-        </p>
-        <p>Learn more about who we are, how you can contact us and how we process personal data in our Privacy Policy.
-        </p>
+    <div class="container my-5">
+       <span v-for="(cookie, key) in cookies" :key="key">
+         {{cookie.data().description}}
+       </span>
     </div>
     <!--E Body -->
 
@@ -284,6 +272,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name : "Cookie",
     metaInfo() {
@@ -338,6 +327,18 @@ questions.forEach(function (question) {
 });
 
     },
+
+      created() {
+    this.getCookie();
+  },
+  computed: {
+    ...mapState(["cookies"]),
+  },
+  methods: {
+    getCookie() {
+      this.$store.dispatch("GET_COOKIE");
+    },
+  }
 }
 </script>
 

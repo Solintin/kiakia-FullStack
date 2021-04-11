@@ -62,14 +62,12 @@
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Frequently Asked Questions</h6>
+          <h6 class="fs-4 text-center mb-5">Cookie Declarartion</h6>
 
-          <strong>Question</strong>
-          <input type="text" id="title" v-model="incomingData.question" />
-
-          <strong>Answer</strong>
-          <vue-editor v-model="incomingData.answer">
-            {{ incomingData.answer }}
+   
+          <strong>Description</strong>
+          <vue-editor v-model="incomingData.description">
+            {{ incomingData.description }}
           </vue-editor>
         </div>
       </div>
@@ -80,11 +78,10 @@
         <div class="buttons">
           <button
             class="btn btn-primary text-center"
-            @click="modifyFaqs(incomingData)"
+            @click="modifyCookie(incomingData)"
           >
             Update
           </button>
-          <button class="btn btn-outline-danger text-center">Delete</button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -107,12 +104,11 @@
 <script>
 import { VueEditor } from "vue2-editor";
 export default {
-  name: "EditFaqs",
+  name: "EditCookie",
   data() {
     return {
       incomingData: {
-        question: "",
-        answer: "",
+       description : '',
         activeItem: null,
       },
       updateSuccess: false,
@@ -124,7 +120,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Admin Panel - Edit FAQ|| KiaKia Gas ",
+      title: "Admin Panel - Edit Cookie|| KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -142,12 +138,11 @@ export default {
     };
   },
   methods: {
-    modifyFaqs(data) {
-      this.$store.dispatch("EDIT_FAQS", data);
+    modifyCookie(data) {
+      this.$store.dispatch("EDIT_COOKIE", data);
       return new Promise((resolve) => {
         setTimeout(() => {
-          this.incomingData.question = "";
-          this.incomingData.answer = "";
+          this.incomingData.description =  ''
           this.updateSuccess = true;
           resolve();
         }, 1500);

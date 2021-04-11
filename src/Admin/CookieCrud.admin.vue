@@ -10,13 +10,13 @@
         <div>
           <a href="">
             <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification r">0</span>
+            <span class="badge rounded-pill badge-notification ">0</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification r">0</span>
+            <span class="badge rounded-pill badge-notification ">0</span>
           </span>
         </div>
         <div>
@@ -34,8 +34,8 @@
         <p>Dashboard</p>
       </div>
       <div class="activeH post">
-        <p>{{ this.faqs.length > 0 ? "Faqs" : "Faq" }}</p>
-        <p>{{ this.faqs.length }}</p>
+        <p>{{ this.cookies.length > 0 ? "cookies" : "cookie" }}</p>
+        <p>{{ this.cookies.length }}</p>
       </div>
       <ul>
         <li class="activePost">All Faqs</li>
@@ -63,9 +63,7 @@
     <div class="main">
       <div class="main-content">
         <div class="mb-4">
-            <span>
-        All Frequently Asked Questions
-        </span>
+            <span class="fw-bold">Cookie Declaration</span>
        
 
         </div>
@@ -76,29 +74,28 @@
             <tr>
               <td><input type="checkbox" /></td>
               <td>title</td>
-             
               <td>last updated</td>
               <td>Action</td>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(faq, key) in faqs" :key="key">
+            <tr v-for="(cookie, key) in cookies" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ faq.data().question }}</td>
+              <td>{{ cookie.data().description}}...</td>
            
               <td>
               
                 <p>
-                  {{ faq.data().createdOn }}
+                  {{ cookie.data().createdOn }}
                 </p>
               </td>
               <td class="action">
                 <span class="edit">
-                  <router-link :to="{ name: 'EditFaqs', query: { data: faq } }"
+                  <router-link :to="{ name: 'EditCookie', query: { data: cookie } }"
                     >Edit</router-link
                   ></span
                 >
-                <span @click="deleteFaqs(faq.id)" class="delete">Delete</span>
+                <span @click="deleteCookie(cookie.id)" class="delete">Delete</span>
               </td>
             </tr>
 
@@ -114,10 +111,10 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "FaqsCrud",
+  name: "CookiesCrud",
   metaInfo() {
     return {
-      title: "Admin Panel - FAQS || KiaKia Gas ",
+      title: "Admin Panel - Cookie Declaration || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -136,17 +133,17 @@ export default {
   },
 
   created() {
-    this.getFaqs();
+    this.getCookie();
   },
   computed: {
-    ...mapState(["faqs"]),
+    ...mapState(["cookies"]),
   },
   methods: {
-    getFaqs() {
-      this.$store.dispatch("GET_FAQS");
+    getCookie() {
+      this.$store.dispatch("GET_COOKIE");
     },
-    deleteFaqs(id) {
-      this.$store.dispatch("DELETE_FAQS", id);
+    deleteCookie(id) {
+      this.$store.dispatch("DELETE_COOKIE", id);
     },
   },
 };
@@ -473,3 +470,4 @@ header {
   color: black;
 }
 </style>
+
