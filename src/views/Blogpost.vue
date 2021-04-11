@@ -39,20 +39,20 @@
     <!-- Body -->
     <div class="container mt-5">
         <div class="text-primary text-uppercase mb-5">
-            company
+            {{incomingData.category}}
         </div>
         <h3 class="mb-3">
-            How to start a cooking gas business in Nigeria
+            {{incomingData.title}}
         </h3>
         <div class="blog-info mb-5">
             <ul>
                 <li><span style="color:#474A57;
                     ;">By</span> <span>
-                        Uwandu Ifeanyi
+            {{incomingData.authoredBy}}
                     </span></li>
                 <li>
                     <div>
-                        <span>January 25, 2021</span>
+                        <span>{{incomingData.createdOn}}</span>
                     </div>
                 </li>
                 <li>
@@ -64,99 +64,14 @@
         </div>
 
         <!--Post  Image  -->
-        <img class="my-4" src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
+        <img class="my-4" :src="incomingData.blogImage" alt="post-image">
 
-        <b>
-            <p class="text-primary">
-                Introduction
-            </p>
-        </b>
-        <div style="color: #474A57;">
-            <p>
-                The consumption of cooking gas in Nigeria has grown from 110,000MT per annum in 2013 to 400,000MT in
-                2016.
-                What is the implication of this for the Nigerian entrepreneur? It shows simply, that without a doubt
-                that
-                the cooking gas business in Nigeria is a risk worth delving into in Nigeria.
-            </p>
-            <p>Nigeria is well-known as one of the big oil producing countries in the world. It has also been known to
-                derive a larger percentage of its revenue from oil. Globally, petroleum products are also thought of as
-                an
-                aspect of the economy that you can never go wrong with. But among all the petroleum products, gas seems
-                to
-                be the least thought of in this way. As a matter of fact, statistics conducted some years ago showed
-                that
-                only about about 5% consumption of the potential of LPG was used in the world.</p>
-            <p>But presently, we are seeing changes in the consumption of cooking gas. More people are seeing the
-                usefulness
-                and convenience of LPG. One of the menaces of the Nigerian society is lack of electricity and although,
-                most
-                people would prefer to rely on electricity in their kitchens, that preference is not realistic in
-                Nigeria. A
-                lot of these people therefore substitute their energy use in their kitchens with kerosene. When they
-                discover cooking gas however, which is arguably a better alternative to kerosene, they find out not only
-                does it cook food faster, but it is also ultimately cheaper.</p>
+          <div>
+                        {{incomingData.post}}
 
-            <p class="text-primary fw-bold">
-                Things to put into consideration
-            </p>
-            <p>
-                <b>Get an LPG Business Intelligence Report:</b> Knowledge is universal and is not restricted to any
-                particular
-                area. If you want to succeed in any endeavour, you are in need of knowledge. As a matter of fact, it is
-                advisable that you get knowledge before delving into the business. You should plan before embarking on
-                it in
-                the first place, knowing the amount of gas plants in the area you want to set up, their average
-                turn-around
-                time, etc so it will not be a case of a man testing the depth of a river with both feet. Knowledge will
-                give
-                you insight into the dos and don’ts of the business as you would be learning from the experience of
-                people
-                before you. And apart from that, knowledge will help you know if you are ready and fully equipped for
-                the
-                gas business.
-            </p>
-
-            <p><b>Land:</b> Apart from the fact that you need a space for your business, in the case of cooking gas, the
-                aspect of
-                land is even more crucial simply because of the environmental and health implications of cooking gas.
-                Therefore, in accordance to the requirement of the DPR (Department of Petroleum Resources), the position
-                of
-                the plant must be at least 15 meters from any building containing flammable materials; residential
-                buildings
-                or filling sheds for example. The reason for this is because before you are granted a license (which we
-                would be addressing), the DPR would come for inspection and they would need to see this is place before
-                your
-                application can be approved.</p>
-            <p><b> Capital and Labour:</b> There is not a single business that exists for which you don’t need capital
-                and
-                you would
-                need a lot of it for starting cooking gas business, to be candid. This is because you would need to buy
-                all
-                the
-                equipment and these are also some of the things the DPR would look out for prior to granting you a
-                license.
-                Apart from the DPR needing to see this, you cannot really function without this equipment. It would be
-                like
-                a
-                doctor without a stethoscope. Some of the equipment necessary includes; the testing pool, valve screwing
-                equipment, an electronic carousel, a mechanical carousel, electronic scales and mechanical scales among
-                others.
-                In the same way, you would need to employ several capable hands who would help you operate this
-                equipment
-                and
-                run the business.</p>
-
-            <p>
-                <b> Licensing and Permits:</b> This is the stage peculiar to the Nigerian situation as the requirements
-                are
-                based on
-                what has been stipulated by the DPR. The following information would also help in setting up a cooking
-                gas
-                business.
+          </div>
         
-        </p>
-    </div>
+    
     <!-- E Body -->
 
 
@@ -345,6 +260,30 @@
 <script>
 export default {
     name : "Blogpost",
+     metaInfo() {
+      return {
+        title: `Blogpost || KiaKia Gas 360` ,
+        // meta: [
+        //   {
+        //     name: "description",
+        //     content:
+        //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
+        //   },
+        //   {
+        //     property: "og:title",
+        //     content: "Epiloge - Build your network in your field of interest",
+        //   },
+        //   { property: "og:site_name", content: "Epiloge" },
+        //   { property: "og:type", content: "website" },
+        //   { name: "robots", content: "index,follow" },
+        // ],
+      };
+    },
+    data() {
+      return {
+        incomingData : {}
+      }
+    },
     mounted() {
         const year = document.getElementById("year");
 const menuList = document.querySelector(".menu-list ");
@@ -404,6 +343,11 @@ blog.addEventListener("click", function (e) {
 });
 
     },
+
+     created() {
+    this.incomingData = this.$route.query.data.data();
+    console.log(this.incomingData);
+  },
 
 }
 </script>

@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 // import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 
  // Your web app's Firebase configuration
@@ -13,7 +14,7 @@ import 'firebase/firestore'
     appId: "1:550754392383:web:364affda325d63e8491b8a"
   };
   // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+ const fbAccess =  firebase.initializeApp(firebaseConfig);
 
 
 
@@ -27,11 +28,19 @@ const db = firebase.firestore()
 // collection references
 
 const postsCollection = db.collection('posts')
+const faqsCollection = db.collection('faqs')
+const cookieCollection = db.collection('coookie')
+const privacyCollection = db.collection('privacy')
+const tosCollection = db.collection('tos')
 
 
 // export utils/refs
-export {
-  postsCollection,
+export {fbAccess,
+  faqsCollection,
+  cookieCollection,
+  privacyCollection,
+  tosCollection,
+    postsCollection,
 }
 
 

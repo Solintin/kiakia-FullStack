@@ -3,7 +3,7 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
+        <img src="../assets/Layer 6.svg" alt="" />
       </div>
       <div class="menu">
         <div>

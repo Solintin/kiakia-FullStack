@@ -1,15 +1,15 @@
 <template>
   <div>
-    <!-- Header  -->
+          <!-- Header  -->
     <header>
-      <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
-      </div>
-      <div class="menu">
-        <div>
+        <div class="logo">
+            <img src="../assets/Layer 6.svg" alt="">
+        </div>
+        <div class="menu">
+            <div>
           <a href="">
-            <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification"
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification "
               >3</span
             >
           </a>
@@ -17,98 +17,129 @@
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification"
+            <span class="badge rounded-pill badge-notification "
               >3</span
             >
           </span>
         </div>
-        <div>
-          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
+            <div>
+                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
+            </div>
+            <div>
+                <span>David Alenoghena</span>
+            </div>
+
+
         </div>
-        <div>
-          <span>David Alenoghena</span>
-        </div>
-      </div>
+
     </header>
     <!-- E Header  -->
 
     <!-- SideBar  -->
     <div class="sidebar">
-      <div class="dashboard">
-        <p>Dashboard</p>
-      </div>
-      <div class="post">
-        <p>Post(s)</p>
-        <p>10</p>
-      </div>
-      <ul>
-        <li>All posts</li>
-        <li><a href="">Add New post</a></li>
-        <li><a href="">Categories</a></li>
-      </ul>
-      <div class="activeH support">
-        <p>Support</p>
-      </div>
-      <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li class="fw-bold"><a href="">Terms of Service</a></li>
-      </ul>
-      <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
-      </div>
+        <div class="dashboard">
+            <p>Dashboard</p>
+        </div>
+        <div class=" post">
+            <p>Post(s)</p>
+            <p>10</p>
+        </div>
+        <ul>
+            <li>All posts</li>
+            <li><a href="">Add New post</a></li>
+            <li><a href="">Categories</a></li>
+        </ul>
+        <div class="activeH support">
+            <p>Support</p>
+        </div>
+        <ul>
+            <li class="fw-bold"><a href="">FAQ</a> </li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Cookie Declarartion</a></li>
+            <li><a href="">Terms of Service</a></li>
+        </ul>
+        <div id="log-out">
+            <span>
+                <h6>Log Out</h6>
+            </span>
+        </div>
     </div>
     <!-- E SideBar  -->
-    <form>
-      <!-- Main  -->
-      <div class="main">
-        <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Cookie Declaration</h6>
 
-          <strong>Description</strong>
-          <textarea id="desc" name="desc" cols="30" rows="10">
-Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea
-          >
+       <form @submit.prevent="publishFaqs">
 
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" id="input" name="input" />
-        </div>
-      </div>
-      <!-- E Main  -->
+        <!-- Main  -->
+        <div class="main">
+            <div class="main-content">
+                <h6 class="fs-4 text-center mb-5">New Frequently Asked Question</h6>
 
-      <!-- Right Sidebar -->
-      <div class="right-sidebar">
-        <div class="buttons">
-          <button class="btn btn-primary text-center">Update</button>
+                <strong>Question</strong>
+                <input type="text" id="title" v-model="question">
+
+
+                <strong>Answer</strong>
+                 <vue-editor v-model="answer">
+          
+          </vue-editor>
+
+            </div>
+
         </div>
-        <div class="content">
-          <div class="split-content">
-            <div>Visibility : <span>Public</span></div>
-            <div class="fw-bold">Edit</div>
-          </div>
-          <div class="split-content">
-            <div>Status : <span>Published</span></div>
-            <div class="fw-bold">Edit</div>
-          </div>
-          <div>Revision : <span>3</span></div>
-          <div>Published : <span>Jan, 25, 2021</span></div>
+        <!-- E Main  -->
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <div class="buttons">
+                <button class="btn btn-primary text-center">Add New FAQ</button>
+            
+            </div>
+            <div class="content">
+                <div class="split-content">
+                    <div> Visibility : <span>Public</span></div>
+                    <div class="fw-bold">Edit</div>
+                </div>
+                <div class="split-content">
+                    <div> Status : <span>Published</span>
+                    </div>
+                    <div class="fw-bold">Edit</div>
+                </div>
+                <div>Revision : <span>3</span></div>
+                <div>Published : <span>Jan, 25, 2021</span></div>
+            </div>
         </div>
-      </div>
-      <!-- E Right Sidebar -->
+        <!-- E Right Sidebar -->
+
     </form>
   </div>
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
 export default {
-  name: "Terms-of-service",
+ name: "EditPost",
+  components: {
+    VueEditor,
+  },
+  data() {
+    return {
+      question : '',
+      answer : ''
+
+    }
+  },
+   methods: {
+    publishFaqs() {
+      const form = {
+        question: this.question,
+        answer: this.answer,
+        
+      };
+      this.$store.dispatch("PUBLISH_FAQS", form);
+    },
+},
   metaInfo() {
     return {
-      title: "Admin Panel - terms and condition || KiaKia Gas ",
+      title: "Admin Panel - New FAQ|| KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -125,13 +156,11 @@ export default {
       // ],
     };
   },
-  mounted() {
-    CKEDITOR.replace("desc");
-  },
-};
+ 
+}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped>  
 :root {
   --red-color: #fb6464;
   --purple-color: #6e6893;
@@ -197,7 +226,7 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
-  ul {
+ ul {
     margin: 15px 30px !important;
     font-size: 17px;
     font-weight: 400;
@@ -212,7 +241,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    &:nth-of-type(2) {
+    &:nth-of-type(2){
       padding-right: 15px;
     }
   }
@@ -221,9 +250,8 @@ header {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
-  p {
+  p{
     margin: 0;
-    padding: 0;
   }
 }
 .badge {
@@ -234,7 +262,6 @@ header {
   background-color: var(--red-color);
   color: white;
 }
-
 #log-out {
   margin-top: 100px;
   margin-left: 15px;
@@ -245,7 +272,8 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-  width: 100%;
+    width: 100%;
+
 }
 .icon {
   color: black;
@@ -274,7 +302,7 @@ header {
       width: 100%;
       margin: 10px 0;
     }
-
+   
     .category {
       ul {
         margin-top: 10px;
@@ -287,7 +315,7 @@ header {
           border-radius: 5px;
           padding: 5px 10px;
         }
-        li.active {
+        li.active{
           color: #fff;
           background: var(--lightblue-color);
         }
@@ -309,24 +337,25 @@ header {
   top: 0;
   right: 0;
   background: #fff;
-  .buttons {
-    button {
+  .buttons{
+    button{
       width: 100%;
       display: inline-block;
       margin-bottom: 15px;
     }
   }
-  .content {
+  .content{
     display: block !important;
 
-    .split-content {
+    .split-content{
       display: flex;
       justify-content: space-between;
       align-items: center;
-      div:nth-child(2) {
+      div:nth-child(2){
         cursor: pointer;
       }
     }
   }
 }
+
 </style>

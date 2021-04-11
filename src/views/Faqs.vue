@@ -85,10 +85,10 @@
                                 <!-- questions -->
 
                                 <!-- single question -->
-                                <article class="question">
+                                <article v-for="(faq, key) in faqs" :key="key" class="question">
                                     <!-- question title -->
-                                    <div class="question-title">
-                                        <p>What is LPG?</p>
+                                    <div class="question-title" @click="toggleQuestion">
+                                        <p>{{ faq.data().question }}</p>
                                         <div class="question-btn">
                                             <span class="plus-icon">
                                                 <span class="mdi mdi-chevron-right mdi-24px"></span>
@@ -102,11 +102,7 @@
                                     <!-- answer text -->
                                     <div class="question-text">
                                         <p>
-                                            LPG is the acronym for Liquefied Petroleum Gas (also known as cooking gas).
-                                            It’s a mixture of propane and butane. It has different purposes, most
-                                            relevant being for cooking food. It also does not release considerable
-                                            amounts of carbon dioxide, sulphur or particulate matter into the
-                                            environment, which is why it is safe for one's health and the environment.
+                                          {{ faq.data().answer }}
 
 
                                         </p>
@@ -114,140 +110,7 @@
                                 </article>
                                 <!-- E single question -->
 
-                                <!-- single question -->
-                                <article class="question">
-                                    <!-- question title -->
-                                    <div class="question-title">
-                                        <p>Is LPG safe?</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio
-                                            blanditiis asperiores
-                                            quo sequi iste, eaque dolorem facilis sapiente delectus quis.
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-
-                                <!-- single question -->
-                                <article class="question">
-                                    <!-- question title -->
-                                    <div class="question-title">
-                                        <p>How does gas360 work?</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
-                                            perferendis ratione doloremque
-                                            provident non, ducimus cumque. Obcaecati, minus dicta. Molestias.
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-                                <!-- single question -->
-                                <article class="question">
-                                    <!-- question title -->
-                                    <div class="question-title">
-                                        <p>As an existing user do i need to buy a new cyinder to use GAS360?</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
-                                            perferendis ratione doloremque
-                                            provident non, ducimus cumque. Obcaecati, minus dicta. Molestias.
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-                                <!-- single question -->
-                                <article class="question">
-                                    <!-- question title -->
-                                    <div class="question-title">
-                                        <p>As a New Gas User Do I need to buy a new cylinder to use GAS360?
-                                            ?</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
-                                            perferendis ratione doloremque
-                                            provident non, ducimus cumque. Obcaecati, minus dicta. Molestias.
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-
-                                <!-- single question -->
-                                <article class="question">
-                                    <!-- question title -->
-                                    <div class="question-title">
-                                        <p>How does monitoring my gas consumption help?</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
-                                            perferendis ratione doloremque
-                                            provident non, ducimus cumque. Obcaecati, minus dicta. Molestias.
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-
+                                
                             </section>
                         </div>
 
@@ -482,6 +345,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   name: "Faqs",
   metaInfo() {
@@ -554,10 +418,44 @@ export default {
       }
     });
   },
+      created() {
+    this.getFaqs();
+  },
+    computed: {
+    ...mapState(["faqs"]),
+  },
+  methods: {
+    getFaqs() {
+      this.$store.dispatch("GET_FAQS");
+    },
+    toggleQuestion(){
+      
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach(function(question) {
+      const btn = question.querySelector(".question-title");
+      // console.log(btn);
+
+      btn.addEventListener("click", function() {
+        // console.log(question);
+
+        questions.forEach(function(item) {
+          if (item !== question) {
+            item.classList.remove("show-text");
+          }
+        });
+
+        question.classList.toggle("show-text");
+      });
+    });
+    },
+  }
 };
+
+
 </script>
 
-<style>
+<style >
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
 :root {
   --primary: #3789ec;
@@ -620,17 +518,6 @@ body {
   color: #000;
 }
 
-/* ==============upgrade=========================== */
-.upgrade {
-  background-color: var(--primary);
-  padding: 50px 0;
-}
-.upgrade .download img {
-  width: 100px;
-}
-.cta img {
-  width: 450px;
-}
 /* =============== FAQ================== */
 .question {
   background: var(--clr-white);
@@ -719,7 +606,7 @@ body {
 }
 
 .btn-container {
-  display: block;
+  display: block !important;
 }
 .tab-btn {
   margin-bottom: 2rem;
@@ -737,7 +624,7 @@ body {
 
 /* hide content */
 .content {
-  display: none;
+  display: none !important;
 }
 .tab-btn.active {
   background: #e9f2fc;
@@ -745,7 +632,7 @@ body {
   padding: 7px;
 }
 .content.active {
-  display: block;
+  display: block !important;
 }
 .col-2 {
   border-right: 0.5px solid #d9dbe1;
@@ -819,7 +706,7 @@ body {
   }
 
   .tab-mobile{
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
@@ -836,7 +723,13 @@ body {
     margin-bottom: 14px
   }
   .col-2{
-    display: none;
+    display: none !important;
+  }
+  .col-10{
+    display: grid;
+    flex: 1;
+   width: 100% !important;
+   margin-left: -50px !important;
   }
   /* ======================= Footer====================== */
   .footer .footer-card {
@@ -862,7 +755,7 @@ body {
 }
 @media screen and (min-width: 765px) {
   .tab-mobile{
-    display: none;
+    display: none !important;
   }
 }
 

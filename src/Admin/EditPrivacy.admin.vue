@@ -3,19 +3,19 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
+        <img src="../assets/Layer 6.svg" alt="" />
       </div>
       <div class="menu">
         <div>
           <a href="">
-            <i class="fas fa-envelope "></i>
-            <span class="badge rounded-pill badge-notification ">3</span>
+            <i class="fas fa-envelope"></i>
+            <span class="badge rounded-pill badge-notification">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification ">3</span>
+            <span class="badge rounded-pill badge-notification">3</span>
           </span>
         </div>
         <div>
@@ -33,7 +33,7 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="activeH post">
+      <div class="post">
         <p>Post(s)</p>
         <p>10</p>
       </div>
@@ -42,14 +42,14 @@
         <li><a href="">Add New post</a></li>
         <li><a href="">Categories</a></li>
       </ul>
-      <div class="support">
+      <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li class="fw-bold">FAQ</li>
+        <li>Privacy Policy</li>
+        <li>Cookie Declarartion</li>
+        <li>Terms of Service</li>
       </ul>
       <div id="log-out">
         <span>
@@ -58,39 +58,19 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form  @submit.prevent>
+    <form @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Edit Post</h6>
+          <h6 class="fs-4 text-center mb-5">Frequently Asked Questions</h6>
 
-          <strong>Title</strong>
-          <input type="text" v-model="incomingData.title" />
+          <strong>Question</strong>
+          <input type="text" id="title" v-model="incomingData.question" />
 
-          <strong>Author</strong>
-          <input type="text" v-model="incomingData.authoredBy" />
-
-          <strong>Cateogory</strong>
-          <div class="category">
-            <ul>
-              <li
-                v-for="(category, index) in incomingData.categories"
-                :key="index"
-                :class="{ active: category.isClicked }"
-                @click="chooseCategory(category)"
-              >
-                {{ category.categ }}
-              </li>
-            </ul>
-          </div>
-
-          <strong>Description</strong>
-          <vue-editor v-model="incomingData.post">
-            {{ incomingData.post }}
+          <strong>Answer</strong>
+          <vue-editor v-model="incomingData.answer">
+            {{ incomingData.answer }}
           </vue-editor>
-
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" @change="uploadImage" />
         </div>
       </div>
       <!-- E Main  -->
@@ -100,11 +80,10 @@
         <div class="buttons">
           <button
             class="btn btn-primary text-center"
-            @click="modifyPost(incomingData)"
+            @click="modifyFaqs(incomingData)"
           >
             Update
           </button>
-          <button class="btn btn-secondary text-center">Preview Changes</button>
           <button class="btn btn-outline-danger text-center">Delete</button>
         </div>
         <div class="content">
@@ -127,17 +106,25 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-// import router from ".";
-
 export default {
-  name: "EditPost",
+  name: "EditFaqs",
+  data() {
+    return {
+      incomingData: {
+        question: "",
+        answer: "",
+        activeItem: null,
+      },
+      updateSuccess: false,
+    };
+  },
 
   components: {
     VueEditor,
   },
   metaInfo() {
     return {
-      title: "Admin Panel - Edit Post || KiaKia Gas ",
+      title: "Admin Panel - Edit FAQ|| KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -154,39 +141,14 @@ export default {
       // ],
     };
   },
-  data() {
-    return {
-      incomingData: {
-        title: "",
-        post: "",
-        authoredBy: "",
-        categories: [
-          { categ: "product", isClicked: false },
-          { categ: "company", isClicked: false },
-          { categ: "social-impact", isClicked: false },
-        ],
-        selectCategory: "",
-        activeItem: null,
-      },
-    };
-  },
   methods: {
-    chooseCategory(cat) {
-      this.incomingData.selectCategory = cat.categ;
-      console.log(cat);
-      cat.isClicked = !cat.isClicked;
-    },
-    uploadImage(e){
-      e.target.files[0]
-    },
-
-    modifyPost(data) {
-      this.$store.dispatch("editPost", data);
+    modifyFaqs(data) {
+      this.$store.dispatch("EDIT_FAQS", data);
       return new Promise((resolve) => {
         setTimeout(() => {
-          this.incomingData.title = "";
-          this.incomingData.authoredBy = "";
-          this.incomingData.post = "";
+          this.incomingData.question = "";
+          this.incomingData.answer = "";
+          this.updateSuccess = true;
           resolve();
         }, 1500);
       });
@@ -195,7 +157,6 @@ export default {
   created() {
     this.incomingData = this.$route.query.data.data();
     this.incomingData.activeItem = this.$route.query.data.id;
-    console.log(this.incomingData.activeItem);
   },
 };
 </script>
@@ -288,6 +249,10 @@ header {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 #log-out {
@@ -300,18 +265,12 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+  width: 100% !important;
 }
 .icon {
   color: black;
 }
-.badge {
-  position: absolute;
-  font-size: xx-small;
-  margin-left: -5px;
-  margin-top: -5px;
-  background-color: var(--red-color);
-  color: white;
-}
+
 // Main
 .main {
   width: auto;
@@ -335,13 +294,8 @@ header {
       width: 100%;
       margin: 10px 0;
     }
-    input:last-of-type {
-      background: none;
-      margin-left: 0;
-      padding: 0;
-    }
+
     .category {
-      padding: 8px 0;
       ul {
         margin-top: 10px;
         margin-left: 0;
@@ -356,6 +310,7 @@ header {
         li.active {
           color: #fff;
           background: var(--lightblue-color);
+          width: min-content;
         }
       }
     }
@@ -363,7 +318,14 @@ header {
 }
 
 // Right SideBar
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 .right-sidebar {
   width: 255px;
   margin-top: 3.3rem;
@@ -384,7 +346,6 @@ header {
   }
   .content {
     display: block !important;
-
     .split-content {
       display: flex;
       justify-content: space-between;
@@ -396,4 +357,3 @@ header {
   }
 }
 </style>
-

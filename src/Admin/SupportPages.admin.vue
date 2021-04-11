@@ -1,12 +1,12 @@
 <template>
   <div>
-       <!-- Header  -->
+          <!-- Header  -->
     <header>
         <div class="logo">
-            <img src="../asset/Layer 6.svg" alt="">
+            <img src="../assets/Layer 6.svg" alt="">
         </div>
         <div class="menu">
-          <div>
+            <div>
           <a href="">
             <i class="fas fa-envelope"></i>
             <span class="badge rounded-pill badge-notification"
@@ -49,11 +49,11 @@
             <li><a href="">Add New post</a></li>
             <li><a href="">Categories</a></li>
         </ul>
-        <div class="activeH support">
+        <div class="support">
             <p>Support</p>
         </div>
         <ul>
-            <li class="fw-bold">FAQ </li>
+            <li>FAQ </li>
             <li>Privacy Policy</li>
             <li>Cookie Declarartion</li>
             <li>Terms of Service</li>
@@ -69,44 +69,38 @@
 
         <!-- Main  -->
         <div class="main">
+            <h5 class="mb-4 text-center">Support Pages</h5>
             <div class="main-content">
-                <h6 class="fs-4 text-center mb-5">Frequently Asked Questions</h6>
-
-                <strong>Question</strong>
-                <input type="text" id="title" >
-
-
-                <strong>Answer</strong>
-                <textarea  id="desc" name="desc" cols="30" rows="10">Tortor, tincidunt tortor ac malesuada lacus cursus in. Est amet lectus vulputate ac egestas vel velit praesent egestas. Viverra diam amet volutpat tristique sed blandit eget id. Nunc non neque scelerisque nisi mauris euismod sed tempus morbi.
-                </textarea>
-
+                <a href="">
+                    <div>
+                        <i class="fa fa-question-circle fa-4x text-center" aria-hidden="true"></i>
+                        Frequently Asked Questions
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <i class="fa-4x text-center fas fa-cookie"></i>
+                        Cookie Declaration
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <i class="fa-4x text-center fas fa-shield-alt"></i>
+                        Privacy of Policy
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <i class="fa-4x text-center fas fa-edit"></i>
+                        Terms of Services
+                    </div>
+                </a>
 
             </div>
 
         </div>
         <!-- E Main  -->
 
-        <!-- Right Sidebar -->
-        <div class="right-sidebar">
-            <div class="buttons">
-                <button class="btn btn-primary text-center">Update</button>
-                <button class="btn btn-outline-danger text-center">Delete</button>
-            </div>
-            <div class="content">
-                <div class="split-content">
-                    <div> Visibility : <span>Public</span></div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div class="split-content">
-                    <div> Status : <span>Published</span>
-                    </div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div>Revision : <span>3</span></div>
-                <div>Published : <span>Jan, 25, 2021</span></div>
-            </div>
-        </div>
-        <!-- E Right Sidebar -->
 
     </form>
   </div>
@@ -114,10 +108,10 @@
 
 <script>
 export default {
- name: "Faqs Admin",
+ name: "EditPost",
   metaInfo() {
     return {
-      title: "Admin Panel - Edit FAQ|| KiaKia Gas ",
+      title: "Admin Panel - Support Page || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -134,9 +128,7 @@ export default {
       // ],
     };
   },
-  mounted() {
-       CKEDITOR.replace('desc');
-  },
+
 }
 </script>
 
@@ -156,6 +148,14 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
 }
 a {
   text-decoration: none;
@@ -210,6 +210,7 @@ header {
     margin: 15px 30px !important;
     font-size: 17px;
     font-weight: 400;
+    
   }
 }
 .post {
@@ -221,14 +222,16 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    padding-right: 10px;
+    &:nth-of-type(2) {
+      margin-right: 10px;
+    }
   }
 }
 .support {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
-  p{
+  p {
     margin: 0;
     padding: 0;
   }
@@ -244,7 +247,8 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-  width: 100% !important;
+    width: 100%;
+
 }
 .icon {
   color: black;
@@ -262,78 +266,42 @@ header {
   .main-content {
     padding-right: 50px;
     width: auto;
-
-    input,
-    textarea {
-      background: #f4f2ff;
-      border-radius: 5px;
-      padding: 5px 10px;
-      border: none;
-      outline: none;
-      width: 100%;
-      margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
+    a{
+      display: inherit;
+      place-content: center;
+      div{
+        height: 200px;
+        width: 300px;
+        background: #C4C4C4;
+        padding: 10px 10px;
+        border-radius: 6px;
+        color: rgb(65, 64, 64);
+        display: inherit;
+        place-content: center;
+        font-weight: 700;
+        .icon{
+          color : rgb(65, 64, 64);
+        }
+        &:hover{
+          background: var(--lightblue-color);
+          transform: scale(1.02);
+          transition: 1.1s;
+          color: white;
+          .icon{
+            transition: 1.1s;
+            color: white;
+          }
+        }
+        
+      }
     }
    
-    .category {
-      ul {
-        margin-top: 10px;
-        margin-left: 0;
-        padding: 0;
-        li {
-          margin-right: 15px;
-          display: inline-flex;
-          background: #f4f2ff;
-          border-radius: 5px;
-          padding: 5px 10px;
-        }
-        li.active{
-          color: #fff;
-          background: var(--lightblue-color);
-          width: min-content;
-        }
-      }
-    }
   }
 }
 
-// Right SideBar
-.badge {
-  position: absolute;
-  font-size: xx-small;
-  margin-left: -5px;
-  margin-top: -5px;
-  background-color: var(--red-color);
-  color: white;
-}
-.right-sidebar {
-  width: 255px;
-  margin-top: 3.3rem;
-  padding-left: 10px;
-  padding-right: 30px;
-  padding-top: 148px;
-  height: calc(100vh - 3.3rem);
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: #fff;
-  .buttons{
-    button{
-      width: 100%;
-      display: inline-block;
-      margin-bottom: 15px;
-    }
-  }
-  .content{
-    display: block !important;
-    .split-content{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      div:nth-child(2){
-        cursor: pointer;
-      }
-    }
-  }
-}
+
 
 </style>

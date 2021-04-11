@@ -3,7 +3,7 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
+        <img src="../assets/Layer 6.svg" alt="" />
       </div>
 
       <div class="menu">
@@ -34,19 +34,19 @@
         <p>Dashboard</p>
       </div>
       <div class="activeH post">
-        <p>{{ this.posts.length > 0 ? "Posts" : "Post" }}</p>
-        <p>{{ this.posts.length }}</p>
+        <p>{{ this.faqs.length > 0 ? "Faqs" : "Faq" }}</p>
+        <p>{{ this.faqs.length }}</p>
       </div>
       <ul>
-        <li class="activePost">All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li class="activePost">All Faqs</li>
+        <li><a href="">Add New Faqs</a></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
+        <li class="fw-bold"><a href="">FAQ</a></li>
         <li><a href="">Privacy Policy</a></li>
         <li><a href="">Cookie Declarartion</a></li>
         <li><a href="">Terms of Service</a></li>
@@ -62,83 +62,48 @@
     <!-- Main  -->
     <div class="main">
       <div class="main-content">
-        <span>
-          Blog posts
+        <div class="mb-4">
+            <span>
+        All Frequently Asked Questions
         </span>
         <router-link to="/admin/new-post">
-          <button class="btn btn-primary ">Add Post</button></router-link
+          <button class="btn btn-primary ">Add More Faqs</button></router-link
         >
 
-        <div class="menu-bar">
-          <div class="category">
-            <ul>
-              <li class="list-active">All</li>
-              <li>Company</li>
-              <li>Product</li>
-              <li>Social Impact</li>
-            </ul>
-          </div>
-          <div class="search-bar">
-            <span>
-              <i class="fas fa-search"></i>
-            </span>
-            <input
-              type="search"
-              placeholder="Search blog by Name, category or Date"
-            />
-          </div>
         </div>
+    
 
         <table>
           <thead>
             <tr>
               <td><input type="checkbox" /></td>
               <td>title</td>
-              <td>Categories</td>
-              <td>Author/last updated</td>
+             
+              <td>last updated</td>
               <td>Action</td>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(post, key) in posts" :key="key">
+            <tr v-for="(faq, key) in faqs" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ post.data().title }}</td>
+              <td>{{ faq.data().question }}</td>
+           
               <td>
-                <span :class="post.data().category">
-                  {{ post.data().category }}
-                </span>
-              </td>
-              <td>
-                <p>{{ post.data().authoredBy }}</p>
+              
                 <p>
-                  {{ post.data().createdOn }}
+                  {{ faq.data().createdOn }}
                 </p>
               </td>
               <td class="action">
                 <span class="edit">
-                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                  <router-link :to="{ name: 'EditFaqs', query: { data: faq } }"
                     >Edit</router-link
                   ></span
                 >
-                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+                <span @click="deleteFaqs(faq.id)" class="delete">Delete</span>
               </td>
             </tr>
 
-            <!-- <tr>
-              <td><input type="checkbox" /></td>
-              <td>How to start a cooking gas business in Nigeria</td>
-              <td><span class="company">Company</span></td>
-              <td>
-                <p>Uwandu Emmanuel</p>
-                <p>
-                  25/01/2021
-                </p>
-              </td>
-              <td class="action">
-                <span class="edit">Edit</span>
-                <span class="delete">Delete</span>
-              </td>
-            </tr> -->
           </tbody>
         </table>
         <div class="paging my-2"></div>
@@ -151,10 +116,10 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "BlogCrud",
+  name: "FaqsCrud",
   metaInfo() {
     return {
-      title: "Admin Panel - Dashboard || KiaKia Gas ",
+      title: "Admin Panel - FAQS || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -173,18 +138,17 @@ export default {
   },
 
   created() {
-    this.getPost();
-    console.log(this.posts);
+    this.getFaqs();
   },
   computed: {
-    ...mapState(["posts"]),
+    ...mapState(["faqs"]),
   },
   methods: {
-    getPost() {
-      this.$store.dispatch("GET_POST");
+    getFaqs() {
+      this.$store.dispatch("GET_FAQS");
     },
-    deletePosts(id) {
-      this.$store.dispatch("deletePost", id);
+    deleteFaqs(id) {
+      this.$store.dispatch("DELETE_FAQS", id);
     },
   },
 };

@@ -3,7 +3,7 @@
     <!-- Header  -->
     <header>
       <div class="logo">
-        <img src="../asset/Layer 6.svg" alt="" />
+        <img src="../assets/Layer 6.svg" alt="" />
       </div>
       <div class="menu">
         <div>
@@ -33,7 +33,7 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="activeH post">
+      <div class="post">
         <p>Post(s)</p>
         <p>10</p>
       </div>
@@ -42,14 +42,14 @@
         <li><a href="">Add New post</a></li>
         <li><a href="">Categories</a></li>
       </ul>
-      <div class="support">
+      <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li class="fw-bold">FAQ</li>
+        <li>Privacy Policy</li>
+        <li>Cookie Declarartion</li>
+        <li>Terms of Service</li>
       </ul>
       <div id="log-out">
         <span>
@@ -62,37 +62,15 @@
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
-          <h6 class="fs-4 text-center mb-5">Add New Post</h6>
+          <h6 class="fs-4 text-center mb-5">Frequently Asked Questions</h6>
 
-          <strong>Title</strong>
-          <input type="text" id="title" v-model="title" />
+          <strong>Question</strong>
+          <input type="text" id="title" v-model="incomingData.question" />
 
-          <strong>Author</strong>
-
-          <input type="text" id="author" name="author" v-model="authoredBy" />
-
-          <strong>Cateogory</strong>
-          <div class="category">
-            <ul>
-              <li
-                v-for="(category, index) in categories"
-                :key="index"
-                :class="{ active: category.isClicked }"
-                @click="chooseCategory(category)"
-              >
-                {{ category.categ }}
-              </li>
-              <!-- <li class="active">Company</li>
-              <li>Product</li>
-              <li>Social Impact</li> -->
-            </ul>
-          </div>
-
-          <strong>Description</strong>
-          <vue-editor v-model="post"></vue-editor>
-
-          <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
-          <input type="file" @change="uploadImage" >
+          <strong>Answer</strong>
+          <vue-editor v-model="incomingData.answer">
+            {{ incomingData.answer }}
+          </vue-editor>
         </div>
       </div>
       <!-- E Main  -->
@@ -100,9 +78,13 @@
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center" @click="publishPost">
-            Add Post
+          <button
+            class="btn btn-primary text-center"
+            @click="modifyFaqs(incomingData)"
+          >
+            Update
           </button>
+          <button class="btn btn-outline-danger text-center">Delete</button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -123,28 +105,26 @@
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+import { VueEditor } from "vue2-editor";
 export default {
-  name: "NewPost",
-  components :{
-    VueEditor,
-  },
+  name: "EditFaqs",
   data() {
     return {
-      title: "",
-      post: "",
-      authoredBy: "",
-      categories: [
-        { categ: "product", isClicked: false },
-        { categ: "company", isClicked: false },
-        { categ: "social-impact", isClicked: false },
-      ],
-      selectCategory: "",
+      incomingData: {
+        question: "",
+        answer: "",
+        activeItem: null,
+      },
+      updateSuccess: false,
     };
+  },
+
+  components: {
+    VueEditor,
   },
   metaInfo() {
     return {
-      title: "Admin Panel - New Post || KiaKia Gas ",
+      title: "Admin Panel - Edit FAQ|| KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -161,27 +141,23 @@ export default {
       // ],
     };
   },
- 
- methods: {
-    publishPost() {
-    const form = {
-      post: this.post,
-      authoredBy: this.authoredBy,
-      title: this.title,
-      category: this.selectCategory,
-    };
-    this.$store.dispatch("PUBLISH_POST", form);
+  methods: {
+    modifyFaqs(data) {
+      this.$store.dispatch("EDIT_FAQS", data);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.incomingData.question = "";
+          this.incomingData.answer = "";
+          this.updateSuccess = true;
+          resolve();
+        }, 1500);
+      });
+    },
   },
-  chooseCategory(cat) {
-    this.selectCategory = cat.categ;
-    console.log(cat);
-    cat.isClicked = !cat.isClicked;
-
+  created() {
+    this.incomingData = this.$route.query.data.data();
+    this.incomingData.activeItem = this.$route.query.data.id;
   },
-  uploadImage(e){
-    console.log(e.target.files[0]);
-  }
- },
 };
 </script>
 
@@ -266,23 +242,17 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    &:nth-of-type(2) {
-      padding-right: 15px;
-    }
+    padding-right: 10px;
   }
 }
 .support {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
-}
-.badge {
-  position: absolute;
-  font-size: xx-small;
-  margin-left: -5px;
-  margin-top: -5px;
-  background-color: var(--red-color);
-  color: white;
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 #log-out {
@@ -295,6 +265,7 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
+  width: 100% !important;
 }
 .icon {
   color: black;
@@ -323,13 +294,8 @@ header {
       width: 100%;
       margin: 10px 0;
     }
-    input:last-of-type {
-      background: none;
-      margin-left: 0;
-      padding: 0;
-    }
+
     .category {
-      padding: 8px 0 !important;
       ul {
         margin-top: 10px;
         margin-left: 0;
@@ -340,11 +306,6 @@ header {
           background: #f4f2ff;
           border-radius: 5px;
           padding: 5px 10px;
-          cursor: pointer;
-          &:hover {
-            background: var(--lightblue-color);
-            color: #fff;
-          }
         }
         li.active {
           color: #fff;
@@ -357,7 +318,14 @@ header {
 }
 
 // Right SideBar
-
+.badge {
+  position: absolute;
+  font-size: xx-small;
+  margin-left: -5px;
+  margin-top: -5px;
+  background-color: var(--red-color);
+  color: white;
+}
 .right-sidebar {
   width: 255px;
   margin-top: 3.3rem;
@@ -378,7 +346,6 @@ header {
   }
   .content {
     display: block !important;
-
     .split-content {
       display: flex;
       justify-content: space-between;

@@ -31,10 +31,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h5 class="head">
-                            Legal Infomation
+                            Blog
                         </h5>
                         <h1>
-                            Terms of services
+                           Stories, resources and materials making the Gas360 experience
                         </h1>
                     </div>
                     <div class="col-md-6 text-center gas360-circle">
@@ -91,54 +91,38 @@
             <div class="content active-high" id="all">
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img class="img-fluid" src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">company</div>
+
+                    <div v-for="(post, key) in posts" :key="key"   class="col-lg-4 col-md-6 mb-3">
+                     <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+                        <img class="img-fluid" :src="post.data().blogImage" alt="post-image">
+                      </router-link>
+                  
+                       
+                        <div class="head">{{post.data().category}}</div>
                         <b>
                             <p>
-                                How to start a cooking gas business in Nigeria
+                               {{post.data().title}}
                             </p>
                         </b>
                         <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
+                           {{post.data().post.substring(0, 100)}}
                         </div>
-                        <p>January 25, 2021</p>
+                        <p>{{post.data().createdOn}}</p>
 
                     </div>
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img class="img-fluid" src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">Social Impact</div>
-                        <b>
-                            <p>
-                                How to start a cooking gas business in Nigeria
-                            </p>
-                        </b>
-                        <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
-                        </div>
-                        <p>January 25, 2021</p>
 
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img class="img-fluid" src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">product</div>
-                        <b>
-                            <p>
-                                How to start a cooking gas business in Nigeria
-                            </p>
-                        </b>
-                        <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
-                        </div>
-                        <p>January 25, 2021</p>
 
-                    </div>
 
                 </div>
             </div>
+
+
+
+
+
+
+
+
             <div class="content" id="company">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mb-3">
@@ -388,6 +372,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name : "Blog",
          metaInfo() {
@@ -440,6 +425,8 @@ questions.forEach(function (question) {
   });
 });
 
+
+
 const selectOption = document.querySelector("#dropdown");
 const blog = document.querySelector(".blog");
 const btns = document.querySelectorAll(".tab-btn");
@@ -466,11 +453,22 @@ blog.addEventListener("click", function (e) {
     }
   }
 });
-    }
+    },
+     created() {
+    this.getPost();
+  },
+    computed: {
+    ...mapState(["posts"]),
+  },
+  methods: {
+    getPost() {
+      this.$store.dispatch("GET_POST");
+    },
+  }
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 
 
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
@@ -786,10 +784,10 @@ input[type="text"]:focus {
     display: none;
   }
   .tab-mobile {
-    display: none;
+    display: none !important;
   }
   .tab-mobile-menu {
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     margin-bottom: 10px;
     border-bottom: 0.5px solid #d9dbe1;
@@ -820,7 +818,7 @@ input[type="text"]:focus {
 
 @media screen and (min-width: 765px) {
   .tab-mobile-menu {
-    display: none;
+    display: none !important;
   }
 }
 
