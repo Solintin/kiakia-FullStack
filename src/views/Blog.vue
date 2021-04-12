@@ -93,12 +93,12 @@
 
               <div class="head">{{ post.category }}</div>
               <b>
-                <p>
+                <h5>
                   {{ post.title }}
-                </p>
+                </h5>
               </b>
               <div  class="part-post">
-               <p v-html="post.post.substring(0, 100)"></p>
+                 <p v-html="post.post.substring(0, 100)">  </p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -123,7 +123,7 @@
                 </p>
               </b>
               <div class="part-post">
-               <p v-html="post.post"> {{post.post.substring(0, 100)}} </p>
+                <p v-html="post.post.substring(0, 100)">  </p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -148,7 +148,7 @@
                 </p>
               </b>
               <div class="part-post">
-               <p v-html="post.post.substring(0, 100)"></p>
+                  <p v-html="post.post.substring(0, 100)">  </p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -173,7 +173,7 @@
                 </p>
               </b>
               <div class="part-post">
-                {{ post.post.substring(0, 100) }}
+               <p v-html="post.post.substring(0, 100)">  </p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -345,6 +345,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.part-post{
+  color: rgb(94, 94, 94);
 }
 
 /* ==============upgrade=========================== */
