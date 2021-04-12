@@ -198,7 +198,8 @@ export default {
 };
 </script>
 
-<style>@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -334,22 +335,22 @@ body {
   display: none;
 }
 
-input[type="text"],
-input[type="phone"],
-input[type="email"] {
+input[type=text],
+input[type=phone],
+input[type=email] {
   width: 100%;
   border: none;
   padding: 10px 10px 10px 35px;
-  border-bottom: 1px solid #555555;
+  border-bottom: 1px solid #555555 !important;
 }
-input[type="radio"],
-input[type="checkbox"] {
+input[type=radio],
+input[type=checkbox] {
   margin-right: 15px;
 }
 
-input[type="text"]:focus,
-input[type="phone"]:focus,
-input[type="email"]:focus {
+input[type=text]:focus,
+input[type=phone]:focus,
+input[type=email]:focus {
   outline: none;
   border-bottom: 1.5px solid var(--primary);
   transition: all 0.5s ease-in-out;
