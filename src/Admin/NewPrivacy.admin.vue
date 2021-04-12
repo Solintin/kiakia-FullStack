@@ -38,8 +38,8 @@
         <p>Dashboard</p>
       </div>
       <div class="post">
-        <p>Post(s)</p>
-        <p>10</p>
+        <p>Post</p>
+        
       </div>
       <ul>
         <li>All posts</li>

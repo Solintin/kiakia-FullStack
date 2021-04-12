@@ -36,7 +36,7 @@
     <div class="container">
         <div class="my-4">
            <span v-for="(policy, key) in policies" :key="key">
-         {{policy.policy}}
+         <p v-html="policy.policy"></p>
        </span>
         </div>
     </div>

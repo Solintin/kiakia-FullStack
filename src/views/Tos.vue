@@ -78,7 +78,7 @@
 
               <div v-for="(tos, key) in terms" :key="key">
                 <p>Last updated: <span> {{tos.createdOn}} </span></p>
-                {{ tos.tos }}
+                <p v-html="tos.tos"></p>
               </div>
             </div>
             <!-- E Support -->

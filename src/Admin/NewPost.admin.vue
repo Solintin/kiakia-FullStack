@@ -93,6 +93,8 @@
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
+          <p class="mt-4 mb-0"><strong>Or Insert Image Url</strong></p>
+          <input type="text" v-model="netImage" @change="uploadImage" />
         </div>
       </div>
       <!-- E Main  -->
@@ -118,7 +120,7 @@
         </div>
         <div>
           <p class="fw-bold my-2">Blog - Image Live preview</p>
-          <img :src="blogImage" alt="" class="img-fluid" />
+          <img :src="blogImage || netImage" alt="" class="img-fluid" />
         </div>
       </div>
       <!-- E Right Sidebar -->
@@ -139,6 +141,7 @@ export default {
         enterMode: 2,
         autoParagraph: false,
       },
+      netImage : '',
       title: "",
       post: "",
       authoredBy: "",
@@ -179,7 +182,7 @@ export default {
         authoredBy: this.authoredBy,
         title: this.title,
         category: this.selectCategory,
-        blogImage: this.blogImage,
+        blogImage: this.blogImage || this.netImage,
       };
       this.$store.dispatch("PUBLISH_POST", form);
     },
@@ -190,7 +193,8 @@ export default {
     },
     uploadImage(e) {
       let file = e.target.files[0];
-      const storageRef = fbAccess.storage().ref(`Assets/${file.name}`);
+      console.log(file);
+      const storageRef = fbAccess.storage().ref('Assets/'+file.name);
       storageRef
         .getDownloadURL()
         .then((imageUrl) => {
@@ -202,7 +206,11 @@ export default {
         .catch((error) => {
           console.log(error);
           console.log(this.imageUploadSuccess);
-        });
+        })
+        if (!this.imageUploadSuccess) {
+          this.blogImage = this.netImage
+        }
+        console.log(this.blogImage);
     },
   },
 };

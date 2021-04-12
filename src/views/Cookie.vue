@@ -34,8 +34,8 @@
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="container my-5">
-       <span v-for="(cookie, key) in cookies" :key="key">
-         {{cookie.description}}
+       <span   v-for="(cookie, key) in cookies" :key="key">
+      <p v-html="cookie.description"></p>
        </span>
     </div>
     <!--E Body -->

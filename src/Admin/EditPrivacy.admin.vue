@@ -122,9 +122,7 @@ export default {
     };
   },
 
-  components: {
-    VueEditor,
-  },
+
   metaInfo() {
     return {
       title: "Admin Panel - Edit Privacy|| KiaKia Gas ",

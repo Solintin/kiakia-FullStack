@@ -82,8 +82,8 @@
                                     </div>
                                     <!-- answer text -->
                                     <div class="question-text">
-                                        <p>
-                                          {{ faq.answer }}
+                                        <p v-html=" faq.answer">
+                                        
 
 
                                         </p>

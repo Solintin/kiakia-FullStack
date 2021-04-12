@@ -97,8 +97,8 @@
                   {{ post.title }}
                 </p>
               </b>
-              <div class="part-post">
-                {{ post.post.substring(0, 100) }}
+              <div  class="part-post">
+               <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -123,7 +123,7 @@
                 </p>
               </b>
               <div class="part-post">
-                {{ post.post.substring(0, 100) }}
+               <p v-html="post.post"> {{post.post.substring(0, 100)}} </p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -148,7 +148,7 @@
                 </p>
               </b>
               <div class="part-post">
-                {{ post.post.substring(0, 100) }}
+               <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>

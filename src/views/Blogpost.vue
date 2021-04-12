@@ -46,9 +46,8 @@
         <!--Post  Image  -->
         <img class="my-4" height="300" width="100%" :src="incomingData.blogImage" alt="post-image">
 
-          <div>
-                        {{incomingData.post}}
-
+          <div v-html="incomingData.post">
+                      
           </div>
         
     

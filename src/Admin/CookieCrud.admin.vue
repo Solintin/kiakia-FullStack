@@ -81,7 +81,7 @@
           <tbody>
             <tr v-for="(cookie, key) in cookies" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ cookie.description.substring(0, 50)}}...</td>
+              <td v-html="cookie.description.substring(0, 50)" >...</td>
            
               <td>
               

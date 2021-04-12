@@ -174,9 +174,8 @@ import moment from 'moment';
 export default {
   name: "EditPost",
 
-  components: {
-    VueEditor,
-  },
+ 
+ 
   metaInfo() {
     return {
       title: "Admin Panel - Edit Post || KiaKia Gas ",
