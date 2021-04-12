@@ -66,9 +66,13 @@
 
    
           <strong>Description</strong>
-          <vue-editor v-model="incomingData.description">
+       
+  <ckeditor v-model="incomingData.description" :config="editorConfig">
             {{ incomingData.description }}
-          </vue-editor>
+
+
+  </ckeditor>
+
         </div>
       </div>
       <!-- E Main  -->
@@ -102,7 +106,6 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
 import moment from 'moment';
 export default {
   name: "EditCookie",
@@ -117,9 +120,7 @@ export default {
     };
   },
 
-  components: {
-    VueEditor,
-  },
+
   metaInfo() {
     return {
       title: "Admin Panel - Edit Cookie|| KiaKia Gas ",

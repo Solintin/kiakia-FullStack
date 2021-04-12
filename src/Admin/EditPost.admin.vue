@@ -87,9 +87,12 @@
           </div>
 
           <strong>Description</strong>
-          <vue-editor v-model="incomingData.post">
+        
+  <ckeditor v-model="incomingData.post" :config="editorConfig">
+
             {{ incomingData.post }}
-          </vue-editor>
+  </ckeditor>
+
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
@@ -164,7 +167,7 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 import { mapState } from "vuex";
 import moment from 'moment';
 
@@ -195,6 +198,10 @@ export default {
   },
   data() {
     return {
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
       date : moment().format('LL'),
       incomingData: {
         revised : 0,

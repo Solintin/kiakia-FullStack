@@ -68,6 +68,7 @@
 
           <strong>Description</strong>
             <vue-editor v-model="description">
+              <ckeditor v-model="description" :config="editorConfig"></ckeditor>
           
           </vue-editor>
 
@@ -100,15 +101,17 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 export default {
   name: "cookie-admin",
-  components: {
-    VueEditor,
-  },
+
   data() {
     return {
       description: " ",
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
     };
   },
   methods: {

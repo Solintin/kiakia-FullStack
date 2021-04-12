@@ -36,7 +36,6 @@
       </div>
       <div class="post">
         <p>Post</p>
-    
       </div>
       <ul>
         <li>All posts</li>
@@ -47,10 +46,14 @@
         <p>Support</p>
       </div>
       <ul>
-       <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support">FAQ</router-link></li>
         <li><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
-        <li class="fw-bold"><router-link to="/support/tos">Terms of Service</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li class="fw-bold">
+          <router-link to="/support/tos">Terms of Service</router-link>
+        </li>
       </ul>
       <div id="log-out">
         <span>
@@ -66,11 +69,8 @@
           <h6 class="fs-4 text-center mb-5">Terms Of services</h6>
 
           <strong>TOS</strong>
-            <vue-editor v-model="tos">
-          
-          </vue-editor>
-
-        
+          <vue-editor v-model="tos"> </vue-editor>
+          <ckeditor v-model="tos" :config="editorConfig"> </ckeditor>
         </div>
       </div>
       <!-- E Main  -->
@@ -78,7 +78,9 @@
       <!-- Right Sidebar -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center" @click="publishTos">Add TOS</button>
+          <button class="btn btn-primary text-center" @click="publishTos">
+            Add TOS
+          </button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -99,15 +101,16 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
 export default {
   name: "terms-of-service-admin",
-  components: {
-    VueEditor,
-  },
+
   data() {
     return {
       tos: " ",
+      editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
     };
   },
   methods: {

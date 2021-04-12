@@ -69,9 +69,8 @@
           <h6 class="fs-4 text-center mb-5">Privacy Policy</h6>
 
          <strong>Description</strong>
-            <vue-editor v-model="policy">
-          
-          </vue-editor>
+  
+          <ckeditor v-model="policy" :config="editorConfig"></ckeditor>
 
         </div>
       </div>
@@ -101,16 +100,16 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor"
 export default {
   name: "PrivacyPolicy",
-  
-  components: {
-    VueEditor,
-  },
+
   data() {
     return {
      policy: " ",
+       editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
     };
   }, 
   methods: {

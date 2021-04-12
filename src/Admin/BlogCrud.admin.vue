@@ -72,49 +72,55 @@
         >
 
         <section class="blog">
-          <div class="desktop-first">
-            <div
-              class="tab-btn py-auto active-high"
-              data-id="all"
-              @click="getAllBlogs"
-            >
-              All Posts
-            </div>
-            <div
-              class="tab-btn py-auto"
-              data-id="company"
-              @click="getCompanyBlogs"
-            >
-              Company
-            </div>
-            <div
-              class="tab-btn py-auto"
-              data-id="product"
-              @click="getProductBlogs"
-            >
-              Product
-            </div>
-            <div
-              class="tab-btn py-auto"
-              data-id="social"
-              @click="getSocialBlogs"
-            >
-              Social Impact
-            </div>
-            <div class="py-auto position-relative">
-              <form @submit.prevent>
+         
+            <div class="menu-bar">
+              <div class="category">
+                <ul>
+                  <li
+                    class="tab-btn py-auto active-high"
+                    data-id="all"
+                    @click="getAllBlogs"
+                  >
+                    All
+                  </li>
+                  <li
+                    class="tab-btn py-auto"
+                    data-id="company"
+                    @click="getCompanyBlogs"
+                  >
+                    Company
+                  </li>
+                  <li
+                    class="tab-btn py-auto"
+                    data-id="product"
+                    @click="getProductBlogs"
+                  >
+                    Product
+                  </li>
+                  <li
+                    class="tab-btn py-auto"
+                    data-id="social"
+                    @click="getSocialBlogs"
+                  >
+                    Social Impact
+                  </li>
+                </ul>
+              </div>
+              <div class="search-bar">
+                <span>
+                  <i class="fas fa-search"></i>
+                </span>
                 <input
-                  type="text"
+                  type="search"
                   @change="getSearchVar"
                   v-model="search"
-                  placeholder="Search Blog"
+                  placeholder="Search blog by Name, category or Date"
                 />
-                <i class=" icon fa fa-search"></i>
-              </form>
+              </div>
             </div>
-          </div>
+          
 
-          <div class="blog container py-5">
+          
             <table>
               <thead>
                 <tr>
@@ -125,6 +131,10 @@
                   <td>Action</td>
                 </tr>
               </thead>
+
+              
+
+
               <tbody>
                 <div class="content active-high" id="all">
                   <tr v-for="(post, key) in getSearchVar() || posts" :key="key">
@@ -243,30 +253,8 @@
                 </div>
               </tbody>
             </table>
-          </div>
-        </section>
 
-        <div class="menu-bar">
-          <div class="category">
-            <ul>
-              <li class="tab-btn py-auto active-high" data-id="all"  @click="getAllBlogs">All</li>
-              <li class="tab-btn py-auto" data-id="company" @click="getCompanyBlogs">Company</li>
-              <li  class="tab-btn py-auto" data-id="product" @click="getProductBlogs">Product</li>
-              <li class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">Social Impact</li>
-            </ul>
-          </div>
-          <div class="search-bar">
-            <span>
-              <i class="fas fa-search"></i>
-            </span>
-            <input
-              type="search"
-              placeholder="Search blog by Name, category or Date"
-            />
-          </div>
-        </div>
-
-        <table>
+  <table>
           <thead>
             <tr>
               <td><input type="checkbox" /></td>
@@ -302,6 +290,15 @@
             </tr>
           </tbody>
         </table>
+
+   
+        </section>
+
+
+
+
+      
+
         <div class="paging my-2"></div>
       </div>
     </div>
@@ -341,13 +338,13 @@ export default {
     };
   },
   mounted() {
-    const selectOption = document.querySelector("#dropdown");
+   
     const blog = document.querySelector(".blog");
     const btns = document.querySelectorAll(".tab-btn");
     const articles = document.querySelectorAll(".content");
     blog.addEventListener("click", function(e) {
       const id = e.target.dataset.id;
-      if (id || selectOption) {
+      if (id ) {
         // remove selected from other buttons
         btns.forEach(function(btn) {
           btn.classList.remove("active-high");
@@ -607,7 +604,7 @@ header {
       }
     }
     table {
-      width: 100%;
+      width: 100% !important;
       thead {
         tr {
           td {
@@ -742,9 +739,7 @@ header {
   color: black;
 }
 
-.btn-container {
-  display: block !important;
-}
+
 .tab-btn {
   margin-bottom: 2rem;
   padding-left: 7px;
@@ -772,13 +767,7 @@ header {
   display: block !important;
 }
 
-.desktop-first {
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px !important;
-  border-bottom: 0.5px solid #d9dbe1;
-}
+
 .tab-btn.active-high {
   background: #fff;
   border-bottom: 3px solid var(--primary);

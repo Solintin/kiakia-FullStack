@@ -68,9 +68,12 @@
           <input type="text" id="title" v-model="incomingData.question" />
 
           <strong>Answer</strong>
-          <vue-editor v-model="incomingData.answer">
+      
+
+          <ckeditor v-model="incomingData.answer" :config="editorConfig">
             {{ incomingData.answer }}
-          </vue-editor>
+
+          </ckeditor>
         </div>
       </div>
       <!-- E Main  -->
@@ -105,11 +108,16 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 export default {
   name: "EditFaqs",
   data() {
     return {
+
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
       incomingData: {
         question: "",
         answer: "",
@@ -119,9 +127,7 @@ export default {
     };
   },
 
-  components: {
-    VueEditor,
-  },
+
   metaInfo() {
     return {
       title: "Admin Panel - Edit FAQ|| KiaKia Gas ",

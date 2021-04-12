@@ -79,9 +79,7 @@
 
 
                 <strong>Answer</strong>
-                 <vue-editor v-model="answer">
-          
-          </vue-editor>
+               <ckeditor v-model="answer" :config="editorConfig"></ckeditor>
 
             </div>
 
@@ -115,16 +113,18 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 export default {
  name: "EditPost",
-  components: {
-    VueEditor,
-  },
+
   data() {
     return {
       question : '',
-      answer : ''
+      answer : '',
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
 
     }
   },

@@ -67,9 +67,11 @@
     
 
           <strong>Terms of Service</strong>
-          <vue-editor v-model="incomingData.tos">
+       
+          <ckeditor v-model="incomingData.tos" :config="editorConfig">
+
             {{ incomingData.tos }}
-          </vue-editor>
+          </ckeditor>
         </div>
       </div>
       <!-- E Main  -->
@@ -104,11 +106,14 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
 export default {
   name: "EditTos",
   data() {
     return {
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
       incomingData: {
         tos : "",
         activeItem: null,
@@ -117,9 +122,7 @@ export default {
     };
   },
 
-  components: {
-    VueEditor,
-  },
+ 
   metaInfo() {
     return {
       title: "Admin Panel - Edit Terms of Service || KiaKia Gas ",

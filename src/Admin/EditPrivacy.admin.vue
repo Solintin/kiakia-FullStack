@@ -66,9 +66,12 @@
 
          
           <strong>Privacy Policy</strong>
-          <vue-editor v-model="incomingData.policy">
+         
+          <ckeditor v-model="incomingData.policy" :config="editorConfig">
             {{ incomingData.policy }}
-          </vue-editor>
+
+
+          </ckeditor>
         </div>
       </div>
       <!-- E Main  -->
@@ -103,11 +106,14 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
 export default {
   name: "EditPrivacy",
   data() {
     return {
+        editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
       incomingData: {
       policy: '',
         activeItem: null,

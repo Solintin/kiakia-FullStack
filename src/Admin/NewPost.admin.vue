@@ -127,14 +127,12 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 import { fbAccess } from "../firebase";
 
 export default {
   name: "NewPost",
-  components: {
-    VueEditor,
-  },
+
   data() {
     return {
       editorConfig: {
