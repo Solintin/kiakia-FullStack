@@ -50,10 +50,10 @@
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li class="fw-bold"><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+ <li><router-link to="/support">FAQ</router-link></li>
+        <li class="fw-bold"><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>

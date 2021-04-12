@@ -1,476 +1,314 @@
 <template>
   <div>
-        <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-            <div class="kiakia-navbar py-4">
-                <div class="logo">
-                    <a href="#"> <img src="../assets/images/Blog/Layer 6.svg" alt="KiaKia-Glogo">
-                    </a>
-                </div>
-                <div class="tabs">
-                    <div class="menu-bar">
-                        <i class="fa fa-bars fa-2x"></i>
-                    </div>
-                    <div class="menu-list">
-                        <ul class="my-auto">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Become a Gaspreneur</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#" class="text-white btn btn-primary">Download App</a></li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                Blog
+              </h5>
+              <h1>
+                Stories, resources and materials making the Gas360 experience
+              </h1>
             </div>
-
-
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            Blog
-                        </h5>
-                        <h1>
-                           Stories, resources and materials making the Gas360 experience
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/Blog/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img src="../assets/images/Blog/Linked Path Group.svg" alt="" />
+              </p>
             </div>
-            <!-- E Content -->
-
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
 
     <section class="container blog">
-        <div class="tab-mobile-menu">
-            <div>
-                <select name="dropdown" id="dropdown">
-                    <option class="tab-btn active-high" value="all" selected data-id="all">ALL</option>
-                    <option class="tab-btn" value="company" data-id="company">Company</option>
-                    <option class="tab-btn" value="product" data-id="product">Product</option>
-                    <option class="tab-btn" value="social" data-id="social">Social</option>
-                </select>
+      <div class="mobile-first">
+        <div>
+          <select name="dropdown" id="dropdown">
+            <option
+              class="tab-btn active-high"
+              value="all"
+              selected
+              data-id="all"
+              >ALL</option
+            >
+            <option class="tab-btn" value="company" data-id="company"
+              >Company</option
+            >
+            <option class="tab-btn" value="product" data-id="product"
+              >Product</option
+            >
+            <option class="tab-btn" value="social" data-id="social"
+              >Social</option
+            >
+          </select>
+        </div>
+        <div class="py-auto position-relative">
+          <form @submit.prevent>
+            <input type="text" @change="getSearchVar" v-model="search"  placeholder="Search Blog"/>
+            <i class=" icon fa fa-search"></i>
+          </form>
+        </div>
+      </div>
+
+      <div class="desktop-first">
+        <div class="tab-btn py-auto active-high" data-id="all"  @click="getAllBlogs">All Posts</div>
+        <div class="tab-btn py-auto" data-id="company" @click="getCompanyBlogs">
+          Company
+        </div>
+        <div class="tab-btn py-auto" data-id="product" @click="getProductBlogs">
+          Product
+        </div>
+        <div class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">
+          Social Impact
+        </div>
+        <div class="tab-btn py-auto position-relative">
+          <form @submit.prevent>
+               <input type="text" @change="getSearchVar" v-model="search"  placeholder="Search Blog"/>
+            <i class=" icon fa fa-search"></i>
+          </form>
+        </div>
+      </div>
+
+      <div class="blog container py-5">
+        <div class="content active-high" id="all">
+          <div class="row">
+            <div
+              v-for="(post, key) in getSearchVar() || posts"
+              :key="key"
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+                <img class="img-fluid" :src="post.blogImage" alt="post-image" />
+              </router-link>
+
+              <div class="head">{{ post.category }}</div>
+              <b>
+                <p>
+                  {{ post.title }}
+                </p>
+              </b>
+              <div class="part-post">
+                {{ post.post.substring(0, 100) }}
+              </div>
+              <p>{{ post.createdOn }}</p>
             </div>
-            <div class="py-auto position-relative">
-                <form>
-                    <input type="text" name="search-d" id="search-d">
-                    <i class=" icon fa fa-search"></i>
-                </form>
-            </div>
+          </div>
         </div>
 
-        <div class="tab-mobile">
+        <div class="content" id="company">
+          <div class="row">
+            <div
+              v-for="(post, key) in company"
+              :key="key"
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+                <img class="img-fluid" :src="post.blogImage" alt="post-image" />
+              </router-link>
 
-            <div class="tab-btn py-auto active-high" data-id="all">All Posts</div>
-            <div class="tab-btn py-auto" data-id="company">Company</div>
-            <div class="tab-btn py-auto" data-id="product">Product</div>
-            <div class="tab-btn py-auto" data-id="social">Social Impact</div>
-            <div class="tab-btn py-auto position-relative">
-                <form>
-                    <input type="text" name="search-m" id="search-m">
-                    <i class=" icon fa fa-search"></i>
-                </form>
+              <div class="head">{{ post.category }}</div>
+              <b>
+                <p>
+                  {{ post.title }}
+                </p>
+              </b>
+              <div class="part-post">
+                {{ post.post.substring(0, 100) }}
+              </div>
+              <p>{{ post.createdOn }}</p>
             </div>
-
-
+          </div>
         </div>
 
-        <div class="blog container py-5">
-            <div class="content active-high" id="all">
+        <div class="content" id="product">
+          <div class="row">
+            <div
+              v-for="(post, key) in product"
+              :key="key"
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+                <img class="img-fluid" :src="post.blogImage" alt="post-image" />
+              </router-link>
 
-                <div class="row">
-
-                    <div v-for="(post, key) in posts" :key="key"   class="col-lg-4 col-md-6 mb-3">
-                     <router-link :to="{ name: 'Blogpost', query: { data: post } }">
-                        <img class="img-fluid" :src="post.data().blogImage" alt="post-image">
-                      </router-link>
-                  
-                       
-                        <div class="head">{{post.data().category}}</div>
-                        <b>
-                            <p>
-                               {{post.data().title}}
-                            </p>
-                        </b>
-                        <div class="part-post">
-                           {{post.data().post.substring(0, 100)}}
-                        </div>
-                        <p>{{post.data().createdOn}}</p>
-
-                    </div>
-
-
-
-                </div>
+              <div class="head">{{ post.category }}</div>
+              <b>
+                <p>
+                  {{ post.title }}
+                </p>
+              </b>
+              <div class="part-post">
+                {{ post.post.substring(0, 100) }}
+              </div>
+              <p>{{ post.createdOn }}</p>
             </div>
-
-
-
-
-
-
-
-
-            <div class="content" id="company">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">company</div>
-                        <b>
-                            <p>
-                                How to start a cooking gas business in Nigeria
-                            </p>
-                        </b>
-                        <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
-                        </div>
-                        <p>January 25, 2021</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="content" id="product">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">Product Impact</div>
-                        <b>
-                            <p>
-                                How to start a cooking gas business in Nigeria
-                            </p>
-                        </b>
-                        <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
-                        </div>
-                        <p>January 25, 2021</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="content" id="social">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-3">
-                        <img src="../assets/images/Blog/Rectangle 597.png" alt="post-image">
-                        <div class="head">Social</div>
-                        <b>
-                            <p>
-                                How to start a cooking gas business in Nigeria
-                            </p>
-                        </b>
-                        <div class="part-post">
-                            Et justo pharetra felis fringilla interdum commodo convallis. Risus pretium
-                            qbybbunnijnijij....
-                        </div>
-                        <p>January 25, 2021</p>
-
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="content" id="social">
+          <div class="row">
+            <div
+              v-for="(post, key) in social"
+              :key="key"
+              class="col-lg-4 col-md-6 mb-3"
+            >
+              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+                <img class="img-fluid" :src="post.blogImage" alt="post-image" />
+              </router-link>
+
+              <div class="head">{{ post.category }}</div>
+              <b>
+                <p>
+                  {{ post.title }}
+                </p>
+              </b>
+              <div class="part-post">
+                {{ post.post.substring(0, 100) }}
+              </div>
+              <p>{{ post.createdOn }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
-
-
-
 
     <!-- E Body -->
 
-
-
     <!-- footer -->
-    <div class="container">
-        <div class="footer ">
-            <div class="footer-card">
-                <img src="../assets/images/Blog/Layer 6.svg" alt="logo">
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Company</b></div>
-                <ul>
-                    <li><a href="#">About US</a></li>
-                    <li><a href="#">Become a Gaspreneur</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Support</b></div>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Contact</b></div>
-                <ul>
-                    <li><a href="#">support@gas360.io</a></li>
-                    <li><a href="#">+2348140005500</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Follow us:</b></div>
-                <ul>
-                    <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Mobile Footer -->
-    <div class="container footer-mobile">
-        <div class="footer-card my-5">
-            <img src="../assets/images/Blog/Layer 6.svg" alt="logo">
-        </div>
-        <section class="questions">
-            <!-- questions -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Company</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">About US</a></li>
-                        <li><a href="#">Become a Gaspreneur</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Support</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Contact
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">support@gas360.io</a></li>
-                        <li><a href="#">+2348140005500</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Follow us:
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
-
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-        </section>
-    </div>
-    <!-- E Mobile Footer -->
-
-
-
+    <Footer />
 
     <!-- E footer -->
-    <!-- copyright -->
-    <div class="container mt-5 p-3" style="color: #969BAB;  border-top: 0.5px solid #888888;">
-        &copy; Copyright, Gas360 <span id="year"></span>. All right reserved
-    </div>
-    <!-- copyright -->
-
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 export default {
-    name : "Blog",
-         metaInfo() {
-      return {
-        title: "Blog || KiaKia Gas 360",
-        // meta: [
-        //   {
-        //     name: "description",
-        //     content:
-        //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-        //   },
-        //   {
-        //     property: "og:title",
-        //     content: "Epiloge - Build your network in your field of interest",
-        //   },
-        //   { property: "og:site_name", content: "Epiloge" },
-        //   { property: "og:type", content: "website" },
-        //   { name: "robots", content: "index,follow" },
-        // ],
-      };
-    },
-    mounted() {
-const year = document.getElementById("year");
-const menuList = document.querySelector(".menu-list ");
-const menuBar = document.querySelector(".menu-bar i");
-const date = new Date();
-year.innerHTML = date.getFullYear();
-
-menuBar.addEventListener("click", () => {
-  menuList.classList.toggle("open");
-  menuBar.classList.toggle("open");
-});
-
-const questions = document.querySelectorAll(".question");
-
-questions.forEach(function (question) {
-  const btn = question.querySelector(".question-title");
-  // console.log(btn);
-
-  btn.addEventListener("click", function () {
-    // console.log(question);
-
-    questions.forEach(function (item) {
-      if (item !== question) {
-        item.classList.remove("show-text");
+  name: "Blog",
+  components: {
+    Footer,
+    Header,
+  },
+  data() {
+    return {
+      company: [],
+      product: [],
+      social: [],
+      search: "",
+    };
+  },
+  metaInfo() {
+    return {
+      title: "Blog || KiaKia Gas 360",
+      // meta: [
+      //   {
+      //     name: "description",
+      //     content:
+      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
+      //   },
+      //   {
+      //     property: "og:title",
+      //     content: "Epiloge - Build your network in your field of interest",
+      //   },
+      //   { property: "og:site_name", content: "Epiloge" },
+      //   { property: "og:type", content: "website" },
+      //   { name: "robots", content: "index,follow" },
+      // ],
+    };
+  },
+  mounted() {
+    const selectOption = document.querySelector("#dropdown");
+    const blog = document.querySelector(".blog");
+    const btns = document.querySelectorAll(".tab-btn");
+    const articles = document.querySelectorAll(".content");
+    blog.addEventListener("click", function(e) {
+      const id = e.target.dataset.id;
+      if (id || selectOption) {
+        // remove selected from other buttons
+        btns.forEach(function(btn) {
+          btn.classList.remove("active-high");
+        });
+        e.target.classList.add("active-high");
+        // hide other articles
+        articles.forEach(function(article) {
+         
+          article.classList.remove("active-high");
+        });
+        if (id) {
+          const element = document.getElementById(id);
+          element.classList.add("active-high");
+        } else {
+          const element2 = document.getElementById(selectOption.value);
+          element2.classList.add("active-high");
+        }
       }
     });
-
-    question.classList.toggle("show-text");
-  });
-});
-
-
-
-const selectOption = document.querySelector("#dropdown");
-const blog = document.querySelector(".blog");
-const btns = document.querySelectorAll(".tab-btn");
-const articles = document.querySelectorAll(".content");
-blog.addEventListener("click", function (e) {
-  const id = e.target.dataset.id;
-  if (id || selectOption) {
-    // remove selected from other buttons
-    btns.forEach(function (btn) {
-      btn.classList.remove("active-high");
-    });
-    e.target.classList.add("active-high");
-    // hide other articles
-    articles.forEach(function (article) {
-      console.log(article);
-      article.classList.remove("active-high");
-    });
-    if (id) {
-      const element = document.getElementById(id);
-      element.classList.add("active-high");
-    } else {
-      const element2 = document.getElementById(selectOption.value);
-      element2.classList.add("active-high");
-    }
-  }
-});
-    },
-     created() {
-    this.getPost();
   },
-    computed: {
+
+  created() {
+    this.getPost();
+   
+  },
+  computed: {
     ...mapState(["posts"]),
   },
   methods: {
     getPost() {
       this.$store.dispatch("GET_POST");
     },
-  }
-}
+
+    getAllBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc
+      );
+      this.product = data;
+    },
+    getProductBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "product"
+      );
+      this.product = data;
+    },
+    getCompanyBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "company"
+      );
+      this.company = data;
+    },
+    getSocialBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "social-impact"
+      );
+      this.social = data;
+    },
+    getSearchVar() {
+      const filteredBlog = this.posts.filter(
+        (data) => data.title.toLowerCase().match(this.search.toLowerCase())
+      );
+      console.log(filteredBlog);
+      return filteredBlog;
+
+      
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
-
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
 :root {
   --primary: #3789ec;
@@ -508,30 +346,6 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
-.kiakia-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  height: auto;
-}
-.tabs li {
-  display: inline;
-  margin: 0 10px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 27px;
-
-  color: #a58787;
-}
-.menu-bar {
-  display: none;
-}
-
-.tabs a {
-  color: #000;
-}
 
 /* ==============upgrade=========================== */
 .upgrade {
@@ -543,88 +357,6 @@ body {
 }
 .cta img {
   width: 450px;
-}
-/* =============== FAQ================== */
-.question {
-  background: var(--clr-white);
-  border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
-  padding: 10px 0;
-
-  margin-bottom: 6px;
-  border-bottom: 0.5px solid #4f4f4f;
-  transition: all 0.5s ease-in-out;
-}
-.question-title {
-  display: flex;
-  justify-content: space-between;
-  text-transform: capitalize;
-  padding-bottom: 5px;
-  font-weight: 500;
-  font-size: 18px;
-}
-.question:last-child {
-  border-bottom: none;
-}
-.question-btn {
-  margin-top: -5px;
-}
-.question-title p {
-  margin-bottom: 0;
-}
-.question-btn {
-  cursor: pointer;
-}
-
-.question-text {
-  font-size: 15px;
-  padding-bottom: 0.5rem;
-}
-.question-text p {
-  color: #474a57;
-
-  margin-bottom: 0;
-}
-/* hide text */
-.question-text {
-  display: none;
-}
-.show-text .question-text {
-  display: block;
-}
-.minus-icon {
-  display: none;
-}
-.show-text .minus-icon {
-  display: inline;
-}
-.show-text .plus-icon {
-  display: none;
-}
-/* ==================footer===================== */
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px 0;
-  margin: 20px 0;
-}
-.footer .footer-card {
-  width: 18%;
-  margin: 10px;
-}
-.footer-card img {
-  width: 100px;
-}
-.footer-card li {
-  list-style-type: none;
-  display: block;
-  margin: 10px 0;
-}
-.footer a {
-  color: #474a57 !important;
-}
-.footer-mobile {
-  display: none;
 }
 .head {
   text-transform: uppercase;
@@ -661,11 +393,11 @@ body {
   display: block !important;
 }
 
-.tab-mobile {
+.desktop-first {
   display: flex !important;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   border-bottom: 0.5px solid #d9dbe1;
 }
 .tab-btn.active-high {
@@ -702,7 +434,7 @@ input[type="text"]:focus {
   top: 13px;
   left: 0;
 }
-.tab-mobile-menu {
+.mobile-first {
   display: none !important;
 }
 
@@ -715,41 +447,7 @@ input[type="text"]:focus {
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
-  .menu-bar {
-    display: block;
-    position: absolute;
-    cursor: pointer;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
-  }
-  .menu-list {
-    height: 100vh;
-    position: fixed;
-    width: 100%;
-    padding-top: 50px;
-    background: #e5e5e5;
-    left: 0;
-    top: 0;
-    clip-path: circle(10px at 90% -12%);
-    -webkit-clip-path: circle(10px at 90% -12%);
-    transition: all 1s ease-out;
-  }
-  .menu-list.open {
-    clip-path: circle(1000px at 90% -12%);
-    -webkit-clip-path: circle(1000px at 90% -12%);
-  }
-  .menu-bar i.open::before {
-    content: "\f00d";
-    transition: all 0.6s ease-in;
-  }
-  .menu-list li {
-    display: block !important;
-    margin: 50px 20px !important;
-  }
-  .menu-list li:last-child {
-    display: none !important;
-  }
+
   .cta img {
     width: 350px;
   }
@@ -783,10 +481,10 @@ input[type="text"]:focus {
   .col-2 {
     display: none;
   }
-  .tab-mobile {
+  .desktop-first {
     display: none !important;
   }
-  .tab-mobile-menu {
+  .mobile-first {
     display: flex !important;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -794,32 +492,10 @@ input[type="text"]:focus {
   }
 
   /* ======================= Footer====================== */
-  .footer .footer-card {
-    width: 30%;
-    margin: 5px;
-  }
-  .footer .footer-card {
-    width: 100%;
-    margin: 10px;
-  }
-  .footer {
-    display: none;
-  }
-  .footer-mobile {
-    display: block;
-  }
-  .footer-mobile a {
-    color: #474a57 !important;
-  }
-  .footer-mobile a:hover {
-    color: var(--primary) !important;
-  }
 }
-
 @media screen and (min-width: 765px) {
-  .tab-mobile-menu {
+  .mobile-first {
     display: none !important;
   }
 }
-
 </style>

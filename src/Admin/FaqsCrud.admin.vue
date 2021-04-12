@@ -39,17 +39,20 @@
       </div>
       <ul>
         <li class="activePost">All Faqs</li>
-        <li><a href="">Add New Faqs</a></li>
+        <li><router-link to="/admin/new/faqs">Add New Faq</router-link></li>
+
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li class="fw-bold"><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li class="fw-bold"><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -63,22 +66,20 @@
     <div class="main">
       <div class="main-content">
         <div class="mb-4">
-            <span>
-        All Frequently Asked Questions
-        </span>
-        <router-link to="/admin/new-post">
-          <button class="btn btn-primary ">Add More Faqs</button></router-link
-        >
-
+          <span>
+            All Frequently Asked Questions
+          </span>
+          <router-link to="/admin/new-post">
+            <button class="btn btn-primary ">Add More Faqs</button></router-link
+          >
         </div>
-    
 
         <table>
           <thead>
             <tr>
               <td><input type="checkbox" /></td>
               <td>title</td>
-             
+
               <td>last updated</td>
               <td>Action</td>
             </tr>
@@ -86,12 +87,11 @@
           <tbody>
             <tr v-for="(faq, key) in faqs" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ faq.data().question }}</td>
-           
+              <td>{{ faq.question }}</td>
+
               <td>
-              
                 <p>
-                  {{ faq.data().createdOn }}
+                  {{ faq.createdOn }}
                 </p>
               </td>
               <td class="action">
@@ -103,7 +103,6 @@
                 <span @click="deleteFaqs(faq.id)" class="delete">Delete</span>
               </td>
             </tr>
-
           </tbody>
         </table>
         <div class="paging my-2"></div>

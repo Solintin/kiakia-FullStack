@@ -3,10 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueMeta from 'vue-meta'
+import CKEditor from 'ckeditor4-vue';
 
 
 
-Vue.use(VueMeta)
+Vue.use(VueMeta).use( CKEditor );
 
 Vue.config.productionTip = false
 

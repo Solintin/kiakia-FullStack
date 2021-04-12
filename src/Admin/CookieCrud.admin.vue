@@ -38,18 +38,18 @@
         <p>{{ this.cookies.length }}</p>
       </div>
       <ul>
-        <li class="activePost">All Faqs</li>
-        <li><a href="">Add New Faqs</a></li>
+        <li class="activePost">All Cookies</li>
+        <li><router-link to="/admin/new/post">Add New Cookie</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li class="fw-bold"><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li class="fw-bold" ><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -81,12 +81,12 @@
           <tbody>
             <tr v-for="(cookie, key) in cookies" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ cookie.data().description}}...</td>
+              <td>{{ cookie.description.substring(0, 50)}}...</td>
            
               <td>
               
                 <p>
-                  {{ cookie.data().createdOn }}
+                  {{ cookie.createdOn }}
                 </p>
               </td>
               <td class="action">

@@ -33,23 +33,24 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="activeH post">
-        <p>{{ this.policies.length > 0 ? "Policies" : "Policy" }}</p>
-        <p>{{ this.policies.length }}</p>
+      <div class="post">
+        <p>Posts</p>
+  
       </div>
       <ul>
         <li class="activePost">All Policy</li>
-        <li><a href="">Add New Policy</a></li>
+             <li><router-link to="/admin/new/policy">Add New Policy</router-link></li>
+
         <li><a href="">Categories</a></li>
       </ul>
-      <div class="support">
+      <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li class="fw-bold"><a href="">policy</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li class="fw-bold"><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -86,12 +87,12 @@
           <tbody>
             <tr v-for="(policy, key) in policies" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ policy.data().policy }}</td>
+              <td>{{ policy.policy }}</td>
            
               <td>
               
                 <p>
-                  {{ policy.data().createdOn }}
+                  {{ policy.createdOn }}
                 </p>
               </td>
               <td class="action">

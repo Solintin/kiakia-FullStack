@@ -34,22 +34,24 @@
         <p>Dashboard</p>
       </div>
       <div class="activeH post">
-        <p>Post(s)</p>
-        <p>10</p>
+        <p>Post</p>
+        
       </div>
       <ul>
-        <li>All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li class="activePost">All posts</li>
+        <li><router-link to="/admin/new/post">Add New post</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -58,7 +60,7 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form  @submit.prevent>
+    <form @submit.prevent>
       <!-- Main  -->
       <div class="main">
         <div class="main-content">
@@ -97,6 +99,39 @@
 
       <!-- Right Sidebar -->
       <div class="right-sidebar">
+        <!-- Notification -->
+        <div>
+          <div v-if="successMsg"
+            class="alert alert-success fade show"
+            role="alert"
+          >
+            <span class="me-3">Update Successfull</span>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              @click="remove"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- <div v-else
+          class="alert alert-danger alert-dismissible fade show"
+            role="alert">
+            <strong>{{setErrMsg}}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div> -->
+        </div>
+        <!-- E  Notification -->
+
         <div class="buttons">
           <button
             class="btn btn-primary text-center"
@@ -105,8 +140,10 @@
           >
             Update
           </button>
-          <button class="btn btn-secondary text-center">Preview Changes</button>
-          <button class="btn btn-outline-danger text-center">Delete</button>
+          <button class="btn btn-secondary text-white text-center">
+            <router-link to="/blog">Preview Changes</router-link>
+          </button>
+         
         </div>
         <div class="content">
           <div class="split-content">
@@ -117,8 +154,8 @@
             <div>Status : <span>Published</span></div>
             <div class="fw-bold">Edit</div>
           </div>
-          <div>Revision : <span>3</span></div>
-          <div>Published : <span>Jan, 25, 2021</span></div>
+          <div>Revision : <span>{{incomingData.revised}}</span></div>
+          <div>Published : <span>{{date}}</span></div>
         </div>
       </div>
       <!-- E Right Sidebar -->
@@ -128,7 +165,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-
+import { mapState } from "vuex";
+import moment from 'moment';
 
 export default {
   name: "EditPost",
@@ -157,7 +195,9 @@ export default {
   },
   data() {
     return {
+      date : moment().format('LL'),
       incomingData: {
+        revised : 0,
         title: "",
         post: "",
         authoredBy: "",
@@ -169,7 +209,7 @@ export default {
         selectCategory: "",
         activeItem: null,
       },
-      updateSuccess : false
+      updateSuccess: false,
     };
   },
   methods: {
@@ -178,8 +218,8 @@ export default {
       console.log(cat);
       cat.isClicked = !cat.isClicked;
     },
-    uploadImage(e){
-      e.target.files[0]
+    uploadImage(e) {
+      e.target.files[0];
     },
 
     modifyPost(data) {
@@ -189,16 +229,27 @@ export default {
           this.incomingData.title = "";
           this.incomingData.authoredBy = "";
           this.incomingData.post = "";
-          this.updateSuccess = true
+          this.updateSuccess = true;
           resolve();
         }, 1500);
       });
     },
+    remove(){
+      $(".alert").alert('close')
+    }
   },
+ 
+   
+ 
+
   created() {
-    this.incomingData = this.$route.query.data.data();
-    this.incomingData.activeItem = this.$route.query.data.id;
-    console.log(this.$route.query.data);
+    this.incomingData = this.$route.query.data;
+    this.incomingData.activeItem = this.$route.query.data.id;  
+    this.incomingData.revised = this.$route.query.data.revised + 1;  
+  console.log( this.$route.query.data.revised);
+  },
+  computed: {
+    ...mapState( ["successMsg"]),
   },
 };
 </script>
@@ -366,13 +417,22 @@ header {
 }
 
 // Right SideBar
+button.close{
+  border: none;
+  outline: none;
+  background: none;
+  font-weight: 700;
+  font-size: 20px;
+}
 
 .right-sidebar {
+
+
   width: 255px;
-  margin-top: 3.3rem;
+  margin-top: 10px;
   padding-left: 10px;
   padding-right: 30px;
-  padding-top: 148px;
+  padding-top: 100px;
   height: calc(100vh - 3.3rem);
   position: fixed;
   top: 0;
@@ -399,4 +459,3 @@ header {
   }
 }
 </style>
-

@@ -6,7 +6,7 @@ import Gasprenuer from "../views/Gasprenuer.vue";
 import Blog from "../views/Blog.vue";
 import Blogpost from "../views/Blogpost.vue";
 import Cookie from "../views/Cookie.vue";
-import Faqs from "../views/Faqs.vue";
+import Support from "../views/Faqs.vue";
 import PrivacyPolicy from "../views/PrivacyPolicy.vue";
 import TOS from "../views/Tos.vue";
 import AdminBlog from "../Admin/BlogCrud.admin.vue";
@@ -73,14 +73,14 @@ const routes = [
   },
   //Faqs in Support
   {
-    path: '/support/faqs',
-    name: 'Faqs',
-    component : Faqs
+    path: '/support',
+    name: 'Support',
+    component : Support
    
   },
   //Priv Pol in Support
   {
-    path: '/support/privacy-policy',
+    path: '/support/policy',
     name: 'PrivacyPolicy',
     component : PrivacyPolicy
     
@@ -197,6 +197,7 @@ const routes = [
     component : NewCookie
     
   },
+  //Support Pages
   {
     path: '/admin/support-pages',
     name: 'SupportPages',

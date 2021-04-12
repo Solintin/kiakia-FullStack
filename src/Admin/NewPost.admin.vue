@@ -34,22 +34,24 @@
         <p>Dashboard</p>
       </div>
       <div class="activeH post">
-        <p>Post(s)</p>
-        <p>10</p>
+        <p>Posts</p>
       </div>
       <ul>
         <li>All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li><router-link to="/admin/new/post">Add New Post</router-link></li>
+
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -82,14 +84,12 @@
               >
                 {{ category.categ }}
               </li>
-              <!-- <li class="active">Company</li>
-              <li>Product</li>
-              <li>Social Impact</li> -->
             </ul>
           </div>
 
           <strong>Description</strong>
-          <vue-editor v-model="post"></vue-editor>
+
+          <ckeditor v-model="post" :config="editorConfig"></ckeditor>
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
@@ -137,6 +137,10 @@ export default {
   },
   data() {
     return {
+      editorConfig: {
+        enterMode: 2,
+        autoParagraph: false,
+      },
       title: "",
       post: "",
       authoredBy: "",
@@ -177,7 +181,7 @@ export default {
         authoredBy: this.authoredBy,
         title: this.title,
         category: this.selectCategory,
-        blogImage : this.blogImage
+        blogImage: this.blogImage,
       };
       this.$store.dispatch("PUBLISH_POST", form);
     },
@@ -201,8 +205,6 @@ export default {
           console.log(error);
           console.log(this.imageUploadSuccess);
         });
-
-      
     },
   },
 };

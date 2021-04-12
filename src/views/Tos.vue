@@ -1,359 +1,163 @@
 <template>
   <div>
-     <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-            <div class="kiakia-navbar py-4">
-                <div class="logo">
-                    <a href="#"> <img src="../assets/images/Support/Layer 6.svg" alt="KiaKia-Glogo">
-                    </a>
-                </div>
-                <div class="tabs">
-                    <div class="menu-bar">
-                        <i class="fa fa-bars fa-2x"></i>
-                    </div>
-                    <div class="menu-list">
-                        <ul class="my-auto">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Become a Gaspreneur</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#" class="text-white btn btn-primary">Download App</a></li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
+
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                Legal Infomation
+              </h5>
+              <h1>
+                Terms of services
+              </h1>
             </div>
-
-
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            Legal Infomation
-                        </h5>
-                        <h1>
-                            Terms of services
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/Support/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img
+                  src="../assets/images/Support/Linked Path Group.svg"
+                  alt=""
+                />
+              </p>
             </div>
-            <!-- E Content -->
-
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
 
     <section class="container support">
-        <div class="row">
-            <div class="tab-mobile">
-
-                <div class="tab-btn py-auto active" data-id="agreement">Agreement to terms</div>
-                <div class="tab-btn py-auto" data-id="intellectual">Intellectual property rights</div>
-                <div class="tab-btn py-auto" data-id="user-rep">User representation</div>
-                <div class="tab-btn py-auto" data-id="user-reg">User registration</div>
-                <div class="tab-btn py-auto" data-id="contact">Contact</div>
-
-            </div>
-            <div class="col-2 py-5">
-                <!-- btn container -->
-                <div class="btn-container">
-                    <div class="tab-btn py-auto active" data-id="agreement">Agreement to terms</div>
-                    <div class="tab-btn py-auto" data-id="intellectual">Intellectual property rights</div>
-                    <div class="tab-btn py-auto" data-id="user-rep">User representation</div>
-                    <div class="tab-btn py-auto" data-id="user-reg">User registration</div>
-                    <div class="tab-btn py-auto" data-id="contact">Contact</div>
-                </div>
-            </div>
-            <div class="col-10 py-5">
-
-                <div class="support-content">
-                    <!-- single item -->
-
-                    <div class="ms-5 content active" id="agreement">
-
-                        <h4> Terms of service</h4>
-                        <p>
-                            Last updated: February 8, 2021
-                        </p>
-                        <h5>Agreement to terms</h5>
-                        <p>
-                            These Terms and Conditions constitute a legally binding agreement made between you, whether
-                            personally or on behalf of an entity (“you”) and GAS360 (“we,” “us” or “our”), concerning
-                            your access to and use of the [www.gas360.io] website as well as any other media form, media
-                            channel, mobile website or mobile application related, linked, or otherwise connected
-                            thereto (collectively, the “Site”).
-                        </p>
-                        You agree that by accessing the Site, you have read, understood, and agree to be bound by all of
-                        these Terms and Conditions. If you do not agree with all of these Terms and Conditions, then you
-                        are expressly prohibited from using the Site and you must discontinue use immediately.
-                        <p>
-                            Supplemental terms and conditions or documents that may be posted on the Site from time to
-                            time are hereby expressly incorporated herein by reference. We reserve the right, in our
-                            sole discretion, to make changes or modifications to these Terms and Conditions at any time
-                            and for any reason.
-                        </p>
-                        We will alert you about any changes by updating the “Last updated” date of these Terms and
-                        Conditions, and you waive any right to receive specific notice of each such change.
-                        <p>
-                            It is your responsibility to periodically review these Terms and Conditions to stay informed
-                            of updates. You will be subject to, and will be deemed to have been made aware of and to
-                            have accepted, the changes in any revised Terms and Conditions by your continued use of the
-                            Site after the date such revised Terms and Conditions are posted.
-
-                        </p>
-
-
-                    </div>
-                    <!-- E Support -->
-                    <!-- end of single item -->
-
-
-                    <!-- single item -->
-                    <div class="ms-5  content" id="intellectual">
-                        <h4>Intellectual property rights</h4>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat placeat autem nam, ipsa
-                            expedita beatae natus enim eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
-                            earum ipsa blanditiis? </p>
-                        <ul class="my-5">
-                            <li class="my-3 "> <a class="text-primary" href="#">Terms of service</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Cookie policy</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Privacy policy</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Code of conduct</a></li>
-
-                        </ul>
-                    </div>
-                    <div class="ms-5  content" id="user-rep">
-                        <h4>User representations</h4>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat placeat autem nam, ipsa
-                            expedita beatae natus enim eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
-                            earum ipsa blanditiis? </p>
-
-                    </div>
-                    <div class="ms-5  content" id="user-reg">
-                        <h4>User registration</h4>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat placeat autem nam, ipsa
-                            expedita beatae natus enim eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
-                            earum ipsa blanditiis? </p>
-
-                    </div>
-                    <div class="ms-5  content" id="contact">
-                        <h4>Contact Us</h4>
-                        <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat placeat autem nam, ipsa
-                            expedita beatae natus enim eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
-                            earum ipsa blanditiis? </p>
-
-                    </div>
-
-                </div>
-            </div>
+      <div class="row">
+        <div class="tab-mobile">
+          <div class="tab-btn py-auto active" data-id="agreement">
+            Agreement to terms
+          </div>
+          <div class="tab-btn py-auto" data-id="intellectual">
+            Intellectual property rights
+          </div>
+          <div class="tab-btn py-auto" data-id="user-rep">
+            User representation
+          </div>
+          <div class="tab-btn py-auto" data-id="user-reg">
+            User registration
+          </div>
+          <div class="tab-btn py-auto" data-id="contact">Contact</div>
         </div>
-        .
+        <div class="col-2 py-5">
+          <!-- btn container -->
+          <div class="btn-container">
+            <div class="tab-btn py-auto active" data-id="agreement">
+              Agreement to terms
+            </div>
+            <div class="tab-btn py-auto" data-id="intellectual">
+              Intellectual property rights
+            </div>
+            <div class="tab-btn py-auto" data-id="user-rep">
+              User representation
+            </div>
+            <div class="tab-btn py-auto" data-id="user-reg">
+              User registration
+            </div>
+            <div class="tab-btn py-auto" data-id="contact">Contact</div>
+          </div>
+        </div>
+        <div class="col-10 py-5">
+          <div class="support-content">
+            <!-- single item -->
+
+            <div class="ms-5 content active" id="agreement">
+              <h4>Terms of service</h4>
+
+              <div v-for="(tos, key) in terms" :key="key">
+                <p>Last updated: <span> {{tos.createdOn}} </span></p>
+                {{ tos.tos }}
+              </div>
+            </div>
+            <!-- E Support -->
+            <!-- end of single item -->
+
+            <!-- single item -->
+            <div class="ms-5  content" id="intellectual">
+              <h4>Intellectual property rights</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat placeat autem nam, ipsa expedita beatae natus enim
+                eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
+                earum ipsa blanditiis?
+              </p>
+              <ul class="my-5">
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Terms of service</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Cookie policy</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Privacy policy</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Code of conduct</a>
+                </li>
+              </ul>
+            </div>
+            <div class="ms-5  content" id="user-rep">
+              <h4>User representations</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat placeat autem nam, ipsa expedita beatae natus enim
+                eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
+                earum ipsa blanditiis?
+              </p>
+            </div>
+            <div class="ms-5  content" id="user-reg">
+              <h4>User registration</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat placeat autem nam, ipsa expedita beatae natus enim
+                eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
+                earum ipsa blanditiis?
+              </p>
+            </div>
+            <div class="ms-5  content" id="contact">
+              <h4>Contact Us</h4>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Quaerat placeat autem nam, ipsa expedita beatae natus enim
+                eaque, minus quos, nihil eum dolor quas molestiae culpa. Facilis
+                earum ipsa blanditiis?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      .
     </section>
-
-
-
-
 
     <!-- E Body -->
 
-
-
     <!-- footer -->
-    <div class="container">
-        <div class="footer ">
-            <div class="footer-card">
-                <img src="../assets/images/Support/Layer 6.svg" alt="logo">
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Company</b></div>
-                <ul>
-                    <li><a href="#">About US</a></li>
-                    <li><a href="#">Become a Gaspreneur</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Support</b></div>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Contact</b></div>
-                <ul>
-                    <li><a href="#">support@gas360.io</a></li>
-                    <li><a href="#">+2348140005500</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Follow us:</b></div>
-                <ul>
-                    <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Mobile Footer -->
-    <div class="container footer-mobile">
-        <div class="footer-card my-5">
-            <img src="../assets/images/Support/Layer 6.svg" alt="logo">
-        </div>
-        <section class="questions">
-            <!-- questions -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Company</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">About US</a></li>
-                        <li><a href="#">Become a Gaspreneur</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Support</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Contact
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">support@gas360.io</a></li>
-                        <li><a href="#">+2348140005500</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Follow us:
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
-
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-        </section>
-    </div>
-    <!-- E Mobile Footer -->
-
-
-
-
-    <!-- E footer -->
-    <!-- copyright -->
-    <div class="container mt-5 p-3" style="color: #969BAB;  border-top: 0.5px solid #888888;">
-        &copy; Copyright, Gas360 <span id="year"></span>. All right reserved
-    </div>
-    <!-- copyright -->
+    <Footer />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
-    name : "Tos",
+  name: "Tos",
+  components: {
+    Footer,
+    Header,
+  },
   metaInfo() {
     return {
       title: "Terms Of Service || KiaKia Gas 360",
@@ -374,36 +178,6 @@ export default {
     };
   },
   mounted() {
-    const year = document.getElementById("year");
-    const menuList = document.querySelector(".menu-list ");
-    const menuBar = document.querySelector(".menu-bar i");
-    const date = new Date();
-    year.innerHTML = date.getFullYear();
-
-    menuBar.addEventListener("click", () => {
-      menuList.classList.toggle("open");
-      menuBar.classList.toggle("open");
-    });
-
-    const questions = document.querySelectorAll(".question");
-
-    questions.forEach(function(question) {
-      const btn = question.querySelector(".question-title");
-      // console.log(btn);
-
-      btn.addEventListener("click", function() {
-        // console.log(question);
-
-        questions.forEach(function(item) {
-          if (item !== question) {
-            item.classList.remove("show-text");
-          }
-        });
-
-        question.classList.toggle("show-text");
-      });
-    });
-
     const support = document.querySelector(".support");
     const btns = document.querySelectorAll(".tab-btn");
     const articles = document.querySelectorAll(".content");
@@ -424,8 +198,18 @@ export default {
       }
     });
   },
-
-}
+  created() {
+    this.getTos();
+  },
+  computed: {
+    ...mapState(["terms"]),
+  },
+  methods: {
+    getTos() {
+      this.$store.dispatch("GET_TOS");
+    },
+  },
+};
 </script>
 
 <style>
@@ -689,7 +473,7 @@ body {
     padding: 50px 0;
   }
 
-  .tab-mobile{
+  .tab-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -708,7 +492,7 @@ body {
     margin-right: 15px;
     font-size: 15px;
   }
-  .col-2{
+  .col-2 {
     display: none;
   }
   /* ======================= Footer====================== */
@@ -734,9 +518,8 @@ body {
   }
 }
 @media screen and (min-width: 765px) {
-  .tab-mobile{
+  .tab-mobile {
     display: none;
   }
 }
-
 </style>

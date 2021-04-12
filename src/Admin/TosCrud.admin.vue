@@ -33,24 +33,23 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="activeH post">
-        <p>{{ this.terms.length > 0 ? "Terms" : "Term" }}</p>
-        <p>{{ this.terms.length }}</p>
+      <div class=" post">
+        <p>Terms</p>
+
       </div>
       <ul>
         <li class="activePost">All terms</li>
         <li><a href="">Add New terms</a></li>
         <li><a href="">Categories</a></li>
       </ul>
-      <div class="support">
+      <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li class="fw-bold"><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a
-        ></li>
+       <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li class="fw-bold"><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -105,12 +104,12 @@
           <tbody>
             <tr v-for="(tos, key) in terms" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ tos.data().tos.substring(0, 100) }}...</td>
+              <td>{{ tos.tos.substring(0, 100) }}...</td>
            
               <td>
               
                 <p>
-                  {{ tos.data().createdOn }}
+                  {{ tos.createdOn }}
                 </p>
               </td>
               <td class="action">

@@ -39,17 +39,19 @@
       </div>
       <ul>
         <li class="activePost">All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li><router-link to="/admin/new/post">Add New post</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -65,17 +67,192 @@
         <span>
           Blog posts
         </span>
-        <router-link to="/admin/new-post">
+        <router-link to="/admin/new/post">
           <button class="btn btn-primary ">Add Post</button></router-link
         >
+
+        <section class="blog">
+          <div class="desktop-first">
+            <div
+              class="tab-btn py-auto active-high"
+              data-id="all"
+              @click="getAllBlogs"
+            >
+              All Posts
+            </div>
+            <div
+              class="tab-btn py-auto"
+              data-id="company"
+              @click="getCompanyBlogs"
+            >
+              Company
+            </div>
+            <div
+              class="tab-btn py-auto"
+              data-id="product"
+              @click="getProductBlogs"
+            >
+              Product
+            </div>
+            <div
+              class="tab-btn py-auto"
+              data-id="social"
+              @click="getSocialBlogs"
+            >
+              Social Impact
+            </div>
+            <div class="py-auto position-relative">
+              <form @submit.prevent>
+                <input
+                  type="text"
+                  @change="getSearchVar"
+                  v-model="search"
+                  placeholder="Search Blog"
+                />
+                <i class=" icon fa fa-search"></i>
+              </form>
+            </div>
+          </div>
+
+          <div class="blog container py-5">
+            <table>
+              <thead>
+                <tr>
+                  <td><input type="checkbox" /></td>
+                  <td>title</td>
+                  <td>Categories</td>
+                  <td>Author/last updated</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody>
+                <div class="content active-high" id="all">
+                  <tr v-for="(post, key) in getSearchVar() || posts" :key="key">
+                    <td><input type="checkbox" /></td>
+                    <td>{{ post.title }}</td>
+                    <td>
+                      <span :class="post.category">
+                        {{ post.category }}
+                      </span>
+                    </td>
+                    <td>
+                      <p>{{ post.authoredBy }}</p>
+                      <p>
+                        {{ post.createdOn }}
+                      </p>
+                    </td>
+                    <td class="action">
+                      <span class="edit">
+                        <router-link
+                          :to="{ name: 'EditPost', query: { data: post } }"
+                          >Edit</router-link
+                        ></span
+                      >
+                      <span @click="deletePosts(post.id)" class="delete"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </div>
+
+                <div class="content" id="company">
+                  <tr v-for="(post, key) in company" :key="key">
+                    <td><input type="checkbox" /></td>
+                    <td>{{ post.title }}</td>
+                    <td>
+                      <span :class="post.category">
+                        {{ post.category }}
+                      </span>
+                    </td>
+                    <td>
+                      <p>{{ post.authoredBy }}</p>
+                      <p>
+                        {{ post.createdOn }}
+                      </p>
+                    </td>
+                    <td class="action">
+                      <span class="edit">
+                        <router-link
+                          :to="{ name: 'EditPost', query: { data: post } }"
+                          >Edit</router-link
+                        ></span
+                      >
+                      <span @click="deletePosts(post.id)" class="delete"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </div>
+
+                <div class="content" id="product">
+                  <tr v-for="(post, key) in product" :key="key">
+                    <td><input type="checkbox" /></td>
+                    <td>{{ post.title }}</td>
+                    <td>
+                      <span :class="post.category">
+                        {{ post.category }}
+                      </span>
+                    </td>
+                    <td>
+                      <p>{{ post.authoredBy }}</p>
+                      <p>
+                        {{ post.createdOn }}
+                      </p>
+                    </td>
+                    <td class="action">
+                      <span class="edit">
+                        <router-link
+                          :to="{ name: 'EditPost', query: { data: post } }"
+                          >Edit</router-link
+                        ></span
+                      >
+                      <span @click="deletePosts(post.id)" class="delete"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </div>
+
+                <div class="content" id="social">
+                  <tr v-for="(post, key) in social" :key="key">
+                    <td><input type="checkbox" /></td>
+                    <td>{{ post.title }}</td>
+                    <td>
+                      <span :class="post.category">
+                        {{ post.category }}
+                      </span>
+                    </td>
+                    <td>
+                      <p>{{ post.authoredBy }}</p>
+                      <p>
+                        {{ post.createdOn }}
+                      </p>
+                    </td>
+                    <td class="action">
+                      <span class="edit">
+                        <router-link
+                          :to="{ name: 'EditPost', query: { data: post } }"
+                          >Edit</router-link
+                        ></span
+                      >
+                      <span @click="deletePosts(post.id)" class="delete"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </div>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <div class="menu-bar">
           <div class="category">
             <ul>
-              <li class="list-active">All</li>
-              <li>Company</li>
-              <li>Product</li>
-              <li>Social Impact</li>
+              <li class="tab-btn py-auto active-high" data-id="all"  @click="getAllBlogs">All</li>
+              <li class="tab-btn py-auto" data-id="company" @click="getCompanyBlogs">Company</li>
+              <li  class="tab-btn py-auto" data-id="product" @click="getProductBlogs">Product</li>
+              <li class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">Social Impact</li>
             </ul>
           </div>
           <div class="search-bar">
@@ -102,16 +279,16 @@
           <tbody>
             <tr v-for="(post, key) in posts" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ post.data().title }}</td>
+              <td>{{ post.title }}</td>
               <td>
-                <span :class="post.data().category">
-                  {{ post.data().category }}
+                <span :class="post.category">
+                  {{ post.category }}
                 </span>
               </td>
               <td>
-                <p>{{ post.data().authoredBy }}</p>
+                <p>{{ post.authoredBy }}</p>
                 <p>
-                  {{ post.data().createdOn }}
+                  {{ post.createdOn }}
                 </p>
               </td>
               <td class="action">
@@ -123,22 +300,6 @@
                 <span @click="deletePosts(post.id)" class="delete">Delete</span>
               </td>
             </tr>
-
-            <!-- <tr>
-              <td><input type="checkbox" /></td>
-              <td>How to start a cooking gas business in Nigeria</td>
-              <td><span class="company">Company</span></td>
-              <td>
-                <p>Uwandu Emmanuel</p>
-                <p>
-                  25/01/2021
-                </p>
-              </td>
-              <td class="action">
-                <span class="edit">Edit</span>
-                <span class="delete">Delete</span>
-              </td>
-            </tr> -->
           </tbody>
         </table>
         <div class="paging my-2"></div>
@@ -152,9 +313,17 @@
 import { mapState } from "vuex";
 export default {
   name: "BlogCrud",
+  data() {
+    return {
+      company: [],
+      product: [],
+      social: [],
+      search: "",
+    };
+  },
   metaInfo() {
     return {
-      title: "Admin Panel - Dashboard || KiaKia Gas ",
+      title: "Admin Panel - Blog || KiaKia Gas ",
       // meta: [
       //   {
       //     name: "description",
@@ -171,6 +340,33 @@ export default {
       // ],
     };
   },
+  mounted() {
+    const selectOption = document.querySelector("#dropdown");
+    const blog = document.querySelector(".blog");
+    const btns = document.querySelectorAll(".tab-btn");
+    const articles = document.querySelectorAll(".content");
+    blog.addEventListener("click", function(e) {
+      const id = e.target.dataset.id;
+      if (id || selectOption) {
+        // remove selected from other buttons
+        btns.forEach(function(btn) {
+          btn.classList.remove("active-high");
+        });
+        e.target.classList.add("active-high");
+        // hide other articles
+        articles.forEach(function(article) {
+          article.classList.remove("active-high");
+        });
+        if (id) {
+          const element = document.getElementById(id);
+          element.classList.add("active-high");
+        } else {
+          const element2 = document.getElementById(selectOption.value);
+          element2.classList.add("active-high");
+        }
+      }
+    });
+  },
 
   created() {
     this.getPost();
@@ -183,7 +379,43 @@ export default {
       this.$store.dispatch("GET_POST");
     },
     deletePosts(id) {
-      this.$store.dispatch("deletePost", id);
+      const check = confirm("Are you sure you want to delete this content ?");
+      if (check) {
+        this.$store.dispatch("deletePost", id);
+      }
+    },
+    getPost() {
+      this.$store.dispatch("GET_POST");
+    },
+
+    getAllBlogs() {
+      const data = this.posts.filter((doc) => doc);
+      this.product = data;
+    },
+    getProductBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "product"
+      );
+      this.product = data;
+    },
+    getCompanyBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "company"
+      );
+      this.company = data;
+    },
+    getSocialBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "social-impact"
+      );
+      this.social = data;
+    },
+    getSearchVar() {
+      const filteredBlog = this.posts.filter((data) =>
+        data.title.toLowerCase().match(this.search.toLowerCase())
+      );
+      console.log(filteredBlog);
+      return filteredBlog;
     },
   },
 };
@@ -508,5 +740,55 @@ header {
 }
 .icon {
   color: black;
+}
+
+.btn-container {
+  display: block !important;
+}
+.tab-btn {
+  margin-bottom: 2rem;
+  padding-left: 7px;
+  font-size: 1rem;
+  background: #fff;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.5s ease-in-out;
+}
+.tab-btn:hover:not(.active-high) {
+  background: white;
+  color: #000;
+}
+
+/* hide content */
+.content {
+  display: none !important;
+}
+.tab-btn.active-high {
+  background: #e9f2fc;
+  border-right: 2px solid var(--primary);
+  padding: 7px;
+}
+.content.active-high {
+  display: block !important;
+}
+
+.desktop-first {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px !important;
+  border-bottom: 0.5px solid #d9dbe1;
+}
+.tab-btn.active-high {
+  background: #fff;
+  border-bottom: 3px solid var(--primary);
+  padding: 4px;
+  border-right: none !important;
+  font-weight: 600;
+}
+.tab-btn {
+  margin-bottom: 14px;
+  margin-right: 15px;
+  font-size: 15px;
 }
 </style>

@@ -15,25 +15,30 @@ export default new Vuex.Store({
     policies : [],
     terms : [],
     errMsg : "",
+    successMsg : false,
   },
   mutations: {
     setErrMsg(state, val){
       state.errMsg = val
     },
+    setSuccessMsg(state, val){
+      state.successMsg = val
+    },
+    
     setPosts(state, val){
-      state.posts.push(val)
+      state.posts = val
     },
     setfaqs(state, val){
-      state.faqs.push(val)
+      state.faqs = val
     },
     setCookie(state, val){
-      state.cookies.push(val)
+      state.cookies = val
     },
     setPolicy(state, val){
-      state.policies.push(val)
+      state.policies = val
     },
     setTos(state, val){
-      state.terms.push(val)
+      state.terms = val
     },
   },
   actions: {
@@ -46,10 +51,10 @@ export default new Vuex.Store({
           post : form.post,
           authoredBy : form.authoredBy,
           createdOn : moment().format('LL'), 
-          blogImage : form.blogImage
+          blogImage : form.blogImage,
+          revised : parseInt(0)
         })
-        console.log(document.id);
-        console.log(form);
+     commit('setSuccessMsg', "Blog Added Successfully")
       } catch (error) {
         commit('setErrMsg', error.message)
         console.log(error.message);
@@ -58,11 +63,17 @@ export default new Vuex.Store({
 
     async GET_POST({commit}){
       await fb.postsCollection.onSnapshot(data =>{
+       const postArray = []
+       
      try {
       data.forEach(doc => {
-        commit("setPosts", doc)
-        console.log(doc);
+        const info = doc.data()
+        info.id = doc.id
+        postArray.push(info)
       });
+   
+      commit("setPosts", postArray)
+
      } catch (error) {
       commit('setErrMsg', error.message)
       console.log(error.message);
@@ -75,22 +86,25 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
-          console.log("Document successfully updated!");
+          commit('setSuccessMsg', true)
         })
         .catch((error) => {
           commit("setErrorMsg", error.message);
 
           console.error("Error updating document: ", error);
         });
+        
     },
+    
 
     deletePost({ commit }, id) {
-      console.log(id);
+    
       fb.postsCollection
         .doc(id)
         .delete()
         .then(() => {
-          console.log("Document successfully deleted!");
+         
+          commit('setSuccessMsg', "Blog successfully deleted")
          
         })
         .catch((error) => {
@@ -120,11 +134,15 @@ export default new Vuex.Store({
 
     async GET_FAQS({commit}){
       await fb.faqsCollection.onSnapshot(data =>{
+        const faqsArray = [];
      try {
       data.forEach(doc => {
-        commit("setfaqs", doc)
-        console.log(doc);
+        const info = doc.data()
+        info.id = doc.id
+        faqsArray.push(info)
+      
       });
+      commit("setfaqs", faqsArray)
      } catch (error) {
       commit('setErrMsg', error.message)
       console.log(error.message);
@@ -182,11 +200,15 @@ export default new Vuex.Store({
 
     async GET_COOKIE({commit}){
       await fb.cookieCollection.onSnapshot(data =>{
+        const cookiesArray = []
      try {
       data.forEach(doc => {
-        commit("setCookie", doc)
-        console.log(doc);
+        const info = doc.data()
+        info.id = doc.id
+        cookiesArray.push(info)
       });
+      commit("setCookie", cookiesArray)
+
      } catch (error) {
       commit('setErrMsg', error.message)
       console.log(error.message);
@@ -242,11 +264,14 @@ export default new Vuex.Store({
 
     async GET_POLICY({commit}){
       await fb.privacyCollection.onSnapshot(data =>{
+        const policyArray = [];
      try {
       data.forEach(doc => {
-        commit("setPolicy", doc)
-        console.log(doc);
+        const info = doc.data()
+        info.id = doc.id
+        policyArray.push(info)
       });
+      commit("setPolicy", policyArray)
      } catch (error) {
       commit('setErrMsg', error.message)
       console.log(error.message);
@@ -302,11 +327,14 @@ export default new Vuex.Store({
 
     async GET_TOS({commit}){
       await fb.tosCollection.onSnapshot(data =>{
+        const tosArray = [];
      try {
       data.forEach(doc => {
-        commit("setTos", doc)
-        console.log(doc);
+        const info = doc.data()
+        info.id = doc.id
+        tosArray.push(info)
       });
+      commit("setTos", tosArray)
      } catch (error) {
       commit('setErrMsg', error.message)
       console.log(error.message);

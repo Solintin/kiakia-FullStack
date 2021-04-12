@@ -35,22 +35,22 @@
         <p>Dashboard</p>
       </div>
       <div class="post">
-        <p>Post(s)</p>
-        <p>10</p>
+        <p>Post</p>
+    
       </div>
       <ul>
         <li>All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li><router-link to="/admin/new/faqs">Add New Tos</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Privacy Policy</a></li>
-        <li class="fw-bold"><a href="">Cookie Declarartion</a></li>
-        <li><a href="">Terms of Service</a></li>
+       <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li class="fw-bold"><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>

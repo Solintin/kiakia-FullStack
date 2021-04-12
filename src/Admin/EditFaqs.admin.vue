@@ -34,22 +34,22 @@
         <p>Dashboard</p>
       </div>
       <div class="post">
-        <p>Post(s)</p>
-        <p>10</p>
+        <p>FAQs</p>
+      
       </div>
       <ul>
-        <li>All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li>All Faqs</li>
+        <li><router-link to="/admin/new/faqs">Add New Faq</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="activeH support">
         <p>Support</p>
       </div>
       <ul>
-        <li class="fw-bold">FAQ</li>
-        <li>Privacy Policy</li>
-        <li>Cookie Declarartion</li>
-        <li>Terms of Service</li>
+     <li class="fw-bold"><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -155,7 +155,7 @@ export default {
     },
   },
   created() {
-    this.incomingData = this.$route.query.data.data();
+    this.incomingData = this.$route.query.data;
     this.incomingData.activeItem = this.$route.query.data.id;
   },
 };

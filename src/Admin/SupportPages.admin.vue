@@ -1,114 +1,107 @@
 <template>
   <div>
-          <!-- Header  -->
+    <!-- Header  -->
     <header>
-        <div class="logo">
-            <img src="../assets/Layer 6.svg" alt="">
-        </div>
-        <div class="menu">
-            <div>
+      <div class="logo">
+        <img src="../assets/Layer 6.svg" alt="" />
+      </div>
+      <div class="menu">
+        <div>
           <a href="">
             <i class="fas fa-envelope"></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification"
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification">3</span>
           </span>
         </div>
-            <div>
-                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
-            </div>
-            <div>
-                <span>David Alenoghena</span>
-            </div>
-
-
+        <div>
+          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
-
+        <div>
+          <span>David Alenoghena</span>
+        </div>
+      </div>
     </header>
     <!-- E Header  -->
 
     <!-- SideBar  -->
     <div class="sidebar">
-        <div class="dashboard">
-            <p>Dashboard</p>
-        </div>
-        <div class="post">
-            <p>Post(s)</p>
-            <p>10</p>
-        </div>
-        <ul>
-            <li>All posts</li>
-            <li><a href="">Add New post</a></li>
-            <li><a href="">Categories</a></li>
-        </ul>
-        <div class="support">
-            <p>Support</p>
-        </div>
-        <ul>
-            <li>FAQ </li>
-            <li>Privacy Policy</li>
-            <li>Cookie Declarartion</li>
-            <li>Terms of Service</li>
-        </ul>
-        <div id="log-out">
-            <span>
-                <h6>Log Out</h6>
-            </span>
-        </div>
+      <div class="dashboard">
+        <p>Dashboard</p>
+      </div>
+      <div class="post">
+        <p>Post(s)</p>
+        <p>10</p>
+      </div>
+      <ul>
+        <li>All posts</li>
+        <li><a href="">Add New post</a></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+      <div class="support">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li>FAQ</li>
+        <li>Privacy Policy</li>
+        <li>Cookie Declarartion</li>
+        <li>Terms of Service</li>
+      </ul>
+      <div id="log-out">
+        <span>
+          <h6>Log Out</h6>
+        </span>
+      </div>
     </div>
     <!-- E SideBar  -->
     <form>
-
-        <!-- Main  -->
-        <div class="main">
-            <h5 class="mb-4 text-center">Support Pages</h5>
-            <div class="main-content">
-                <a href="">
-                    <div>
-                        <i class="fa fa-question-circle fa-4x text-center" aria-hidden="true"></i>
-                        Frequently Asked Questions
-                    </div>
-                </a>
-                <a href="">
-                    <div>
-                        <i class="fa-4x text-center fas fa-cookie"></i>
-                        Cookie Declaration
-                    </div>
-                </a>
-                <a href="">
-                    <div>
-                        <i class="fa-4x text-center fas fa-shield-alt"></i>
-                        Privacy of Policy
-                    </div>
-                </a>
-                <a href="">
-                    <div>
-                        <i class="fa-4x text-center fas fa-edit"></i>
-                        Terms of Services
-                    </div>
-                </a>
-
+      <!-- Main  -->
+      <div class="main">
+        <h5 class="mb-4 text-center">Support Pages</h5>
+        <div class="main-content">
+          <router-link to="/admin/faqs">
+            <div>
+              <i
+                class="fa fa-question-circle fa-4x text-center"
+                aria-hidden="true"
+              ></i>
+              Frequently Asked Questions
             </div>
+          </router-link>
+          <router-link to="/admin/cookie">
+            <div>
+              <i class="fa-4x text-center fas fa-cookie"></i>
+              Cookie Declaration
+            </div>
+          </router-link>
+          <router-link to="/admin/policy">
+            <div>
+              <i class="fa-4x text-center fas fa-shield-alt"></i>
+              Privacy of Policy
+            </div>
+       
+          </router-link>
+          <router-link to="/admin/tos">
+            <div>
+              <i class="fa-4x text-center fas fa-edit"></i>
+              Terms of Services
+            </div>
+          </router-link>
 
         </div>
-        <!-- E Main  -->
-
-
+      </div>
+      <!-- E Main  -->
     </form>
   </div>
 </template>
 
 <script>
 export default {
- name: "EditPost",
+  name: "EditPost",
   metaInfo() {
     return {
       title: "Admin Panel - Support Page || KiaKia Gas ",
@@ -128,8 +121,7 @@ export default {
       // ],
     };
   },
-
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -210,7 +202,6 @@ header {
     margin: 15px 30px !important;
     font-size: 17px;
     font-weight: 400;
-    
   }
 }
 .post {
@@ -247,8 +238,7 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-    width: 100%;
-
+  width: 100%;
 }
 .icon {
   color: black;
@@ -269,39 +259,34 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 25px;
-    a{
+    a {
       display: inherit;
       place-content: center;
-      div{
+      div {
         height: 200px;
         width: 300px;
-        background: #C4C4C4;
+        background: #c4c4c4;
         padding: 10px 10px;
         border-radius: 6px;
         color: rgb(65, 64, 64);
         display: inherit;
         place-content: center;
         font-weight: 700;
-        .icon{
-          color : rgb(65, 64, 64);
+        .icon {
+          color: rgb(65, 64, 64);
         }
-        &:hover{
+        &:hover {
           background: var(--lightblue-color);
           transform: scale(1.02);
           transition: 1.1s;
           color: white;
-          .icon{
+          .icon {
             transition: 1.1s;
             color: white;
           }
         }
-        
       }
     }
-   
   }
 }
-
-
-
 </style>

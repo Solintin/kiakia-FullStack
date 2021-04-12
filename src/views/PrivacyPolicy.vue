@@ -4,26 +4,7 @@
     <div class="landing-page">
         <div class="container">
             <!-- Navbar -->
-            <div class="kiakia-navbar py-4">
-                <div class="logo">
-                    <a href="#"> <img src="../assets/images/Support/Layer 6.svg" alt="KiaKia-Glogo">
-                    </a>
-                </div>
-                <div class="tabs">
-                    <div class="menu-bar">
-                        <i class="fa fa-bars fa-2x"></i>
-                    </div>
-                    <div class="menu-list">
-                        <ul class="my-auto">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Become a Gaspreneur</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#" class="text-white btn btn-primary">Download App</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           <Header />
 
 
             <!-- Content -->
@@ -54,49 +35,9 @@
     <!-- Body -->
     <div class="container">
         <div class="my-4">
-            <h3>
-                About
-            </h3>
-            <p class="mb-3">Your privacy is important to us and you understanding this policy is necessary so we tried
-                to
-                make it as
-                human readable as possible. It is our (Stark Lab, Inc’s) policy to respect your privacy regarding any
-                information we may collect from you across our website, <a class="text-primary" href="https://getstark.co">getstark</a>, the plugin in any design
-                software Stark is available, and other sites we own and operate.</p>
-
-
-            <h3>Scope</h3>
-            <p>
-                We only ask for personal information like name and email when we truly need it to provide a service to
-                you.
-                We collect it in a fair and lawful manner, only with your knowledge and consent. We also let you know
-                why
-                we’re collecting it and how it will be used.
-            </p>
-            <p>We only retain collected information for as long as necessary to provide you with your requested service.
-                What data we store, we’ll protect within commercially acceptable means to prevent loss and theft, as
-                well as
-                unauthorized access, disclosure, copying, use or modification. To put it simply, security is important
-                to
-                us, and we work hard to ensure your data is always safe.
-            </p>
-            <p>We don’t share any personally identifying information publicly or with third-parties, except when
-                required to
-                by law. And whenever possible, data collected by us is anonymous.
-            </p>
-            <p> We do not collect any financial information from you (such as your credit card number, expiration date
-                or
-                security code). All payments to us are handled via a third party, Stripe, Inc and not stored on our
-                systems.
-                Please refer to their Privacy Statement for more information.
-            </p>
-            <p>Our website may link to external sites that are not operated by us. Please be aware that we have no
-                control
-                over the content and practices of these sites, and cannot accept responsibility or liability for their
-                respective privacy policies. We try to be conscious of these things when partnering with or linking to
-                external parties
-            </p>
-
+           <span v-for="(policy, key) in policies" :key="key">
+         {{policy.policy}}
+       </span>
         </div>
     </div>
     <!--E Body -->
@@ -135,190 +76,23 @@
     </div>
     <!-- E Upgrade -->
 
+<!-- footer -->
+<Footer/>
+<!-- E footer -->
 
-
-    <!-- footer -->
-    <div class="container">
-        <div class="footer ">
-            <div class="footer-card">
-                <img src="../assets/images/Support/Layer 6.svg" alt="logo">
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Company</b></div>
-                <ul>
-                    <li><a href="#">About US</a></li>
-                    <li><a href="#">Become a Gaspreneur</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Support</b></div>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Contact</b></div>
-                <ul>
-                    <li><a href="#">support@gas360.io</a></li>
-                    <li><a href="#">+2348140005500</a></li>
-                </ul>
-            </div>
-            <div class="footer-card">
-                <div class="mb-1"><b>Follow us:</b></div>
-                <ul>
-                    <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- Mobile Footer -->
-    <div class="container footer-mobile">
-        <div class="footer-card my-5">
-            <img src="../assets/images/Support/Layer 6.svg" alt="logo">
-        </div>
-        <section class="questions">
-            <!-- questions -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Company</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">About US</a></li>
-                        <li><a href="#">Become a Gaspreneur</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Support</p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of service</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Contact
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#">support@gas360.io</a></li>
-                        <li><a href="#">+2348140005500</a></li>
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-            <!-- single question -->
-            <article class="question">
-                <!-- question title -->
-                <div class="question-title">
-                    <p>Follow us:
-                    </p>
-                    <div class="question-btn">
-                        <span class="plus-icon">
-                            <span class="mdi mdi-chevron-right mdi-24px"></span>
-                        </span>
-                        <span class="minus-icon">
-
-                            <span class="mdi mdi-chevron-up mdi-24px"></span>
-                        </span>
-                    </div>
-                </div>
-                <!-- answer text -->
-                <div class="question-text">
-                    <p>
-                    <ul>
-                        <li><a href="#"><i class="fab fa-twitter"></i> @gas360tech</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> @gas360tech </a></li>
-
-                    </ul>
-                    </p>
-                </div>
-            </article>
-            <!-- E single question -->
-
-        </section>
-    </div>
-    <!-- E Mobile Footer -->
-
-
-
-
-    <!-- E footer -->
-    <!-- copyright -->
-    <div class="container mt-5 p-3" style="color: #969BAB;  border-top: 0.5px solid #888888;">
-        &copy; Copyright, Gas360 <span id="year"></span>. All right reserved
-    </div>
-    <!-- copyright -->
+   
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+ import Header from '@/components/Header'
+ import Footer from '@/components/Footer'
 export default {
     name : "privacy-policy",
+      components:{
+      Footer, Header
+    },
   
   metaInfo() {
     return {
@@ -339,59 +113,17 @@ export default {
       // ],
     };
   },
-  mounted() {
-    const year = document.getElementById("year");
-    const menuList = document.querySelector(".menu-list ");
-    const menuBar = document.querySelector(".menu-bar i");
-    const date = new Date();
-    year.innerHTML = date.getFullYear();
-
-    menuBar.addEventListener("click", () => {
-      menuList.classList.toggle("open");
-      menuBar.classList.toggle("open");
-    });
-
-  
-    const questions = document.querySelectorAll(".question");
-
-    questions.forEach(function(question) {
-      const btn = question.querySelector(".question-title");
-      // console.log(btn);
-
-      btn.addEventListener("click", function() {
-        // console.log(question);
-
-        questions.forEach(function(item) {
-          if (item !== question) {
-            item.classList.remove("show-text");
-          }
-        });
-
-        question.classList.toggle("show-text");
-      });
-    });
-
-    const support = document.querySelector(".support");
-    const btns = document.querySelectorAll(".tab-btn");
-    const articles = document.querySelectorAll(".content");
-    support.addEventListener("click", function(e) {
-      const id = e.target.dataset.id;
-      if (id) {
-        // remove selected from other buttons
-        btns.forEach(function(btn) {
-          btn.classList.remove("active");
-        });
-        e.target.classList.add("active");
-        // hide other articles
-        articles.forEach(function(article) {
-          article.classList.remove("active");
-        });
-        const element = document.getElementById(id);
-        element.classList.add("active");
-      }
-    });
-    
+  created() {
+    this.getPolicy();
   },
+  computed: {
+    ...mapState(["policies"]),
+  },
+  methods: {
+    getPolicy() {
+      this.$store.dispatch("GET_POLICY");
+    },
+  }
 
 }
 </script>
