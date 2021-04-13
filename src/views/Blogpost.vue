@@ -1,108 +1,144 @@
 <template>
   <div>
-         <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
+      <div class="container">
+        <!-- Navbar -->
         <Header />
 
+        <!-- Content -->
 
-            <!-- Content -->
-
-            <!-- E Content -->
-
-        </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="container mt-5">
-        <div class="text-primary text-uppercase mb-5">
-            {{incomingData.category}}
-        </div>
-        <h3 class="mb-3">
-            {{incomingData.title}}
-        </h3>
-        <div class="blog-info mb-5">
-            <ul>
-                <li><span style="color:#474A57;">By</span> <span class="fw-bold">
-            {{incomingData.authoredBy}}
-                    </span></li>
-                <li>
-                    <div>
-                        <span class="fw-bold">{{incomingData.createdOn}}</span>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <span class="">4 min read</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
+      <div class="text-primary text-uppercase mb-5">
+        {{ incomingData[0].category }}
+      </div>
+      <h3 class="mb-3">
+        {{ incomingData[0].title }}
+      </h3>
+      <div class="blog-info mb-5">
+        <ul>
+          <li>
+            <span style="color:#474A57;">By</span>
+            <span class="fw-bold">
+              {{ incomingData[0].authoredBy }}
+            </span>
+          </li>
+          <li>
+            <div>
+              <span class="fw-bold">{{ incomingData[0].createdOn }}</span>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p><span id="time"></span> minute read</p>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-        <!--Post  Image  -->
-        <img class="my-4" height="300" width="100%" :src="incomingData.blogImage" alt="post-image">
+      <!--Post  Image  -->
+      <img
+        class="my-4"
+        height="300"
+        width="100%"
+        :src="incomingData[0].blogImage"
+        alt="post-image"
+      />
+      <article class="article">
+        <div v-html="incomingData[0].post"></div>
+      </article>
 
-          <div v-html="incomingData.post">
-                      
-          </div>
-        
-    
-    <!-- E Body -->
+      <!-- E Body -->
 
-
-
-    <!-- footer -->
-   <Footer />
-  <!--E footer -->
-  </div>
+      <!-- footer -->
+      <Footer />
+      <!--E footer -->
+    </div>
   </div>
 </template>
 
 <script>
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { mapState } from "vuex";
 export default {
-    name : "Blogpost",
-      components:{
-      Footer, Header
-    },
-     metaInfo() {
-      return {
-        title: `${this.pageTitle} || KiaKia Gas 360` ,
-        // meta: [
-        //   {
-        //     name: "description",
-        //     content:
-        //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-        //   },
-        //   {
-        //     property: "og:title",
-        //     content: "Epiloge - Build your network in your field of interest",
-        //   },
-        //   { property: "og:site_name", content: "Epiloge" },
-        //   { property: "og:type", content: "website" },
-        //   { name: "robots", content: "index,follow" },
-        // ],
-      };
-    },
-    data() {
-      return {
-        incomingData : {},
-        pageTitle : ''
-      }
-    },
-   
-
-     created() {
-    this.incomingData = this.$route.query.data;
-    this.pageTitle = this.$route.query.data.title
+  name: "Blogpost",
+  components: {
+    Footer,
+    Header,
   },
 
-}
+  metaInfo() {
+    return {
+      title: `${this.pageTitle} || KiaKia Gas 360`,
+      // meta: [
+      //   {
+      //     name: "description",
+      //     content:
+      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
+      //   },
+      //   {
+      //     property: "og:title",
+      //     content: "Epiloge - Build your network in your field of interest",
+      //   },
+      //   { property: "og:site_name", content: "Epiloge" },
+      //   { property: "og:type", content: "website" },
+      //   { name: "robots", content: "index,follow" },
+      // ],
+    };
+  },
+  data() {
+    return {
+      incomingData: {},
+      pageTitle: "",
+    };
+  },
+  mounted() {
+    this.readingTime();
+  },
+  computed: {
+    ...mapState(["posts"]),
+  },
+
+  async created() {
+    await this.makePost();
+  //   const currentUrl = window.location.pathname;
+  //   var id = currentUrl.match(/\b[\w=.]+$/g);
+  //   console.log(id[0]);
+  //   this.$router.push({ name: "Blogpost"})
+  // },
+  // watch: {
+  //   $route(to, from) {
+  //     //  react to route changes...
+  //     if (to !== from) {
+  //       location.reload();
+  //     }
+  //   },
+  },
+
+  methods: {
+    makePost() {
+      const currentUrl = window.location.pathname;
+      var id = currentUrl.match(/\b[\w=.]+$/g);
+      const currentPostId = this.$route.params.id || id[0];
+      this.incomingData = this.posts.filter((doc) => doc.id === currentPostId);
+      this.pageTitle = this.incomingData[0].title;
+    },
+    readingTime() {
+      const text = document.querySelector(".article").innerText;
+      const wpm = 225;
+      const words = text.trim().split(/\s+/).length;
+      const time = Math.ceil(words / wpm);
+      document.getElementById("time").innerText = time;
+    },
+  },
+};
 </script>
 
 <style>
@@ -233,17 +269,16 @@ body {
 .show-text .plus-icon {
   display: none;
 }
-.blog-info li{
-  display: inline-block; 
+.blog-info li {
+  display: inline-block;
   margin-right: 30px;
 }
-.blog-info li:nth-child(2){
+.blog-info li:nth-child(2) {
   list-style: circle !important;
 }
-.blog-info li:nth-child(3){
+.blog-info li:nth-child(3) {
   list-style: circle !important;
 }
-
 
 /* ==================footer===================== */
 .footer {
@@ -406,9 +441,9 @@ input[type="text"]:focus {
   h5.head {
     font-size: 16px;
   }
-  
-  .blog-info li{
-    display: block; 
+
+  .blog-info li {
+    display: block;
     margin-right: 10px;
   }
 
@@ -440,6 +475,4 @@ input[type="text"]:focus {
     display: none;
   }
 }
-
-
 </style>

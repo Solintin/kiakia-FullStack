@@ -39,29 +39,41 @@
               value="all"
               selected
               data-id="all"
+              @change="getAllBlogs"
               >ALL</option
             >
-            <option class="tab-btn" value="company" data-id="company"
+            <option class="tab-btn" value="company" data-id="company"  @change="getCompanyBlogs"
               >Company</option
             >
-            <option class="tab-btn" value="product" data-id="product"
+            <option class="tab-btn" value="product" data-id="product"  @change="getProductBlogs"
               >Product</option
             >
-            <option class="tab-btn" value="social" data-id="social"
+            <option class="tab-btn" value="social" data-id="social"  @change="getSocialBlogs"
               >Social</option
             >
           </select>
         </div>
         <div class="py-auto position-relative">
           <form @submit.prevent>
-            <input type="text" @change="getSearchVar" v-model="search"  placeholder="Search Blog"/>
+            <input
+              type="text"
+              @change="getSearchVar"
+              v-model="search"
+              placeholder="Search Blog"
+            />
             <i class=" icon fa fa-search"></i>
           </form>
         </div>
       </div>
 
       <div class="desktop-first">
-        <div class="tab-btn py-auto active-high" data-id="all"  @click="getAllBlogs">All Posts</div>
+        <div
+          class="tab-btn py-auto active-high"
+          data-id="all"
+          @click="getAllBlogs"
+        >
+          All Posts
+        </div>
         <div class="tab-btn py-auto" data-id="company" @click="getCompanyBlogs">
           Company
         </div>
@@ -73,7 +85,12 @@
         </div>
         <div class="tab-btn py-auto position-relative">
           <form @submit.prevent>
-               <input type="text" @change="getSearchVar" v-model="search"  placeholder="Search Blog"/>
+            <input
+              type="text"
+              @change="getSearchVar"
+              v-model="search"
+              placeholder="Search Blog"
+            />
             <i class=" icon fa fa-search"></i>
           </form>
         </div>
@@ -87,7 +104,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+             <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -97,8 +114,8 @@
                   {{ post.title }}
                 </h5>
               </b>
-              <div  class="part-post">
-                 <p v-html="post.post.substring(0, 100)">  </p>
+              <div class="part-post">
+                <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -112,7 +129,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -123,7 +140,7 @@
                 </p>
               </b>
               <div class="part-post">
-                <p v-html="post.post.substring(0, 100)">  </p>
+                <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -137,7 +154,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+            <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -148,7 +165,7 @@
                 </p>
               </b>
               <div class="part-post">
-                  <p v-html="post.post.substring(0, 100)">  </p>
+                <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -162,7 +179,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-              <router-link :to="{ name: 'Blogpost', query: { data: post } }">
+              <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -173,7 +190,7 @@
                 </p>
               </b>
               <div class="part-post">
-               <p v-html="post.post.substring(0, 100)">  </p>
+                <p v-html="post.post.substring(0, 100)"></p>
               </div>
               <p>{{ post.createdOn }}</p>
             </div>
@@ -245,7 +262,6 @@ export default {
         e.target.classList.add("active-high");
         // hide other articles
         articles.forEach(function(article) {
-         
           article.classList.remove("active-high");
         });
         if (id) {
@@ -261,7 +277,6 @@ export default {
 
   created() {
     this.getPost();
-   
   },
   computed: {
     ...mapState(["posts"]),
@@ -272,9 +287,7 @@ export default {
     },
 
     getAllBlogs() {
-      const data = this.posts.filter(
-        (doc) => doc
-      );
+      const data = this.posts.filter((doc) => doc);
       this.product = data;
     },
     getProductBlogs() {
@@ -297,12 +310,14 @@ export default {
     },
     getSearchVar() {
       const filteredBlog = this.posts.filter(
-        (data) => data.title.toLowerCase().match(this.search.toLowerCase())
+        (data) =>
+          data.title.toLowerCase().match(this.search.toLowerCase()) ||
+          data.post.toLowerCase().match(this.search.toLowerCase()) ||
+          data.category.toLowerCase().match(this.search.toLowerCase()) ||
+          data.createdOn.toLowerCase().match(this.search.toLowerCase())
       );
-      console.log(filteredBlog);
-      return filteredBlog;
 
-      
+      return filteredBlog;
     },
   },
 };
@@ -347,7 +362,7 @@ body {
   background-attachment: fixed;
 }
 
-.part-post{
+.part-post {
   color: rgb(94, 94, 94);
 }
 

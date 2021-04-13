@@ -59,7 +59,7 @@ const routes = [
   },
   //blogPost
   {
-    path: '/blogpost',
+    path: '/blogpost/:id/',
     name: 'Blogpost',
     component : Blogpost
     
