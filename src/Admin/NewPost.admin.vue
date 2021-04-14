@@ -223,6 +223,16 @@ export default {
         blogImage: this.blogImage || this.netImage,
       };
       this.$store.dispatch("PUBLISH_POST", form);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.incomingData.tos = "";
+            this.netImage = '';
+      this.title= "";
+      this.post= "";
+      this.authoredBy= "";
+          resolve();
+        }, 1500);
+      });
     },
     chooseCategory(cat) {
       this.selectCategory = cat.categ;

@@ -150,6 +150,12 @@ export default {
   methods: {
     publishTos() {
       this.$store.dispatch("PUBLISH_TOS", this.tos);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.tos = "";
+          resolve();
+        }, 1500);
+      });
     },
   },
   computed:{

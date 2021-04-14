@@ -145,6 +145,7 @@ export default {
 
   data() {
     return {
+      updateSuccess : false,
       description: " ",
       editorConfig: {
         enterMode: 2,
@@ -155,6 +156,13 @@ export default {
   methods: {
     publishCookie() {
       this.$store.dispatch("PUBLISH_COOKIE", this.description);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.description = "";
+          this.updateSuccess = true;
+          resolve();
+        }, 1500);
+      });
     },
   },
   computed: {

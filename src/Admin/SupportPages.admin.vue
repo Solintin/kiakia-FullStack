@@ -33,23 +33,25 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class="post">
-        <p>Post(s)</p>
-        <p>10</p>
+      <div class="activeH post">
+        <p>{{ this.posts.length > 0 ? "Posts" : "Post" }}</p>
+        <p>{{ this.posts.length }}</p>
       </div>
       <ul>
-        <li>All posts</li>
-        <li><a href="">Add New post</a></li>
+        <li class="activePost"><router-link to="/admin/blog">All Post</router-link></li>
+        <li><router-link to="/admin/new/post">Add New post</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
       <div class="support">
         <p>Support</p>
       </div>
       <ul>
-        <li>FAQ</li>
-        <li>Privacy Policy</li>
-        <li>Cookie Declarartion</li>
-        <li>Terms of Service</li>
+        <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support/policy">Privacy Policy</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
         <span>
@@ -100,6 +102,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: "EditPost",
   metaInfo() {
@@ -121,6 +124,9 @@ export default {
       // ],
     };
   },
+  computed:{
+    ...mapState(['posts'])
+  }
 };
 </script>
 

@@ -651,7 +651,7 @@ body {
   width: 450px;
 }
 .support {
-  width: 60% !important;
+  width: 70% !important;
   margin: 40px auto !important;
 }
 /* ==================footer===================== */

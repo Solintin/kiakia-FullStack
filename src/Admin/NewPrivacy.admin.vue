@@ -149,6 +149,12 @@ export default {
   methods: {
     publishPrivacyPolicy() {
       this.$store.dispatch("PUBLISH_POLICY", this.policy);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          this.policy = "";
+          resolve();
+        }, 1500);
+      });
     },
   },
   metaInfo() {
