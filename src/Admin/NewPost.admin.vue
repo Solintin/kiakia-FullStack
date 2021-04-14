@@ -101,6 +101,9 @@
 
       <!-- Right Sidebar -->
           <!-- Notification -->
+     
+      <div class="right-sidebar">
+             <!-- Notification -->
         <div>
           <div v-if="this.successMsg"
             class="alert alert-success fade show"
@@ -132,7 +135,6 @@
           </div>
         </div>
         <!-- E  Notification -->
-      <div class="right-sidebar">
         <div class="buttons">
           <button class="btn btn-primary text-center" @click="publishPost">
             Add Post

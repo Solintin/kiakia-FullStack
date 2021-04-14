@@ -79,6 +79,9 @@
             </tr>
           </thead>
           <tbody>
+              <div v-if="cookies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
             <tr v-for="(cookie, key) in cookies" :key="key">
               <td><input type="checkbox" /></td>
               <td v-html="cookie.description.substring(0, 50)" >...</td>

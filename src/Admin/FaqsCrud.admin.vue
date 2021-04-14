@@ -69,7 +69,7 @@
           <span>
             All Frequently Asked Questions
           </span>
-          <router-link to="/admin/new-post">
+          <router-link to="/admin/new/faqs">
             <button class="btn btn-primary ">Add More Faqs</button></router-link
           >
         </div>
@@ -85,6 +85,9 @@
             </tr>
           </thead>
           <tbody>
+              <div v-if="faqs.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
             <tr v-for="(faq, key) in faqs" :key="key">
               <td><input type="checkbox" /></td>
               <td>{{ faq.question }}</td>

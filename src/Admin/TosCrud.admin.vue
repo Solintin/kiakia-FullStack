@@ -66,30 +66,12 @@
             <span>
       Terms of Service
         </span>
-        <router-link to="/admin/new-post">
+        <router-link to="/admin/new/tos">
           <button class="btn btn-primary ">Add More terms</button></router-link
         >
 
         </div>
-        <!-- <div class="menu-bar">
-          <div class="category">
-            <ul>
-              <li class="list-active">All</li>
-              <li>Company</li>
-              <li>Product</li>
-              <li>Social Impact</li>
-            </ul>
-          </div>
-          <div class="search-bar">
-            <span>
-              <i class="fas fa-search"></i>
-            </span>
-            <input
-              type="search"
-              placeholder="Search blog by Name, category or Date"
-            />
-          </div>
-        </div> -->
+ 
 
         <table>
           <thead>
@@ -102,9 +84,12 @@
             </tr>
           </thead>
           <tbody>
+              <div v-if="terms.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
             <tr v-for="(tos, key) in terms" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ tos.tos.substring(0, 100) }}...</td>
+              <td v-html="tos.tos.substring(0, 100)">...</td>
            
               <td>
               

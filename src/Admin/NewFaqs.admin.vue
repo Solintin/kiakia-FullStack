@@ -41,7 +41,7 @@
             <p>Dashboard</p>
         </div>
         <div class=" post">
-            <p>Post(s)</p>
+            <p>Posts</p>
          
         </div>
         <ul>
@@ -88,6 +88,38 @@
 
         <!-- Right Sidebar -->
         <div class="right-sidebar">
+               <!-- Notification -->
+        <div>
+          <div v-if="this.successMsg"
+            class="alert alert-success fade show"
+            role="alert"
+          >
+            <span class="me-3">{{this.successMsg}}</span>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              @click="remove"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div v-else-if="this.errMsg"
+          class="alert alert-danger alert-dismissible fade show"
+            role="alert">
+            <strong>{{this.errMsg}}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <!-- E  Notification -->
             <div class="buttons">
                 <button class="btn btn-primary text-center">Add New FAQ</button>
             
@@ -113,6 +145,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 
 export default {
  name: "EditPost",
@@ -157,7 +190,9 @@ export default {
       // ],
     };
   },
- 
+ computed:{
+  ...mapState(['successMsg','errMsg'])
+},
 }
 </script>
 

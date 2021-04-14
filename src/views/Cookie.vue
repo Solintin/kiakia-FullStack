@@ -34,6 +34,9 @@
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="container my-5">
+        <div v-if="cookies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
        <span   v-for="(cookie, key) in cookies" :key="key">
       <p v-html="cookie.description"></p>
        </span>

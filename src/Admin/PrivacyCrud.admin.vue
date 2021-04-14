@@ -67,7 +67,7 @@
             <span>
         Privacy policies
         </span>
-        <router-link to="/admin/new-post">
+        <router-link to="/admin/new/policy">
           <button class="btn btn-primary ">Add More Policy</button></router-link
         >
 
@@ -83,11 +83,13 @@
               <td>last updated</td>
               <td>Action</td>
             </tr>
-          </thead>
+          </thead>  <div v-if="policies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
           <tbody>
             <tr v-for="(policy, key) in policies" :key="key">
               <td><input type="checkbox" /></td>
-              <td>{{ policy.policy }}</td>
+              <td v-html=" policy.policy.substring(0, 100)">...</td>
            
               <td>
               

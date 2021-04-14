@@ -36,7 +36,6 @@
       </div>
       <div class="post">
         <p>Post(s)</p>
-    
       </div>
       <ul>
         <li>All posts</li>
@@ -48,10 +47,14 @@
         <p>Support</p>
       </div>
       <ul>
-     <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support">FAQ</router-link></li>
         <li><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
-        <li class="fw-bold"><router-link to="/support/tos">Terms of Service</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li class="fw-bold">
+          <router-link to="/support/tos">Terms of Service</router-link>
+        </li>
       </ul>
       <div id="log-out">
         <span>
@@ -67,20 +70,54 @@
           <h6 class="fs-4 text-center mb-5">Cookie Declaration</h6>
 
           <strong>Description</strong>
-            <vue-editor v-model="description">
-              <ckeditor v-model="description" :config="editorConfig"></ckeditor>
-          
+          <vue-editor v-model="description">
+            <ckeditor v-model="description" :config="editorConfig"></ckeditor>
           </vue-editor>
-
-        
         </div>
       </div>
       <!-- E Main  -->
 
       <!-- Right Sidebar -->
+      <!-- Notification -->
+      <div>
+        <div
+          v-if="this.successMsg"
+          class="alert alert-success fade show"
+          role="alert"
+        >
+          <span class="me-3">{{ this.successMsg }}</span>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            @click="remove"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div
+          v-else-if="this.errMsg"
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>{{ this.errMsg }}</strong>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <!-- E  Notification -->
       <div class="right-sidebar">
         <div class="buttons">
-          <button class="btn btn-primary text-center" @click="publishCookie">Add Cookie</button>
+          <button class="btn btn-primary text-center" @click="publishCookie">
+            Add Cookie
+          </button>
         </div>
         <div class="content">
           <div class="split-content">
@@ -101,6 +138,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 
 export default {
   name: "cookie-admin",
@@ -108,7 +146,7 @@ export default {
   data() {
     return {
       description: " ",
-        editorConfig: {
+      editorConfig: {
         enterMode: 2,
         autoParagraph: false,
       },
@@ -119,7 +157,9 @@ export default {
       this.$store.dispatch("PUBLISH_COOKIE", this.description);
     },
   },
-
+  computed: {
+    ...mapState(["successMsg", "errMsg"]),
+  },
   metaInfo() {
     return {
       title: "Admin Panel - Cookie || KiaKia Gas ",
