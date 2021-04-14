@@ -34,6 +34,9 @@
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="container">
+        <div v-if="policies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
         <div class="my-4">
            <span v-for="(policy, key) in policies" :key="key">
          <p v-html="policy.policy"></p>

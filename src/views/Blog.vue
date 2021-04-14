@@ -31,6 +31,9 @@
     <!-- Body -->
 
     <section class="container blog">
+      <div v-if="posts.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
       <div class="mobile-first">
         <div>
           <select name="dropdown" id="dropdown">
@@ -226,6 +229,8 @@ export default {
       product: [],
       social: [],
       search: "",
+      isLoading : true,
+      incomingData : {}, 
     };
   },
   metaInfo() {
@@ -248,6 +253,10 @@ export default {
     };
   },
   mounted() {
+
+      // console.log(this.isLoading);
+
+
     const selectOption = document.querySelector("#dropdown");
     const blog = document.querySelector(".blog");
     const btns = document.querySelectorAll(".tab-btn");
@@ -274,16 +283,23 @@ export default {
       }
     });
   },
+ 
+  
 
   created() {
     this.getPost();
+
+
+  
   },
+
   computed: {
     ...mapState(["posts"]),
   },
   methods: {
     getPost() {
       this.$store.dispatch("GET_POST");
+      // this.isLoading = false;
     },
 
     getAllBlogs() {
@@ -335,6 +351,10 @@ export default {
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+}
+.loading{
+  display: grid;
+  place-content: center;
 }
 ul {
   margin: 0 !important;

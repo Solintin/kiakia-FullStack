@@ -104,11 +104,11 @@
       <div class="right-sidebar">
         <!-- Notification -->
         <div>
-          <div v-if="successMsg"
+          <div v-if="this.successMsg"
             class="alert alert-success fade show"
             role="alert"
           >
-            <span class="me-3">Update Successfull</span>
+            <span class="me-3">{{this.successMsg}}</span>
             <button
               type="button"
               class="close"
@@ -119,10 +119,10 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- <div v-else
+          <div v-else-if="this.errMsg"
           class="alert alert-danger alert-dismissible fade show"
             role="alert">
-            <strong>{{setErrMsg}}</strong>
+            <strong>{{this.errMsg}}</strong>
             <button
               type="button"
               class="close"
@@ -131,7 +131,7 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-          </div> -->
+          </div>
         </div>
         <!-- E  Notification -->
 
@@ -252,10 +252,11 @@ export default {
     this.incomingData = this.$route.query.data;
     this.incomingData.activeItem = this.$route.query.data.id;  
     this.incomingData.revised = this.$route.query.data.revised + 1;  
-  console.log( this.$route.query.data.revised);
+  console.log( this.successMsg);
+
   },
   computed: {
-    ...mapState( ["successMsg"]),
+    ...mapState( ["successMsg", 'errMsg']),
   },
 };
 </script>

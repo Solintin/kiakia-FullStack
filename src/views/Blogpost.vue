@@ -108,18 +108,7 @@ export default {
 
   async created() {
     await this.makePost();
-  //   const currentUrl = window.location.pathname;
-  //   var id = currentUrl.match(/\b[\w=.]+$/g);
-  //   console.log(id[0]);
-  //   this.$router.push({ name: "Blogpost"})
-  // },
-  // watch: {
-  //   $route(to, from) {
-  //     //  react to route changes...
-  //     if (to !== from) {
-  //       location.reload();
-  //     }
-  //   },
+ 
   },
 
   methods: {
@@ -127,9 +116,15 @@ export default {
       const currentUrl = window.location.pathname;
       var id = currentUrl.match(/\b[\w=.]+$/g);
       const currentPostId = this.$route.params.id || id[0];
+      console.log(this.posts);
       this.incomingData = this.posts.filter((doc) => doc.id === currentPostId);
       this.pageTitle = this.incomingData[0].title;
     },
+
+
+
+
+
     readingTime() {
       const text = document.querySelector(".article").innerText;
       const wpm = 225;

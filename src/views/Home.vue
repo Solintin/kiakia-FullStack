@@ -356,6 +356,9 @@
       <div class="support">
         <h6 class="text-uppercase head text-center">Support</h6>
         <h3 class="text-center">Frequently asked questions</h3>
+          <div v-if="faqs.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      </div>
 
         <section class="questions">
           <!-- questions -->
@@ -458,9 +461,6 @@ export default {
   },
 
   mounted() {
- 
-
-   
 
     $(document).ready(function() {
       $(".dload").owlCarousel({
@@ -788,8 +788,8 @@ body {
   }
 
   .support {
-    width: 100%;
-    margin: 40px auto;
+    width: 90% !important;
+    margin: 40px auto !important;
   }
   /* ======================= Footer====================== */
   .footer .footer-card {
@@ -898,5 +898,6 @@ body {
   .partners-mobile {
     display: none;
   }
+  
 }
 </style>

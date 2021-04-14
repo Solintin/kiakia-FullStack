@@ -1,84 +1,109 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 import * as fb from "../firebase";
-import moment from 'moment';
+import moment from "moment";
+import createpersistedstate from "vuex-persistedstate";
 
+Vue.use(Vuex);
+// const vuexPersist = new VuexPersist({
+//   key: 'my-app',
+//   storage: window.localStorage
+// })
 
-
-Vue.use(Vuex)
+// const store = new Vuex.Store({
+//   //...initialization
+//   plugins: [createpersistedstate()],
+// });
 
 export default new Vuex.Store({
+  plugins: [createpersistedstate()],
+
   state: {
-    posts : [],
-    faqs : [],
-    cookies : [],
-    policies : [],
-    terms : [],
-    errMsg : "",
-    successMsg : false,
+    posts: [],
+    faqs: [],
+    cookies: [],
+    policies: [],
+    terms: [],
+    errMsg: null,
+    successMsg: null,
   },
   mutations: {
-    setErrMsg(state, val){
-      state.errMsg = val
+    setErrMsg(state, val) {
+      state.errMsg = val;
     },
-    setSuccessMsg(state, val){
-      state.successMsg = val
+    setSuccessMsg(state, val) {
+      state.successMsg = val;
     },
-    
-    setPosts(state, val){
-      state.posts = val
+    // initialiseStore(state){
+    //   if(localStorage.getItem('posts')){
+    //     this.replaceState(
+    //       Object.assign(state, JSON.parse(localStorage.getItem('posts')))
+    //     )
+    //     // state.posts = val
+    //   }
+    // },
+    setPosts(state, val) {
+      // localStorage.setItem('posts', JSON.stringify(val))
+      state.posts = val;
     },
-    setfaqs(state, val){
-      state.faqs = val
+    setfaqs(state, val) {
+      state.faqs = val;
     },
-    setCookie(state, val){
-      state.cookies = val
+    setCookie(state, val) {
+      state.cookies = val;
     },
-    setPolicy(state, val){
-      state.policies = val
+    setPolicy(state, val) {
+      state.policies = val;
     },
-    setTos(state, val){
-      state.terms = val
+    setTos(state, val) {
+      state.terms = val;
     },
   },
   actions: {
     // Post Collection Actions
-    async PUBLISH_POST({commit}, form){
+    async PUBLISH_POST({ commit }, form) {
       try {
         const document = await fb.postsCollection.add({
-          title : form.title,
-          category : form.category,
-          post : form.post,
-          authoredBy : form.authoredBy,
-          createdOn : moment().format('LL'), 
-          blogImage : form.blogImage,
-          revised : parseInt(0)
-        })
-     commit('setSuccessMsg', "Blog Added Successfully")
-      } catch (error) {
-        commit('setErrMsg', error.message)
+          title: form.title,
+          category: form.category,
+          post: form.post,
+          authoredBy: form.authoredBy,
+          createdOn: moment().format("LL"),
+          blogImage: form.blogImage,
+          revised: parseInt(0),
+        });
+   
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
+
+      }catch (error) {
+        commit("setErrMsg", error.message);
+        setTimeout(() => {
+          commit("setErrMsg", null);
+         }, 3000);
         console.log(error.message);
       }
     },
 
-    async GET_POST({commit}){
-      await fb.postsCollection.onSnapshot(data =>{
-       const postArray = []
-       
-     try {
-      data.forEach(doc => {
-        const info = doc.data()
-        info.id = doc.id
-        postArray.push(info)
-      });
-   
-      commit("setPosts", postArray)
+    async GET_POST({ commit }) {
+      await fb.postsCollection.onSnapshot((data) => {
+        const postArray = [];
 
-     } catch (error) {
-      commit('setErrMsg', error.message)
-      console.log(error.message);
-     }
-      })
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            postArray.push(info);
+          });
+
+          commit("setPosts", postArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
+      });
     },
 
     editPost({ commit }, val) {
@@ -86,68 +111,82 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
-          commit('setSuccessMsg', true)
+          commit("setSuccessMsg", "Update Succesfull");
+         setTimeout(() => {
+          commit("setSuccessMsg", null);
+         }, 3000);
         })
         .catch((error) => {
           commit("setErrorMsg", error.message);
-
+          setTimeout(() => {
+            commit("setErrorMsg", null);
+           }, 3000);
           console.error("Error updating document: ", error);
         });
+       
         
+
     },
-    
 
     deletePost({ commit }, id) {
-    
       fb.postsCollection
         .doc(id)
         .delete()
         .then(() => {
+          commit("setSuccessMsg", "Blog successfully deleted");
          
-          commit('setSuccessMsg', "Blog successfully deleted")
-         
+          setTimeout(() => {
+           commit("setSuccessMsg", null);
+          }, 3000);
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
-          commit("setErrorMsg", error.message);
+
+           commit("setErrorMsg", error.message);
+          setTimeout(() => {
+            commit("setErrorMsg", null);
+           }, 3000);
         });
     },
 
     //FAQs Collection Actions
-    async PUBLISH_FAQS({commit}, form){
+    async PUBLISH_FAQS({ commit }, form) {
       try {
         const document = await fb.faqsCollection.add({
-          question : form.question,
-         
-          answer : form.answer,
-         
-          createdOn : moment().format('LL'), 
-        
-        })
+          question: form.question,
+          answer: form.answer,
+          createdOn: moment().format("LL"),
+        });
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
         console.log(document.id);
         console.log(form);
       } catch (error) {
-        commit('setErrMsg', error.message)
+        commit("setErrMsg", error.message);
+        setTimeout(() => {
+          commit("setErrMsg", null);
+         }, 3000);
         console.log(error.message);
       }
     },
 
-    async GET_FAQS({commit}){
-      await fb.faqsCollection.onSnapshot(data =>{
+    async GET_FAQS({ commit }) {
+      await fb.faqsCollection.onSnapshot((data) => {
         const faqsArray = [];
-     try {
-      data.forEach(doc => {
-        const info = doc.data()
-        info.id = doc.id
-        faqsArray.push(info)
-      
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            faqsArray.push(info);
+          });
+          commit("setfaqs", faqsArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
       });
-      commit("setfaqs", faqsArray)
-     } catch (error) {
-      commit('setErrMsg', error.message)
-      console.log(error.message);
-     }
-      })
     },
 
     EDIT_FAQS({ commit }, val) {
@@ -155,10 +194,17 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
+          commit("setSuccessMsg", "Update Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
           console.log("Document successfully updated!");
         })
         .catch((error) => {
-          commit("setErrorMsg", error.message);
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);
 
           console.error("Error updating document: ", error);
         });
@@ -170,50 +216,56 @@ export default new Vuex.Store({
         .doc(id)
         .delete()
         .then(() => {
+          commit("setSuccessMsg", "delete Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
           console.log("Document successfully deleted!");
-         
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
-          commit("setErrorMsg", error.message);
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);
         });
     },
 
-
-
     // Cookie Collection Actions
-    async PUBLISH_COOKIE({commit}, form){
+    async PUBLISH_COOKIE({ commit }, form) {
       try {
         const document = await fb.cookieCollection.add({
-          description : form,
-      
-          createdOn : moment().format('LL'), 
-         
-        })
+          description: form,
+
+          createdOn: moment().format("LL"),
+        });
         console.log(document.id);
         console.log(form);
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
       } catch (error) {
-        commit('setErrMsg', error.message)
+        commit("setErrMsg", error.message);
         console.log(error.message);
       }
     },
 
-    async GET_COOKIE({commit}){
-      await fb.cookieCollection.onSnapshot(data =>{
-        const cookiesArray = []
-     try {
-      data.forEach(doc => {
-        const info = doc.data()
-        info.id = doc.id
-        cookiesArray.push(info)
+    async GET_COOKIE({ commit }) {
+      await fb.cookieCollection.onSnapshot((data) => {
+        const cookiesArray = [];
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            cookiesArray.push(info);
+          });
+          commit("setCookie", cookiesArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
       });
-      commit("setCookie", cookiesArray)
-
-     } catch (error) {
-      commit('setErrMsg', error.message)
-      console.log(error.message);
-     }
-      })
     },
 
     EDIT_COOKIE({ commit }, val) {
@@ -221,10 +273,15 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
-          console.log("Document successfully updated!");
-        })
+          commit("setSuccessMsg", "Update Succesfull");
+          setTimeout(() => {
+           commit("setSuccessMsg", null);
+          }, 3000);        })
         .catch((error) => {
-          commit("setErrorMsg", error.message);
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);
 
           console.error("Error updating document: ", error);
         });
@@ -237,7 +294,10 @@ export default new Vuex.Store({
         .delete()
         .then(() => {
           console.log("Document successfully deleted!");
-         
+          commit("setSuccessMsg", "Delete Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
@@ -245,38 +305,43 @@ export default new Vuex.Store({
         });
     },
 
-
     // Privacy-Policy Collection Actions
-    async PUBLISH_POLICY({commit}, form){
+    async PUBLISH_POLICY({ commit }, form) {
       try {
         const document = await fb.privacyCollection.add({
-          policy : form,
-          createdOn : moment().format('LL'), 
-          
-        })
+          policy: form,
+          createdOn: moment().format("LL"),
+        });
         console.log(document.id);
         console.log(form);
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
       } catch (error) {
-        commit('setErrMsg', error.message)
+        commit("setErrMsg", error.message);
+        setTimeout(() => {
+          commit("setErrMsg", null);
+         }, 3000);
         console.log(error.message);
       }
     },
 
-    async GET_POLICY({commit}){
-      await fb.privacyCollection.onSnapshot(data =>{
+    async GET_POLICY({ commit }) {
+      await fb.privacyCollection.onSnapshot((data) => {
         const policyArray = [];
-     try {
-      data.forEach(doc => {
-        const info = doc.data()
-        info.id = doc.id
-        policyArray.push(info)
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            policyArray.push(info);
+          });
+          commit("setPolicy", policyArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
       });
-      commit("setPolicy", policyArray)
-     } catch (error) {
-      commit('setErrMsg', error.message)
-      console.log(error.message);
-     }
-      })
     },
 
     EDIT_POLICY({ commit }, val) {
@@ -284,11 +349,16 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
-          console.log("Document successfully updated!");
+          consolcommit("setSuccessMsg", "Post Succesfull");
+          setTimeout(() => {
+           commit("setSuccessMsg", null);
+          }, 3000);
         })
         .catch((error) => {
-          commit("setErrorMsg", error.message);
-
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);
           console.error("Error updating document: ", error);
         });
     },
@@ -299,47 +369,55 @@ export default new Vuex.Store({
         .doc(id)
         .delete()
         .then(() => {
-          console.log("Document successfully deleted!");
-         
-        })
+          commit("setSuccessMsg", "Post Succesfull");
+          setTimeout(() => {
+           commit("setSuccessMsg", null);
+          }, 3000);        })
         .catch((error) => {
           console.error("Error removing document: ", error);
-          commit("setErrorMsg", error.message);
-        });
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);        });
     },
 
-
     // //TOS Collection Actions
-    async PUBLISH_TOS({commit}, form){
+    async PUBLISH_TOS({ commit }, form) {
       try {
         const document = await fb.tosCollection.add({
-          tos : form,
-          createdOn : moment().format('LL'), 
-        
-        })
+          tos: form,
+          createdOn: moment().format("LL"),
+        });
         console.log(document.id);
         console.log(form);
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
       } catch (error) {
-        commit('setErrMsg', error.message)
+        commit("setErrMsg", error.message);
+        setTimeout(() => {
+          commit("setErrMsg", null);
+         }, 3000);
         console.log(error.message);
       }
     },
 
-    async GET_TOS({commit}){
-      await fb.tosCollection.onSnapshot(data =>{
+    async GET_TOS({ commit }) {
+      await fb.tosCollection.onSnapshot((data) => {
         const tosArray = [];
-     try {
-      data.forEach(doc => {
-        const info = doc.data()
-        info.id = doc.id
-        tosArray.push(info)
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            tosArray.push(info);
+          });
+          commit("setTos", tosArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
       });
-      commit("setTos", tosArray)
-     } catch (error) {
-      commit('setErrMsg', error.message)
-      console.log(error.message);
-     }
-      })
     },
 
     EDIT_TOS({ commit }, val) {
@@ -347,11 +425,17 @@ export default new Vuex.Store({
         .doc(val.activeItem)
         .update(val)
         .then(() => {
+          commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
           console.log("Document successfully updated!");
         })
         .catch((error) => {
-          commit("setErrorMsg", error.message);
-
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);
           console.error("Error updating document: ", error);
         });
     },
@@ -362,16 +446,19 @@ export default new Vuex.Store({
         .doc(id)
         .delete()
         .then(() => {
+          commit("setSuccessMsg", "Delete Succesfull");
+        setTimeout(() => {
+         commit("setSuccessMsg", null);
+        }, 3000);
           console.log("Document successfully deleted!");
-         
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
-          commit("setErrorMsg", error.message);
-        });
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+           }, 3000);        });
     },
-
   },
-  modules: {
-  }
-})
+  modules: {},
+});

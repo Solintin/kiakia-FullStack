@@ -75,9 +75,14 @@
 
             <div class="ms-5 content active" id="agreement">
               <h4>Terms of service</h4>
+              <div v-if="terms.length == 0" class=" img-fluid">
+                <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+              </div>
 
               <div v-for="(tos, key) in terms" :key="key">
-                <p>Last updated: <span> {{tos.createdOn}} </span></p>
+                <p>
+                  Last updated: <span> {{ tos.createdOn }} </span>
+                </p>
                 <p v-html="tos.tos"></p>
               </div>
             </div>

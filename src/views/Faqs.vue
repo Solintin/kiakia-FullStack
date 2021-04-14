@@ -1,166 +1,175 @@
 <template>
   <div>
-       <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-         <Header />
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
 
-
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            Support
-                        </h5>
-                        <h1>
-                            How can our team help you
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/Support/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                Support
+              </h5>
+              <h1>
+                How can our team help you
+              </h1>
             </div>
-            <!-- E Content -->
-
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img
+                  src="../assets/images/Support/Linked Path Group.svg"
+                  alt=""
+                />
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
 
     <section class="container support">
-        <div class="row">
-            <div class="tab-mobile">
-
-                <div class="tab-btn py-auto active" data-id="faqs">FAQs</div>
-                <div class="tab-btn py-auto" data-id="privacy">Privacy</div>
-                <div class="tab-btn py-auto" data-id="contact">Contact Us</div>
-
-            </div>
-            <div class="col-2 py-5">
-                <!-- btn container -->
-                <div class="btn-container">
-                    <div class="tab-btn py-auto active" data-id="faqs">FAQs</div>
-                    <div class="tab-btn py-auto" data-id="privacy">Privacy</div>
-                    <div class="tab-btn py-auto" data-id="contact">Contact Us</div>
-                </div>
-            </div>
-            <div class="col-10 py-5">
-
-                <div class="support-content">
-                    <!-- single item -->
-
-                    <div class="content active" id="faqs">
-
-                        <div class="support">
-                            <h3 class="mb-5">Frequently asked questions</h3>
-
-
-                            <section class="ms-3 questions">
-                                <!-- questions -->
-
-                                <!-- single question -->
-                                <article v-for="(faq, key) in faqs" :key="key" class="question">
-                                    <!-- question title -->
-                                    <div class="question-title" @click="toggleQuestion">
-                                        <p>{{ faq.question }}</p>
-                                        <div class="question-btn">
-                                            <span class="plus-icon">
-                                                <span class="mdi mdi-chevron-right mdi-24px"></span>
-                                            </span>
-                                            <span class="minus-icon">
-
-                                                <span class="mdi mdi-chevron-up mdi-24px"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <!-- answer text -->
-                                    <div class="question-text">
-                                        <p v-html=" faq.answer">
-                                        
-
-
-                                        </p>
-                                    </div>
-                                </article>
-                                <!-- E single question -->
-
-                                
-                            </section>
-                        </div>
-
-                    </div>
-                    <!-- E Support -->
-                    <!-- end of single item -->
-
-
-                    <!-- single item -->
-                    <div class="ms-5  content" id="privacy">
-                        <h4>Privacy Policy</h4>
-                        <p>
-                            We take your privacy seriously here at Gas360. Check out the links below to learn more.
-                        </p>
-                        <ul class="my-5">
-                            <li class="my-3 "> <a class="text-primary" href="#">Terms of service</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Cookie policy</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Privacy policy</a></li>
-                            <li class="my-3 "> <a class="text-primary" href="#">Code of conduct</a></li>
-
-                        </ul>
-                    </div>
-                    <!-- end of single item -->
-                    <!-- single item -->
-                    <div class="ms-5 content" id="contact">
-                        <h4>Contact Us</h4>
-                        <p>
-                            Need help with something that you didn’t find? Reach out to us and we would attend to you in
-                            no time </p>
-                        <ul class="my-5">
-                            <li class="my-3 "> <a class="text-primary" href="#"> <img
-                                        src="../assets/images/Support/Vector-2.svg" alt="mail"> support@gas360.io</a></li>
-                            <li class="my-3 "> <img src="../assets/images/Support/Vector-1.svg" alt="phone"> +2348140005500
-                            </li>
-
-
-                        </ul>
-                    </div>
-                    <!-- end of single item -->
-                </div>
-            </div>
+      <div class="row">
+        <div class="tab-mobile">
+          <div class="tab-btn py-auto active" data-id="faqs">FAQs</div>
+          <div class="tab-btn py-auto" data-id="privacy">Privacy</div>
+          <div class="tab-btn py-auto" data-id="contact">Contact Us</div>
         </div>
-        .
+        <div class="col-2 py-5">
+          <!-- btn container -->
+          <div class="btn-container">
+            <div class="tab-btn py-auto active" data-id="faqs">FAQs</div>
+            <div class="tab-btn py-auto" data-id="privacy">Privacy</div>
+            <div class="tab-btn py-auto" data-id="contact">Contact Us</div>
+          </div>
+        </div>
+        <div class="col-10 py-5">
+          <div class="support-content">
+            <!-- single item -->
+
+            <div class="content active" id="faqs">
+              <div class="support">
+                <h3 class="mb-5">Frequently asked questions</h3>
+
+                <div v-if="faqs.length == 0" class="loading img-fluid">
+                  <img
+                    src="../assets/loading-icon-animated-gif-19.jpg"
+                    alt=""
+                  />
+                </div>
+                <section class="ms-3 questions">
+                  <!-- questions -->
+
+                  <!-- single question -->
+                  <article
+                    v-for="(faq, key) in faqs"
+                    :key="key"
+                    class="question"
+                  >
+                    <!-- question title -->
+                    <div class="question-title" @click="toggleQuestion">
+                      <p>{{ faq.question }}</p>
+                      <div class="question-btn">
+                        <span class="plus-icon">
+                          <span class="mdi mdi-chevron-right mdi-24px"></span>
+                        </span>
+                        <span class="minus-icon">
+                          <span class="mdi mdi-chevron-up mdi-24px"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <!-- answer text -->
+                    <div class="question-text">
+                      <p v-html="faq.answer"></p>
+                    </div>
+                  </article>
+                  <!-- E single question -->
+                </section>
+              </div>
+            </div>
+            <!-- E Support -->
+            <!-- end of single item -->
+
+            <!-- single item -->
+            <div class="ms-5  content" id="privacy">
+              <h4>Privacy Policy</h4>
+              <p>
+                We take your privacy seriously here at Gas360. Check out the
+                links below to learn more.
+              </p>
+              <ul class="my-5">
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Terms of service</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Cookie policy</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Privacy policy</a>
+                </li>
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">Code of conduct</a>
+                </li>
+              </ul>
+            </div>
+            <!-- end of single item -->
+            <!-- single item -->
+            <div class="ms-5 content" id="contact">
+              <h4>Contact Us</h4>
+              <p>
+                Need help with something that you didn’t find? Reach out to us
+                and we would attend to you in no time
+              </p>
+              <ul class="my-5">
+                <li class="my-3 ">
+                  <a class="text-primary" href="#">
+                    <img
+                      src="../assets/images/Support/Vector-2.svg"
+                      alt="mail"
+                    />
+                    support@gas360.io</a
+                  >
+                </li>
+                <li class="my-3 ">
+                  <img
+                    src="../assets/images/Support/Vector-1.svg"
+                    alt="phone"
+                  />
+                  +2348140005500
+                </li>
+              </ul>
+            </div>
+            <!-- end of single item -->
+          </div>
+        </div>
+      </div>
+      .
     </section>
-
-
-
-
 
     <!-- E Body -->
 
-
-
     <!-- footer -->
-<Footer/>
-
+    <Footer />
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import { mapState } from "vuex";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default {
   name: "Faqs",
-    components:{
-      Footer, Header
-    },
+  components: {
+    Footer,
+    Header,
+  },
   metaInfo() {
     return {
       title: "Support || KiaKia Gas 360",
@@ -181,8 +190,6 @@ export default {
     };
   },
   mounted() {
-  
-
     const questions = document.querySelectorAll(".question");
 
     questions.forEach(function(question) {
@@ -222,44 +229,41 @@ export default {
       }
     });
   },
-      created() {
+  created() {
     this.getFaqs();
   },
-    computed: {
+  computed: {
     ...mapState(["faqs"]),
   },
   methods: {
     getFaqs() {
       this.$store.dispatch("GET_FAQS");
     },
-    toggleQuestion(){
-      
-    const questions = document.querySelectorAll(".question");
+    toggleQuestion() {
+      const questions = document.querySelectorAll(".question");
 
-    questions.forEach(function(question) {
-      const btn = question.querySelector(".question-title");
-      // console.log(btn);
+      questions.forEach(function(question) {
+        const btn = question.querySelector(".question-title");
+        // console.log(btn);
 
-      btn.addEventListener("click", function() {
-        // console.log(question);
+        btn.addEventListener("click", function() {
+          // console.log(question);
 
-        questions.forEach(function(item) {
-          if (item !== question) {
-            item.classList.remove("show-text");
-          }
+          questions.forEach(function(item) {
+            if (item !== question) {
+              item.classList.remove("show-text");
+            }
+          });
+
+          question.classList.toggle("show-text");
         });
-
-        question.classList.toggle("show-text");
       });
-    });
     },
-  }
+  },
 };
-
-
 </script>
 
-<style >
+<style>
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
 :root {
   --primary: #3789ec;
@@ -509,7 +513,7 @@ body {
     padding: 50px 0;
   }
 
-  .tab-mobile{
+  .tab-mobile {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
@@ -524,16 +528,16 @@ body {
     font-weight: 600;
   }
   .tab-btn {
-    margin-bottom: 14px
+    margin-bottom: 14px;
   }
-  .col-2{
+  .col-2 {
     display: none !important;
   }
-  .col-10{
+  .col-10 {
     display: grid;
     flex: 1;
-   width: 100% !important;
-   margin-left: -50px !important;
+    width: 100% !important;
+    margin-left: -50px !important;
   }
   /* ======================= Footer====================== */
   .footer .footer-card {
@@ -558,9 +562,8 @@ body {
   }
 }
 @media screen and (min-width: 765px) {
-  .tab-mobile{
+  .tab-mobile {
     display: none !important;
   }
 }
-
 </style>

@@ -72,232 +72,178 @@
         >
 
         <section class="blog">
-         
-            <div class="menu-bar">
-              <div class="category">
-                <ul>
-                  <li
-                    class="tab-btn py-auto active-high"
-                    data-id="all"
-                    @click="getAllBlogs"
-                  >
-                    All
-                  </li>
-                  <li
-                    class="tab-btn py-auto"
-                    data-id="company"
-                    @click="getCompanyBlogs"
-                  >
-                    Company
-                  </li>
-                  <li
-                    class="tab-btn py-auto"
-                    data-id="product"
-                    @click="getProductBlogs"
-                  >
-                    Product
-                  </li>
-                  <li
-                    class="tab-btn py-auto"
-                    data-id="social"
-                    @click="getSocialBlogs"
-                  >
-                    Social Impact
-                  </li>
-                </ul>
-              </div>
-              <div class="search-bar">
-                <span>
-                  <i class="fas fa-search"></i>
-                </span>
-                <input
-                  type="search"
-                  @change="getSearchVar"
-                  v-model="search"
-                  placeholder="Search blog by Name, category or Date"
-                />
-              </div>
+          <div class="menu-bar">
+            <div class="category">
+              <ul>
+                <li
+                  class="tab-btn py-auto active-high"
+                  data-id="all"
+                  @click="getAllBlogs"
+                >
+                  All
+                </li>
+                <li
+                  class="tab-btn py-auto"
+                  data-id="company"
+                  @click="getCompanyBlogs"
+                >
+                  Company
+                </li>
+                <li
+                  class="tab-btn py-auto"
+                  data-id="product"
+                  @click="getProductBlogs"
+                >
+                  Product
+                </li>
+                <li
+                  class="tab-btn py-auto"
+                  data-id="social"
+                  @click="getSocialBlogs"
+                >
+                  Social Impact
+                </li>
+              </ul>
             </div>
-          
+            <div class="search-bar">
+              <span>
+                <i class="fas fa-search"></i>
+              </span>
+              <input
+                type="search"
+                @change="getSearchVar"
+                v-model="search"
+                placeholder="Search blog by Name, category or Date"
+              />
+            </div>
+          </div>
 
-          
-            <table>
-              <thead>
-                <tr>
-                  <td><input type="checkbox" /></td>
-                  <td>title</td>
-                  <td>Categories</td>
-                  <td>Author/last updated</td>
-                  <td>Action</td>
-                </tr>
-              </thead>
+          <div class="table-sub">
+            <div class="title">title</div>
+            <div class="cat">Categories</div>
+            <div class="author">Author/last updated</div>
+            <div class="action">Action</div>
+          </div>
 
-              
+          <div class="content active-high" id="all">
+            <div v-if="posts.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
 
-
-              <tbody>
-                <div class="content active-high" id="all">
-                  <tr v-for="(post, key) in getSearchVar() || posts" :key="key">
-                    <td><input type="checkbox" /></td>
-                    <td>{{ post.title }}</td>
-                    <td>
-                      <span :class="post.category">
-                        {{ post.category }}
-                      </span>
-                    </td>
-                    <td>
-                      <p>{{ post.authoredBy }}</p>
-                      <p>
-                        {{ post.createdOn }}
-                      </p>
-                    </td>
-                    <td class="action">
-                      <span class="edit">
-                        <router-link
-                          :to="{ name: 'EditPost', query: { data: post } }"
-                          >Edit</router-link
-                        ></span
-                      >
-                      <span @click="deletePosts(post.id)" class="delete"
-                        >Delete</span
-                      >
-                    </td>
-                  </tr>
-                </div>
-
-                <div class="content" id="company">
-                  <tr v-for="(post, key) in company" :key="key">
-                    <td><input type="checkbox" /></td>
-                    <td>{{ post.title }}</td>
-                    <td>
-                      <span :class="post.category">
-                        {{ post.category }}
-                      </span>
-                    </td>
-                    <td>
-                      <p>{{ post.authoredBy }}</p>
-                      <p>
-                        {{ post.createdOn }}
-                      </p>
-                    </td>
-                    <td class="action">
-                      <span class="edit">
-                        <router-link
-                          :to="{ name: 'EditPost', query: { data: post } }"
-                          >Edit</router-link
-                        ></span
-                      >
-                      <span @click="deletePosts(post.id)" class="delete"
-                        >Delete</span
-                      >
-                    </td>
-                  </tr>
-                </div>
-
-                <div class="content" id="product">
-                  <tr v-for="(post, key) in product" :key="key">
-                    <td><input type="checkbox" /></td>
-                    <td>{{ post.title }}</td>
-                    <td>
-                      <span :class="post.category">
-                        {{ post.category }}
-                      </span>
-                    </td>
-                    <td>
-                      <p>{{ post.authoredBy }}</p>
-                      <p>
-                        {{ post.createdOn }}
-                      </p>
-                    </td>
-                    <td class="action">
-                      <span class="edit">
-                        <router-link
-                          :to="{ name: 'EditPost', query: { data: post } }"
-                          >Edit</router-link
-                        ></span
-                      >
-                      <span @click="deletePosts(post.id)" class="delete"
-                        >Delete</span
-                      >
-                    </td>
-                  </tr>
-                </div>
-
-                <div class="content" id="social">
-                  <tr v-for="(post, key) in social" :key="key">
-                    <td><input type="checkbox" /></td>
-                    <td>{{ post.title }}</td>
-                    <td>
-                      <span :class="post.category">
-                        {{ post.category }}
-                      </span>
-                    </td>
-                    <td>
-                      <p>{{ post.authoredBy }}</p>
-                      <p>
-                        {{ post.createdOn }}
-                      </p>
-                    </td>
-                    <td class="action">
-                      <span class="edit">
-                        <router-link
-                          :to="{ name: 'EditPost', query: { data: post } }"
-                          >Edit</router-link
-                        ></span
-                      >
-                      <span @click="deletePosts(post.id)" class="delete"
-                        >Delete</span
-                      >
-                    </td>
-                  </tr>
-                </div>
-              </tbody>
-            </table>
-
-  <table>
-          <thead>
-            <tr>
-              <td><input type="checkbox" /></td>
-              <td>title</td>
-              <td>Categories</td>
-              <td>Author/last updated</td>
-              <td>Action</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(post, key) in posts" :key="key">
-              <td><input type="checkbox" /></td>
-              <td>{{ post.title }}</td>
-              <td>
-                <span :class="post.category">
-                  {{ post.category }}
-                </span>
-              </td>
-              <td>
+            <div
+              class="table-subcontent"
+              v-for="(post, key) in getSearchVar() || posts"
+              :key="key"
+            >
+              <div class="title">{{ post.title }}</div>
+              <div class="cat">
+                <span :class="post.category"> {{ post.category }}</span>
+              </div>
+              <div class="author">
                 <p>{{ post.authoredBy }}</p>
                 <p>
                   {{ post.createdOn }}
                 </p>
-              </td>
-              <td class="action">
+              </div>
+              <div class="action my-auto ms-1">
                 <span class="edit">
                   <router-link :to="{ name: 'EditPost', query: { data: post } }"
                     >Edit</router-link
                   ></span
                 >
                 <span @click="deletePosts(post.id)" class="delete">Delete</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+            </div>
+          </div>
+          <div class="content " id="company">
+            <div v-if="posts.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
+            <div
+              class="table-subcontent"
+              v-for="(post, key) in company"
+              :key="key"
+            >
+              <div class="title">{{ post.title }}</div>
+              <div class="cat">
+                <span :class="post.category"> {{ post.category }}</span>
+              </div>
+              <div class="author">
+                <p>{{ post.authoredBy }}</p>
+                <p>
+                  {{ post.createdOn }}
+                </p>
+              </div>
+              <div class="action my-auto ms-1">
+                <span class="edit">
+                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                    >Edit</router-link
+                  ></span
+                >
+                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="content " id="product">
+            <div v-if="posts.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
 
-   
+            <div
+              class="table-subcontent"
+              v-for="(post, key) in product"
+              :key="key"
+            >
+              <div class="title">{{ post.title }}</div>
+              <div class="cat">
+                <span :class="post.category"> {{ post.category }}</span>
+              </div>
+              <div class="author">
+                <p>{{ post.authoredBy }}</p>
+                <p>
+                  {{ post.createdOn }}
+                </p>
+              </div>
+              <div class="action my-auto ms-1">
+                <span class="edit">
+                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                    >Edit</router-link
+                  ></span
+                >
+                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+              </div>
+            </div>
+          </div>
+          <div class="content" id="social">
+            <div v-if="posts.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
+            <div
+              class="table-subcontent"
+              v-for="(post, key) in social"
+              :key="key"
+            >
+              <div class="title">{{ post.title }}</div>
+              <div class="cat">
+                <span :class="post.category"> {{ post.category }}</span>
+              </div>
+              <div class="author">
+                <p>{{ post.authoredBy }}</p>
+                <p>
+                  {{ post.createdOn }}
+                </p>
+              </div>
+              <div class="action my-auto ms-1">
+                <span class="edit">
+                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                    >Edit</router-link
+                  ></span
+                >
+                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+              </div>
+            </div>
+          </div>
         </section>
-
-
-
-
-      
 
         <div class="paging my-2"></div>
       </div>
@@ -338,13 +284,12 @@ export default {
     };
   },
   mounted() {
-   
     const blog = document.querySelector(".blog");
     const btns = document.querySelectorAll(".tab-btn");
     const articles = document.querySelectorAll(".content");
     blog.addEventListener("click", function(e) {
       const id = e.target.dataset.id;
-      if (id ) {
+      if (id) {
         // remove selected from other buttons
         btns.forEach(function(btn) {
           btn.classList.remove("active-high");
@@ -408,8 +353,12 @@ export default {
       this.social = data;
     },
     getSearchVar() {
-      const filteredBlog = this.posts.filter((data) =>
-        data.title.toLowerCase().match(this.search.toLowerCase())
+      const filteredBlog = this.posts.filter(
+        (data) =>
+          data.title.toLowerCase().match(this.search.toLowerCase()) ||
+          data.post.toLowerCase().match(this.search.toLowerCase()) ||
+          data.category.toLowerCase().match(this.search.toLowerCase()) ||
+          data.createdOn.toLowerCase().match(this.search.toLowerCase())
       );
       console.log(filteredBlog);
       return filteredBlog;
@@ -603,142 +552,18 @@ header {
         }
       }
     }
-    table {
-      width: 100% !important;
-      thead {
-        tr {
-          td {
-            background: #f4f2ff;
-            padding: 10px 0;
-            font-weight: 600;
-            font-size: 15px;
-            color: var(--purple-color);
-            text-transform: uppercase;
-          }
-        }
-        td:nth-of-type(1) {
-          border-radius: 5px 0 0 5px;
-          width: 5%;
-        }
-        td:nth-of-type(2) {
-          width: 35%;
-        }
-        td:nth-of-type(3) {
-          width: 15%;
-        }
-        td:nth-of-type(4) {
-          width: 25%;
-        }
-        td:nth-of-type(5) {
-          border-radius: 0 5px 5px 0;
-          width: 25%;
-        }
-      }
-      .company {
-        position: relative;
-        background: #e6e6f2;
-        width: 76px;
-        height: 19px;
-        border-radius: 15px;
-        padding: 2px 10px 5px 20px;
-        color: #4a4aff;
-
-        &::before {
-          content: "";
-          position: absolute;
-          width: 5px;
-          height: 5px;
-          top: 12px;
-          left: 5px;
-          background: #4a4aff;
-          border-radius: 50%;
-        }
-      }
-      .product {
-        position: relative;
-        background: #e8ecfd;
-        width: 76px;
-        height: 19px;
-        border-radius: 15px;
-        padding: 2px 10px 5px 20px;
-        color: #3789ec;
-
-        &::before {
-          content: "";
-          position: absolute;
-          width: 5px;
-          height: 5px;
-          top: 12px;
-          left: 5px;
-          background: #3789ec;
-          border-radius: 50%;
-        }
-      }
-      .social-impact {
-        position: relative;
-        background: #fff4e6;
-        width: 76px;
-        height: 19px;
-        border-radius: 15px;
-        padding: 2px 10px 5px 20px;
-        color: #faae08;
-
-        &::before {
-          content: "";
-          position: absolute;
-          width: 5px;
-          height: 5px;
-          top: 12px;
-          left: 5px;
-          background: #faae08;
-          border-radius: 50%;
-        }
-      }
-      td:nth-of-type(1) {
-        padding-left: 10px;
-      }
-      td:nth-of-type(4) {
-        padding-left: 20px;
-      }
-      td {
-        padding: 10px 0;
-      }
-      td.action {
-        .edit {
-          align-self: center;
-          margin-right: 50px;
-          color: var(--lightblue-color);
-          cursor: pointer;
-        }
-        .delete {
-          align-self: center;
-          color: var(--red-color);
-          cursor: pointer;
-        }
-      }
-      tbody {
-        tr {
-          padding: 10px 0 !important;
-          border-bottom: 1px solid #d9d5ec;
-          p {
-            margin: 0;
-          }
-        }
-      }
-    }
-    .paging {
-      width: 100%;
-      height: 50px;
-      background: #f4f2ff;
-      border-radius: 0 0 7px 7px;
-      margin-bottom: 40px;
-    }
+  }
+  .paging {
+    width: 100%;
+    height: 50px;
+    background: #f4f2ff;
+    border-radius: 0 0 7px 7px;
+    margin-bottom: 40px;
   }
 }
 .icon {
   color: black;
 }
-
 
 .tab-btn {
   margin-bottom: 2rem;
@@ -767,10 +592,9 @@ header {
   display: block !important;
 }
 
-
 .tab-btn.active-high {
   background: #fff;
-  border-bottom: 3px solid var(--primary);
+  border-bottom: 3px solid var(--accent-color);
   padding: 4px;
   border-right: none !important;
   font-weight: 600;
@@ -779,5 +603,125 @@ header {
   margin-bottom: 14px;
   margin-right: 15px;
   font-size: 15px;
+}
+
+.table-sub {
+  background: #f4f2ff;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--purple-color);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  .title {
+    display: inline-block !important;
+    grid-column: 1 / 3;
+    padding-left: 20px;
+  }
+}
+.table-subcontent {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  .company {
+    position: relative;
+    background: #e6e6f2;
+    width: 76px;
+    height: 19px;
+    border-radius: 15px;
+    padding: 2px 10px 5px 20px;
+    color: #4a4aff;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      top: 12px;
+      left: 5px;
+      background: #4a4aff;
+      border-radius: 50%;
+    }
+  }
+  .product {
+    position: relative;
+    background: #e8ecfd;
+    width: 76px;
+    height: 19px;
+    border-radius: 15px;
+    padding: 2px 10px 5px 20px;
+    color: #3789ec;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      top: 12px;
+      left: 5px;
+      background: #3789ec;
+      border-radius: 50%;
+    }
+  }
+  .social-impact {
+    position: relative;
+    background: #fff4e6;
+    width: 76px;
+    height: 19px;
+    border-radius: 15px;
+    padding: 2px 10px 5px 20px;
+    color: #faae08;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      top: 12px;
+      left: 5px;
+      background: #faae08;
+      border-radius: 50%;
+    }
+  }
+  .edit {
+    align-self: center;
+    margin-right: 50px;
+    color: var(--lightblue-color);
+    cursor: pointer;
+  }
+  .delete {
+    align-self: center;
+    color: var(--red-color);
+    cursor: pointer;
+  }
+  padding: 10px !important;
+
+  border-bottom: 1px solid #d9d5ec;
+  p {
+    margin: 0;
+  }
+  .title {
+    display: inline-block !important;
+    grid-column: 1 / 3;
+  }
+}
+.table-sub {
+  background: #f4f2ff;
+  padding: 15px 0;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--purple-color);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-radius: 5px;
+  .title {
+    display: inline-block !important;
+    grid-column: 1 / 3;
+    padding-left: 10px;
+  }
 }
 </style>
