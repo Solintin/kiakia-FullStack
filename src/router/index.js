@@ -25,6 +25,7 @@ import NewPrivacy from "../Admin/NewPrivacy.admin.vue";
 import NewCookie from "../Admin/NewCookie.admin.vue";
 import NewTos from "../Admin/NewTos.admin.vue";
 import SupportPages from "../Admin/SupportPages.admin.vue";
+import AdminDashboard from "../API/AdminDashboard.vue";
 
 Vue.use(VueRouter);
 
@@ -202,6 +203,14 @@ const routes = [
     path: '/admin/support-pages',
     name: 'SupportPages',
     component : SupportPages
+    
+  },
+              //API INTEGRATION ROUTE
+  //
+  {
+    path: '/api/admin/',
+    name: 'AdminDashboard',
+    component : AdminDashboard
     
   },
 
