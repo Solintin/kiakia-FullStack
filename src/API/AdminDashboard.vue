@@ -15,9 +15,15 @@
           </div>
         </div>
         <div class="col-3 d-flex justify-content-between">
-        <span><i class="far fa-bell"></i></span>
-        <span><i class="far fa-comment-dots"></i></span>
-        <span>David Alenoghena <img src="../assets/images/Homepage/image-1.svg" height="40px" width="40px" dir="" alt=""></span>
+          <span><i class="far fa-bell"></i></span>
+          <span><i class="far fa-comment-dots"></i></span>
+          <span
+            >David Alenoghena
+            <img
+              src="../assets/images/Homepage/image-1.svg"
+              class="profile-img"
+              alt=""
+          /></span>
         </div>
       </div>
     </section>
@@ -28,12 +34,20 @@
       <p>MAIN MENU</p>
       <ul>
         <li class="active">
-          <span><img src="../API/ApiAseet/Vector4.png" alt=""/></span> Dashboard
+          <span class="mdi mdi-view-dashboard" style="color: blue"></span>
+          Dashboard
         </li>
-        <li>User</li>
-        <li>Activity</li>
-        <li>Reports</li>
+        <li><span class="mdi mdi-account"></span> User</li>
+        <li><span class="mdi mdi-chart-line"></span> Activity</li>
+        <li>
+          <span><i class="fas fa-file"></i></span> Reports
+        </li>
       </ul>
+      <div class="log-out">
+        <ul>
+          <li><span class="mdi mdi-logout"></span>Log Out</li>
+        </ul>
+      </div>
     </section>
     <!-- E sidebar -->
 
@@ -43,24 +57,34 @@
       <div class="overview">
         <div class="top-row">
           <div class="box">
-            <div>No Of Users</div>
-            <div>bottom</div>
+            <div>
+              <span><img src="../API/ApiAseet/user.png" alt=""/></span> No Of
+              Users
+            </div>
+            <div>547</div>
           </div>
           <div class="box">
-            <div>Active Cylinders</div>
-            <div>bottom</div>
+            <div>
+              <span
+                ><img src="../API/ApiAseet/storage.png" alt="cylinder"/></span
+              >Active Cylinders
+            </div>
+            <div>235</div>
           </div>
           <div class="box">
-            <div>Inactive Cylinders</div>
-            <div>bottom</div>
+            <div>
+              <span
+                ><img src="../API/ApiAseet/storage.png" alt="cylinder"/></span
+              >Inactive Cylinders
+            </div>
+            <div>312</div>
           </div>
         </div>
         <!-- console  -->
         <div class="console">
           <div class="head-console">
             <div>Data Console</div>
-            <div>See All <i class="fas fa-external-link-alt"></i>
-            </div>
+            <div>See All <i class="fas fa-external-link-alt"></i></div>
           </div>
           <content>
             <div class="row">
@@ -80,7 +104,7 @@
               <div class="col-2">Open</div>
             </div>
             <div class="row">
-              <div class="col-1">1</div>
+              <div class="col-1">2</div>
               <div class="col-2">MT-2349</div>
               <div class="col-2">C-298</div>
               <div class="col-2">Ore Owolabi</div>
@@ -88,7 +112,7 @@
               <div class="col-2">Open</div>
             </div>
             <div class="row">
-              <div class="col-1">1</div>
+              <div class="col-1">3</div>
               <div class="col-2">MT-2349</div>
               <div class="col-2">C-298</div>
               <div class="col-2">Ore Owolabi</div>
@@ -115,29 +139,41 @@
             <span><img src="../API/ApiAseet/card.png" alt="balance"/></span>
             <span>
               C-456 topped up their credit balance
-              <p><a href="#">View details <i class="fas fa-arrow-right"></i></a></p></span
-            >
+              <p>
+                <a href="#"
+                  >View details <i class="fas fa-arrow-right"></i
+                ></a></p
+            ></span>
           </li>
           <li>
             <span><img src="../API/ApiAseet/Cancel.png" alt="balance"/></span>
             <span>
               C-456 topped up their credit balance
-              <p><a href="#">View details <i class="fas fa-arrow-right"></i></a></p></span
-            >
+              <p>
+                <a href="#"
+                  >View details <i class="fas fa-arrow-right"></i
+                ></a></p
+            ></span>
           </li>
           <li>
             <span><img src="../API/ApiAseet/network.png" alt="balance"/></span>
             <span>
               C-456 topped up their credit balance
-              <p><a href="#">View details <i class="fas fa-arrow-right"></i></a></p></span
-            >
+              <p>
+                <a href="#"
+                  >View details <i class="fas fa-arrow-right"></i
+                ></a></p
+            ></span>
           </li>
           <li>
             <span><img src="../API/ApiAseet/card.png" alt="balance"/></span>
             <span>
               C-456 topped up their credit balance
-              <p><a href="#">View details <i class="fas fa-arrow-right"></i></a></p></span
-            >
+              <p>
+                <a href="#"
+                  >View details <i class="fas fa-arrow-right"></i
+                ></a></p
+            ></span>
           </li>
         </ul>
       </div>
@@ -153,12 +189,21 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+@font-face {
+    font-family: 'futura_ltregular';
+    src: url('../API/ApiAseet/futuralt-webfont.woff2') format('woff2'),
+         url('../API/ApiAseet/futuralt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 // header
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
+  font-family: 'futura_ltregular';
 }
 body {
   background: #e5e5e5 !important;
@@ -173,7 +218,11 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  
+  .profile-img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+  }
 }
 .search-bar {
   flex: 1;
@@ -214,6 +263,9 @@ body {
     background: #dde7f9 !important;
     padding: 10px 5px;
     border-radius: 5px;
+  }
+  .log-out {
+    margin-top: 15rem;
   }
 }
 .main-api {
