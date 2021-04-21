@@ -26,6 +26,8 @@ import NewCookie from "../Admin/NewCookie.admin.vue";
 import NewTos from "../Admin/NewTos.admin.vue";
 import SupportPages from "../Admin/SupportPages.admin.vue";
 import AdminDashboard from "../API/AdminDashboard.vue";
+import AdminUser from "../API/AdminUser.vue";
+import UserInterface from "../API/UserInterface.vue";
 
 Vue.use(VueRouter);
 
@@ -211,6 +213,18 @@ const routes = [
     path: '/api/admin/',
     name: 'AdminDashboard',
     component : AdminDashboard
+    
+  },
+  {
+    path: '/api/admin-user/',
+    name: 'AdminUser',
+    component : AdminUser
+    
+  },
+  {
+    path: '/api/user/',
+    name: 'UserInterface',
+    component : UserInterface
     
   },
 
