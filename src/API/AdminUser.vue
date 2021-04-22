@@ -34,11 +34,11 @@
       <p>MAIN MENU</p>
       <ul>
         <li>
-          <span class="mdi mdi-view-dashboard"></span>
-          Dashboard
+         <router-link to="/api/admin"> <span class="mdi mdi-view-dashboard"></span>
+          Dashboard</router-link>
         </li>
         <li class="active">
-          <span class="mdi mdi-account" style="color: blue"></span> User
+         <router-link to="/api/admin-user">  <span class="mdi mdi-account" style="color: blue"></span> Users</router-link>
         </li>
         <li><span class="mdi mdi-chart-line"></span> Activity</li>
         <li>
@@ -79,10 +79,10 @@
               <div class="col-1">1</div>
               <div class="col-1">MT-2349</div>
               <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
+              <div class="col-2">David Alenoghena</div>
               <div class="col-2">2 Chevron Drive, Victoria Island</div>
-              <div class="col-2">2kg</div>
-              <div class="col-2"><span v-if="isActive">Open</span> <span v-else>Closed</span></div>
+              <div class="col-2">5kg</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"
@@ -97,12 +97,12 @@
 
             <div class="row">
               <div class="col-1">2</div>
-              <div class="col-1">MT-2349</div>
-              <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
-              <div class="col-2">2 Chevron Drive, Victoria Island</div>
+              <div class="col-1">MT-2356</div>
+              <div class="col-1">C-258</div>
+              <div class="col-2">Soliu Alley</div>
+              <div class="col-2">1 Akorede Drive, akoka Ibadan</div>
               <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"
@@ -115,17 +115,18 @@
             </div>
             <div class="row">
               <div class="col-1">3</div>
-              <div class="col-1">MT-2349</div>
-              <div class="col-1">C-298</div>
+              <div class="col-1">MT-2240</div>
+              <div class="col-1">C-28</div>
               <div class="col-2">Ore Owolabi</div>
               <div class="col-2">2 Chevron Drive, Victoria Island</div>
-              <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2">6kg</div>
+              <div class="col-2"><span class="text-success" v-if="isActive">Open</span> <span class="text-danger" v-else>Closed</span></div>
               <div class="col-1">
                 <button
                   type="button"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
+                  @click="toggleModal()"
                 >
                   View Details
                 </button>
@@ -135,10 +136,10 @@
               <div class="col-1">4</div>
               <div class="col-1">MT-2349</div>
               <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
-              <div class="col-2">2 Chevron Drive, Victoria Island</div>
-              <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2">Emeka Chuckwu</div>
+              <div class="col-2">2 sambna street, cheif building Abia state</div>
+              <div class="col-2">3kg</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"
@@ -151,12 +152,12 @@
             </div>
             <div class="row">
               <div class="col-1">5</div>
-              <div class="col-1">MT-2349</div>
+              <div class="col-1">MT-1249</div>
               <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
-              <div class="col-2">2 Chevron Drive, Victoria Island</div>
+              <div class="col-2">Ayo folorunsh0</div>
+              <div class="col-2">5 gidan kwano, Minna Niger-state</div>
               <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"
@@ -171,10 +172,10 @@
               <div class="col-1">6</div>
               <div class="col-1">MT-2349</div>
               <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
-              <div class="col-2">2 Chevron Drive, Victoria Island</div>
-              <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2">Alabi kareem</div>
+              <div class="col-2">2 northwall Drive, sango Ibadan</div>
+              <div class="col-2">4kg</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"
@@ -188,12 +189,12 @@
 
             <div class="row">
               <div class="col-1">7</div>
-              <div class="col-1">MT-2349</div>
-              <div class="col-1">C-298</div>
-              <div class="col-2">Ore Owolabi</div>
-              <div class="col-2">2 Chevron Drive, Victoria Island</div>
+              <div class="col-1">MT-4134</div>
+              <div class="col-1">C-858</div>
+              <div class="col-2">taiwo Owolabi</div>
+              <div class="col-2">2 Tunga Drive, Town-street Ilorin</div>
               <div class="col-2">2kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2 text-success">Open</div>
               <div class="col-1">
                 <button
                   type="button"

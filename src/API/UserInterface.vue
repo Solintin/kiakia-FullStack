@@ -6,7 +6,7 @@
         <div class="col-9">
           <img src="../API/ApiAseet/Layer 6.png" alt="" />
         </div>
-        
+
         <div class="col-3 d-flex justify-content-between">
           <span><i class="far fa-bell"></i></span>
           <span><i class="far fa-comment-dots"></i></span>
@@ -27,53 +27,84 @@
       <div class="d-flex justify-content-between">
         <div class="d-inline mb-3">
           <span class="me-3 fs-3">Dashboard</span>
-          <button class="btn rounded-pill btn-primary" data-toggle="modal" data-target="#topup" @click="openModal">TopUp Credit</button>
+          <button
+            class="btn rounded-pill btn-primary"
+            data-toggle="modal"
+            data-target="#topup"
+            @click="openModal"
+          >
+            TopUp Credit
+          </button>
         </div>
         <div>
-          <div>Valve Status</div>
-          <div class="d-flex justify-content-between align-items-center">
-              <span>Open</span>
-            <div class="ms-2 toggle-button" @click="switchState()">
-              <div class="switch" @click="toggle"></div>
+          <div  class="d-flex justify-content-between align-items-center">
+            <span>Valve Status</span>
+            <span><button id='start' class="ms-4 btn rounded-pill btn-success" style="font-size: 12px;">Switch ON</button></span>
             </div>
-             <span class="ms-2">Close</span>
+            <!-- Switch Button-toggle -->
+          <div class="d-flex justify-content-between align-items-center">
+           
+           <div class="button-wrapper">
+              <button class="open" id="resume">Open</button>
+            <button class="close" id="pause">Close</button>
+           
+           </div>
+           
+            <div>
+             
+
+            </div>
           </div>
         </div>
       </div>
-      
-    <!-- Top Up Modal -->
 
-<div class="modal fade" id="topup" tabindex="-1" role="dialog" aria-labelledby="topupTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="topupTitle">Top Up Credit</h5>
-       
-      </div>
-      <div class="modal-body">
-       <p class="mb-3">You currently have <span class="fw-bold">0kg</span> of gas left to unlock in your cylinder. </p>
-       <p>How much gas do you want to unlock?</p>
-     <div class="search-wrapper">
-           <input type="text" > <span>Kg</span><span class="mx-3">|</span> <span class="text-primary">Max</span>
-     </div>
-      </div>
-      <div class="modal-footer text-start">
-       
-        <button type="button" class="btn rounded-pill btn-primary" @click="closeModal">Unlock Gas</button>
-      </div>
-    </div>
-  </div>
-</div>
+      <!-- Top Up Modal -->
 
-    <!-- E Top Up Modal -->
+      <div
+        class="modal fade"
+        id="topup"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="topupTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="topupTitle">Top Up Credit</h5>
+            </div>
+            <div class="modal-body">
+              <p class="mb-3">
+                You currently have <span class="fw-bold">0kg</span> of gas left
+                to unlock in your cylinder.
+              </p>
+              <p>How much gas do you want to unlock?</p>
+              <div class="search-wrapper">
+                <input type="text" /> <span>Kg</span><span class="mx-3">|</span>
+                <span class="text-primary">Max</span>
+              </div>
+            </div>
+            <div class="modal-footer text-start">
+              <button
+                type="button"
+                class="btn rounded-pill btn-primary"
+                @click="closeModal"
+              >
+                Unlock Gas
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- E Top Up Modal -->
 
       <div class="overview">
         <div class="top-row">
           <div class="box">
             <div>
-              <span><img src="../API/ApiAseet/user.png" alt=""/></span> Credit
-              Purchased
+              <span><img src="../API/ApiAseet/user.png" alt=""/></span>Last
+              Credit Purchased
             </div>
             <div>3kg</div>
           </div>
@@ -89,9 +120,9 @@
             <div>
               <span
                 ><img src="../API/ApiAseet/storage.png" alt="cylinder"/></span
-              >Estimated time till exhaustion
+              >Volume Remaining
             </div>
-            <div>312</div>
+            <div><span id="timer">3</span> kg</div>
           </div>
         </div>
         <!-- console  -->
@@ -107,31 +138,31 @@
               <div class="col-2">Cylinder Number</div>
               <div class="col-2">Credit Purchased</div>
               <div class="col-3">Volume Remaining(kg)</div>
-              <div class="col-2">Valve Status</div>
+              <div class="col-2">Trasaction Details</div>
+            </div>
+            <div class="row">
+              <div class="col-1">17/04/21</div>
+              <div class="col-2">MT-2349</div>
+              <div class="col-2">C-298</div>
+              <div class="col-2">3kg</div>
+              <div class="col-3" id="timer">3 <span>kg</span></div>
+              <div class="col-2">View Details</div>
             </div>
             <div class="row">
               <div class="col-1">27/03/21</div>
               <div class="col-2">MT-2349</div>
               <div class="col-2">C-298</div>
               <div class="col-2">6kg</div>
-              <div class="col-3">3.5kg</div>
-              <div class="col-2"> <span v-if="isActive">Open</span><span v-else>Close</span>  </div>
+              <div class="col-3">0</div>
+              <div class="col-2">View Details</div>
             </div>
             <div class="row">
-              <div class="col-1">27/03/21</div>
+              <div class="col-1">2/03/21</div>
               <div class="col-2">MT-2349</div>
               <div class="col-2">C-298</div>
-              <div class="col-2">6kg</div>
-              <div class="col-3">3.5kg</div>
-              <div class="col-2">Open</div>
-            </div>
-            <div class="row">
-              <div class="col-1">27/03/21</div>
-              <div class="col-2">MT-2349</div>
-              <div class="col-2">C-298</div>
-              <div class="col-2">6kg</div>
-              <div class="col-3">3.5kg</div>
-              <div class="col-2">Open</div>
+              <div class="col-2">3kg</div>
+              <div class="col-3">0</div>
+              <div class="col-2">View Details</div>
             </div>
           </content>
         </div>
@@ -152,7 +183,7 @@
           <li>
             <span><img src="../API/ApiAseet/card.png" alt="balance"/></span>
             <span>
-              C-456 topped up their credit balance
+              C-298 topped up their credit balance
               <p>
                 <a href="#"
                   >View details <i class="fas fa-arrow-right"></i
@@ -162,7 +193,7 @@
           <li>
             <span><img src="../API/ApiAseet/Cancel.png" alt="balance"/></span>
             <span>
-              C-456 topped up their credit balance
+              C-298 topped up their credit balance
               <p>
                 <a href="#"
                   >View details <i class="fas fa-arrow-right"></i
@@ -172,7 +203,7 @@
           <li>
             <span><img src="../API/ApiAseet/network.png" alt="balance"/></span>
             <span>
-              C-456 topped up their credit balance
+              C-298 topped up their credit balance
               <p>
                 <a href="#"
                   >View details <i class="fas fa-arrow-right"></i
@@ -182,7 +213,7 @@
           <li>
             <span><img src="../API/ApiAseet/card.png" alt="balance"/></span>
             <span>
-              C-456 topped up their credit balance
+              C-298 topped up their credit balance
               <p>
                 <a href="#"
                   >View details <i class="fas fa-arrow-right"></i
@@ -191,6 +222,7 @@
           </li>
         </ul>
       </div>
+     
     </div>
 
     <!-- E right side-bar -->
@@ -203,13 +235,97 @@ export default {
   data() {
     return {
       isActive: false,
-      info: [],
+      isPause : true,
+      credit: 3,
     };
   },
 
+  mounted() {
+    var timer = document.getElementById("timer");
+var start = document.getElementById("start");
+var pause = document.getElementById("pause");
+var resume = document.getElementById("resume");
+var id;
+var value = "00:00";
+
+function startTimer(m, s) {
+    timer.textContent = m + "." + s;
+    if (s == 0) {
+        if (m == 0) {
+            return;
+        } else if (m != 0) {
+            m = m - .0003;
+            s = 100;
+        }
+    }
+    
+    s = s - .0003;
+    id = setTimeout(function () {
+        startTimer(m, s)
+    }, 1000);
+}
+
+function pauseTimer() {
+    value = timer.textContent;
+    clearTimeout(id);
+    console.log("paused");
+}
+
+function resumeTimer() {
+  console.log("resumed");
+    var t = value.split(".");
+    
+    startTimer(parseInt(t[0], 10), parseInt(t[1], 10));
+}
+
+start.addEventListener("click", function () {
+    startTimer(3, 0);
+}, false);
+
+pause.addEventListener("click", pauseTimer, false);
+
+resume.addEventListener("click", resumeTimer, false);
+  },
+
   methods: {
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
     toggle() {
-      
+      this.isActive = !this.isActive
+      let downloadTimer;
+      if (this.isActive) {
+        let timeleft = 3;
+        downloadTimer = setInterval(function() {
+          if (timeleft <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("volume").innerHTML = "Finished";
+          } else {
+            document.getElementById("volume").innerHTML = timeleft;
+          }
+          
+      if (this.pause) {
+        clearInterval(downloadTimer);
+      }
+          timeleft -= 0.000001;
+        }, 1000);
+      }
+
+ 
+
       if (this.isActive) {
         //   if Open Change to Close
         axios
@@ -224,10 +340,10 @@ export default {
           .catch((e) => {
             console.log(e);
           });
-          this.isActive = !this.isActive;
-          console.log('Not active');
+        this.isActive = !this.isActive;
+        console.log("Not active");
       } else {
-            axios
+        axios
           .post(
             `http://english.energyy.ucskype.com/internal/commonInternal.jsp?requestParams={"action":"lorawanMeterApi","method":"setValveState","param":{"IMEI":"862818042416703","valveState":"1"}}`
           )
@@ -248,12 +364,12 @@ export default {
       const stateChange = document.querySelector(".switch");
       stateChange.classList.toggle("active");
     },
-    openModal(){
-        $('#topup').modal('show')
+    openModal() {
+      $("#topup").modal("show");
     },
-    closeModal(){
-        $('#topup').modal('hide')
-    }
+    closeModal() {
+      $("#topup").modal("hide");
+    },
   },
 };
 </script>
@@ -444,20 +560,43 @@ span img {
   padding: 5px;
   border-radius: 5px;
 }
-.modal .modal-footer{
-    text-align: left !important;
+.modal .modal-footer {
+  text-align: left !important;
 }
-.search-wrapper{
+.search-wrapper {
+  background: #e5e5e5;
+  padding: 5px;
 
-background: #e5e5e5;
-padding: 5px;
+  input {
+    border-bottom: none !important;
+    width: 70%;
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+}
+.button-wrapper{
+  padding-right: 12px;
+  button{
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  .open{
+        border-radius:  3px  0 0 3px ;
+background: rgb(71, 102, 22);
+padding: 4px 10px;
+margin: 4px 0;
+color: white;
+  }
+  .close{
+        border-radius:  0 3px 3px 0;
+background: crimson;
+padding: 4px 10px;
+color: wheat;
+margin: 4px 0;
 
-    input{
-        border-bottom: none !important;
-        width: 70%;
-        background: transparent;
-        outline: none;
-        border: none;
-    }
+  }
 }
 </style>

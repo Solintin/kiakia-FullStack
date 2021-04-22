@@ -37,7 +37,7 @@
           <span class="mdi mdi-view-dashboard" style="color: blue"></span>
           Dashboard
         </li>
-        <li><span class="mdi mdi-account"></span> User</li>
+        <li> <router-link to="/api/admin-user"><span class="mdi mdi-account"></span> Users</router-link>    </li>
         <li><span class="mdi mdi-chart-line"></span> Activity</li>
         <li>
           <span><i class="fas fa-file"></i></span> Reports
@@ -61,7 +61,7 @@
               <span><img src="../API/ApiAseet/user.png" alt=""/></span> No Of
               Users
             </div>
-            <div>547</div>
+            <div>18</div>
           </div>
           <div class="box">
             <div>
@@ -69,7 +69,7 @@
                 ><img src="../API/ApiAseet/storage.png" alt="cylinder"/></span
               >Active Cylinders
             </div>
-            <div>235</div>
+            <div>12</div>
           </div>
           <div class="box">
             <div>
@@ -77,14 +77,14 @@
                 ><img src="../API/ApiAseet/storage.png" alt="cylinder"/></span
               >Inactive Cylinders
             </div>
-            <div>312</div>
+            <div>6</div>
           </div>
         </div>
         <!-- console  -->
         <div class="console">
           <div class="head-console">
             <div>Data Console</div>
-            <div>See All <i class="fas fa-external-link-alt"></i></div>
+            <div>  <router-link to="/api/admin-user"> See All <i class="fas fa-external-link-alt"></i></router-link>    </div>
           </div>
           <content>
             <div class="row">
