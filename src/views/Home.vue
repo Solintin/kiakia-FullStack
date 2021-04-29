@@ -489,7 +489,7 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -508,13 +508,13 @@ a {
 }
 body {
   background-color: #fffffa;
-  font-family: "Manrope", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 /* =============Deskstop view====================== */
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
-  background-image: url("../assets/images/Homepage/Rectangle.png");
+  background: #F7F7FC;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

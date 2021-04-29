@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import NewHome from "../components/New-Home.vue";
 import About from "../views/About.vue";
 import Gasprenuer from "../views/Gasprenuer.vue";
 import Blog from "../views/Blog.vue";
@@ -37,6 +38,13 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+   
+  },
+  //Home
+  {
+    path: "/newhome",
+    name: "newhome",
+    component: NewHome,
    
   },
   //About

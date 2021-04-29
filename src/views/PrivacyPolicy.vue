@@ -1,102 +1,100 @@
 <template>
   <div>
-        <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-           <Header />
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
 
-
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            Legal Infomation
-                        </h5>
-                        <h1>
-                            Terms of services
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="/TOS/Asset/images/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                Legal Infomation
+              </h5>
+              <h1>
+                Terms of services
+              </h1>
             </div>
-            <!-- E Content -->
-
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img src="/TOS/Asset/images/Linked Path Group.svg" alt="" />
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="container">
-        <div v-if="policies.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+      <div v-if="policies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
       </div>
-        <div class="my-4">
-           <span v-for="(policy, key) in policies" :key="key">
-         <p v-html="policy.policy"></p>
-       </span>
-        </div>
+      <div class="my-4">
+        <span v-for="(policy, key) in policies" :key="key">
+          <p v-html="policy.policy"></p>
+        </span>
+      </div>
     </div>
     <!--E Body -->
 
-
     <!-- Upgrade -->
     <div class="upgrade text-white">
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-md-6 col-sm-12">
-                    <h2>
-                        Upgrade your cooking gas experience
-                    </h2>
-                    <p class="mb-4">
-                        Download the app to keep track of your gas level, order gas from the comfort of your home,
-                        subscribe for
-                        refills.
-                    </p>
-                    <div class="download">
-                        <div>Get the App</div>
-                        <a href="#"> <img
-                                src="../assets/images/Support/Google Play Badge.png"
-                                alt="gplay">
-                        </a>
-                        <a class="me-3" href="#"> <img
-                                src="../assets/images/Support/App Store Badge.png"
-                                alt="apple">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 cta mt-5">
-                    <img src="../assets/images/Support/iPhone.png" alt="">
-                </div>
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-6 col-sm-12">
+            <h2>
+              Upgrade your cooking gas experience
+            </h2>
+            <p class="mb-4">
+              Download the app to keep track of your gas level, order gas from
+              the comfort of your home, subscribe for refills.
+            </p>
+            <div class="download">
+              <div>Get the App</div>
+              <a href="#">
+                <img
+                  src="../assets/images/Support/Google Play Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="me-3" href="#">
+                <img
+                  src="../assets/images/Support/App Store Badge.png"
+                  alt="apple"
+                />
+              </a>
             </div>
+          </div>
+          <div class="col-md-6 col-sm-12 cta mt-5">
+            <img src="../assets/images/Support/iPhone.png" alt="" />
+          </div>
         </div>
+      </div>
     </div>
     <!-- E Upgrade -->
 
-<!-- footer -->
-<Footer/>
-<!-- E footer -->
-
-   
+    <!-- footer -->
+    <Footer />
+    <!-- E footer -->
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import { mapState } from "vuex";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
-    name : "privacy-policy",
-      components:{
-      Footer, Header
-    },
-  
+  name: "privacy-policy",
+  components: {
+    Footer,
+    Header,
+  },
+
   metaInfo() {
     return {
       title: "Privacy Policy || KiaKia Gas 360",
@@ -126,24 +124,17 @@ export default {
     getPolicy() {
       this.$store.dispatch("GET_POLICY");
     },
-  }
-
-}
+  },
+};
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
 :root {
   --primary: #3789ec;
   --accent: #011230;
 }
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
+
 ul {
   margin: 0 !important;
   padding: 0 !important;
@@ -156,14 +147,14 @@ a {
   color: #000 !important;
 }
 body {
-  background-color: #fffffa;
-  font-family: "Manrope", sans-serif;
+  background-color: #ffffff;
+  font-family: "Work Sans", sans-serif !important;
 }
 /* =============Deskstop view====================== */
 .landing-page {
   min-width: 100%;
   min-height: auto;
-  background-image: url("../assets/images/Support/Rectangle.png");
+  background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -366,5 +357,4 @@ body {
     color: var(--primary) !important;
   }
 }
-
 </style>

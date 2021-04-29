@@ -137,18 +137,12 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
 :root {
   --primary: #3789ec;
   --accent: #011230;
 }
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
+
 ul {
   margin: 0 !important;
   padding: 0 !important;
@@ -160,10 +154,9 @@ a {
   text-decoration: none !important;
   color: #000 !important;
 }
-
 body {
-  background-color: #fffffa;
-  font-family: "Manrope", sans-serif;
+  background-color: #ffffff;
+ font-family: 'Work Sans', sans-serif !important;
 }
 /* =============Deskstop view====================== */
 .landing-page {

@@ -32,7 +32,7 @@
 
     <section class="container blog">
       <div v-if="posts.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
       </div>
       <div class="mobile-first">
         <div>
@@ -45,13 +45,25 @@
               @change="getAllBlogs"
               >ALL</option
             >
-            <option class="tab-btn" value="company" data-id="company"  @change="getCompanyBlogs"
+            <option
+              class="tab-btn"
+              value="company"
+              data-id="company"
+              @change="getCompanyBlogs"
               >Company</option
             >
-            <option class="tab-btn" value="product" data-id="product"  @change="getProductBlogs"
+            <option
+              class="tab-btn"
+              value="product"
+              data-id="product"
+              @change="getProductBlogs"
               >Product</option
             >
-            <option class="tab-btn" value="social" data-id="social"  @change="getSocialBlogs"
+            <option
+              class="tab-btn"
+              value="social"
+              data-id="social"
+              @change="getSocialBlogs"
               >Social</option
             >
           </select>
@@ -107,7 +119,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-             <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
+              <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -132,7 +144,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
+              <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -157,7 +169,7 @@
               :key="key"
               class="col-lg-4 col-md-6 mb-3"
             >
-            <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
+              <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
@@ -229,8 +241,8 @@ export default {
       product: [],
       social: [],
       search: "",
-      isLoading : true,
-      incomingData : {}, 
+      isLoading: true,
+      incomingData: {},
     };
   },
   metaInfo() {
@@ -253,9 +265,7 @@ export default {
     };
   },
   mounted() {
-
-      // console.log(this.isLoading);
-
+    // console.log(this.isLoading);
 
     const selectOption = document.querySelector("#dropdown");
     const blog = document.querySelector(".blog");
@@ -283,14 +293,9 @@ export default {
       }
     });
   },
- 
-  
 
   created() {
     this.getPost();
-
-
-  
   },
 
   computed: {
@@ -340,7 +345,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
+
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -352,7 +358,7 @@ export default {
   list-style: none;
   text-decoration: none;
 }
-.loading{
+.loading {
   display: grid;
   place-content: center;
 }
@@ -369,13 +375,13 @@ a {
 }
 body {
   background-color: #fffffa;
-  font-family: "Manrope", sans-serif;
+  font-family: "Work Sans" sans-serif;
 }
 /* =============Deskstop view====================== */
 .landing-page {
   min-width: 100%;
   min-height: auto;
-  background-image: url("../assets/images/Blog/Rectangle.png");
+  background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

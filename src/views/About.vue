@@ -1,156 +1,169 @@
 <template>
   <div>
-       <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
+      <div class="container">
+        <!-- Navbar -->
         <Header />
 
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            About us
-                        </h5>
-                        <h1>
-                            Sustainability is our lifestyle
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/About/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                About us
+              </h5>
+              <h1>
+                Sustainability is our lifestyle
+              </h1>
             </div>
-            <!-- E Content -->
-
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img
+                  src="../assets/images/About/Linked Path Group.svg"
+                  alt=""
+                />
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
 
-
     <div class="container sustainability my-5 text-center">
-        <div class="mission">
-            <div class="head my-2">
-                the mission
-            </div>
-            <h3>
-                Accelerate clean cooking for the underserved
-            </h3>
-            <p>
-                Our goal is to reach last mile consumers who earn between $1— $8 per day across Africa
-            </p>
+      <div class="mission">
+        <div class="head my-2">
+          the mission
         </div>
+        <h3>
+          Accelerate clean cooking for the underserved
+        </h3>
+        <p>
+          Our goal is to reach last mile consumers who earn between $1— $8 per
+          day across Africa
+        </p>
+      </div>
     </div>
     <div class=" sustainability container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="head my-2">
-                    the mission
-                </div>
-                <h4>
-                    We are committed to sustainability
-                </h4>
-                <p class="under-note">
-                    We convert scrap metal from expired LPG cylinders to make the enclosures for the IOT device.
-                    Scrap
-                    from laptop batteries(18650 li-on batteries) is used to power the IOT devices. </p>
-            </div>
-            <div class="col-md-6 sustain">
-                <img class="img-fluid" src="../assets/images/About/Group 1789.svg" alt="sustainability culture">
-            </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="head my-2">
+            the mission
+          </div>
+          <h4>
+            We are committed to sustainability
+          </h4>
+          <p class="under-note">
+            We convert scrap metal from expired LPG cylinders to make the
+            enclosures for the IOT device. Scrap from laptop batteries(18650
+            li-on batteries) is used to power the IOT devices.
+          </p>
         </div>
+        <div class="col-md-6 sustain">
+          <img
+            class="img-fluid"
+            src="../assets/images/About/Group 1789.svg"
+            alt="sustainability culture"
+          />
+        </div>
+      </div>
     </div>
 
-
     <div class=" sustainability container my-5 text-center">
-        <div class="mission">
-            <div class="head my-2">
-                Who we are
-            </div>
-            <h3>
-                Democratizing Energy Access in Africa
-            </h3>
-            <p>
-                We are solving the energy poverty problem across households in Africa using IOT and Big Data </p>
+      <div class="mission">
+        <div class="head my-2">
+          Who we are
         </div>
+        <h3>
+          Democratizing Energy Access in Africa
+        </h3>
+        <p>
+          We are solving the energy poverty problem across households in Africa
+          using IOT and Big Data
+        </p>
+      </div>
     </div>
 
     <!-- Upgrade -->
     <div class="upgrade text-white">
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-md-6 col-sm-12">
-                    <h2>
-                        Upgrade your cooking gas experience
-                    </h2>
-                    <p class="mb-4">
-                        Download the app to keep track of your gas level, order gas from the comfort of your home,
-                        subscribe for
-                        refills.
-                    </p>
-                    <div class="download">
-                        <div>Get the App</div>
-                        <a href="#"> <img src="../assets/images/About/Google Play Badge.png" alt="gplay">
-                        </a>
-                        <a class="me-3" href="#"> <img src="../assets/images/About/App Store Badge.png" alt="apple">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 cta mt-5">
-                    <img src="../assets/images/About/iPhone.png" alt="">
-                </div>
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-6 col-sm-12">
+            <h2>
+              Upgrade your cooking gas experience
+            </h2>
+            <p class="mb-4">
+              Download the app to keep track of your gas level, order gas from
+              the comfort of your home, subscribe for refills.
+            </p>
+            <div class="download">
+              <div>Get the App</div>
+              <a href="#">
+                <img
+                  src="../assets/images/About/Google Play Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="me-3" href="#">
+                <img
+                  src="../assets/images/About/App Store Badge.png"
+                  alt="apple"
+                />
+              </a>
             </div>
+          </div>
+          <div class="col-md-6 col-sm-12 cta mt-5">
+            <img src="../assets/images/About/iPhone.png" alt="" />
+          </div>
         </div>
+      </div>
     </div>
     <!-- E Upgrade -->
 
-<!-- Footert -->
-  <Footer />
-<!--E  Footer -->
-
+    <!-- Footert -->
+    <Footer />
+    <!--E  Footer -->
   </div>
 </template>
 
 <script>
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
-    name: 'About',
-    components:{
-      Footer, Header
-    },
-     metaInfo() {
-      return {
-        title: "About || KiaKia Gas 360",
-        // meta: [
-        //   {
-        //     name: "description",
-        //     content:
-        //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-        //   },
-        //   {
-        //     property: "og:title",
-        //     content: "Epiloge - Build your network in your field of interest",
-        //   },
-        //   { property: "og:site_name", content: "Epiloge" },
-        //   { property: "og:type", content: "website" },
-        //   { name: "robots", content: "index,follow" },
-        // ],
-      };
-    },
-  
-
-}
+  name: "About",
+  components: {
+    Footer,
+    Header,
+  },
+  metaInfo() {
+    return {
+      title: "About || KiaKia Gas 360",
+      // meta: [
+      //   {
+      //     name: "description",
+      //     content:
+      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
+      //   },
+      //   {
+      //     property: "og:title",
+      //     content: "Epiloge - Build your network in your field of interest",
+      //   },
+      //   { property: "og:site_name", content: "Epiloge" },
+      //   { property: "og:type", content: "website" },
+      //   { name: "robots", content: "index,follow" },
+      // ],
+    };
+  },
+};
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
+
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -173,7 +186,7 @@ a {
   text-decoration: none !important;
   color: #000 !important;
 }
-a:hover{
+a:hover {
   color: var(--primary);
 }
 body {
@@ -184,7 +197,7 @@ body {
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
-  background-image: url("../assets/images/About/Rectangle.png");
+  background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -449,7 +462,7 @@ body {
     display: block !important;
     margin: 50px 20px !important;
   }
-  .menu-list li a:hover{
+  .menu-list li a:hover {
     color: #3789ec !important;
   }
   .menu-list li:last-child {
@@ -527,10 +540,10 @@ body {
   .partners-mobile {
     display: flex;
   }
-  .phone-mobile img{
+  .phone-mobile img {
     width: 450px;
   }
-  .phone-desktop{
+  .phone-desktop {
     display: none;
   }
 
@@ -568,5 +581,4 @@ body {
     display: none;
   }
 }
-
 </style>

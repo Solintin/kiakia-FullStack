@@ -1,165 +1,268 @@
 <template>
   <div>
-<!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-           <Header />
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
 
-            <!-- Content -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            BECOME A SUPPLIER
-                        </h5>
-                        <h1>
-                            Be a Gaspreneur
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/GasPreneur/Linked-Path-Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+        <!-- Content -->
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                BECOME A SUPPLIER
+              </h5>
+              <h1>
+                Be a Gaspreneur
+              </h1>
             </div>
-            <!-- E Content -->
-
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img
+                  src="../assets/images/GasPreneur/Linked-Path-Group.svg"
+                  alt=""
+                />
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
     <div class="  container my-5 ">
-
-        <div class="head my-2">
-            DISTRIBUTION
-        </div>
-        <h3 style="color: #011230;">
-            Join our Smart Distro Network
-        </h3>
-        <p style="color:  #333333;
-        ">
-            Be part of our solution to expand access to clean cooking for households in under-served areas who earn
-            between $1-$8 per day.
-        </p>
+      <div class="head my-2">
+        DISTRIBUTION
+      </div>
+      <h3 style="color: #011230;">
+        Join our Smart Distro Network
+      </h3>
+      <p
+        style="color:  #333333;
+        "
+      >
+        Be part of our solution to expand access to clean cooking for households
+        in under-served areas who earn between $1-$8 per day.
+      </p>
     </div>
 
     <div class="  container my-5 ">
-        <div class="row">
-            <div class="col-md-6">
-                <h4 style="color: #011230;">
-                    Ready to get started?
-                    </h4>
-                    <p style="color:  #333333;">
-                        Please fill out our contact form and our team would be in touch or email us directly at <span
-                            style="color: #3789EC;"> support@gas360.io</span>
-                    </p>
-
-            </div>
-            <div class="col-md-6">
-                <form>
-                    <div class="position-relative">
-                        <input required type="text" name="full-name" id="full-name" placeholder="Full name">
-                        <img class="icon position-absolute" src="../assets/images/GasPreneur/Vector.svg" alt="name">
-                    </div>
-
-                    <div class="position-relative">
-                        <input required type="phone" name="phone" id="phone" placeholder="Phone number">
-                        <img class="icon position-absolute" src="../assets/images/GasPreneur/Vector-1.svg" alt="phone">
-                    </div>
-
-                    <div class="position-relative">
-                        <input required type="email" name="email" id="email" placeholder="Email Address">
-                        <img class="icon position-absolute" src="../assets/images/GasPreneur/Vector-2.svg" alt="maill">
-                    </div>
-
-                    <div class="position-relative">
-                        <input required type="text" name="location" id="location" placeholder="Location">
-                        <img class="icon position-absolute" src="../assets/images/GasPreneur/carbon_location.svg"
-                            alt="location">
-                    </div>
-                    <div class="position-relative">
-                        <input required type="text" name="company-name" id="company-name" placeholder="Company name">
-                        <img class="icon position-absolute" src="../assets/images/GasPreneur/Vector-4.svg" alt="company">
-                    </div>
-                    <!-- type of business -->
-                    <label class="mt-3 mb-1 label-head">Type of buisiness</label>
-                    <p>
-                        <input type="radio" id="micro" name="buisiness" value="micro">
-                        <label for="micro">Micro retailer(&#60;500kg) </label><br>
-                        <input type="radio" id="mini" name="buisiness" value="mini">
-                        <label for="mini">Mini retailer (2-10mt)</label><br>
-                        <input type="radio" id="setup" name="buisiness" value="setup">
-                        <label for="setup">I would like to set up an LPG retail business</label>
-                    </p>
-                    <!-- cylinder inventory -->
-                    <label class="mt-3 mb-1 label-head">Cylinder Inventory</label>
-                    <p>
-                        <input type="radio" id="no-cylinder" name="inventory" value="no-cylinder">
-                        <label for="no-cylinder">I do not have cylinders </label><br>
-                        <input type="radio" id="less-than-10" name="inventory" value="less-than-10">
-                        <label for="less-than-10">&#60;10 cylinders</label><br>
-                        <input type="radio" id="ten-to-fifty" name="inventory" value="ten-to-fifty">
-                        <label for="ten-to-fifty">10-50cylinders</label><br>
-                        <input type="radio" id="less-than-50" name="inventory" value="less-than-50">
-                        <label for="less-than-50"> >50 cylinders</label>
-                    </p>
-                    <!-- how do you know us -->
-                    <label class="mt-3 mb-1 label-head">How did you hear abour us?</label>
-                    <p>
-                        <input type="checkbox" id="gas360website" name="how-you-know-us" value="gas360website">
-                        <label for="gas360website">Gas360 website</label><br>
-                        <input type="checkbox" id="social-media" name="how-you-know-us" value="social-media">
-                        <label for="social-media">Social media</label><br>
-                        <input type="checkbox" id="friend" name="how-you-know-us" value="friend">
-                        <label for="friend">A friend</label><br>
-                        <input type="checkbox" id="outlets" name="how-you-know-us" value="outlets">
-                        <label for="outlets">News outlets</label><br>
-                        <input type="checkbox" id="event" name="how-you-know-us" value="event">
-                        <label for="event">At a conference or event</label>
-                    </p>
-                    <button type="button" class="btn btn-primary">Submit Form</button>
-
-
-                </form>
-            </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h4 style="color: #011230;">
+            Ready to get started?
+          </h4>
+          <p style="color:  #333333;">
+            Please fill out our contact form and our team would be in touch or
+            email us directly at
+            <span style="color: #3789EC;"> support@gas360.io</span>
+          </p>
         </div>
+        <div class="col-md-6">
+          <form>
+            <div class="position-relative">
+              <input
+                required
+                type="text"
+                name="full-name"
+                id="full-name"
+                placeholder="Full name"
+              />
+              <img
+                class="icon position-absolute"
+                src="../assets/images/GasPreneur/Vector.svg"
+                alt="name"
+              />
+            </div>
+
+            <div class="position-relative">
+              <input
+                required
+                type="phone"
+                name="phone"
+                id="phone"
+                placeholder="Phone number"
+              />
+              <img
+                class="icon position-absolute"
+                src="../assets/images/GasPreneur/Vector-1.svg"
+                alt="phone"
+              />
+            </div>
+
+            <div class="position-relative">
+              <input
+                required
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+              />
+              <img
+                class="icon position-absolute"
+                src="../assets/images/GasPreneur/Vector-2.svg"
+                alt="maill"
+              />
+            </div>
+
+            <div class="position-relative">
+              <input
+                required
+                type="text"
+                name="location"
+                id="location"
+                placeholder="Location"
+              />
+              <img
+                class="icon position-absolute"
+                src="../assets/images/GasPreneur/carbon_location.svg"
+                alt="location"
+              />
+            </div>
+            <div class="position-relative">
+              <input
+                required
+                type="text"
+                name="company-name"
+                id="company-name"
+                placeholder="Company name"
+              />
+              <img
+                class="icon position-absolute"
+                src="../assets/images/GasPreneur/Vector-4.svg"
+                alt="company"
+              />
+            </div>
+            <!-- type of business -->
+            <label class="mt-3 mb-1 label-head">Type of buisiness</label>
+            <p>
+              <input type="radio" id="micro" name="buisiness" value="micro" />
+              <label for="micro">Micro retailer(&#60;500kg) </label><br />
+              <input type="radio" id="mini" name="buisiness" value="mini" />
+              <label for="mini">Mini retailer (2-10mt)</label><br />
+              <input type="radio" id="setup" name="buisiness" value="setup" />
+              <label for="setup"
+                >I would like to set up an LPG retail business</label
+              >
+            </p>
+            <!-- cylinder inventory -->
+            <label class="mt-3 mb-1 label-head">Cylinder Inventory</label>
+            <p>
+              <input
+                type="radio"
+                id="no-cylinder"
+                name="inventory"
+                value="no-cylinder"
+              />
+              <label for="no-cylinder">I do not have cylinders </label><br />
+              <input
+                type="radio"
+                id="less-than-10"
+                name="inventory"
+                value="less-than-10"
+              />
+              <label for="less-than-10">&#60;10 cylinders</label><br />
+              <input
+                type="radio"
+                id="ten-to-fifty"
+                name="inventory"
+                value="ten-to-fifty"
+              />
+              <label for="ten-to-fifty">10-50cylinders</label><br />
+              <input
+                type="radio"
+                id="less-than-50"
+                name="inventory"
+                value="less-than-50"
+              />
+              <label for="less-than-50"> >50 cylinders</label>
+            </p>
+            <!-- how do you know us -->
+            <label class="mt-3 mb-1 label-head"
+              >How did you hear abour us?</label
+            >
+            <p>
+              <input
+                type="checkbox"
+                id="gas360website"
+                name="how-you-know-us"
+                value="gas360website"
+              />
+              <label for="gas360website">Gas360 website</label><br />
+              <input
+                type="checkbox"
+                id="social-media"
+                name="how-you-know-us"
+                value="social-media"
+              />
+              <label for="social-media">Social media</label><br />
+              <input
+                type="checkbox"
+                id="friend"
+                name="how-you-know-us"
+                value="friend"
+              />
+              <label for="friend">A friend</label><br />
+              <input
+                type="checkbox"
+                id="outlets"
+                name="how-you-know-us"
+                value="outlets"
+              />
+              <label for="outlets">News outlets</label><br />
+              <input
+                type="checkbox"
+                id="event"
+                name="how-you-know-us"
+                value="event"
+              />
+              <label for="event">At a conference or event</label>
+            </p>
+            <button type="button" class="btn btn-primary">Submit Form</button>
+          </form>
+        </div>
+      </div>
     </div>
     <!--  E body -->
 
     <!-- Upgrade -->
     <div class="upgrade text-white">
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-md-6 col-sm-12">
-                    <h2>
-                        Upgrade your cooking gas experience
-                    </h2>
-                    <p class="mb-4">
-                        Download the app to keep track of your gas level, order gas from the comfort of your home,
-                        subscribe for
-                        refills.
-                    </p>
-                    <div class="download">
-                        <div>Get the App</div>
-                        <a href="#"> <img src="../assets/images/GasPreneur/Google-Play-Badge.png" alt="gplay">
-                        </a>
-                        <a class="me-3" href="#"> <img src="../assets/images/GasPreneur/App-Store-Badge.png" alt="apple">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 cta mt-5">
-                    <img src="../assets/images/GasPreneur/iPhone.png" alt="">
-                </div>
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-6 col-sm-12">
+            <h2>
+              Upgrade your cooking gas experience
+            </h2>
+            <p class="mb-4">
+              Download the app to keep track of your gas level, order gas from
+              the comfort of your home, subscribe for refills.
+            </p>
+            <div class="download">
+              <div>Get the App</div>
+              <a href="#">
+                <img
+                  src="../assets/images/GasPreneur/Google-Play-Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="me-3" href="#">
+                <img
+                  src="../assets/images/GasPreneur/App-Store-Badge.png"
+                  alt="apple"
+                />
+              </a>
             </div>
+          </div>
+          <div class="col-md-6 col-sm-12 cta mt-5">
+            <img src="../assets/images/GasPreneur/iPhone.png" alt="" />
+          </div>
         </div>
+      </div>
     </div>
     <!-- E Upgrade -->
-
-
 
     <!-- footer -->
     <Footer />
@@ -167,14 +270,15 @@
 </template>
 
 <script>
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 export default {
   name: "Gaspreneur",
-    components:{
-      Footer, Header
-    },
-  
+  components: {
+    Footer,
+    Header,
+  },
+
   metaInfo() {
     return {
       title: "Gasprenuer || KiaKia Gas 360",
@@ -194,23 +298,16 @@ export default {
       // ],
     };
   },
- 
 };
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
 :root {
   --primary: #3789ec;
   --accent: #011230;
 }
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
+
 ul {
   margin: 0 !important;
   padding: 0 !important;
@@ -223,15 +320,15 @@ a {
   color: #000 !important;
 }
 body {
-  background-color: #fffffa;
-  font-family: "Manrope", sans-serif;
+  background-color: #ffffff;
+ font-family: 'Work Sans', sans-serif !important;
 }
 /* =============Deskstop view====================== */
 .landing-page {
   min-width: 100%;
   min-height: auto;
 
-  background-image: url("../assets/images/GasPreneur/Rectangle.png");
+  background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -335,22 +432,22 @@ body {
   display: none;
 }
 
-input[type=text],
-input[type=phone],
-input[type=email] {
+input[type="text"],
+input[type="phone"],
+input[type="email"] {
   width: 100%;
   border: none;
   padding: 10px 10px 10px 35px;
   border-bottom: 1px solid #555555 !important;
 }
-input[type=radio],
-input[type=checkbox] {
+input[type="radio"],
+input[type="checkbox"] {
   margin-right: 15px;
 }
 
-input[type=text]:focus,
-input[type=phone]:focus,
-input[type=email]:focus {
+input[type="text"]:focus,
+input[type="phone"]:focus,
+input[type="email"]:focus {
   outline: none;
   border-bottom: 1.5px solid var(--primary);
   transition: all 0.5s ease-in-out;
