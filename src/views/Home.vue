@@ -6,63 +6,44 @@
         <!-- Navbar -->
         <Header />
         <!--E Navbar -->
-       
-        <div class="row my-1">
-          <div class="col-md-6 col-sm-12 ">
-            <h1 class="gas-out">Never run out cooking gas again</h1>
-            <h6>Get access to cooking gas fast and without stress</h6>
-            <div class="mobileA">
-              <h6 style="margin-top: 80px;">
-                Download our app to get the Gas360 experience
-              </h6>
-              <div class="download">
-                <a href="#">
-                  <img
-                    height="30px"
-                    src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                    alt="gplay"
-                  />
-                </a>
-                <a class="me-3" href="#">
-                  <img
-                    height="30px"
-                    src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                    alt="apple"
-                  />
-                </a>
-              </div>
+
+        <div class="row my-3 ">
+          <div class="col-md-6 my-auto">
+            <div class="my-5">
+              <span class="display-4 fw-bold"
+                >Never run out cooking gas again</span
+              >
+            </div>
+            <div class="my-4">
+              <h5>
+                Gas360 gets gas to your home at odd hours of the day and puts
+                you in control of your gas usage.
+              </h5>
+            </div>
+            <div class="text-left">
+              <a href="#">
+                <img
+               height="45px"
+                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="ms-3" href="#">
+                <img
+                height="45px"
+                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
+                  alt="apple"
+                />
+              </a>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="tank-info ms-5 mobileB">
+          <div class="col-md-6 text-center">
+            <div class="tank-info">
               <img
+                class="text-center"
                 src="../assets/images/Homepage/kiakia-gas/Mobile/iPhone-X.png"
                 alt="tank info"
               />
-            </div>
-
-            <div class="mobileC">
-              <div class="tank-info">
-                <img
-                  src="../assets/images/Homepage//kiakia-gas/Mobile/iPhone-X.png"
-                  alt="tank info"
-                />
-              </div>
-              <h6>Download our app to get the Gas360 experience</h6>
-              <div class="download">
-                <a href="#">
-                  <img
-                    src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                    alt="gplay"
-                  />
-                </a>
-                <a class="me-3" href="#">
-                  <img
-                    src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                    alt="apple"
-                  />
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -70,295 +51,16 @@
     </div>
     <!-- E Landing Page -->
     <!-- Body -->
-    <!-- Gas Monitor -->
-    <div class="container gas-monitor">
-      <div class="row pt-5">
-        <div class="col-md-6 col-sm-12 image">
-          <img
-            src="../assets/images/Homepage/Mock-Creative.png"
-            alt="gas Monitor"
-          />
-        </div>
-
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-monitor">
-            <h6 class="text-uppercase head">Gas monitoring</h6>
-            <h4 class="my-2">Cook with peace of mind</h4>
-            <p>
-              Monitor the level of gas in your cylinder through our mobile app.
-              We ensure a replacement is delivered to you once your gas level is
-              low.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Leakage Detection Deskstop -->
-    <div class="container image-mod mobileD">
-      <div class="row pt-5">
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-monitor">
-            <h6 class="text-uppercase head">Leakage Detection</h6>
-            <h4 class="my-2">Your safety is guaranteed</h4>
-            <p>
-              Gas360 device monitors for gas leakages and immediately notifies
-              you with a buzzer and also via the mobile app.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-leakage">
-            <img
-              src="../assets/images/Homepage/Group-45.png"
-              alt="gas leakages"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Leakage Detection mobile -->
-    <div class="container image-mod mobileE">
-      <div class="row pt-5">
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-leakage">
-            <img
-              src="../assets/images/Homepage/Group-45.png"
-              alt="gas leakages"
-            />
-          </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-monitor">
-            <h6 class="text-uppercase head">Leakage Detection</h6>
-            <h4 class="my-2">Your safety is guaranteed</h4>
-            <p>
-              Gas360 device monitors for gas leakages and immediately notifies
-              you with a buzzer and also via the mobile app.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Gas Loan -->
-    <div class="container image-mod">
-      <div class="row pt-5">
-        <div class="col-md-6 col-sm-12 gas-loan">
-          <img
-            src="../assets/images/Homepage/Mobile-Mockup-(1).png"
-            alt="gas-loan"
-          />
-        </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="gas-monitor">
-            <h6 class="text-uppercase head">INstant gas loan</h6>
-            <h4 class="my-2">Access gas credit,simple and easy</h4>
-            <p>
-              Use our subscription offers to build your credit history and
-              access credit to purchase gas instantly when you are not liquid.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Body -->
-    <!-- Get started -->
-    <div class="get-started">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-md-6 col-sm-12">
-            <div class="start">
-              <h1>
-                Get started with Gas360
-              </h1>
-              <img
-                src="../assets/images/Homepage//kiakia5/Group-1777.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="start-links mobileF mt-5">
-              <div class="next-link">
-                <a href="#">
-                  <b class="text-uppercase link">DOWNLOAD THE APP </b>
-                  <p>
-                    Get the Gas360 App on Google Play Store for Android or App
-                    Store for iOS.
-                  </p>
-                </a>
-              </div>
-              <div class="next-link">
-                <a href="#">
-                  <b class="text-uppercase link">place an order </b>
-                  <p>
-                    Place an order to refill and have it delivered to your
-                    doorstep.
-                  </p>
-                </a>
-              </div>
-              <div class="next-link">
-                <a href="#">
-                  <b class="text-uppercase link">Monitor your GAs </b>
-                  <p>
-                    Track your gas consumption and get a refill before your gas
-                    finishes.
-                  </p>
-                </a>
-              </div>
-            </div>
-            <div class="mobileG mt-5">
-              <!-- Slider -->
-
-              <div class="dload owl-carousel start-links">
-                <div class="next-link mx-2">
-                  <a href="#">
-                    <b class="text-uppercase link">DOWNLOAD THE APP </b>
-                    <p>
-                      Get the Gas360 App on Google Play Store for Android or App
-                      Store for iOS.
-                    </p>
-                  </a>
-                </div>
-                <div class="next-link mx-2">
-                  <a href="#">
-                    <b class="text-uppercase link">place an order </b>
-                    <p>
-                      Place an order to refill and have it delivered to your
-                      doorstep.
-                    </p>
-                  </a>
-                </div>
-                <div class="next-link mx-2">
-                  <a href="#">
-                    <b class="text-uppercase link">Monitor your GAs </b>
-                    <p>
-                      Track your gas consumption and get a refill before your
-                      gas finishes.
-                    </p>
-                  </a>
-                </div>
-              </div>
-
-              <!-- E Slider -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--E  Get started -->
-
-    <!-- Partners -->
-    <div class="container  py-5">
-      <p class="text-center text-uppercase our-partners">Our Partners</p>
-      <h3 class="text-center">Backed by trusted agencies</h3>
-
-      <div class="partners partners-desktop">
-        <div>
-          <img src="../assets/images/Homepage/WhatsApp11.svg" alt="Partner5" />
-        </div>
-        <div>
-          <img src="../assets/images/Homepage/WhatsApp12.svg" alt="Partner1" />
-        </div>
-        <div>
-          <img src="../assets/images/Homepage/image-1.svg" alt="Partner2" />
-        </div>
-        <div>
-          <img
-            src="../assets/images/Homepage/Leap-Africa-1.svg"
-            alt="Partner3"
-          />
-        </div>
-        <div>
-          <img src="../assets/images/Homepage/sahara-1.svg" alt="Partner4" />
-        </div>
-      </div>
-      <div class="partners-mobile">
-        <div class="partners dload owl-carousel ">
-          <div>
-            <img
-              src="../assets/images/Homepage/WhatsApp11.svg"
-              alt="Partner5"
-            />
-          </div>
-          <div>
-            <img
-              src="../assets/images/Homepage/WhatsApp12.svg"
-              alt="Partner1"
-            />
-          </div>
-          <div>
-            <img src="../assets/images/Homepage/image-1.svg" alt="Partner2" />
-          </div>
-          <div>
-            <img
-              src="../assets/images/Homepage/Leap-Africa-1.svg"
-              alt="Partner3"
-            />
-          </div>
-          <div>
-            <img src="../assets/images/Homepage/sahara-1.svg" alt="Partner4" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Partners -->
-
-    <!-- Upgrade -->
-    <div class="upgrade text-white">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-md-6 col-sm-12">
-            <h2>
-              Upgrade your cooking gas experience
-            </h2>
-            <p class="mb-4">
-              Download the app to keep track of your gas level, order gas from
-              the comfort of your home, subscribe for refills.
-            </p>
-            <div class="download">
-              <div>Get the App</div>
-              <a href="#">
-                <img
-                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                  alt="gplay"
-                />
-              </a>
-              <a class="me-3" href="#">
-                <img
-                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                  alt="apple"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12 cta mt-5">
-            <div class="phone-desktop">
-              <img
-                src="../assets/images/Homepage/kiakia4/CTA/iPhone.png"
-                alt=""
-              />
-            </div>
-            <div class="phone-mobile">
-              <img
-                src="../assets/images/Homepage/kiakia4/CTA/iPhone.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Upgrade -->
+    <NewHome />
 
     <!-- Support -->
     <div class="container">
       <div class="support">
         <h6 class="text-uppercase head text-center">Support</h6>
         <h3 class="text-center">Frequently asked questions</h3>
-          <div v-if="faqs.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
-      </div>
+        <div v-if="faqs.length == 0" class="loading img-fluid">
+          <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+        </div>
 
         <section class="questions">
           <!-- questions -->
@@ -380,11 +82,18 @@
             </div>
             <!-- answer text -->
             <div class="question-text">
-              <p v-html=" faq.answer">
-                
-              </p>
+              <p v-html="faq.answer"></p>
             </div>
           </article>
+          <div class="mt-3 text-primary text-center">
+            <button
+              style="color: #18366C;
+"
+              class=" btn  btn-outline-primary"
+            >
+              <router-link to="/faq">See More FAQs</router-link>
+            </button>
+          </div>
           <!-- E single question -->
         </section>
       </div>
@@ -392,8 +101,9 @@
     </div>
 
     <!-- Footer -->
-
-    <Footer />
+    <div class="container-fluid footer-wrapper">
+      <Footer />
+    </div>
 
     <!-- E Footer -->
   </div>
@@ -404,6 +114,7 @@ import { mapState } from "vuex";
 
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import NewHome from "../components/New-Home.vue";
 export default {
   name: "Home",
   metaInfo() {
@@ -426,7 +137,9 @@ export default {
     };
   },
   components: {
-    Footer, Header
+    Footer,
+    Header,
+    NewHome,
   },
   created() {
     this.getFaqs();
@@ -461,7 +174,6 @@ export default {
   },
 
   mounted() {
-
     $(document).ready(function() {
       $(".dload").owlCarousel({
         margin: 0,
@@ -488,8 +200,8 @@ export default {
 };
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -514,7 +226,7 @@ body {
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
-  background: #F7F7FC;
+  background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -545,136 +257,9 @@ body {
   color: #000;
 }
 
-.tank-info img {
-  height: 500px;
-}
-.gas-out {
-  margin-top: 80px;
-  color: var(--accent);
-  font-style: normal;
-  font-weight: 800;
-  font-size: 44px;
-  line-height: 120%;
-}
-.download img {
-  width: 80px;
-}
-.image-mod img {
-  width: 300px;
-}
-.gas-monitor img {
-  margin-left: -30px;
-  width: 80%;
-}
-.gas-monitor h6 {
-  font-weight: 400;
-}
-.head {
-  margin-top: 70px;
-  color: var(--primary);
-}
-.gas-leakage {
-  margin-left: -10px;
-}
-.gas-leakage img {
-  width: 80%;
-  margin-left: -30px;
-}
-
-/* ================ get started================= */
-.get-started {
-  margin-top: 40px;
-  background-image: url("/Asset/images/Homepage/Rectangle.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.start h1 {
-  color: #011230;
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 64px;
-}
-.start img {
-  height: 350px;
-}
-.start-links a {
-  text-decoration: none;
-  color: #000;
-}
-.start-links a:hover {
-  color: #fff;
-}
-.start-links .next-link {
-  margin: 40px 0;
-}
-.start-links .link {
-  color: var(--primary);
-}
-.start-links .next-link:hover {
-  border-radius: 5px;
-  background-color: var(--primary);
-  padding: 10px 20px;
-  transition: all 0.5s linear;
-}
-.start-links .next-link:hover .link {
-  color: #fff;
-}
-/* ========================== partners========================= */
-.our-partners {
-  color: var(--primary);
-}
-.partners {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.partners img {
-  width: 100px;
-  height: 100px;
-}
-
-.partners-mobile {
-  display: none;
-}
-/* ==============upgrade=========================== */
-.upgrade {
-  background-color: var(--primary);
-  padding: 50px 0;
-}
-.upgrade .download img {
-  width: 100px;
-}
-.cta img {
-  width: 450px;
-}
 .support {
   width: 70% !important;
   margin: 40px auto !important;
-}
-/* ==================footer===================== */
-.footer {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px 0;
-  margin: 20px 0;
-}
-.footer .footer-card {
-  width: 18%;
-  margin: 10px;
-}
-.footer-card img {
-  width: 100px;
-}
-.footer-card li {
-  list-style-type: none;
-  display: block;
-  margin: 10px 0;
-}
-.footer a {
-  color: #474a57 !important;
 }
 
 /* =============== FAQ================== */
@@ -685,7 +270,7 @@ body {
   padding: 10px 0;
 
   margin-bottom: 6px;
-  border-bottom: 0.5px solid #4f4f4f;
+  /* border-bottom: 0.5px solid #4f4f4f; */
   transition: all 0.5s ease-in-out;
 }
 .question-title {
@@ -693,8 +278,9 @@ body {
   justify-content: space-between;
   text-transform: capitalize;
   padding-bottom: 5px;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
+  color: #18366c;
 }
 .question:last-child {
   border-bottom: none;
@@ -738,6 +324,9 @@ body {
   display: none;
 }
 
+.footer-wrapper {
+  background: #f7f7fc;
+}
 @media screen and (max-width: 992px) {
   .tabs li {
     font-size: 15px;
@@ -747,6 +336,9 @@ body {
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
+  .banner {
+    flex-direction: column-reverse;
+  }
   .menu-bar {
     display: block;
     position: absolute;
@@ -820,50 +412,6 @@ body {
   .mobileF {
     display: none;
   }
-  .mobileC,
-  .start {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .start h1 {
-    font-size: 25px;
-  }
-  .mobileC .tank-info img {
-    height: 300px;
-  }
-
-  .cta {
-    display: flex;
-    justify-content: center;
-  }
-  .cta img {
-    width: 300px;
-  }
-  .gas-monitor img {
-    margin-left: 0;
-  }
-  .mobileE .gas-leakage,
-  .gas-loan,
-  .gas-monitor image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .partners-desktop {
-    display: none;
-  }
-  .partners-mobile {
-    display: flex;
-  }
-  .phone-mobile img {
-    width: 450px;
-  }
-  .phone-desktop {
-    display: none;
-  }
 
   /* Owl design */
 
@@ -889,15 +437,5 @@ body {
   .owl-dot:hover {
     background: rgb(67, 137, 202) !important;
   }
-}
-@media screen and (min-width: 765px) {
-  .mobileC,
-  .mobileE,
-  .mobileG,
-  .phone-mobile,
-  .partners-mobile {
-    display: none;
-  }
-  
 }
 </style>

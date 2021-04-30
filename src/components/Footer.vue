@@ -234,11 +234,13 @@ export default {
 <style scoped>
 
 /* ==================footer===================== */
+
 .footer {
   display: flex;
   flex-wrap: wrap;
   padding: 20px 0;
   margin: 20px 0;
+ 
 }
 .footer .footer-card {
   width: 18%;
@@ -257,6 +259,7 @@ export default {
 }
 .footer-mobile {
   display: none;
+ 
 }
 
 
@@ -273,9 +276,11 @@ export default {
     margin: 10px;
   }
   .footer {
+
     display: none;
   }
   .footer-mobile {
+    
     display: block;
   }
   .footer-mobile a {

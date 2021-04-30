@@ -35,7 +35,6 @@
       </div>
       <div class="activeH post">
         <p>Post</p>
-        
       </div>
       <ul>
         <li class="activePost">All posts</li>
@@ -76,7 +75,7 @@
           <div class="category">
             <ul>
               <li
-                v-for="(category, index) in incomingData.categories"
+                v-for="(category, index) in internalData.categories"
                 :key="index"
                 :class="{ active: category.isClicked }"
                 @click="chooseCategory(category)"
@@ -87,12 +86,10 @@
           </div>
 
           <strong>Description</strong>
-        
-  <ckeditor v-model="incomingData.post" :config="editorConfig">
 
+          <ckeditor v-model="incomingData.post" :config="editorConfig">
             {{ incomingData.post }}
-  </ckeditor>
-
+          </ckeditor>
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
@@ -104,11 +101,12 @@
       <div class="right-sidebar">
         <!-- Notification -->
         <div>
-          <div v-if="this.successMsg"
+          <div
+            v-if="this.successMsg"
             class="alert alert-success fade show"
             role="alert"
           >
-            <span class="me-3">{{this.successMsg}}</span>
+            <span class="me-3">{{ this.successMsg }}</span>
             <button
               type="button"
               class="close"
@@ -119,10 +117,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div v-else-if="this.errMsg"
-          class="alert alert-danger alert-dismissible fade show"
-            role="alert">
-            <strong>{{this.errMsg}}</strong>
+          <div
+            v-else-if="this.errMsg"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ this.errMsg }}</strong>
             <button
               type="button"
               class="close"
@@ -146,7 +146,6 @@
           <button class="btn btn-secondary text-white text-center">
             <router-link to="/blog">Preview Changes</router-link>
           </button>
-         
         </div>
         <div class="content">
           <div class="split-content">
@@ -157,8 +156,12 @@
             <div>Status : <span>Published</span></div>
             <div class="fw-bold">Edit</div>
           </div>
-          <div>Revision : <span>{{incomingData.revised}}</span></div>
-          <div>Published : <span>{{date}}</span></div>
+          <div>
+            Revision : <span>{{ incomingData.revised }}</span>
+          </div>
+          <div>
+            Published : <span>{{ date }}</span>
+          </div>
         </div>
       </div>
       <!-- E Right Sidebar -->
@@ -167,15 +170,12 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
-import moment from 'moment';
+import moment from "moment";
 
 export default {
   name: "EditPost",
 
- 
- 
   metaInfo() {
     return {
       title: "Admin Panel - Edit Post || KiaKia Gas ",
@@ -197,38 +197,50 @@ export default {
   },
   data() {
     return {
-        editorConfig: {
+      editorConfig: {
         enterMode: 2,
         autoParagraph: false,
       },
-      date : moment().format('LL'),
-      incomingData: {
-        revised : 0,
-        title: "",
-        post: "",
-        authoredBy: "",
+      date: moment().format("LL"),
+      internalData: {
         categories: [
           { categ: "product", isClicked: false },
           { categ: "company", isClicked: false },
           { categ: "social-impact", isClicked: false },
         ],
         selectCategory: "",
+      },
+      incomingData: {
+        revised: 0,
+        title: "",
+        post: "",
+        authoredBy: "",
+
         activeItem: null,
       },
       updateSuccess: false,
+    
     };
   },
   methods: {
     chooseCategory(cat) {
-      this.incomingData.selectCategory = cat.categ;
-      console.log(cat);
+      this.incomingData.category = cat.categ;
+
       cat.isClicked = !cat.isClicked;
+      const choosenCategories = document.querySelectorAll(".category li");
+
+      choosenCategories.forEach(function(item) {
+        if (item.innerHTML !== cat.categ) {
+          item.classList.remove("active");
+        }
+      });
     },
     uploadImage(e) {
       e.target.files[0];
     },
 
     modifyPost(data) {
+      this.incomingData.revised = this.$route.query.data.revised + 1;
       this.$store.dispatch("editPost", data);
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -240,23 +252,19 @@ export default {
         }, 1500);
       });
     },
-    remove(){
-      $(".alert").alert('close')
-    }
+    remove() {
+      $(".alert").alert("close");
+    },
   },
- 
-   
- 
 
   created() {
-    this.incomingData = this.$route.query.data;
-    this.incomingData.activeItem = this.$route.query.data.id;  
-    this.incomingData.revised = this.$route.query.data.revised + 1;  
-  console.log( this.successMsg);
+    this.incomingData = this.$route.query.data || this.incomingData;
+    this.incomingData.activeItem = this.$route.query.data.id;
 
+    console.log(this.internalData.categories + " Category");
   },
   computed: {
-    ...mapState( ["successMsg", 'errMsg']),
+    ...mapState(["successMsg", "errMsg"]),
   },
 };
 </script>
@@ -424,7 +432,7 @@ header {
 }
 
 // Right SideBar
-button.close{
+button.close {
   border: none;
   outline: none;
   background: none;
@@ -433,8 +441,6 @@ button.close{
 }
 
 .right-sidebar {
-
-
   width: 255px;
   margin-top: 10px;
   padding-left: 10px;

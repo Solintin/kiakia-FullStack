@@ -60,11 +60,20 @@
       </div>
     </div>
     <!-- E SideBar  -->
-    <form>
+    
       <!-- Main  -->
       <div class="main">
         <h5 class="mb-4 text-center">Support Pages</h5>
         <div class="main-content">
+          <router-link to="/admin/blog">
+            <div>
+              <i
+                class="fa fa-rss-square fa-4x text-center"
+                aria-hidden="true"
+              ></i>
+              Blog Posts
+            </div>
+          </router-link>
           <router-link to="/admin/faqs">
             <div>
               <i
@@ -93,11 +102,17 @@
               Terms of Services
             </div>
           </router-link>
+          <router-link to="/waitlist">
+            <div>
+              <i class="fa-4x text-center fas fa-th-list"></i>
+              WaitList
+            </div>
+          </router-link>
 
         </div>
       </div>
       <!-- E Main  -->
-    </form>
+    
   </div>
 </template>
 
@@ -263,8 +278,8 @@ header {
     padding-right: 50px;
     width: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
     a {
       display: inherit;
       place-content: center;

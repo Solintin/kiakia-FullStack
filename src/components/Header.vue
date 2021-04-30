@@ -12,14 +12,18 @@
       </div>
       <div class="menu-list">
         <ul class="my-auto">
-          <li><router-link to="/about">About Us</router-link></li>
-          <li>
+          <li data-id="about"><router-link to="/about">About </router-link></li>
+          <li data-id="gasprenuer">
             <router-link to="/gasprenuer">Become a Gaspreneur</router-link>
           </li>
-          <li><router-link to="/blog">Blog</router-link></li>
-          <li><router-link to="/support">Support</router-link></li>
+          <li data-id="blog">
+            <router-link to="/blog">Obsessions</router-link>
+          </li>
+          <li data-id="support">
+            <router-link to="/support">Support</router-link>
+          </li>
           <li>
-            <a href="#" class="text-white btn btn-primary">Download App</a>
+            <a href="#" class="text-white btn btn-primary">Get Started</a>
           </li>
         </ul>
       </div>
@@ -29,13 +33,27 @@
 
 <script>
 export default {
- mounted() {
+  mounted() {
     const menuList = document.querySelector(".menu-list ");
     const menuBar = document.querySelector(".menu-bar i");
     menuBar.addEventListener("click", () => {
       menuList.classList.toggle("open");
       menuBar.classList.toggle("open");
     });
+  },
+  created() {
+    const setThis = this;
+    setTimeout(function() {
+      const choosenCategories = document.querySelectorAll(".menu-list li");
+
+      choosenCategories.forEach(function(item) {
+        if (`${setThis.$route.path.trim()}` === `/${item.dataset.id}`) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    }, 500);
   },
 };
 </script>
@@ -60,6 +78,11 @@ export default {
 }
 .menu-bar {
   display: none;
+}
+.menu-list li.active {
+  transition: all 500ms;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #3789ec;
 }
 
 .tabs a {

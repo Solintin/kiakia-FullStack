@@ -4,11 +4,11 @@
 
     <section class="container-fluid why-gas-360">
       <div class="container text-center">
-        <span class="my-2 fs-4  fw-bold">
+        <span class="my-2 fs-2  fw-bold">
           Why use Gas360?
         </span>
         <div class="row">
-          <div class="col-md-3 col-sm-12 p-3 ">
+          <div class="col-md-3 p-3 ">
             <img
               src="../assets/new-home-asset/bus.png"
               alt="bus"
@@ -16,7 +16,7 @@
             />
             <p>Gas Hailing and delivery at anytime of the day</p>
           </div>
-          <div class="col-md-3 col-sm-12 p-3 ">
+          <div class="col-md-3 p-3 ">
             <img
               src="../assets/new-home-asset/speedometer.png"
               alt="bus"
@@ -24,7 +24,7 @@
             />
             <p>Realtime gas monitoring</p>
           </div>
-          <div class="col-md-3 col-sm-12 p-3 ">
+          <div class="col-md-3 p-3 ">
             <img
               src="../assets/new-home-asset/Check.png"
               alt="bus"
@@ -32,7 +32,7 @@
             />
             <p>Guaranteed cylinder safety and maintenenace</p>
           </div>
-          <div class="col-md-3 col-sm-12 p-3 ">
+          <div class="col-md-3 p-3 ">
             <img
               src="../assets/new-home-asset/gas.png"
               alt="bus"
@@ -188,6 +188,176 @@
       </div>
     </section>
     <!-- E Get started -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLongTitle">
+              Join the waitlist
+            </h4>
+            <div>
+              <div
+                @click="closeModal"
+                class="display-6"
+                style="cursor: pointer;"
+              >
+                X
+              </div>
+            </div>
+          </div>
+          <section class="modal-body">
+            <form>
+                 <div
+                class="mb-3 d-flex justify-content-between align-items-center"
+              >
+                <label for="fname">FirstName*</label>
+                <label for="City" class="text-left">LastName*</label>
+              </div>
+              <div
+                class="mb-3 d-flex justify-content-between align-items-center"
+              >
+                <div class="me-3 input-wrapper">
+                  <div class="">
+                   
+                    <input
+                      type="text"
+                      id="fname"
+                      class="w-100"
+                      placeholder="First Name"
+                      v-model="firstName"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="input-wrapper">
+             
+
+                  <input
+                    type="text"
+                    id="lname"
+                    placeholder="First Name"
+                    v-model="lastName"
+                    required
+                  />
+                </div>
+              </div>
+                <label for="email">Email*</label>
+              <div class="mb-3 input-wrapper">
+
+                <input
+                  type="email"
+                  v-model="email"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <label for="number">Number</label>
+              <div class="mb-3 input-wrapper">
+                <input
+                  type="phone"
+                  v-model="phoneNumber"
+                  id="number"
+                  placeholder="Number"
+                  required
+                />
+              </div>
+              <div
+                class="mb-3 d-flex justify-content-between align-items-center"
+              >
+                <label for="fname">State*</label>
+                <label for="City" class="text-left">City*</label>
+              </div>
+
+              <div
+                class="mb-3 d-flex justify-content-between align-items-center"
+              >
+                <div class="me-3 input-wrapper">
+                  <select v-model="selectedState" @change="pickedState">
+                    <option>Please Choose a State</option>
+                    <option
+                      v-for="(state, idx) in states"
+                      :key="idx"
+                      :value="state"
+                    >
+                      {{ state }}
+                    </option>
+                  </select>
+                </div>
+                <div class="input-wrapper">
+                  <select class="w-100" v-model="selectedCity">
+                    <option
+                      v-for="(city, idx) in correspondingCities"
+                      :key="idx"
+                    >
+                      {{ city }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <div class="modal-footer">
+            <!-- Notification -->
+            <div>
+              <div
+                v-if="this.successMsg"
+                class="alert alert-success fade show"
+                role="alert"
+              >
+                <span class="me-3">{{ this.successMsg }}</span>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  @click="remove"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div
+                v-else-if="this.errMsg"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ this.errMsg }}</strong>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                  @click="remove"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+            <!-- E  Notification -->
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              @click="sendData"
+            >
+              Join the Waitlist
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- E Modal -->
+
     <!-- Waitlist  -->
     <section class="container-fluid waitlist py-4">
       <div class="container">
@@ -198,18 +368,223 @@
           IKOYI & BANANA ISLAND
         </h1>
         <p>Not yet in your area? Get notified when we are in your area?</p>
-        <button class="p-3">Join the waitlist</button>
+        <button class="p-3" @click="toggleModal">Join the waitlist</button>
       </div>
     </section>
     <!-- E Waitlist  -->
+
+    <!-- Partners -->
+    <div class="container  py-5">
+      <p class="text-center text-uppercase our-partners">Our Partners</p>
+      <h3 class="text-center">Backed by trusted agencies</h3>
+
+      <div class="partners partners-desktop">
+        <div>
+          <img src="../assets/images/Homepage/WhatsApp11.svg" alt="Partner5" />
+        </div>
+        <div>
+          <img src="../assets/images/Homepage/WhatsApp12.svg" alt="Partner1" />
+        </div>
+        <div>
+          <img src="../assets/new-home-asset/fut-logo.svg" alt="Partner2" />
+        </div>
+        <div>
+          <img
+            src="../assets/images/Homepage/Leap-Africa-1.svg"
+            alt="Partner3"
+          />
+        </div>
+        <div>
+          <img src="../assets/images/Homepage/sahara-1.svg" alt="Partner4" />
+        </div>
+      </div>
+      <div class="partners-mobile">
+        <div class="partners dload owl-carousel ">
+          <div>
+            <img
+              src="../assets/images/Homepage/WhatsApp11.svg"
+              alt="Partner5"
+            />
+          </div>
+          <div>
+            <img
+              src="../assets/images/Homepage/WhatsApp12.svg"
+              alt="Partner1"
+            />
+          </div>
+          <div>
+            <img src="../assets/new-home-asset/fut-logo.svg" alt="Partner2" />
+          </div>
+          <div>
+            <img
+              src="../assets/images/Homepage/Leap-Africa-1.svg"
+              alt="Partner3"
+            />
+          </div>
+          <div>
+            <img src="../assets/images/Homepage/sahara-1.svg" alt="Partner4" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- E Partners -->
+
+    <!-- Upgrade -->
+    <div class="container-fluid upgrade text-white">
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-6">
+            <h2>
+              Upgrade your cooking gas experience
+            </h2>
+            <p class="mb-4">
+              Download the app to keep track of your gas level, order gas from
+              the comfort of your home, subscribe for refills.
+            </p>
+            <div class="download">
+              <a href="#">
+                <img
+                  height="45px"
+                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="ms-3" href="#">
+                <img
+                  height="45px"
+                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
+                  alt="apple"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 cta mt-5">
+            <img src="../assets/new-home-asset/iPhonesvg.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- E Upgrade -->
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
+import Cities from "../components/Cities.json";
 export default {
   name: "newhome",
   data() {
-    return {};
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      selectedCity: "",
+      selectedState: "",
+      correspondingCities: [],
+      cities: Cities,
+      states: [
+        "Abia",
+        "Adamawa",
+        "Akwa Ibom",
+        "Anambra",
+        "Bauchi",
+        "Bayelsa",
+        "Benue",
+        "Borno",
+        "Cross River",
+        "Delta",
+        "Ebonyi",
+        "Edo",
+        "Ekiti",
+        "Enugu",
+        "FCT - Abuja",
+        "Gombe",
+        "Imo",
+        "Jigawa",
+        "Kaduna",
+        "Kano",
+        "Katsina",
+        "Kebbi",
+        "Kogi",
+        "Kwara",
+        "Lagos",
+        "Nasarawa",
+        "Niger",
+        "Ogun",
+        "Ondo",
+        "Osun",
+        "Oyo",
+        "Plateau",
+        "Rivers",
+        "Sokoto",
+        "Taraba",
+        "Yobe",
+        "Zamfara",
+      ],
+    };
+  },
+
+  computed: {
+    ...mapState(["successMsg", "errMsg"]),
+  },
+
+  methods: {
+    remove() {
+      $(".alert").alert("close");
+    },
+    pickedState(event) {
+      this.correspondingCities = this.cities[`${event.target.value}`];
+
+      console.log(this.correspondingCities);
+    },
+    toggleModal() {
+      $("#exampleModalCenter").modal("show");
+    },
+    closeModal() {
+      $("#exampleModalCenter").modal("hide");
+    },
+    sendData() {
+      const form = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        phoneNumber: this.phoneNumber,
+        selectedCity: this.selectedCity,
+        selectedState: this.selectedState,
+      };
+
+      this.$store.dispatch("PUBLISH_WAITLIST", form);
+
+      setTimeout(() => {
+        this.closeModal();
+      }, 3000);
+    },
+  },
+  mounted() {
+    $(document).ready(function() {
+      $(".dload").owlCarousel({
+        margin: 0,
+        loop: true,
+        autoplayTimeOut: 2000,
+        autoHoverPause: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false,
+          },
+          600: {
+            items: 2,
+            nav: false,
+          },
+          1000: {
+            items: 3,
+            nav: false,
+          },
+        },
+      });
+    });
   },
 };
 </script>
@@ -311,11 +686,40 @@ button {
 }
 .home-wrapper {
   overflow-x: hidden;
+  margin-top: -15px;
 }
+// Waitlist
 .waitlist {
   background-color: #253043;
   text-align: center;
   color: #fff;
+}
+// Upgrade
+
+.upgrade {
+  background: #253043;
+}
+
+// Modal
+
+.modal form {
+  input[type="email"],
+  input[type="phone"],
+  input[type="text"],
+  select {
+    border-bottom: none !important;
+    background: transparent;
+    border-radius: 5px;
+    padding-right: 5px !important;
+  }
+  .input-wrapper {
+    width: 100%;
+    background: #eff0f6;
+    padding: 7px;
+    border-radius: 5px;
+
+    
+  }
 }
 
 /* =========================== MOBILE VIEW========================== */

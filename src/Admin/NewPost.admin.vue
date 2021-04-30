@@ -93,23 +93,23 @@
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
-          <p class="mt-4 mb-0"><strong>Or Insert Image Url</strong></p>
-          <input type="text" v-model="netImage" @change="uploadImage" />
+          
         </div>
       </div>
       <!-- E Main  -->
 
       <!-- Right Sidebar -->
-          <!-- Notification -->
-     
+      <!-- Notification -->
+
       <div class="right-sidebar">
-             <!-- Notification -->
+        <!-- Notification -->
         <div>
-          <div v-if="this.successMsg"
+          <div
+            v-if="this.successMsg"
             class="alert alert-success fade show"
             role="alert"
           >
-            <span class="me-3">{{this.successMsg}}</span>
+            <span class="me-3">{{ this.successMsg }}</span>
             <button
               type="button"
               class="close"
@@ -120,10 +120,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div v-else-if="this.errMsg"
-          class="alert alert-danger alert-dismissible fade show"
-            role="alert">
-            <strong>{{this.errMsg}}</strong>
+          <div
+            v-else-if="this.errMsg"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ this.errMsg }}</strong>
             <button
               type="button"
               class="close"
@@ -149,7 +151,7 @@
             <div>Status : <span>Published</span></div>
             <div class="fw-bold">Edit</div>
           </div>
-          <div>Revision : <span>3</span></div>
+          <div>Revision : <span>0</span></div>
           <div>Published : <span>Jan, 25, 2021</span></div>
         </div>
         <div>
@@ -163,9 +165,8 @@
 </template>
 
 <script>
-
 import { fbAccess } from "../firebase";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "NewPost",
@@ -176,7 +177,7 @@ export default {
         enterMode: 2,
         autoParagraph: false,
       },
-      netImage : '',
+      netImage: "",
       title: "",
       post: "",
       authoredBy: "",
@@ -209,8 +210,8 @@ export default {
       // ],
     };
   },
-    computed: {
-    ...mapState( ["successMsg", 'errMsg']),
+  computed: {
+    ...mapState(["successMsg", "errMsg"]),
   },
 
   methods: {
@@ -226,24 +227,36 @@ export default {
       return new Promise((resolve) => {
         setTimeout(() => {
           this.incomingData.tos = "";
-            this.netImage = '';
-      this.title= "";
-      this.post= "";
-      this.authoredBy= "";
+          this.netImage = "";
+          this.title = "";
+          this.post = "";
+          this.authoredBy = "";
           resolve();
         }, 1500);
       });
     },
     chooseCategory(cat) {
       this.selectCategory = cat.categ;
-      console.log(cat);
+
       cat.isClicked = !cat.isClicked;
+
+      const choosenCategories = document.querySelectorAll(".category li");
+
+      choosenCategories.forEach(function(item) {
+        if (item.innerHTML !== cat.categ) {
+          item.classList.remove("active");
+        }
+      });
     },
     uploadImage(e) {
       let file = e.target.files[0];
       console.log(file);
-      const storageRef = fbAccess.storage().ref('Assets/'+file.name);
-      storageRef
+      const storageRef = fbAccess.storage().ref()
+       var thisRef = storageRef.child("Assets/" + file.name);
+      thisRef.put(file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+});
+      thisRef
         .getDownloadURL()
         .then((imageUrl) => {
           this.blogImage = imageUrl;
@@ -251,14 +264,15 @@ export default {
           this.imageUploadSuccess = !this.imageUploadSuccess;
           console.log(this.imageUploadSuccess);
         })
+        
         .catch((error) => {
           console.log(error);
           console.log(this.imageUploadSuccess);
-        })
-        if (!this.imageUploadSuccess) {
-          this.blogImage = this.netImage
-        }
-        console.log(this.blogImage);
+        });
+      if (!this.imageUploadSuccess) {
+        this.blogImage = this.netImage;
+      }
+      console.log(this.blogImage);
     },
   },
 };

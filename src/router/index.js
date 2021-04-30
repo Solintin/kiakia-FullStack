@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import NewHome from "../components/New-Home.vue";
+import WaitList from "../components/Waitlist.vue";
 import About from "../views/About.vue";
 import Gasprenuer from "../views/Gasprenuer.vue";
 import Blog from "../views/Blog.vue";
@@ -45,6 +46,13 @@ const routes = [
     path: "/newhome",
     name: "newhome",
     component: NewHome,
+   
+  },
+  //WaitList
+  {
+    path: "/waitList",
+    name: "waitlist",
+    component: WaitList,
    
   },
   //About
@@ -210,7 +218,7 @@ const routes = [
   },
   //Support Pages
   {
-    path: '/admin/support-pages',
+    path: '/admin/',
     name: 'SupportPages',
     component : SupportPages
     

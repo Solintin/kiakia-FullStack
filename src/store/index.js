@@ -24,6 +24,7 @@ export default new Vuex.Store({
     cookies: [],
     policies: [],
     terms: [],
+    waitlist: [],
     errMsg: null,
     successMsg: null,
   },
@@ -58,6 +59,9 @@ export default new Vuex.Store({
     setTos(state, val) {
       state.terms = val;
     },
+    setWaitList(state, val) {
+      state.waitlist = val;
+    },
   },
   actions: {
     // Post Collection Actions
@@ -72,17 +76,16 @@ export default new Vuex.Store({
           blogImage: form.blogImage,
           revised: parseInt(0),
         });
-   
+
         commit("setSuccessMsg", "Post Succesfull");
         setTimeout(() => {
-         commit("setSuccessMsg", null);
+          commit("setSuccessMsg", null);
         }, 3000);
-
-      }catch (error) {
+      } catch (error) {
         commit("setErrMsg", error.message);
         setTimeout(() => {
           commit("setErrMsg", null);
-         }, 3000);
+        }, 3000);
         console.log(error.message);
       }
     },
@@ -112,20 +115,17 @@ export default new Vuex.Store({
         .update(val)
         .then(() => {
           commit("setSuccessMsg", "Update Succesfull");
-         setTimeout(() => {
-          commit("setSuccessMsg", null);
-         }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
         })
         .catch((error) => {
           commit("setErrorMsg", error.message);
           setTimeout(() => {
             commit("setErrorMsg", null);
-           }, 3000);
+          }, 3000);
           console.error("Error updating document: ", error);
         });
-       
-        
-
     },
 
     deletePost({ commit }, id) {
@@ -134,18 +134,18 @@ export default new Vuex.Store({
         .delete()
         .then(() => {
           commit("setSuccessMsg", "Blog successfully deleted");
-         
+
           setTimeout(() => {
-           commit("setSuccessMsg", null);
+            commit("setSuccessMsg", null);
           }, 3000);
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
 
-           commit("setErrorMsg", error.message);
+          commit("setErrorMsg", error.message);
           setTimeout(() => {
             commit("setErrorMsg", null);
-           }, 3000);
+          }, 3000);
         });
     },
 
@@ -159,7 +159,7 @@ export default new Vuex.Store({
         });
         commit("setSuccessMsg", "Post Succesfull");
         setTimeout(() => {
-         commit("setSuccessMsg", null);
+          commit("setSuccessMsg", null);
         }, 3000);
         console.log(document.id);
         console.log(form);
@@ -167,7 +167,7 @@ export default new Vuex.Store({
         commit("setErrMsg", error.message);
         setTimeout(() => {
           commit("setErrMsg", null);
-         }, 3000);
+        }, 3000);
         console.log(error.message);
       }
     },
@@ -195,16 +195,16 @@ export default new Vuex.Store({
         .update(val)
         .then(() => {
           commit("setSuccessMsg", "Update Succesfull");
-        setTimeout(() => {
-         commit("setSuccessMsg", null);
-        }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
           console.log("Document successfully updated!");
         })
         .catch((error) => {
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);
+          }, 3000);
 
           console.error("Error updating document: ", error);
         });
@@ -217,9 +217,9 @@ export default new Vuex.Store({
         .delete()
         .then(() => {
           commit("setSuccessMsg", "delete Succesfull");
-        setTimeout(() => {
-         commit("setSuccessMsg", null);
-        }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
           console.log("Document successfully deleted!");
         })
         .catch((error) => {
@@ -227,7 +227,7 @@ export default new Vuex.Store({
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);
+          }, 3000);
         });
     },
 
@@ -243,7 +243,7 @@ export default new Vuex.Store({
         console.log(form);
         commit("setSuccessMsg", "Post Succesfull");
         setTimeout(() => {
-         commit("setSuccessMsg", null);
+          commit("setSuccessMsg", null);
         }, 3000);
       } catch (error) {
         commit("setErrMsg", error.message);
@@ -275,13 +275,14 @@ export default new Vuex.Store({
         .then(() => {
           commit("setSuccessMsg", "Update Succesfull");
           setTimeout(() => {
-           commit("setSuccessMsg", null);
-          }, 3000);        })
+            commit("setSuccessMsg", null);
+          }, 3000);
+        })
         .catch((error) => {
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);
+          }, 3000);
 
           console.error("Error updating document: ", error);
         });
@@ -295,9 +296,9 @@ export default new Vuex.Store({
         .then(() => {
           console.log("Document successfully deleted!");
           commit("setSuccessMsg", "Delete Succesfull");
-        setTimeout(() => {
-         commit("setSuccessMsg", null);
-        }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
         })
         .catch((error) => {
           console.error("Error removing document: ", error);
@@ -316,13 +317,13 @@ export default new Vuex.Store({
         console.log(form);
         commit("setSuccessMsg", "Post Succesfull");
         setTimeout(() => {
-         commit("setSuccessMsg", null);
+          commit("setSuccessMsg", null);
         }, 3000);
       } catch (error) {
         commit("setErrMsg", error.message);
         setTimeout(() => {
           commit("setErrMsg", null);
-         }, 3000);
+        }, 3000);
         console.log(error.message);
       }
     },
@@ -351,14 +352,14 @@ export default new Vuex.Store({
         .then(() => {
           consolcommit("setSuccessMsg", "Post Succesfull");
           setTimeout(() => {
-           commit("setSuccessMsg", null);
+            commit("setSuccessMsg", null);
           }, 3000);
         })
         .catch((error) => {
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);
+          }, 3000);
           console.error("Error updating document: ", error);
         });
     },
@@ -371,14 +372,16 @@ export default new Vuex.Store({
         .then(() => {
           commit("setSuccessMsg", "Post Succesfull");
           setTimeout(() => {
-           commit("setSuccessMsg", null);
-          }, 3000);        })
+            commit("setSuccessMsg", null);
+          }, 3000);
+        })
         .catch((error) => {
           console.error("Error removing document: ", error);
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);        });
+          }, 3000);
+        });
     },
 
     // //TOS Collection Actions
@@ -392,13 +395,13 @@ export default new Vuex.Store({
         console.log(form);
         commit("setSuccessMsg", "Post Succesfull");
         setTimeout(() => {
-         commit("setSuccessMsg", null);
+          commit("setSuccessMsg", null);
         }, 3000);
       } catch (error) {
         commit("setErrMsg", error.message);
         setTimeout(() => {
           commit("setErrMsg", null);
-         }, 3000);
+        }, 3000);
         console.log(error.message);
       }
     },
@@ -426,16 +429,16 @@ export default new Vuex.Store({
         .update(val)
         .then(() => {
           commit("setSuccessMsg", "Post Succesfull");
-        setTimeout(() => {
-         commit("setSuccessMsg", null);
-        }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
           console.log("Document successfully updated!");
         })
         .catch((error) => {
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);
+          }, 3000);
           console.error("Error updating document: ", error);
         });
     },
@@ -447,9 +450,9 @@ export default new Vuex.Store({
         .delete()
         .then(() => {
           commit("setSuccessMsg", "Delete Succesfull");
-        setTimeout(() => {
-         commit("setSuccessMsg", null);
-        }, 3000);
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
           console.log("Document successfully deleted!");
         })
         .catch((error) => {
@@ -457,7 +460,75 @@ export default new Vuex.Store({
           commit("setErrMsg", error.message);
           setTimeout(() => {
             commit("setErrMsg", null);
-           }, 3000);        });
+          }, 3000);
+        });
+    },
+
+    //WAITLIST
+    async PUBLISH_WAITLIST({ commit }, form) {
+      try {
+        const document = await fb.waitListCollection.add({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          phoneNumber: form.phoneNumber,
+          state: form.selectedState,
+          city: form.selectedCity,
+
+          createdOn: moment().format("LL"),
+        });
+        commit("setSuccessMsg", "Post Succesfull");
+        setTimeout(() => {
+          commit("setSuccessMsg", null);
+        }, 3000);
+        console.log(document.id);
+        console.log(form);
+      } catch (error) {
+        setTimeout(() => {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+          commit("setErrMsg", null);
+        }, 3000);
+      }
+    },
+
+    async GET_WAITLIST({ commit }) {
+      await fb.waitListCollection.onSnapshot((data) => {
+        const waitlistArray = [];
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            waitlistArray.push(info);
+          });
+          commit("setWaitList", waitlistArray);
+        } catch (error) {
+          setTimeout(() => {
+            commit("setErrMsg", null);
+          }, 3000);
+        }
+      });
+    },
+
+    DELETE_WAITLIST({ commit }, id) {
+      console.log(id);
+      fb.waitListCollection
+        .doc(id)
+        .delete()
+        .then(() => {
+          commit("setSuccessMsg", "Delete Succesfull");
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
+          console.log("Document successfully deleted!");
+        })
+        .catch((error) => {
+          console.error("Error removing document: ", error);
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+          }, 3000);
+        });
     },
   },
   modules: {},

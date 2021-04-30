@@ -32,6 +32,7 @@ const faqsCollection = db.collection('faqs')
 const cookieCollection = db.collection('cookie')
 const privacyCollection = db.collection('privacy')
 const tosCollection = db.collection('tos')
+const waitListCollection = db.collection('waitlist')
 
 
 // export utils/refs
@@ -41,6 +42,7 @@ export {fbAccess,
   privacyCollection,
   tosCollection,
     postsCollection,
+    waitListCollection
 }
 
 

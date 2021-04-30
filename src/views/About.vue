@@ -88,11 +88,11 @@
       </div>
     </div>
 
-    <!-- Upgrade -->
-    <div class="upgrade text-white">
+<!-- Upgrade  -->
+  <div class="container-fluid upgrade text-white">
       <div class="container">
         <div class="row pt-5">
-          <div class="col-md-6 col-sm-12">
+          <div class="col-md-6">
             <h2>
               Upgrade your cooking gas experience
             </h2>
@@ -101,23 +101,25 @@
               the comfort of your home, subscribe for refills.
             </p>
             <div class="download">
-              <div>Get the App</div>
+              
               <a href="#">
                 <img
-                  src="../assets/images/About/Google Play Badge.png"
+               height="45px"
+                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
                   alt="gplay"
                 />
               </a>
-              <a class="me-3" href="#">
+              <a class="ms-3" href="#">
                 <img
-                  src="../assets/images/About/App Store Badge.png"
+                height="45px"
+                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
                   alt="apple"
                 />
               </a>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12 cta mt-5">
-            <img src="../assets/images/About/iPhone.png" alt="" />
+          <div class="col-md-6 cta mt-5">
+            <img src="../assets/new-home-asset/iPhonesvg.svg" alt="" />
           </div>
         </div>
       </div>
@@ -323,9 +325,9 @@ body {
   display: none;
 }
 /* ==============upgrade=========================== */
+
 .upgrade {
-  background-color: var(--primary);
-  padding: 50px 0;
+  background: #253043;
 }
 .upgrade .download img {
   width: 100px;
