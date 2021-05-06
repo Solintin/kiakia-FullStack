@@ -40,7 +40,7 @@
           <div class="col-md-6 text-center">
             <div class="tank-info">
               <img
-                class="text-center"
+                class="tank-info"
                 src="../assets/images/Homepage/kiakia-gas/Mobile/iPhone-X.png"
                 alt="tank info"
               />
@@ -120,20 +120,20 @@ export default {
   metaInfo() {
     return {
       title: "KiaKia Gas 360 | Homepage",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+       meta: [
+        {
+          name: "description",
+          content:
+            "Gas360 gets gas to your home at odd hours of the day and puts you in control of your gas usage.",
+        },
+        {
+          property: "og:title",
+          content: "Homepage || KiaKia Gas 360.",
+        },
+        { property: "og:site_name", content: "gas360" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
     };
   },
   components: {
@@ -239,6 +239,10 @@ body {
   align-content: center;
   height: auto;
 }
+.tank-info{
+  margin-left: -20px;
+  }
+
 .tabs li {
   display: inline;
   margin: 0 10px;
@@ -333,8 +337,9 @@ body {
   }
 }
 
+
 /* =========================== MOBILE VIEW========================== */
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 768px) {
   /* ===================== Menu bar Navigation ======================= */
   .banner {
     flex-direction: column-reverse;

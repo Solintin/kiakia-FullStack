@@ -390,7 +390,7 @@
         </div>
         <div>
           <img
-            src="../assets/images/Homepage/Leap-Africa-1.svg"
+            src="../assets/new-home-asset/Leap-Africa-2.svg"
             alt="Partner3"
           />
         </div>
@@ -417,7 +417,7 @@
           </div>
           <div>
             <img
-              src="../assets/images/Homepage/Leap-Africa-1.svg"
+              src="../assets/new-home-asset/Leap-Africa-2.svg"
               alt="Partner3"
             />
           </div>

@@ -166,20 +166,20 @@ export default {
   metaInfo() {
     return {
       title: "Terms Of Service || KiaKia Gas 360",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+      meta: [
+        {
+          name: "description",
+          content:
+            "Gas360 gets gas to your home at odd hours of the day and puts you in control of your gas usage.",
+        },
+        {
+          property: "og:title",
+          content: "Terms Of Service || KiaKia Gas 360.",
+        },
+        { property: "og:site_name", content: "gas360" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
     };
   },
   mounted() {

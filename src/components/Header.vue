@@ -58,13 +58,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 .kiakia-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   height: auto;
+  .logo{
+    display: inherit;
+    flex: 1;
+  }
 }
 .tabs li {
   display: inline;
@@ -92,11 +96,24 @@ export default {
   .tabs li {
     font-size: 15px;
   }
+    .kiakia-navbar{
+    .logo img{
+      height: 23px;
+      // width: 80px;
+    }
+  }
 }
 
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
-  .menu-bar {
+
+
+    .kiakia-navbar{
+    .logo img{
+      height: 100%;
+      
+    }
+  }  .menu-bar {
     display: block;
     position: absolute;
     cursor: pointer;

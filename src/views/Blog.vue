@@ -66,6 +66,13 @@
               @change="getSocialBlogs"
               >Social</option
             >
+             <option
+              class="tab-btn"
+              value="retail"
+              data-id="social"
+              @change="getSocialBlogs"
+              >Retail 2.0</option
+            >
           </select>
         </div>
         <div class="py-auto position-relative">
@@ -98,18 +105,25 @@
         <div class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">
           Social Impact
         </div>
-        <div class="tab-btn py-auto position-relative">
+        <div class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">
+         Retail 2.0
+        </div>
+        
+      </div>
+      <!-- Search Bar  -->
+
+      <div class="search-input position-relative  d-none d-md-block">
           <form @submit.prevent>
             <input
               type="text"
               @change="getSearchVar"
               v-model="search"
               placeholder="Search Blog"
+              class="w-100"
             />
-            <i class=" icon fa fa-search"></i>
+            <i class="icon mx-4 fa fa-search"></i>
           </form>
         </div>
-      </div>
 
       <div class="blog container py-5">
         <div class="content active-high" id="all">
@@ -248,20 +262,20 @@ export default {
   metaInfo() {
     return {
       title: "Blog || KiaKia Gas 360",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+      meta: [
+        {
+          name: "description",
+          content:
+            "Gas360 gets gas to your home at odd hours of the day and puts you in control of your gas usage.",
+        },
+        {
+          property: "og:title",
+          content: "Blog || KiaKia Gas 360.",
+        },
+        { property: "og:site_name", content: "gas360" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
     };
   },
   mounted() {
@@ -390,6 +404,18 @@ body {
 
 .part-post {
   color: rgb(94, 94, 94);
+}
+
+.search-input{
+  padding: 5px 0 0 50px;
+  margin: 5px 15px;
+  background: #edeef1;
+  border-radius: 5px;
+  input{
+    padding: 5px 5px  !important;
+    background: transparent;
+    border-bottom: none  !important;
+  }
 }
 
 /* ==============upgrade=========================== */
