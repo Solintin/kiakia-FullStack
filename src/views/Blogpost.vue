@@ -14,7 +14,7 @@
 
     <!-- E Landing Page -->
     <!-- Body -->
-    <div class="container mt-5">
+    <div class="container" style="padding-top : 100px; paddong-botton-50px">
       <div class="text-primary text-uppercase mb-5">
         {{ incomingData[0].category }}
       </div>

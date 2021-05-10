@@ -4,14 +4,16 @@
     <div class="landing-page">
       <div class="container">
         <!-- Navbar -->
-        <Header />
+       
+          <Header />
+      
         <!--E Navbar -->
 
-        <div class="row my-3 ">
+        <div class="row  " style="padding-top : 100px; paddong-botton-50px">
           <div class="col-md-6 my-auto">
             <div class="my-5">
               <span class="display-4 fw-bold"
-                >Never run out cooking gas again</span
+                >Never run out of cooking gas again</span
               >
             </div>
             <div class="my-4">
@@ -23,14 +25,14 @@
             <div class="text-left">
               <a href="#">
                 <img
-               height="45px"
+                  height="45px"
                   src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
                   alt="gplay"
                 />
               </a>
               <a class="ms-3" href="#">
                 <img
-                height="45px"
+                  height="45px"
                   src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
                   alt="apple"
                 />
@@ -120,7 +122,7 @@ export default {
   metaInfo() {
     return {
       title: "KiaKia Gas 360 | Homepage",
-       meta: [
+      meta: [
         {
           name: "description",
           content:
@@ -226,6 +228,7 @@ body {
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
+
   background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
@@ -239,9 +242,9 @@ body {
   align-content: center;
   height: auto;
 }
-.tank-info{
+.tank-info {
   margin-left: -20px;
-  }
+}
 
 .tabs li {
   display: inline;
@@ -336,7 +339,6 @@ body {
     font-size: 15px;
   }
 }
-
 
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 768px) {

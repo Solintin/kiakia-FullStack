@@ -8,7 +8,7 @@
          <Header/>
 
             <!-- Content -->
-            <div class="container my-5">
+            <div class="container" style="padding-top : 100px; paddong-botton-50px">
                 <div class="row">
                     <div class="col-md-6">
                         <h5 class="head">

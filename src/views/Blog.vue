@@ -6,7 +6,7 @@
         <!-- Navbar -->
         <Header />
         <!-- Content -->
-        <div class="container my-5">
+        <div class="container" style="padding-top : 100px; paddong-botton-50px">
           <div class="row">
             <div class="col-md-6">
               <h5 class="head">
@@ -469,7 +469,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px !important;
-  border-bottom: 0.5px solid #d9dbe1;
+  border-bottom: 0.5px solid #d9dbe1; 
 }
 .tab-btn.active-high {
   background: #fff;

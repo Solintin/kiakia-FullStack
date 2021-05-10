@@ -1,33 +1,38 @@
 <template>
-  <!-- Navbar -->
-  <div class="kiakia-navbar py-4">
-    <div class="logo">
-      <router-link to="/">
-        <img src="../assets/images/Homepage/Layer-6.svg" alt="KiaKia-Glogo"
-      /></router-link>
-    </div>
-    <div class="tabs">
-      <div class="menu-bar">
-        <i class="fa fa-bars fa-2x"></i>
+  <div class="nav-header">
+    <!-- Navbar -->
+    <div class="kiakia-navbar py-4">
+      <div class="logo">
+        <router-link to="/">
+          <img src="../assets/images/Homepage/Layer-6.svg" alt="KiaKia-Glogo"
+        /></router-link>
       </div>
-      <div class="menu-list">
-        <ul class="my-auto">
-          <li data-id="about"><router-link to="/about">About </router-link></li>
-          <li data-id="gasprenuer">
-            <router-link to="/gasprenuer">Become a Gaspreneur</router-link>
-          </li>
-          <li data-id="blog">
-            <router-link to="/blog">Obsessions</router-link>
-          </li>
-          <li data-id="support">
-            <router-link to="/support">Support</router-link>
-          </li>
-          <li>
-            <a href="#" class="text-white btn btn-primary">Get Started</a>
-          </li>
-        </ul>
+      <div class="tabs">
+        <div class="menu-bar">
+          <i class="fa fa-bars fa-2x"></i>
+        </div>
+        <div class="menu-list">
+          <ul class="my-auto">
+            <li data-id="about">
+              <router-link to="/about">About </router-link>
+            </li>
+            <li data-id="gasprenuer">
+              <router-link to="/gasprenuer">Become a Gaspreneur</router-link>
+            </li>
+            <li data-id="blog">
+              <router-link to="/blog">Obsessions</router-link>
+            </li>
+            <li data-id="support">
+              <router-link to="/support">Support</router-link>
+            </li>
+            <li>
+              <a href="#" class="text-white btn btn-primary">Get Started</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <div id="nav-bottom"></div>
   </div>
 </template>
 
@@ -40,6 +45,17 @@ export default {
       menuList.classList.toggle("open");
       menuBar.classList.toggle("open");
     });
+
+    const navHeader = document.querySelector(".kiakia-navbar");
+    const navBottom = document.querySelector("#nav-bottom");
+    const navHeight = navBottom.getBoundingClientRect();
+
+    window.onscroll = () => {
+    document.documentElement.scrollTop > navHeight.height ?
+        navHeader.classList.add("transparent-bg") :
+        navHeader.classList.remove("transparent-bg");
+      
+    };
   },
   created() {
     const setThis = this;
@@ -57,15 +73,23 @@ export default {
   },
 };
 </script>
-
-<style scoped lang='scss'>
+<style scoped lang="scss">
+.transparent-bg{
+  background: rgba( #f7f7fc, .7);
+  transition: all .7s;
+}
 .kiakia-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   align-content: center;
   height: auto;
-  .logo{
+  .logo {
     display: inherit;
     flex: 1;
   }
@@ -96,8 +120,8 @@ export default {
   .tabs li {
     font-size: 15px;
   }
-    .kiakia-navbar{
-    .logo img{
+  .kiakia-navbar {
+    .logo img {
       height: 23px;
       // width: 80px;
     }
@@ -107,13 +131,13 @@ export default {
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
 
-
-    .kiakia-navbar{
-    .logo img{
+  .kiakia-navbar {
+    padding: 0 10px;
+    .logo img {
       height: 100%;
-      
     }
-  }  .menu-bar {
+  }
+  .menu-bar {
     display: block;
     position: absolute;
     cursor: pointer;
