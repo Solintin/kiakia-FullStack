@@ -1,7 +1,7 @@
 <template>
-  <div class="nav-header">
+  <div class="nav-header ">
     <!-- Navbar -->
-    <div class="kiakia-navbar py-4">
+    <div class="kiakia-navbar  py-3">
       <div class="logo">
         <router-link to="/">
           <img src="../assets/images/Homepage/Layer-6.svg" alt="KiaKia-Glogo"
@@ -26,7 +26,7 @@
               <router-link to="/support">Support</router-link>
             </li>
             <li>
-              <a href="#" class="text-white btn btn-primary">Get Started</a>
+              <a href="#" class="text-white btn btn-primary">Download</a>
             </li>
           </ul>
         </div>
@@ -51,10 +51,9 @@ export default {
     const navHeight = navBottom.getBoundingClientRect();
 
     window.onscroll = () => {
-    document.documentElement.scrollTop > navHeight.height ?
-        navHeader.classList.add("transparent-bg") :
-        navHeader.classList.remove("transparent-bg");
-      
+      document.documentElement.scrollTop > navHeight.height
+        ? navHeader.classList.add("transparent-bg")
+        : navHeader.classList.remove("transparent-bg");
     };
   },
   created() {
@@ -74,16 +73,17 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.transparent-bg{
-  background: rgba( #f7f7fc, .7);
-  transition: all .7s;
+.transparent-bg {
+  background: #f7f7fc;
+  transition: all 0.7s;
 }
 .kiakia-navbar {
+  z-index: 10;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  padding: 0 35px;
+  padding : 0 95px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +110,7 @@ export default {
 .menu-list li.active {
   transition: all 500ms;
   padding-bottom: 5px;
+  font-weight: bold;
   border-bottom: 3px solid #3789ec;
 }
 
@@ -132,7 +133,7 @@ export default {
   /* ===================== Menu bar Navigation ======================= */
 
   .kiakia-navbar {
-    padding: 0 10px;
+    padding: 0 20px;
     .logo img {
       height: 100%;
     }

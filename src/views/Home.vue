@@ -1,26 +1,26 @@
 <template>
-  <div>
+  <div class="">
     <!-- Landing Page -->
     <div class="landing-page">
       <div class="container">
         <!-- Navbar -->
-       
-          <Header />
-      
+
+        <Header />
+
         <!--E Navbar -->
 
-        <div class="row  " style="padding-top : 100px; paddong-botton-50px">
-          <div class="col-md-6 my-auto">
-            <div class="my-5">
-              <span class="display-4 fw-bold"
+        <div class="row " style="padding-top : 100px; ">
+          <div class="col-md-6" style="margin-top: 120px">
+            <div class="">
+              <span class="display-5 fw-bold"
                 >Never run out of cooking gas again</span
               >
             </div>
-            <div class="my-4">
-              <h5>
+            <div class="my-2">
+              <h6>
                 Gas360 gets gas to your home at odd hours of the day and puts
                 you in control of your gas usage.
-              </h5>
+              </h6>
             </div>
             <div class="text-left">
               <a href="#">
@@ -39,10 +39,9 @@
               </a>
             </div>
           </div>
-          <div class="col-md-6 text-center">
+          <div class="col-md-6">
             <div class="tank-info">
               <img
-                class="tank-info"
                 src="../assets/images/Homepage/kiakia-gas/Mobile/iPhone-X.png"
                 alt="tank info"
               />
@@ -61,7 +60,7 @@
         <h6 class="text-uppercase head text-center">Support</h6>
         <h3 class="text-center">Frequently asked questions</h3>
         <div v-if="faqs.length == 0" class="loading img-fluid">
-          <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+          <img src="../assets/loading-icon-animated-gif-19.jpg" class="img-fluid" alt="" />
         </div>
 
         <section class="questions">
@@ -202,7 +201,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
 :root {
   --primary: #3789ec;
@@ -225,25 +224,24 @@ body {
   font-family: "Work Sans", sans-serif;
 }
 /* =============Deskstop view====================== */
+
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
-
   background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
-.kiakia-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-  height: auto;
-}
+
 .tank-info {
-  margin-left: -20px;
+  text-align : end;
+  padding : 0;
+  margin : 0;
+}
+.tank-info img{
+  margin-right: -25px;
 }
 
 .tabs li {
@@ -385,7 +383,14 @@ body {
   .menu-list li:last-child {
     display: none !important;
   }
-
+.tank-info{
+  text-align: center;
+}
+.tank-info img{
+  margin-right: 0 !important;
+  margin-left: -15px !important;
+  
+}
   .support {
     width: 90% !important;
     margin: 40px auto !important;

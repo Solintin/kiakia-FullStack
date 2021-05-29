@@ -3,7 +3,7 @@
       <!-- footer -->
     <div class="container">
         <div class="footer ">
-            <div class="footer-card">
+            <div class="footer-card pt-3">
                          <router-link to="/">
            <img
                 src="../assets/images/Homepage/Layer-6.svg"
@@ -189,9 +189,11 @@
 
     <!-- E footer -->
     <!-- copyright -->
-    <div class="container mt-5 p-3" style="color: #969BAB;  border-top: 0.5px solid #888888;">
+   <div class='container'>
+ <div class="mt-5 p-3" style="color: #969BAB;  border-top: 0.5px solid #888888;">
         &copy; Copyright, Gas360 <span id="year"></span>. All right reserved
     </div>
+   </div>
     <!-- copyright -->
 
   </div>
@@ -231,7 +233,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
 
 /* ==================footer===================== */
 
@@ -245,6 +247,7 @@ export default {
 .footer .footer-card {
   width: 18%;
   margin: 10px;
+
 }
 .footer-card img {
   width: 100px;

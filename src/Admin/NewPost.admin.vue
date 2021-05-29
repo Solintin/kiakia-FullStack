@@ -37,7 +37,7 @@
         <p>Posts</p>
       </div>
       <ul>
-        <li>All posts</li>
+        <li><router-link to='/admin/blog'>All Posts</router-link></li>
         <li><router-link to="/admin/new/post">Add New Post</router-link></li>
 
         <li><a href="">Categories</a></li>

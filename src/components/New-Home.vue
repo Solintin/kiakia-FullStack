@@ -3,12 +3,12 @@
     <!-- Why Use Gas 360 -->
 
     <section class="container-fluid why-gas-360">
-      <div class="container text-center">
-        <span class="my-2 fs-2  fw-bold">
+      <div class="container py-5">
+        <h2 class="py-3 text-md-center fw-bold">
           Why use Gas360?
-        </span>
+        </h2>
         <div class="row">
-          <div class="col-md-3 p-3 ">
+          <div class="col-md-3 py-3 ">
             <img
               src="../assets/new-home-asset/bus.png"
               alt="bus"
@@ -16,7 +16,7 @@
             />
             <p>Gas Hailing and delivery at anytime of the day</p>
           </div>
-          <div class="col-md-3 p-3 ">
+          <div class="col-md-3 py-3 ">
             <img
               src="../assets/new-home-asset/speedometer.png"
               alt="bus"
@@ -24,7 +24,7 @@
             />
             <p>Realtime gas monitoring</p>
           </div>
-          <div class="col-md-3 p-3 ">
+          <div class="col-md-3 py-3 ">
             <img
               src="../assets/new-home-asset/Check.png"
               alt="bus"
@@ -32,7 +32,7 @@
             />
             <p>Guaranteed cylinder safety and maintenenace</p>
           </div>
-          <div class="col-md-3 p-3 ">
+          <div class="col-md-3 py-3 ">
             <img
               src="../assets/new-home-asset/gas.png"
               alt="bus"
@@ -56,7 +56,7 @@
           cylinder and gas and you buy in small quantities with our smart
           meters.
         </div>
-        <div class="col-md-6 ps-5">
+        <div class="col-md-6 ps-md-5">
           <img
             class="img-fluid"
             src="../assets/new-home-asset/order-refillsvg.svg"
@@ -66,7 +66,7 @@
       </div>
       <!-- monitor -->
       <div class="mt-4 row">
-        <div class="col-md-6 ps-5">
+        <div class="col-md-6">
           <img
             class="img-fluid tank-info"
             src="../assets/new-home-asset/tankinfosvg.svg"
@@ -115,11 +115,11 @@
 
     <!-- Get started -->
     <section class="container-fluid get-start">
-      <div class="container">
+      <div class="container py-5">
         <div class="row">
           <div class="col-md-6">
-            <div class="container">
-              <h1>
+            <div class="">
+              <h1 class="get-started-text">
                 Get started with Gas360
               </h1>
               <div class="image-wrapper">
@@ -127,15 +127,15 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 my-auto">
-            <div class="container ">
+          <div class="col-md-6 mt-5 pt-md-5">
+            <div class=" ">
               <ul class="m-3">
                 <li class="py-3">
-                  <div class="number">
+                  <div class="number my-auto">
                     1
                   </div>
                   <span>
-                    <h3>Cylinder exchange</h3>
+                    <h5>Cylinder exchange</h5>
                     <p>
                       Sign up and get your old cylinder swapped for a new one,
                       free of charge
@@ -143,11 +143,11 @@
                   >
                 </li>
                 <li class="py-3">
-                  <div class="number">
+                  <div class="number my-auto">
                     2
                   </div>
                   <span>
-                    <h3>Subscribe for subsequent refills</h3>
+                    <h5>Subscribe for subsequent refills</h5>
                     <p>
                       You get a free smart gas meter when you pre-order for at
                       least 3 subsequent refills.
@@ -155,11 +155,11 @@
                   >
                 </li>
                 <li class="py-3">
-                  <div class="number">
+                  <div class="number my-auto">
                     3
                   </div>
                   <span>
-                    <h3>Realtime Consumption Monitoring</h3>
+                    <h5>Realtime Consumption Monitoring</h5>
                     <p>
                       We monitor your gas,prompt you when it is almost run out
                       and deliver to you before it ever runs out
@@ -167,11 +167,11 @@
                   >
                 </li>
                 <li class="py-3">
-                  <div class="number">
+                  <div class="number my-auto">
                     4
                   </div>
                   <span>
-                    <h3>Cylinder exchange</h3>
+                    <h5>Cylinder exchange</h5>
                     <p>
                       Pay for gas once or small-small depending on your usage
                       through a trusted payment platform.
@@ -179,7 +179,7 @@
                   >
                 </li>
                 <li>
-                  <button class="p-3">Get Started</button>
+                  <button class="p-2 fs-6">Get Started Now</button>
                 </li>
               </ul>
             </div>
@@ -216,7 +216,7 @@
           </div>
           <section class="modal-body">
             <form>
-                 <div
+              <div
                 class="mb-3 d-flex justify-content-between align-items-center"
               >
                 <label for="fname">FirstName*</label>
@@ -227,7 +227,6 @@
               >
                 <div class="me-3 input-wrapper">
                   <div class="">
-                   
                     <input
                       type="text"
                       id="fname"
@@ -239,8 +238,6 @@
                   </div>
                 </div>
                 <div class="input-wrapper">
-             
-
                   <input
                     type="text"
                     id="lname"
@@ -250,9 +247,8 @@
                   />
                 </div>
               </div>
-                <label for="email">Email*</label>
+              <label for="email">Email*</label>
               <div class="mb-3 input-wrapper">
-
                 <input
                   type="email"
                   v-model="email"
@@ -368,7 +364,7 @@
           IKOYI & BANANA ISLAND
         </h1>
         <p>Not yet in your area? Get notified when we are in your area?</p>
-        <button class="p-3" @click="toggleModal">Join the waitlist</button>
+        <button class="p-2 fs-6" @click="toggleModal">Join the waitlist</button>
       </div>
     </section>
     <!-- E Waitlist  -->
@@ -429,51 +425,17 @@
     </div>
     <!-- E Partners -->
 
-    <!-- Upgrade -->
-    <div class="container-fluid upgrade text-white">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-md-6">
-            <h2>
-              Upgrade your cooking gas experience
-            </h2>
-            <p class="mb-4">
-              Download the app to keep track of your gas level, order gas from
-              the comfort of your home, subscribe for refills.
-            </p>
-            <div class="download">
-              <a href="#">
-                <img
-                  height="45px"
-                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                  alt="gplay"
-                />
-              </a>
-              <a class="ms-3" href="#">
-                <img
-                  height="45px"
-                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                  alt="apple"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 cta mt-5">
-            <img src="../assets/new-home-asset/iPhonesvg.svg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Upgrade -->
+<upgrade />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-
+import Upgrade from "../components/Upgrade"
 import Cities from "../components/Cities.json";
 export default {
   name: "newhome",
+  components: {Upgrade},
   data() {
     return {
       firstName: "",
@@ -642,6 +604,7 @@ section.container-fluid {
 .get-start {
   background: #fcfcfc;
   padding: 70px 0;
+
   h1 {
     color: #18366c;
     font-size: 60px;
@@ -660,7 +623,7 @@ section.container-fluid {
   }
   .number {
     height: min-content;
-    padding: 30px !important;
+    padding: 10px 20px  !important;
     border-radius: 6px;
     background: #eaf0fb;
     margin-right: 20px;
@@ -696,9 +659,6 @@ button {
 }
 // Upgrade
 
-.upgrade {
-  background: #253043;
-}
 
 // Modal
 
@@ -717,8 +677,6 @@ button {
     background: #eff0f6;
     padding: 7px;
     border-radius: 5px;
-
-    
   }
 }
 
@@ -752,6 +710,9 @@ button {
     }
   }
   .get-start {
+    .get-started-text {
+      text-align: center;
+    }
     h3 {
       font-size: 20px;
     }
@@ -776,9 +737,13 @@ button {
       width: 100vw;
       border-radius: 0;
     }
+    li:last-of-type{
+    display: none !important;
+  }
   }
   button {
     padding: 10px 5px !important;
   }
+  
 }
 </style>

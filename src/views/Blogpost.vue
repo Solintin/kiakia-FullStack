@@ -56,10 +56,10 @@
 
       <!-- E Body -->
 
+    </div>
       <!-- footer -->
       <Footer />
       <!--E footer -->
-    </div>
   </div>
 </template>
 
@@ -347,12 +347,7 @@ body {
   margin-right: 15px;
   font-size: 15px;
 }
-#all img,
-#company img,
-#product img,
-#social img {
-  border-radius: 20px;
-}
+
 input[type="text"],
 select {
   width: 100%;

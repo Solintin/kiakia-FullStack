@@ -1,40 +1,16 @@
 <template>
   <div>
-    <!-- Landing Page -->
-    <div class="landing-page">
-      <div class="container">
-        <!-- Navbar -->
-        <Header />
-
-        <!-- Content -->
-        <div class="container" style="padding-top : 100px; paddong-botton-50px">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="head">
-                About us
-              </h5>
-              <h1>
-                Sustainability is our lifestyle
-              </h1>
-            </div>
-            <div class="col-md-6 text-center gas360-circle">
-              <p>
-                <img
-                  src="../assets/images/About/Linked Path Group.svg"
-                  alt=""
-                />
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- E Content -->
-      </div>
+    <!-- Header  -->
+    <Header />
+    <!-- E Header  -->
+    <!-- Hero Section  -->
+    <div class="container-fluid hero-container">
+      <HeroSection text="Democratizing LPG access across the nation" />
     </div>
-
-    <!-- E Landing Page -->
+    <!-- E Hero Section  -->
     <!-- Body -->
 
-    <div class="container sustainability my-5 text-center">
+    <div class="container sustainability my-5">
       <div class="mission">
         <div class="head my-2">
           the mission
@@ -48,12 +24,47 @@
         </p>
       </div>
     </div>
-    <div class=" sustainability container">
+    <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <div class="head my-2">
-            the mission
-          </div>
+        <div class="col-md-3 py-3 ">
+          <img
+            src="../assets/new-home-asset/bus.png"
+            alt="bus"
+            class="img-fluid"
+          />
+          <p>Gas Hailing and delivery at anytime of the day</p>
+        </div>
+        <div class="col-md-3 py-3 ">
+          <img
+            src="../assets/new-home-asset/speedometer.png"
+            alt="bus"
+            class="img-fluid"
+          />
+          <p>Realtime gas monitoring</p>
+        </div>
+        <div class="col-md-3 py-3 ">
+          <img
+            src="../assets/new-home-asset/Check.png"
+            alt="bus"
+            class="img-fluid"
+          />
+          <p>Guaranteed cylinder safety and maintenenace</p>
+        </div>
+        <div class="col-md-3 py-3 ">
+          <img
+            src="../assets/new-home-asset/gas.png"
+            alt="bus"
+            class="img-fluid"
+          />
+          <p>Top level security for refilling, no underfill</p>
+        </div>
+      </div>
+    </div>
+   <div class="container-fluid upgrade py-5 text-white">
+      <div class=" sustainability container">
+      <div class="row">
+        <div class="col-md-6 my-auto">
+         
           <h4>
             We are committed to sustainability
           </h4>
@@ -63,7 +74,7 @@
             li-on batteries) is used to power the IOT devices.
           </p>
         </div>
-        <div class="col-md-6 sustain">
+        <div class="col-md-6 sustain my-auto">
           <img
             class="img-fluid"
             src="../assets/images/About/Group 1789.svg"
@@ -72,6 +83,7 @@
         </div>
       </div>
     </div>
+   </div>
 
     <div class=" sustainability container my-5 text-center">
       <div class="mission">
@@ -88,43 +100,7 @@
       </div>
     </div>
 
-<!-- Upgrade  -->
-  <div class="container-fluid upgrade text-white">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-md-6">
-            <h2>
-              Upgrade your cooking gas experience
-            </h2>
-            <p class="mb-4">
-              Download the app to keep track of your gas level, order gas from
-              the comfort of your home, subscribe for refills.
-            </p>
-            <div class="download">
-              
-              <a href="#">
-                <img
-               height="45px"
-                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                  alt="gplay"
-                />
-              </a>
-              <a class="ms-3" href="#">
-                <img
-                height="45px"
-                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                  alt="apple"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 cta mt-5">
-            <img src="../assets/new-home-asset/iPhonesvg.svg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Upgrade -->
+    <upgrade />
 
     <!-- Footert -->
     <Footer />
@@ -135,16 +111,20 @@
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Upgrade from "../components/Upgrade";
+import HeroSection from "../components/Hero_Section.vue";
 export default {
   name: "About",
   components: {
     Footer,
     Header,
+    Upgrade,
+    HeroSection,
   },
   metaInfo() {
     return {
       title: "About || KiaKia Gas 360",
-       meta: [
+      meta: [
         {
           name: "description",
           content:
@@ -199,11 +179,20 @@ body {
 .landing-page {
   min-width: 100%;
   min-height: 100vh;
+  padding: 120px 0;
   background: #f7f7fc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+.democrat {
+  font-size: 64px;
+  line-height: 76.8px;
+  font-weight: 600;
+}
+.gas360-circle {
+  text-align: end;
 }
 .kiakia-navbar {
   display: flex;
@@ -431,6 +420,14 @@ body {
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
+  .democrat {
+    font-size: 36px;
+    line-height: 43.2px;
+    font-weight: 600;
+  }
+  .gas360-circle {
+    text-align: center;
+  }
   .menu-bar {
     display: block;
     position: absolute;

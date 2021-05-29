@@ -1,37 +1,16 @@
 <template>
   <div>
-    <!-- Landing Page -->
-    <div class="landing-page">
-      <div class="container">
-        <!-- Navbar -->
-        <Header />
-
-        <!-- Content -->
-        <div class="container" style="padding-top : 100px; paddong-botton-50px">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="head">
-                BECOME A SUPPLIER
-              </h5>
-              <h1>
-                Be a Gaspreneur
-              </h1>
-            </div>
-            <div class="col-md-6 text-center gas360-circle">
-              <p>
-                <img
-                  src="../assets/images/GasPreneur/Linked-Path-Group.svg"
-                  alt=""
-                />
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- E Content -->
-      </div>
+       <!-- Header  -->
+    <Header />
+    <!-- E Header  -->
+    <!-- Hero Section  -->
+    <div class="container-fluid hero-container">
+      <HeroSection
+      text ="Become a Gaspreneur" />
     </div>
+    <!-- E Hero Section  -->
 
-    <!-- E Landing Page -->
+  
     <!-- Body -->
     <div class="  container my-5 ">
       <div class="head my-2">
@@ -228,43 +207,7 @@
     </div>
     <!--  E body -->
 
-    <!-- Upgrade -->
-  <div class="container-fluid upgrade text-white">
-      <div class="container">
-        <div class="row pt-5">
-          <div class="col-md-6">
-            <h2>
-              Upgrade your cooking gas experience
-            </h2>
-            <p class="mb-4">
-              Download the app to keep track of your gas level, order gas from
-              the comfort of your home, subscribe for refills.
-            </p>
-            <div class="download">
-              
-              <a href="#">
-                <img
-               height="45px"
-                  src="../assets/images/Homepage/kiakia7/Download-Badge/Google-Play-Badge.png"
-                  alt="gplay"
-                />
-              </a>
-              <a class="ms-3" href="#">
-                <img
-                height="45px"
-                  src="../assets/images/Homepage/kiakia6/Download-Badge/App-Store-Badge.png"
-                  alt="apple"
-                />
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 cta mt-5">
-            <img src="../assets/new-home-asset/iPhonesvg.svg" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- E Upgrade -->
+  <Upgrade />
 
     <!-- footer -->
     <Footer />
@@ -274,11 +217,15 @@
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Upgrade from "@/components/Upgrade";
+import HeroSection from '../components/Hero_Section.vue';
 export default {
   name: "Gaspreneur",
   components: {
     Footer,
     Header,
+    Upgrade,
+    HeroSection
   },
 
   metaInfo() {
@@ -336,6 +283,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
 .kiakia-navbar {
   display: flex;
   justify-content: space-between;
@@ -500,7 +448,9 @@ p label {
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
   /* ===================== Menu bar Navigation ======================= */
+  
   .menu-bar {
+  
     display: block;
     position: absolute;
     cursor: pointer;
@@ -545,9 +495,7 @@ p label {
   h5.head {
     font-size: 16px;
   }
-  .gas360-circle {
-    padding: 50px 0;
-  }
+ 
   .label-head {
     font-size: 20px;
   }

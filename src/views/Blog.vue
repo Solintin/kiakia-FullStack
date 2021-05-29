@@ -1,73 +1,57 @@
 <template>
   <div>
-    <!-- Landing Page -->
-    <div class="landing-page">
-      <div class="container">
-        <!-- Navbar -->
-        <Header />
-        <!-- Content -->
-        <div class="container" style="padding-top : 100px; paddong-botton-50px">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="head">
-                Blog
-              </h5>
-              <h1>
-                Stories, resources and materials making the Gas360 experience
-              </h1>
-            </div>
-            <div class="col-md-6 text-center gas360-circle">
-              <p>
-                <img src="../assets/images/Blog/Linked Path Group.svg" alt="" />
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- E Content -->
-      </div>
+    <!-- Header  -->
+    <Header />
+    <!-- E Header  -->
+    <!-- Hero Section  -->
+    <div class="container-fluid hero-container">
+      <HeroSection
+      text ="Stories, resources and articles making the Gas360 experience" />
     </div>
-
-    <!-- E Landing Page -->
-    <!-- Body -->
+    <!-- E Hero Section  -->
 
     <section class="container blog">
-      <div v-if="posts.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+      <div v-if="posts.length == 0" class="loading">
+        <img
+          class="img-fluid"
+          src="../assets/loading-icon-animated-gif-19.jpg"
+          alt=""
+        />
       </div>
       <div class="mobile-first">
         <div>
-          <select name="dropdown" id="dropdown">
+          <select name="dropdown" id="dropdown" style="padding: 10px 0;">
             <option
-              class="tab-btn active-high"
+              class="tab-button active-high"
               value="all"
-              selected
+              
               data-id="all"
               @change="getAllBlogs"
               >ALL</option
             >
             <option
-              class="tab-btn"
+              class="tab-button"
               value="company"
               data-id="company"
-              @change="getCompanyBlogs"
+              @click="getCompanyBlogs"
               >Company</option
             >
             <option
-              class="tab-btn"
+              class="tab-button"
               value="product"
               data-id="product"
               @change="getProductBlogs"
               >Product</option
             >
             <option
-              class="tab-btn"
+              class="tab-button"
               value="social"
               data-id="social"
               @change="getSocialBlogs"
               >Social</option
             >
-             <option
-              class="tab-btn"
+            <option
+              class="tab-button"
               value="retail"
               data-id="social"
               @change="getSocialBlogs"
@@ -81,63 +65,62 @@
               type="text"
               @change="getSearchVar"
               v-model="search"
-              placeholder="Search Blog"
+             
             />
-            <i class=" icon fa fa-search"></i>
+            <i class="icon-search-mobile fa fa-search"></i>
           </form>
         </div>
       </div>
 
       <div class="desktop-first">
         <div
-          class="tab-btn py-auto active-high"
+          class="tab-button  active-high"
           data-id="all"
           @click="getAllBlogs"
         >
           All Posts
         </div>
-        <div class="tab-btn py-auto" data-id="company" @click="getCompanyBlogs">
+        <div class="tab-button" data-id="company" @click="getCompanyBlogs">
           Company
         </div>
-        <div class="tab-btn py-auto" data-id="product" @click="getProductBlogs">
+        <div class="tab-button" data-id="product" @click="getProductBlogs">
           Product
         </div>
-        <div class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">
+        <div class="tab-button" data-id="social" @click="getSocialBlogs">
           Social Impact
         </div>
-        <div class="tab-btn py-auto" data-id="social" @click="getSocialBlogs">
-         Retail 2.0
+        <div class="tab-button" data-id="social" @click="getSocialBlogs">
+          Retail 2.0
         </div>
-        
       </div>
       <!-- Search Bar  -->
 
       <div class="search-input position-relative  d-none d-md-block">
-          <form @submit.prevent>
-            <input
-              type="text"
-              @change="getSearchVar"
-              v-model="search"
-              placeholder="Search Blog"
-              class="w-100"
-            />
-            <i class="icon mx-4 fa fa-search"></i>
-          </form>
-        </div>
+        <form @submit.prevent>
+          <input
+            type="text"
+            @change="getSearchVar"
+            v-model="search"
+            placeholder="Search Blog"
+            class="w-100"
+          />
+          <i class="icon mx-4 fa fa-search"></i>
+        </form>
+      </div>
 
-      <div class="blog container py-5">
+      <div class="blog py-5">
         <div class="content active-high" id="all">
           <div class="row">
             <div
               v-for="(post, key) in getSearchVar() || posts"
               :key="key"
-              class="col-lg-4 col-md-6 mb-3"
+              class="col-lg-4 col-md-6 mb-5"
             >
               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="head">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
               <b>
                 <h5>
                   {{ post.title }}
@@ -156,13 +139,13 @@
             <div
               v-for="(post, key) in company"
               :key="key"
-              class="col-lg-4 col-md-6 mb-3"
+              class="col-lg-4 col-md-6 mb-5"
             >
               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="head">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
               <b>
                 <p>
                   {{ post.title }}
@@ -181,13 +164,13 @@
             <div
               v-for="(post, key) in product"
               :key="key"
-              class="col-lg-4 col-md-6 mb-3"
+              class="col-lg-4 col-md-6 mb-5"
             >
               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="head">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
               <b>
                 <p>
                   {{ post.title }}
@@ -206,13 +189,13 @@
             <div
               v-for="(post, key) in social"
               :key="key"
-              class="col-lg-4 col-md-6 mb-3"
+              class="col-lg-4 col-md-6 mb-5"
             >
               <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="head">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
               <b>
                 <p>
                   {{ post.title }}
@@ -242,18 +225,20 @@
 import { mapState } from "vuex";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HeroSection from "@/components/Hero_Section.vue";
 
 export default {
   name: "Blog",
   components: {
     Footer,
     Header,
+    HeroSection,
   },
   data() {
     return {
       company: [],
       product: [],
-      social: [],
+      // social: [],
       search: "",
       isLoading: true,
       incomingData: {},
@@ -279,11 +264,11 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.isLoading);
-
+    
     const selectOption = document.querySelector("#dropdown");
+
     const blog = document.querySelector(".blog");
-    const btns = document.querySelectorAll(".tab-btn");
+    const btns = document.querySelectorAll(".tab-button");
     const articles = document.querySelectorAll(".content");
     blog.addEventListener("click", function(e) {
       const id = e.target.dataset.id;
@@ -392,29 +377,24 @@ body {
   font-family: "Work Sans" sans-serif;
 }
 /* =============Deskstop view====================== */
-.landing-page {
-  min-width: 100%;
-  min-height: auto;
-  background: #f7f7fc;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+.Hero-container {
+  padding-top: 120px;
+  padding-bottom: 50px;
 }
 
 .part-post {
   color: rgb(94, 94, 94);
 }
 
-.search-input{
+.search-input {
   padding: 5px 0 0 50px;
-  margin: 5px 15px;
+  margin: 5px 0;
   background: #edeef1;
   border-radius: 5px;
-  input{
-    padding: 5px 5px  !important;
+  input {
+    padding: 5px 5px !important;
     background: transparent;
-    border-bottom: none  !important;
+   
   }
 }
 
@@ -437,16 +417,15 @@ body {
 .btn-container {
   display: block !important;
 }
-.tab-btn {
-  margin-bottom: 2rem;
-  padding-left: 7px;
+.tab-button {
+
   font-size: 1rem;
   background: #fff;
   cursor: pointer;
   letter-spacing: 1px;
   transition: all 0.5s ease-in-out;
 }
-.tab-btn:hover:not(.active-high) {
+.tab-button:hover:not(.active-high) {
   background: white;
   color: #000;
 }
@@ -455,7 +434,7 @@ body {
 .content {
   display: none !important;
 }
-.tab-btn.active-high {
+.tab-button.active-high {
   background: #e9f2fc;
   border-right: 2px solid var(--primary);
   padding: 7px;
@@ -466,19 +445,23 @@ body {
 
 .desktop-first {
   display: flex !important;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: row;
   align-items: center;
   margin-bottom: 10px !important;
-  border-bottom: 0.5px solid #d9dbe1; 
+  border-bottom: 0.5px solid #d9dbe1;
+  div{
+    margin: 20px 25px;
+  }
 }
-.tab-btn.active-high {
+.tab-button.active-high {
   background: #fff;
   border-bottom: 3px solid var(--primary);
   padding: 4px;
   border-right: none !important;
   font-weight: 600;
 }
-.tab-btn {
+.tab-button {
   margin-bottom: 14px;
   margin-right: 15px;
   font-size: 15px;
@@ -487,13 +470,13 @@ body {
 #company img,
 #product img,
 #social img {
-  border-radius: 20px;
+  border-radius: 5px;
 }
 input[type="text"],
 select {
   width: 100%;
   border: none;
-  padding: 10px 10px 10px 35px;
+  padding: 10px 0;
 }
 input[type="text"]:focus {
   outline: none;
@@ -548,6 +531,11 @@ input[type="text"]:focus {
     position: absolute;
     top: 13px;
     left: 0;
+  }
+  .icon-search-mobile {
+    position: absolute;
+    top: 13px;
+    right: 5px;
   }
   .col-2 {
     display: none;
