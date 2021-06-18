@@ -7,7 +7,7 @@
         <Header />
 
         <!-- Content -->
-        <div class="container" style="padding-top : 100px; paddong-botton-50px">
+        <div class="" style="padding-top : 100px; paddong-botton-50px">
           <div class="row">
             <div class="col-md-6">
               <h5 class="head">
@@ -34,7 +34,7 @@
       <div v-if="policies.length == 0" class="loading img-fluid">
         <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
       </div>
-      <div class="my-4">
+      <div class="my-4 post-size">
         <span v-for="(policy, key) in policies" :key="key">
           <p v-html="policy.policy"></p>
         </span>
@@ -149,6 +149,10 @@ a {
 body {
   background-color: #ffffff;
   font-family: "Work Sans", sans-serif !important;
+}
+.post-size{
+  width: 60%;
+  margin: 0 auto;
 }
 /* =============Deskstop view====================== */
 .landing-page {
@@ -290,6 +294,10 @@ body {
 
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
+  .post-size{
+    width: 100%;
+    margin: 0;
+  }
   /* ===================== Menu bar Navigation ======================= */
   .menu-bar {
     display: block;

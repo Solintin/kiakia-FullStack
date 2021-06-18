@@ -1,101 +1,107 @@
-
 <template>
   <div>
-       <!-- Landing Page -->
+    <!-- Landing Page -->
     <div class="landing-page">
-        <div class="container">
-            <!-- Navbar -->
-         <Header/>
+      <div class="container">
+        <!-- Navbar -->
+        <Header />
 
-            <!-- Content -->
-            <div class="container" style="padding-top : 100px; paddong-botton-50px">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h5 class="head">
-                            Blog
-                        </h5>
-                        <h1>
-                            Stories, resources and materials making the Gas360 experience
-                        </h1>
-                    </div>
-                    <div class="col-md-6 text-center gas360-circle">
-                        <p> <img src="../assets/images/Support/Linked Path Group.svg" alt=""></p>
-                    </div>
-
-                </div>
+        <!-- Content -->
+        <div class="" style="padding-top : 100px; paddong-botton-50px">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="head">
+                Legal Information
+              </h5>
+              <h1>
+                Cookie declaration
+              </h1>
             </div>
-            <!-- E Content -->
-
+            <div class="col-md-6 text-center gas360-circle">
+              <p>
+                <img
+                  src="../assets/images/Support/Linked Path Group.svg"
+                  alt=""
+                />
+              </p>
+            </div>
+          </div>
         </div>
+        <!-- E Content -->
+      </div>
     </div>
-
-
 
     <!-- E Landing Page -->
     <!-- Body -->
-    <div class="container my-5">
-        <div v-if="cookies.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
+    <div class="container my-5 ">
+      <div v-if="cookies.length == 0" class="loading img-fluid">
+        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
       </div>
-       <span   v-for="(cookie, key) in cookies" :key="key">
-      <p v-html="cookie.description"></p>
-       </span>
+      <div class="post-size">
+        <span v-for="(cookie, key) in cookies" :key="key">
+          <p v-html="cookie.description"></p>
+        </span>
+      </div>
     </div>
     <!--E Body -->
 
-
     <!-- Upgrade -->
     <div class="upgrade text-white">
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-md-6 col-sm-12">
-                    <h2>
-                        Upgrade your cooking gas experience
-                    </h2>
-                    <p class="mb-4">
-                        Download the app to keep track of your gas level, order gas from the comfort of your home,
-                        subscribe for
-                        refills.
-                    </p>
-                    <div class="download">
-                        <div>Get the App</div>
-                        <a href="#"> <img src="../assets/images/Support/Google Play Badge.png" alt="gplay">
-                        </a>
-                        <a class="me-3" href="#"> <img src="../assets/images/Support/App Store Badge.png" alt="apple">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-12 cta mt-5">
-                    <img src="../assets/images/Support/iPhone.png" alt="">
-                </div>
+      <div class="container">
+        <div class="row pt-5">
+          <div class="col-md-6 col-sm-12">
+            <h2>
+              Upgrade your cooking gas experience
+            </h2>
+            <p class="mb-4">
+              Download the app to keep track of your gas level, order gas from
+              the comfort of your home, subscribe for refills.
+            </p>
+            <div class="download">
+              <div>Get the App</div>
+              <a href="#">
+                <img
+                  src="../assets/images/Support/Google Play Badge.png"
+                  alt="gplay"
+                />
+              </a>
+              <a class="me-3" href="#">
+                <img
+                  src="../assets/images/Support/App Store Badge.png"
+                  alt="apple"
+                />
+              </a>
             </div>
+          </div>
+          <div class="col-md-6 col-sm-12 cta mt-5">
+            <img src="../assets/images/Support/iPhone.png" alt="" />
+          </div>
         </div>
+      </div>
     </div>
     <!-- E Upgrade -->
-
-
 
     <!-- footer -->
     <Footer />
     <!--E footer -->
-
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
- import Header from '@/components/Header'
- import Footer from '@/components/Footer'
+import { mapState } from "vuex";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default {
-    name : "Cookie",
-      components:{
-      Footer, Header
-    },
-    metaInfo() {
-      return {
-        title: "Cookies || KiaKia Gas 360",
- meta: [
+  name: "Cookie",
+  components: {
+    Footer,
+    Header,
+  },
+  metaInfo() {
+    return {
+      title: "Cookies || KiaKia Gas 360",
+      meta: [
         {
           name: "description",
           content:
@@ -109,8 +115,8 @@ export default {
         { property: "og:type", content: "website" },
         { name: "robots", content: "index,follow" },
       ],
-      };
-    },
+    };
+  },
 
   created() {
     this.getCookie();
@@ -122,12 +128,12 @@ export default {
     getCookie() {
       this.$store.dispatch("GET_COOKIE");
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap");
 :root {
   --primary: #3789ec;
   --accent: #011230;
@@ -153,6 +159,10 @@ a {
 body {
   background-color: #fffffa;
   font-family: "Manrope", sans-serif;
+}
+.post-size {
+  width: 60%;
+  margin: 0 auto;
 }
 /* =============Deskstop view====================== */
 .landing-page {
@@ -294,6 +304,10 @@ body {
 
 /* =========================== MOBILE VIEW========================== */
 @media screen and (max-width: 765px) {
+  .post-size {
+    width: 100%;
+    margin: 0;
+  }
   /* ===================== Menu bar Navigation ======================= */
   .menu-bar {
     display: block;
@@ -359,5 +373,4 @@ body {
     color: var(--primary) !important;
   }
 }
-
 </style>

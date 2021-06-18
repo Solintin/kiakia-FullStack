@@ -100,13 +100,19 @@
               </p>
               <ul class="my-5">
                 <li class="my-3 ">
-                  <a class="text-primary" href="#">Terms of service</a>
+                  <router-link class="text-primary" to="/support/tos"
+                    >Terms of service</router-link
+                  >
                 </li>
                 <li class="my-3 ">
-                  <a class="text-primary" href="#">Cookie policy</a>
+                  <router-link class="text-primary" to="/support/cookie"
+                    >Cookie Policy</router-link
+                  >
                 </li>
                 <li class="my-3 ">
-                  <a class="text-primary" href="#">Privacy policy</a>
+                  <router-link class="text-primary" to="/support/privacy"
+                    >Privacy policy</router-link
+                  >
                 </li>
                 <li class="my-3 ">
                   <a class="text-primary" href="#">Code of conduct</a>

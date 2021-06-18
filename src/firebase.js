@@ -5,23 +5,26 @@ import 'firebase/storage'
 
 
  // Your web app's Firebase configuration
- const  firebaseConfig = {
-    apiKey: "AIzaSyBEVkdDRVdzEPn6-6-lGRHOPbMcXSJwqRo",
-    authDomain: "kiakia360-eb0b5.firebaseapp.com",
-    projectId: "kiakia360-eb0b5",
-    storageBucket: "kiakia360-eb0b5.appspot.com",
-    messagingSenderId: "550754392383",
-    appId: "1:550754392383:web:364affda325d63e8491b8a"
-  };
-  // Initialize Firebase
- const fbAccess =  firebase.initializeApp(firebaseConfig);
+ const firebaseConfig = {
+  apiKey: "AIzaSyBl6ETkWrG8yKavRxB_9CjkMsGkJkOr2Gs",
+  authDomain: "gas360-6aedd.firebaseapp.com",
+  projectId: "gas360-6aedd",
+  storageBucket: "gas360-6aedd.appspot.com",
+  messagingSenderId: "566916684999",
+  appId: "1:566916684999:web:63d0808dc440fce3da32e2",
+  measurementId: "G-8N49YD9ZSS"
+};
+
+
+// Initialize Firebase
+const fbAccess =  firebase.initializeApp(firebaseConfig);
 
 
 
 
 
 // utils
-const db = firebase.firestore()
+const db = firebase.firestore().collection('Web').doc('Gas360-Web-Backend')
 // const auth = firebase.auth()
 
 
@@ -33,6 +36,10 @@ const cookieCollection = db.collection('cookie')
 const privacyCollection = db.collection('privacy')
 const tosCollection = db.collection('tos')
 const waitListCollection = db.collection('waitlist')
+//User App Management
+const users = firebase.firestore().collection('users')
+const cards = firebase.firestore().collection('cards')
+const orders = firebase.firestore().collection('orders')
 
 
 // export utils/refs
@@ -42,5 +49,8 @@ export {fbAccess,
   privacyCollection,
   tosCollection,
     postsCollection,
-    waitListCollection
+    waitListCollection,
+    users,
+    cards,
+    orders
 }

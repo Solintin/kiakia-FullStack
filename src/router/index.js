@@ -30,6 +30,7 @@ import SupportPages from "../Admin/SupportPages.admin.vue";
 import AdminDashboard from "../API/AdminDashboard.vue";
 import AdminUser from "../API/AdminUser.vue";
 import UserInterface from "../API/UserInterface.vue";
+import UserManagement from "../UserApp/User-App.vue";
 
 Vue.use(VueRouter);
 
@@ -241,6 +242,14 @@ const routes = [
     path: '/api/user/',
     name: 'UserInterface',
     component : UserInterface
+    
+  },
+
+    // User App Management  
+    {
+    path: '/admin/user-management',
+    name: 'UserManagement',
+    component : UserManagement
     
   },
 

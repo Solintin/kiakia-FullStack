@@ -25,8 +25,10 @@ export default new Vuex.Store({
     policies: [],
     terms: [],
     waitlist: [],
+    users : [],
     errMsg: null,
     successMsg: null,
+
   },
   mutations: {
     setErrMsg(state, val) {
@@ -62,6 +64,9 @@ export default new Vuex.Store({
     setWaitList(state, val) {
       state.waitlist = val;
     },
+    setUsers(state, val){
+      state.Users = val
+    }
   },
   actions: {
     // Post Collection Actions
@@ -88,6 +93,7 @@ export default new Vuex.Store({
         }, 3000);
         console.log(error.message);
       }
+
     },
 
     async GET_POST({ commit }) {
@@ -531,5 +537,56 @@ export default new Vuex.Store({
         });
     },
   },
+
+  // User App Management
+
+  // async PUBLISH_RIDER_APP({ commit }, form) {
+  //   try {
+  //     const document = await fb.postsCollection.add({
+  //       title: form.title,
+  //       category: form.category,
+  //       post: form.post,
+  //       authoredBy: form.authoredBy,
+  //       createdOn: moment().format("LL"),
+  //       blogImage: form.blogImage,
+  //       revised: parseInt(0),
+  //     });
+
+  //     commit("setSuccessMsg", "Post Succesfull");
+  //     setTimeout(() => {
+  //       commit("setSuccessMsg", null);
+  //     }, 3000);
+  //   } catch (error) {
+  //     commit("setErrMsg", error.message);
+  //     setTimeout(() => {
+  //       commit("setErrMsg", null);
+  //     }, 3000);
+  //     console.log(error.message);
+  //   }
+
+  // },
+
+  async GET_USER_INFO({ commit }) {
+    await fb.users.onSnapshot((data) => {
+      const usersArray = [];
+
+      try {
+        data.forEach((doc) => {
+          const info = doc.data();
+          info.id = doc.id;
+          usersArray.push(info);
+        });
+
+        commit("setUsers", usersArray);
+      } catch (error) {
+        commit("setErrMsg", error.message);
+        console.log(error.message);
+      }
+    });
+  },
+
+
+
+
   modules: {},
 });

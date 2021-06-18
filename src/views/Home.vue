@@ -92,7 +92,7 @@
 "
               class=" btn  btn-outline-primary"
             >
-              <router-link to="/faq">See More FAQs</router-link>
+              <router-link to="/support">See More FAQs</router-link>
             </button>
           </div>
           <!-- E single question -->
@@ -392,7 +392,7 @@ body {
   
 }
   .support {
-    width: 90% !important;
+    width: 100% !important;
     margin: 40px auto !important;
   }
   /* ======================= Footer====================== */
