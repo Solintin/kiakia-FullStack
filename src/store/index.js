@@ -541,53 +541,7 @@ export default new Vuex.Store({
         });
     },
   
-  
-    
-    // User App Management
-    
-    // async PUBLISH_RIDER_APP({ commit }, form) {
-      //   try {
-        //     const document = await fb.postsCollection.add({
-          //       title: form.title,
-          //       category: form.category,
-  //       post: form.post,
-  //       authoredBy: form.authoredBy,
-  //       createdOn: moment().format("LL"),
-  //       blogImage: form.blogImage,
-  //       revised: parseInt(0),
-  //     });
 
-  //     commit("setSuccessMsg", "Post Succesfull");
-  //     setTimeout(() => {
-    //       commit("setSuccessMsg", null);
-  //     }, 3000);
-  //   } catch (error) {
-  //     commit("setErrMsg", error.message);
-  //     setTimeout(() => {
-  //       commit("setErrMsg", null);
-  //     }, 3000);
-  //     console.log(error.message);
-  //   }
-
-  // },
-  
-  // async GET_USER_INFO({ commit }) {
-  //   await fb.users.onSnapshot((data) => {
-  //     const usersArray = [];
-  //     try {
-  //       data.forEach((doc) => {
-  //         const info = doc.data();
-  //         info.id = doc.id;
-  //         usersArray.push(info);
-  //       });
-
-  //       commit("setUsers", usersArray);
-  //     } catch (error) {
-  //       commit("setErrMsg", error.message);
-  //       console.log(error.message);
-  //     }
-  //   });
-  // },
   async GET_ORDERS_INFO({ commit }) {
     await fb.orders.onSnapshot((data) => {
       const ordersArray = [];
@@ -607,12 +561,11 @@ export default new Vuex.Store({
     });
   },
   
-},
-
-EDIT_ORDER({ commit }, val) {
+  
+  EDIT_ORDER({ commit }, val) {
   console.log(val);
   fb.orders
-    .doc(val.activeItem)
+  .doc(val.activeItem)
     .update(val)
     .then(() => {
       commit("setSuccessMsg", "Update Succesfull");
@@ -625,11 +578,12 @@ EDIT_ORDER({ commit }, val) {
       setTimeout(() => {
         commit("setErrMsg", null);
       }, 3000);
-
+      
       console.error("Error updating document: ", error);
     });
+  },
+  
 },
-
 
   modules: {},
 });

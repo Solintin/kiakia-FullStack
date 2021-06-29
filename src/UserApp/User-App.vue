@@ -204,10 +204,7 @@
             <div>
               <h5>Order Status</h5>
 
-              <select
-                v-model="orderStatus"
-                
-              >
+              <select v-model="orderStatus" @change="handleChanges(productId)">
                 <option> {{ this.orderStatus }} </option>
                 <option
                   v-for="(status, idx) in Status"
@@ -257,6 +254,7 @@
                       v-model="rider"
                       type="text"
                       placeholder="Input Rider..."
+                      @change="handleChanges(productId)"
                     />
                     <span class="ms-2 pencil-icon">
                       <i class="far fa-edit fa-2x"></i>
@@ -280,7 +278,7 @@
               type="button"
               class="btn btn-secondary"
               data-dismiss="modal"
-              @click="closeModal(productId, updatedOrder)"
+              @click="closeModal(updatedOrder)"
             >
               Save
             </button>
@@ -309,7 +307,7 @@ export default {
       displayNone: "displayNone",
       activeTab: "activeTab",
       search: "",
-      rider : '',
+      rider: "",
       address: "",
       fullName: "null",
       size: "",
@@ -319,7 +317,7 @@ export default {
       openModal: false,
       Status: ["Processing", "Transit", "Delivered"],
       updatedOrder: {
-        rider : "",
+        rider: "",
         activeItem: null,
       },
     };
@@ -329,8 +327,6 @@ export default {
   },
   created() {
     this.getData();
-
-
   },
 
   methods: {
@@ -352,11 +348,17 @@ export default {
       }
     },
 
-    // handleOrderStatus(orderId) {
-    //   console.log(this.orderStatus);
-
-
-    // },
+   async handleChanges(orderId) {
+       await   this.orders.filter((order) => {
+        if (order.id === orderId) {
+          this.updatedOrder = order;
+          this.updatedOrder.activeItem = orderId;   
+          this.updatedOrder.rider = this.rider;
+          order.order.orderStatus = this.orderStatus;
+          }
+      }),
+      console.log(this.orderStatus);
+    },
 
     tabSelector() {
       const tab = document.querySelector(".tab-container");
@@ -456,25 +458,13 @@ export default {
       this.getOrdersDetail(orderId);
     },
 
-    closeModal(orderId, updatedOrder) {
-      this.orders.filter((order) => {
-        if (order.id === orderId) {
-          this.updatedOrder = order;
-          this.updatedOrder.activeItem = orderId;   
-          this.updatedOrder.rider = this.rider;
-          order.order.orderStatus = this.orderStatus;
-
-          }
-      }),
-
-        
-       this.$store.dispatch("EDIT_ORDER", updatedOrder);
-    console.log(this.updatedOrder);
+    async closeModal(updatedOrder) {
+      console.log(this.updatedOrder);
+      await this.$store.dispatch("EDIT_ORDER", updatedOrder);
       $("#exampleModalCenter").modal("hide");
-
+    },
   },
-  }
-}
+};
 </script>
 
 <style lang="scss" scoped>
