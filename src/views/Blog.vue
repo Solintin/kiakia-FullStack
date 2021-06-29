@@ -238,7 +238,7 @@ export default {
     return {
       company: [],
       product: [],
-      // social: [],
+      social: [],
       search: "",
       isLoading: true,
       incomingData: {},

@@ -43,7 +43,13 @@
             <span class="search-icon">
               <i class="fas fa-search"></i>
             </span>
-            <input class="ps-5" type="text" placeholder="Search for order" />
+            <input
+              class="ps-5"
+              @change="getSearchVar"
+              v-model="search"
+              type="text"
+              placeholder="Search for order"
+            />
           </div>
         </div>
         <!-- Table  -->
@@ -69,47 +75,35 @@
         <!-- Processing -->
 
         <section :class="[{ activeTab: onProcess }, displayNone]">
-          <div class="p-2 bg-white mb-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="processing">Processing</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-2 bg-white my-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="processing">Processing</span>
+          <div v-for="(order, key) in getSearchVar()" :key="key">
+            <div class="p-2 bg-white mb-1 py-2">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex">
+                  <span class="me-2">
+                    <i class="fas fa-user-circle text-primary fa-2x"></i
+                  ></span>
+                  <span
+                    class="contact"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                    @click="toggleModal(order.id)"
+                  >
+                    <span> </span>
+                    <p>
+                      {{ order.order.fullName || "No Data" }}
+                    </p>
+                    <p>{{ order.order.phoneNumber }}</p>
+                  </span>
+                </div>
+                <div class="col-2">{{ order.time || "No Data" }}</div>
+                <div class="col-3">
+                  <i class="fas fa-map-marker-alt text-primary"></i>
+                  {{ order.order.home_address || "No Data" }}
+                </div>
+                <div class="col-1">{{ order.order.size || "No Data" }}</div>
+                <div class="col-2 ps-2">
+                  <span class="processing">{{ order.order.orderStatus }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -119,91 +113,29 @@
         <!--Transit -->
 
         <section :class="[{ activeTab: onTransit }, displayNone]">
-          <div class="p-2 bg-white mb-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="transit">Transit</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-2 bg-white my-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="transit">Transit</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-2 bg-white mb-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="transit">Transit</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-2 bg-white my-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="transit">Transit</span>
+          <div v-for="(order, key) in getSearchVar()" :key="key">
+            <div class="p-2 bg-white mb-1 py-2">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex">
+                  <span class="me-2">
+                    <i class="fas fa-user-circle text-primary fa-2x"></i
+                  ></span>
+                  <span class="contact">
+                    <p>
+                      {{ order.order.fullName || "No Data" }}
+                    </p>
+                    <p>{{ order.order.phoneNumber }}</p>
+                  </span>
+                </div>
+                <div class="col-2">{{ order.time || "No Data" }}</div>
+                <div class="col-3">
+                  <i class="fas fa-map-marker-alt text-primary"></i>
+                  {{ order.order.delivery_address || "No Data" }}
+                </div>
+                <div class="col-1">{{ order.order.size || "No Data" }}</div>
+                <div class="col-2 ps-2">
+                  <span class="transit">{{ order.order.orderStatus }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -213,25 +145,29 @@
         <!--  Delivered -->
 
         <section :class="[{ activeTab: onDelivered }, displayNone]">
-          <div class="p-2 bg-white mb-1 py-2">
-            <div class="row d-flex justify-content-center align-items-center">
-              <div class="col-4 d-flex">
-                <span class="me-2">
-                  <i class="fas fa-user-circle fa-2x"></i
-                ></span>
-                <span class="contact">
-                  <p>Ore Owolabi</p>
-                  <p>+234 818 587 9603</p>
-                </span>
-              </div>
-              <div class="col-2">12-05-2021 1:55pm</div>
-              <div class="col-3">
-                <i class="fas fa-map-marker-alt text-primary"></i> 1-4 Kiakia
-                gas Drive, Lekki...
-              </div>
-              <div class="col-1">5KG</div>
-              <div class="col-2 ps-2">
-                <span class="delivered">Delivered</span>
+          <div v-for="(order, key) in getSearchVar()" :key="key">
+            <div class="p-2 bg-white mb-1 py-2">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex">
+                  <span class="me-2">
+                    <i class="fas fa-user-circle text-primary fa-2x"></i
+                  ></span>
+                  <span class="contact">
+                    <p>
+                      {{ order.order.fullName || "No Data" }}
+                    </p>
+                    <p>{{ order.order.phoneNumber }}</p>
+                  </span>
+                </div>
+                <div class="col-2">{{ order.time || "No Data" }}</div>
+                <div class="col-3">
+                  <i class="fas fa-map-marker-alt text-primary"></i>
+                  {{ order.order.home_address || "No Data" }}
+                </div>
+                <div class="col-1">{{ order.order.size || "No Data" }}</div>
+                <div class="col-2 ps-2">
+                  <span class="delivered">{{ order.order.orderStatus }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -242,6 +178,117 @@
       </div>
     </section>
     <!-- End Main -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div
+            class="modal-header d-flex justify-content-between align-items-center"
+            id="exampleModalLongTitle"
+          >
+            <div class="div">
+              <h4 class="modal-title">
+                {{ this.fullName }}
+              </h4>
+              <h6>Order ID: FR-298</h6>
+              <h6>User ID: C-298</h6>
+            </div>
+            <div>
+              <h5>Order Status</h5>
+
+              <select
+                v-model="orderStatus"
+                
+              >
+                <option> {{ this.orderStatus }} </option>
+                <option
+                  v-for="(status, idx) in Status"
+                  :key="idx"
+                  :value="status"
+                >
+                  {{ status }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            class="modal-body d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <div class=" d-flex my-3">
+                <span class="col-1"
+                  ><i class="fas fa-map-marker-alt text-primary"></i>
+                </span>
+
+                <div class="col-11 px-3">
+                  Location
+                  <p>{{ this.address }}</p>
+                </div>
+              </div>
+
+              <div class=" d-flex my-3">
+                <span class="col-1" style="color : blue;"
+                  ><img src="../API/ApiAseet/card.png" alt="storage"
+                /></span>
+                <div class="col-11 px-3">
+                  Date and time
+                  <p>{{ this.time }}</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="d-flex my-3">
+                <span class="col-1"
+                  ><i class="fas fa-map-marker-alt text-primary"></i>
+                </span>
+                <div class="col-11 ms-1">
+                  Assigned Rider
+                  <div class=" rider-wrapper">
+                    <input
+                      v-model="rider"
+                      type="text"
+                      placeholder="Input Rider..."
+                    />
+                    <span class="ms-2 pencil-icon">
+                      <i class="far fa-edit fa-2x"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex my-3">
+                <span class="col-1"
+                  ><img src="../API/ApiAseet/storage.png" alt="storage"
+                /></span>
+                <div class="col-11 ">
+                  Total Cylinder Size
+                  <p>{{ this.size }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              @click="closeModal(productId, updatedOrder)"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- E modal -->
   </div>
 </template>
 
@@ -261,16 +308,56 @@ export default {
       onDelivered: false,
       displayNone: "displayNone",
       activeTab: "activeTab",
+      search: "",
+      rider : '',
+      address: "",
+      fullName: "null",
+      size: "",
+      time: "",
+      orderStatus: "",
+      productId: "",
+      openModal: false,
+      Status: ["Processing", "Transit", "Delivered"],
+      updatedOrder: {
+        rider : "",
+        activeItem: null,
+      },
     };
   },
   computed: {
-    ...mapState(["posts", "users"]),
-  }, 
-  created(){
-    this.getUsers();
+    ...mapState(["posts", "orders"]),
+  },
+  created() {
+    this.getData();
+
+
   },
 
   methods: {
+    async getOrdersDetail(orderId) {
+      try {
+        await this.orders.filter((order) => {
+          if (order.id === orderId) {
+            this.fullName = order.order.fullName;
+            this.address = order.order.home_address;
+            this.size = order.order.size;
+            this.time = order.time;
+            this.orderStatus = order.order.orderStatus;
+            this.productId = order.id;
+          }
+          console.log(this.productId);
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    // handleOrderStatus(orderId) {
+    //   console.log(this.orderStatus);
+
+
+    // },
+
     tabSelector() {
       const tab = document.querySelector(".tab-container");
       const tabList = document.querySelectorAll(".tab-container li");
@@ -304,11 +391,90 @@ export default {
         }
       });
     },
-    getUsers(){
-      this.$store.dispatch("GET_USER_INFO");
-    }
+    getData() {
+      this.$store.dispatch("GET_ORDERS_INFO");
+    },
+    getSearchVar() {
+      if (this.onProcess) {
+        const processingOrders = this.orders.filter(
+          (data) => data.order.orderStatus === "Processing"
+        );
+        const filteredOrder = processingOrders.filter(
+          (data) =>
+            data.order.fullName
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.order.home_address
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.time.toLowerCase().match(this.search.toLowerCase()) ||
+            data.order.size.toLowerCase().match(this.search.toLowerCase())
+        );
+
+        return filteredOrder;
+      } else if (this.onTransit) {
+        const transitOrders = this.orders.filter(
+          (data) => data.order.orderStatus === "Transit"
+        );
+
+        const filteredOrder = transitOrders.filter(
+          (data) =>
+            data.order.fullName
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.order.home_address
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.time.toLowerCase().match(this.search.toLowerCase()) ||
+            data.order.size.toLowerCase().match(this.search.toLowerCase())
+        );
+        return filteredOrder;
+      } else {
+        const deliveredOrder = this.orders.filter(
+          (data) => data.order.orderStatus === "Delivered"
+        );
+
+        const filteredOrder = deliveredOrder.filter(
+          (data) =>
+            data.order.fullName
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.order.home_address
+              .toLowerCase()
+              .match(this.search.toLowerCase()) ||
+            data.time.toLowerCase().match(this.search.toLowerCase()) ||
+            data.order.size.toLowerCase().match(this.search.toLowerCase())
+        );
+        return filteredOrder;
+      }
+    },
+
+    toggleModal(orderId) {
+      this.openModal = true;
+      $("#exampleModalCenter").modal("show");
+      console.log(this.openModal);
+      this.getOrdersDetail(orderId);
+    },
+
+    closeModal(orderId, updatedOrder) {
+      this.orders.filter((order) => {
+        if (order.id === orderId) {
+          this.updatedOrder = order;
+          this.updatedOrder.activeItem = orderId;   
+          this.updatedOrder.rider = this.rider;
+          order.order.orderStatus = this.orderStatus;
+
+          }
+      }),
+
+        
+       this.$store.dispatch("EDIT_ORDER", updatedOrder);
+    console.log(this.updatedOrder);
+      $("#exampleModalCenter").modal("hide");
+
   },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -381,11 +547,18 @@ a {
     top: 10px;
     left: 10px;
   }
-
+}
+.rider-wrapper {
+  display: inline-flex;
   input {
-    background: transparent;
+    background-color: #eff0f6;
+    border-radius: 5px;
     border-bottom: none !important;
   }
+}
+input {
+  background: transparent;
+  border-bottom: none !important;
 }
 .table-header {
   color: #18366c;
@@ -419,6 +592,10 @@ a {
 }
 .contact {
   font-size: 14px;
+  cursor: pointer;
+  p:nth-of-type(2) {
+    border-bottom: 1px solid #333;
+  }
 }
 
 .tab-container {

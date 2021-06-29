@@ -24,22 +24,22 @@ const fbAccess =  firebase.initializeApp(firebaseConfig);
 
 
 // utils
-const db = firebase.firestore().collection('Web').doc('Gas360-Web-Backend')
+const dbWeb = firebase.firestore().collection('Web').doc('Gas360-Web-Backend');
+// const dbMobile = firebase.firestore().collection('Mobile');
 // const auth = firebase.auth()
 
 
 // collection references
 
-const postsCollection = db.collection('posts')
-const faqsCollection = db.collection('faqs')
-const cookieCollection = db.collection('cookie')
-const privacyCollection = db.collection('privacy')
-const tosCollection = db.collection('tos')
-const waitListCollection = db.collection('waitlist')
+const postsCollection = dbWeb.collection('posts')
+const faqsCollection = dbWeb.collection('faqs')
+const cookieCollection = dbWeb.collection('cookie')
+const privacyCollection = dbWeb.collection('privacy')
+const tosCollection = dbWeb.collection('tos')
+const waitListCollection = dbWeb.collection('waitlist')
 //User App Management
-const users = firebase.firestore().collection('users')
-const cards = firebase.firestore().collection('cards')
-const orders = firebase.firestore().collection('orders')
+const users = firebase.firestore().collection('Mobile').doc('users');
+const orders = firebase.firestore().collection('Mobile').doc('orders').collection("userOrders");
 
 
 // export utils/refs
@@ -51,6 +51,5 @@ export {fbAccess,
     postsCollection,
     waitListCollection,
     users,
-    cards,
     orders
 }

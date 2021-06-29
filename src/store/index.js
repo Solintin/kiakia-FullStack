@@ -26,6 +26,7 @@ export default new Vuex.Store({
     terms: [],
     waitlist: [],
     users : [],
+    orders : [],
     errMsg: null,
     successMsg: null,
 
@@ -65,8 +66,11 @@ export default new Vuex.Store({
       state.waitlist = val;
     },
     setUsers(state, val){
-      state.Users = val
-    }
+      state.users = val;
+    },
+    setOrders(state, val){
+      state.orders = val;
+    },
   },
   actions: {
     // Post Collection Actions
@@ -536,15 +540,16 @@ export default new Vuex.Store({
           }, 3000);
         });
     },
-  },
-
-  // User App Management
-
-  // async PUBLISH_RIDER_APP({ commit }, form) {
-  //   try {
-  //     const document = await fb.postsCollection.add({
-  //       title: form.title,
-  //       category: form.category,
+  
+  
+    
+    // User App Management
+    
+    // async PUBLISH_RIDER_APP({ commit }, form) {
+      //   try {
+        //     const document = await fb.postsCollection.add({
+          //       title: form.title,
+          //       category: form.category,
   //       post: form.post,
   //       authoredBy: form.authoredBy,
   //       createdOn: moment().format("LL"),
@@ -554,7 +559,7 @@ export default new Vuex.Store({
 
   //     commit("setSuccessMsg", "Post Succesfull");
   //     setTimeout(() => {
-  //       commit("setSuccessMsg", null);
+    //       commit("setSuccessMsg", null);
   //     }, 3000);
   //   } catch (error) {
   //     commit("setErrMsg", error.message);
@@ -565,27 +570,65 @@ export default new Vuex.Store({
   //   }
 
   // },
+  
+  // async GET_USER_INFO({ commit }) {
+  //   await fb.users.onSnapshot((data) => {
+  //     const usersArray = [];
+  //     try {
+  //       data.forEach((doc) => {
+  //         const info = doc.data();
+  //         info.id = doc.id;
+  //         usersArray.push(info);
+  //       });
 
-  async GET_USER_INFO({ commit }) {
-    await fb.users.onSnapshot((data) => {
-      const usersArray = [];
+  //       commit("setUsers", usersArray);
+  //     } catch (error) {
+  //       commit("setErrMsg", error.message);
+  //       console.log(error.message);
+  //     }
+  //   });
+  // },
+  async GET_ORDERS_INFO({ commit }) {
+    await fb.orders.onSnapshot((data) => {
+      const ordersArray = [];
 
       try {
         data.forEach((doc) => {
           const info = doc.data();
           info.id = doc.id;
-          usersArray.push(info);
+          ordersArray.push(info);
         });
 
-        commit("setUsers", usersArray);
+        commit("setOrders", ordersArray);
       } catch (error) {
         commit("setErrMsg", error.message);
         console.log(error.message);
       }
     });
   },
+  
+},
 
+EDIT_ORDER({ commit }, val) {
+  console.log(val);
+  fb.orders
+    .doc(val.activeItem)
+    .update(val)
+    .then(() => {
+      commit("setSuccessMsg", "Update Succesfull");
+      setTimeout(() => {
+        commit("setSuccessMsg", null);
+      }, 3000);
+    })
+    .catch((error) => {
+      commit("setErrMsg", error.message);
+      setTimeout(() => {
+        commit("setErrMsg", null);
+      }, 3000);
 
+      console.error("Error updating document: ", error);
+    });
+},
 
 
   modules: {},

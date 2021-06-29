@@ -185,6 +185,7 @@ export default {
         { categ: "product", isClicked: false },
         { categ: "company", isClicked: false },
         { categ: "social-impact", isClicked: false },
+        { categ: "retail-2.0", isClicked: false },
       ],
       selectCategory: "",
       blogImage: "",
@@ -215,6 +216,7 @@ export default {
   },
 
   methods: {
+  
     publishPost() {
       const form = {
         post: this.post,
