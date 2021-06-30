@@ -22,7 +22,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span> {{this.currentUser}}</span>
         </div>
       </div>
     </header>
@@ -52,9 +52,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+         <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -157,11 +157,13 @@ export default {
         activeItem: null,
       },
       updateSuccess: false,
+      currentUser : null,
+
     };
   },
 
 computed:{
-  ...mapState(['successMsg','errMsg'])
+  ...mapState(['successMsg','errMsg', 'userProfile'])
 },
   metaInfo() {
     return {
@@ -194,8 +196,12 @@ computed:{
         }, 1500);
       });
     },
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
   },
   created() {
+    this.currentUser = this.userProfile.name
     this.incomingData = this.$route.query.data;
     this.incomingData.activeItem = this.$route.query.data.id;
   },

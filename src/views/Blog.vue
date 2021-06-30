@@ -6,7 +6,8 @@
     <!-- Hero Section  -->
     <div class="container-fluid hero-container">
       <HeroSection
-      text ="Stories, resources and articles making the Gas360 experience" />
+        text="Stories, resources and articles making the Gas360 experience"
+      />
     </div>
     <!-- E Hero Section  -->
 
@@ -24,7 +25,6 @@
             <option
               class="tab-button active-high"
               value="all"
-              
               data-id="all"
               @change="getAllBlogs"
               >ALL</option
@@ -53,31 +53,22 @@
             <option
               class="tab-button"
               value="retail"
-              data-id="social"
-              @change="getSocialBlogs"
+              data-id="retail2.0"
+              @change="getRetailBlogs"
               >Retail 2.0</option
             >
           </select>
         </div>
         <div class="py-auto position-relative">
           <form @submit.prevent>
-            <input
-              type="text"
-              @change="getSearchVar"
-              v-model="search"
-             
-            />
+            <input type="text" @change="getSearchVar" v-model="search" />
             <i class="icon-search-mobile fa fa-search"></i>
           </form>
         </div>
       </div>
 
       <div class="desktop-first">
-        <div
-          class="tab-button  active-high"
-          data-id="all"
-          @click="getAllBlogs"
-        >
+        <div class="tab-button  active-high" data-id="all" @click="getAllBlogs">
           All Posts
         </div>
         <div class="tab-button" data-id="company" @click="getCompanyBlogs">
@@ -89,7 +80,7 @@
         <div class="tab-button" data-id="social" @click="getSocialBlogs">
           Social Impact
         </div>
-        <div class="tab-button" data-id="social" @click="getSocialBlogs">
+        <div class="tab-button" data-id="retail2.0" @click="getRetailBlogs">
           Retail 2.0
         </div>
       </div>
@@ -120,7 +111,9 @@
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">
+                {{ post.category }}
+              </div>
               <b>
                 <h5>
                   {{ post.title }}
@@ -145,7 +138,9 @@
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">
+                {{ post.category }}
+              </div>
               <b>
                 <p>
                   {{ post.title }}
@@ -170,7 +165,9 @@
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">
+                {{ post.category }}
+              </div>
               <b>
                 <p>
                   {{ post.title }}
@@ -195,7 +192,35 @@
                 <img class="img-fluid" :src="post.blogImage" alt="post-image" />
               </router-link>
 
-              <div class="text-primary text-uppercase my-2">{{ post.category }}</div>
+              <div class="text-primary text-uppercase my-2">
+                {{ post.category }}
+              </div>
+              <b>
+                <p>
+                  {{ post.title }}
+                </p>
+              </b>
+              <div class="part-post">
+                <p v-html="post.post.substring(0, 100)"></p>
+              </div>
+              <p>{{ post.createdOn }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="content" id="retail2.0">
+          <div class="row">
+            <div
+              v-for="(post, key) in retail"
+              :key="key"
+              class="col-lg-4 col-md-6 mb-5"
+            >
+              <router-link :to="{ name: 'Blogpost', params: { id: post.id } }">
+                <img class="img-fluid" :src="post.blogImage" alt="post-image" />
+              </router-link>
+
+              <div class="text-primary text-uppercase my-2">
+                {{ post.category }}
+              </div>
               <b>
                 <p>
                   {{ post.title }}
@@ -239,6 +264,7 @@ export default {
       company: [],
       product: [],
       social: [],
+      retail: [],
       search: "",
       isLoading: true,
       incomingData: {},
@@ -264,7 +290,6 @@ export default {
     };
   },
   mounted() {
-    
     const selectOption = document.querySelector("#dropdown");
 
     const blog = document.querySelector(".blog");
@@ -327,6 +352,12 @@ export default {
         (doc) => doc.category.toLowerCase() === "social-impact"
       );
       this.social = data;
+    },
+    getRetailBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "retail-2.0"
+      );
+      this.retail = data;
     },
     getSearchVar() {
       const filteredBlog = this.posts.filter(
@@ -394,7 +425,6 @@ body {
   input {
     padding: 5px 5px !important;
     background: transparent;
-   
   }
 }
 
@@ -418,7 +448,6 @@ body {
   display: block !important;
 }
 .tab-button {
-
   font-size: 1rem;
   background: #fff;
   cursor: pointer;
@@ -450,7 +479,7 @@ body {
   align-items: center;
   margin-bottom: 10px !important;
   border-bottom: 0.5px solid #d9dbe1;
-  div{
+  div {
     margin: 20px 25px;
   }
 }

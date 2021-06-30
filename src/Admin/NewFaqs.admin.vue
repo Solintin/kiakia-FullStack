@@ -1,100 +1,91 @@
 <template>
   <div>
-          <!-- Header  -->
+    <!-- Header  -->
     <header>
-        <div class="logo">
-            <img src="../assets/Layer 6.svg" alt="">
-        </div>
-        <div class="menu">
-            <div>
+      <div class="logo">
+        <img src="../assets/Layer 6.svg" alt="" />
+      </div>
+      <div class="menu">
+        <div>
           <a href="">
             <i class="fas fa-envelope"></i>
-            <span class="badge rounded-pill badge-notification "
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification ">3</span>
           </a>
         </div>
         <div>
           <span>
             <i class="far fa-bell"></i>
-            <span class="badge rounded-pill badge-notification "
-              >3</span
-            >
+            <span class="badge rounded-pill badge-notification ">3</span>
           </span>
         </div>
-            <div>
-                <span> <i class="fas fa-user-circle fa-2x"></i> </span>
-            </div>
-            <div>
-                <span>David Alenoghena</span>
-            </div>
-
-
+        <div>
+          <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
-
+        <div>
+          <span>{{ this.currentUser }}</span>
+        </div>
+      </div>
     </header>
     <!-- E Header  -->
 
     <!-- SideBar  -->
     <div class="sidebar">
-        <div class="dashboard">
-            <p>Dashboard</p>
-        </div>
-        <div class=" post">
-            <p>Posts</p>
-         
-        </div>
-        <ul>
-            <li>All posts</li>
-                  <li><router-link to="/admin/new/faqs">Add New Faq</router-link></li>
+      <div class="dashboard">
+        <p>Dashboard</p>
+      </div>
+      <div class=" post">
+        <p>Posts</p>
+      </div>
+      <ul>
+        <li>All posts</li>
+        <li><router-link to="/admin/new/faqs">Add New Faq</router-link></li>
 
-            <li><a href="">Categories</a></li>
-        </ul>
-        <div class="activeH support">
-            <p>Support</p>
-        </div>
-        <ul>
-     <li class="fw-bold"><router-link to="/support">FAQ</router-link></li>
+        <li><a href="">Categories</a></li>
+      </ul>
+      <div class="activeH support">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li class="fw-bold"><router-link to="/support">FAQ</router-link></li>
         <li><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
-        </ul>
-        <div id="log-out">
-            <span>
-                <h6>Log Out</h6>
-            </span>
-        </div>
+      </ul>
+      <div id="log-out">
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
+      </div>
     </div>
     <!-- E SideBar  -->
 
-       <form @submit.prevent="publishFaqs">
+    <form @submit.prevent="publishFaqs">
+      <!-- Main  -->
+      <div class="main">
+        <div class="main-content">
+          <h6 class="fs-4 text-center mb-5">New Frequently Asked Question</h6>
 
-        <!-- Main  -->
-        <div class="main">
-            <div class="main-content">
-                <h6 class="fs-4 text-center mb-5">New Frequently Asked Question</h6>
+          <strong>Question</strong>
+          <input type="text" id="title" v-model="question" />
 
-                <strong>Question</strong>
-                <input type="text" id="title" v-model="question">
-
-
-                <strong>Answer</strong>
-               <ckeditor v-model="answer" :config="editorConfig"></ckeditor>
-
-            </div>
-
+          <strong>Answer</strong>
+          <ckeditor v-model="answer" :config="editorConfig"></ckeditor>
         </div>
-        <!-- E Main  -->
+      </div>
+      <!-- E Main  -->
 
-        <!-- Right Sidebar -->
-        <div class="right-sidebar">
-               <!-- Notification -->
+      <!-- Right Sidebar -->
+      <div class="right-sidebar">
+        <!-- Notification -->
         <div>
-          <div v-if="this.successMsg"
+          <div
+            v-if="this.successMsg"
             class="alert alert-success fade show"
             role="alert"
           >
-            <span class="me-3">{{this.successMsg}}</span>
+            <span class="me-3">{{ this.successMsg }}</span>
             <button
               type="button"
               class="close"
@@ -105,10 +96,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div v-else-if="this.errMsg"
-          class="alert alert-danger alert-dismissible fade show"
-            role="alert">
-            <strong>{{this.errMsg}}</strong>
+          <div
+            v-else-if="this.errMsg"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ this.errMsg }}</strong>
             <button
               type="button"
               class="close"
@@ -120,83 +113,73 @@
           </div>
         </div>
         <!-- E  Notification -->
-            <div class="buttons">
-                <button class="btn btn-primary text-center">Add New FAQ</button>
-            
-            </div>
-            <div class="content">
-                <div class="split-content">
-                    <div> Visibility : <span>Public</span></div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div class="split-content">
-                    <div> Status : <span>Published</span>
-                    </div>
-                    <div class="fw-bold">Edit</div>
-                </div>
-                <div>Revision : <span>3</span></div>
-                <div>Published : <span>Jan, 25, 2021</span></div>
-            </div>
+        <div class="buttons">
+          <button class="btn btn-primary text-center">Add New FAQ</button>
         </div>
-        <!-- E Right Sidebar -->
-
+        <div class="content">
+          <div class="split-content">
+            <div>Visibility : <span>Public</span></div>
+            <div class="fw-bold">Edit</div>
+          </div>
+          <div class="split-content">
+            <div>Status : <span>Published</span></div>
+            <div class="fw-bold">Edit</div>
+          </div>
+          <div>Revision : <span>3</span></div>
+          <div>Published : <span>Jan, 25, 2021</span></div>
+        </div>
+      </div>
+      <!-- E Right Sidebar -->
     </form>
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
 export default {
- name: "EditPost",
+  name: "EditPost",
 
   data() {
     return {
-      question : '',
-      answer : '',
-        editorConfig: {
+      question: "",
+      answer: "",
+      editorConfig: {
         enterMode: 2,
         autoParagraph: false,
       },
-
-    }
+      currentUser : null,
+    };
   },
-   methods: {
+  methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     publishFaqs() {
       const form = {
         question: this.question,
         answer: this.answer,
-        
       };
       this.$store.dispatch("PUBLISH_FAQS", form);
     },
-},
+  },
   metaInfo() {
     return {
       title: "Admin Panel - New FAQ|| KiaKia Gas ",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+ 
     };
   },
- computed:{
-  ...mapState(['successMsg','errMsg'])
-},
-}
+  computed: {
+    ...mapState(["successMsg", "errMsg", "userProfile"]),
+  },
+  created() {
+    this.currentUser = this.userProfile.name
+
+  },
+};
 </script>
 
-<style lang="scss" scoped>  
+<style lang="scss" scoped>
 :root {
   --red-color: #fb6464;
   --purple-color: #6e6893;
@@ -262,7 +245,7 @@ header {
     margin-left: 15px;
     font-weight: 500;
   }
- ul {
+  ul {
     margin: 15px 30px !important;
     font-size: 17px;
     font-weight: 400;
@@ -277,7 +260,7 @@ header {
   cursor: pointer;
   p {
     margin: 0;
-    &:nth-of-type(2){
+    &:nth-of-type(2) {
       padding-right: 15px;
     }
   }
@@ -286,7 +269,7 @@ header {
   margin-left: 15px;
   font-weight: 500;
   cursor: pointer;
-  p{
+  p {
     margin: 0;
   }
 }
@@ -308,8 +291,7 @@ header {
   margin: 0;
   padding: 8px 15px;
   color: #fff;
-    width: 100%;
-
+  width: 100%;
 }
 .icon {
   color: black;
@@ -338,7 +320,7 @@ header {
       width: 100%;
       margin: 10px 0;
     }
-   
+
     .category {
       ul {
         margin-top: 10px;
@@ -351,7 +333,7 @@ header {
           border-radius: 5px;
           padding: 5px 10px;
         }
-        li.active{
+        li.active {
           color: #fff;
           background: var(--lightblue-color);
         }
@@ -373,25 +355,24 @@ header {
   top: 0;
   right: 0;
   background: #fff;
-  .buttons{
-    button{
+  .buttons {
+    button {
       width: 100%;
       display: inline-block;
       margin-bottom: 15px;
     }
   }
-  .content{
+  .content {
     display: block !important;
 
-    .split-content{
+    .split-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      div:nth-child(2){
+      div:nth-child(2) {
         cursor: pointer;
       }
     }
   }
 }
-
 </style>

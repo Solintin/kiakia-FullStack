@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import * as fb from "../firebase";
 import moment from "moment";
+import router from "../router/index";
 import createpersistedstate from "vuex-persistedstate";
 
 Vue.use(Vuex);
@@ -25,11 +26,12 @@ export default new Vuex.Store({
     policies: [],
     terms: [],
     waitlist: [],
-    users : [],
-    orders : [],
+    users: [],
+    orders: [],
+    userProfile: {},
+
     errMsg: null,
     successMsg: null,
-
   },
   mutations: {
     setErrMsg(state, val) {
@@ -65,11 +67,14 @@ export default new Vuex.Store({
     setWaitList(state, val) {
       state.waitlist = val;
     },
-    setUsers(state, val){
+    setUsers(state, val) {
       state.users = val;
     },
-    setOrders(state, val){
+    setOrders(state, val) {
       state.orders = val;
+    },
+    setUserProfile(state, value) {
+      state.userProfile = value;
     },
   },
   actions: {
@@ -97,7 +102,6 @@ export default new Vuex.Store({
         }, 3000);
         console.log(error.message);
       }
-
     },
 
     async GET_POST({ commit }) {
@@ -540,50 +544,108 @@ export default new Vuex.Store({
           }, 3000);
         });
     },
-  
 
-  async GET_ORDERS_INFO({ commit }) {
-    await fb.orders.onSnapshot((data) => {
-      const ordersArray = [];
+    //ORDERS INFO
+    async GET_ORDERS_INFO({ commit }) {
+      await fb.orders.onSnapshot((data) => {
+        const ordersArray = [];
 
-      try {
-        data.forEach((doc) => {
-          const info = doc.data();
-          info.id = doc.id;
-          ordersArray.push(info);
+        try {
+          data.forEach((doc) => {
+            const info = doc.data();
+            info.id = doc.id;
+            ordersArray.push(info);
+          });
+
+          commit("setOrders", ordersArray);
+        } catch (error) {
+          commit("setErrMsg", error.message);
+          console.log(error.message);
+        }
+      });
+    },
+
+    EDIT_ORDER({ commit }, val) {
+      fb.orders
+        .doc(val.activeItem)
+        .update(val)
+        .then(() => {
+          commit("setSuccessMsg", "Update Succesfull");
+          setTimeout(() => {
+            commit("setSuccessMsg", null);
+          }, 3000);
+        })
+        .catch((error) => {
+          commit("setErrMsg", error.message);
+          setTimeout(() => {
+            commit("setErrMsg", null);
+          }, 3000);
+
+          console.error("Error updating document: ", error);
         });
+    },
 
-        commit("setOrders", ordersArray);
+    //AUTHENTICATION
+
+    async LOGIN({ dispatch }, form) {
+      try {
+        const { user } = await fb.auth.signInWithEmailAndPassword(
+          form.email,
+          form.password
+        );
+
+        dispatch("FETCH_USER_PROFILE", user);
+        alert("New SignIn: " + user.email);
+        console.log(user);
+        router.push("/admin");
       } catch (error) {
-        commit("setErrMsg", error.message);
+        alert(error.message);
         console.log(error.message);
       }
-    });
+    },
+    async FETCH_USER_PROFILE({ commit }, user) {
+      try {
+        // fetch user profile
+        const userProfile = await fb.adminCollection.doc(user.uid).get();
+          console.log(userProfile.data());
+        // set user profile in state
+        commit("setUserProfile", userProfile.data());
+        
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+
+    // SignUp Action
+
+    async REGISTER({ dispatch }, form) {
+      try {
+        const { user } = await fb.auth.createUserWithEmailAndPassword(
+          form.email,
+          form.password
+        );
+        console.log(user);
+
+        await fb.adminCollection.doc(user.uid).set({
+          name: form.name,
+        });
+        alert("New SignUp: " + user.email);
+        dispatch("FETCH_USER_PROFILE", user);
+
+        router.push("/admin");
+      } catch (error) {
+        alert(error.message);
+        console.log(error.message);
+      }
+    },
+    //signOut
+    async LOGOUT({ commit }) {
+      await fb.auth.signOut();
+
+      commit("setUserProfile", {});
+      router.push("/login");
+    },
   },
-  
-  
-  EDIT_ORDER({ commit }, val) {
-  console.log(val);
-  fb.orders
-  .doc(val.activeItem)
-    .update(val)
-    .then(() => {
-      commit("setSuccessMsg", "Update Succesfull");
-      setTimeout(() => {
-        commit("setSuccessMsg", null);
-      }, 3000);
-    })
-    .catch((error) => {
-      commit("setErrMsg", error.message);
-      setTimeout(() => {
-        commit("setErrMsg", null);
-      }, 3000);
-      
-      console.error("Error updating document: ", error);
-    });
-  },
-  
-},
 
   modules: {},
 });

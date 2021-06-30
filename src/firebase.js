@@ -1,5 +1,5 @@
 import firebase from 'firebase/app'
-// import 'firebase/auth'
+import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
 
@@ -25,8 +25,8 @@ const fbAccess =  firebase.initializeApp(firebaseConfig);
 
 // utils
 const dbWeb = firebase.firestore().collection('Web').doc('Gas360-Web-Backend');
-// const dbMobile = firebase.firestore().collection('Mobile');
-// const auth = firebase.auth()
+const dbMobile = firebase.firestore().collection('Mobile');
+const auth = firebase.auth()
 
 
 // collection references
@@ -37,9 +37,10 @@ const cookieCollection = dbWeb.collection('cookie')
 const privacyCollection = dbWeb.collection('privacy')
 const tosCollection = dbWeb.collection('tos')
 const waitListCollection = dbWeb.collection('waitlist')
+const adminCollection = dbWeb.collection('Admin')
 //User App Management
-const users = firebase.firestore().collection('Mobile').doc('users');
-const orders = firebase.firestore().collection('Mobile').doc('orders').collection("userOrders");
+const users = dbMobile.doc('users');
+const orders = dbMobile.doc('orders').collection("userOrders");
 
 
 // export utils/refs
@@ -50,6 +51,8 @@ export {fbAccess,
   tosCollection,
     postsCollection,
     waitListCollection,
+    adminCollection,
     users,
-    orders
+    orders,
+    auth
 }

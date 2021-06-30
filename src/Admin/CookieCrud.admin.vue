@@ -23,7 +23,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{this.currentUser}}</span>
         </div>
       </div>
     </header>
@@ -52,9 +52,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+         <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -134,12 +134,20 @@ export default {
       // ],
     };
   },
+  data() {
+    return {
+      currentUser : null,
+
+    }
+  },
 
   created() {
     this.getCookie();
+    this.currentUser = this.userProfile.name
+
   },
   computed: {
-    ...mapState(["cookies"]),
+    ...mapState(["cookies", 'userProfile']),
   },
   methods: {
     getCookie() {
@@ -147,6 +155,9 @@ export default {
     },
     deleteCookie(id) {
       this.$store.dispatch("DELETE_COOKIE", id);
+    },
+     logOut() {
+      this.$store.dispatch("LOGOUT");
     },
   },
 };

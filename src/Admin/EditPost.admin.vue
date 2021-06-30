@@ -22,8 +22,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
-        </div>
+<span>{{ this.currentUser }}</span>        </div>
       </div>
     </header>
     <!-- E Header  -->
@@ -53,9 +52,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+       <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -184,6 +183,7 @@ export default {
   },
   data() {
     return {
+      currentUser : null,
       editorConfig: {
         enterMode: 2,
         autoParagraph: false,
@@ -211,6 +211,9 @@ export default {
     };
   },
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     chooseCategory(cat) {
       this.incomingData.category = cat.categ;
 
@@ -246,13 +249,14 @@ export default {
   },
 
   created() {
+      this.currentUser = this.userProfile.name
     this.incomingData = this.$route.query.data || this.incomingData;
     this.incomingData.activeItem = this.$route.query.data.id;
 
     console.log(this.internalData.categories + " Category");
   },
   computed: {
-    ...mapState(["successMsg", "errMsg"]),
+    ...mapState(["successMsg", "errMsg", 'userProfile']),
   },
 };
 </script>

@@ -23,7 +23,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -54,9 +54,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -102,6 +102,13 @@
                   @click="getSocialBlogs"
                 >
                   Social Impact
+                </li>
+                <li
+                  class="tab-btn py-auto"
+                  data-id="retail"
+                  @click="getRetailBlogs"
+                >
+                  Retail-2.0
                 </li>
               </ul>
             </div>
@@ -243,6 +250,35 @@
               </div>
             </div>
           </div>
+          <div class="content" id="retail">
+            <div v-if="posts.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
+            <div
+              class="table-subcontent"
+              v-for="(post, key) in retail"
+              :key="key"
+            >
+              <div class="title">{{ post.title }}</div>
+              <div class="cat">
+                <span :class="post.category"> {{ post.category }}</span>
+              </div>
+              <div class="author">
+                <p>{{ post.authoredBy }}</p>
+                <p>
+                  {{ post.createdOn }}
+                </p>
+              </div>
+              <div class="action my-auto ms-1">
+                <span class="edit">
+                  <router-link :to="{ name: 'EditPost', query: { data: post } }"
+                    >Edit</router-link
+                  ></span
+                >
+                <span @click="deletePosts(post.id)" class="delete">Delete</span>
+              </div>
+            </div>
+          </div>
         </section>
 
         <div class="paging my-2"></div>
@@ -261,26 +297,14 @@ export default {
       company: [],
       product: [],
       social: [],
+      retail: [],
       search: "",
+      currentUser: null,
     };
   },
   metaInfo() {
     return {
       title: "Admin Panel - Blog || KiaKia Gas ",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
     };
   },
   mounted() {
@@ -312,9 +336,10 @@ export default {
 
   created() {
     this.getPost();
+    this.currentUser = this.userProfile.name;
   },
   computed: {
-    ...mapState(["posts"]),
+    ...mapState(["posts", "userProfile"]),
   },
   methods: {
     getPost() {
@@ -326,8 +351,8 @@ export default {
         this.$store.dispatch("deletePost", id);
       }
     },
-    getPost() {
-      this.$store.dispatch("GET_POST");
+    logOut() {
+      this.$store.dispatch("LOGOUT");
     },
 
     getAllBlogs() {
@@ -351,6 +376,12 @@ export default {
         (doc) => doc.category.toLowerCase() === "social-impact"
       );
       this.social = data;
+    },
+    getRetailBlogs() {
+      const data = this.posts.filter(
+        (doc) => doc.category.toLowerCase() === "retail-2.0"
+      );
+      this.retail = data;
     },
     getSearchVar() {
       const filteredBlog = this.posts.filter(
@@ -682,6 +713,26 @@ header {
       top: 12px;
       left: 5px;
       background: #faae08;
+      border-radius: 50%;
+    }
+  }
+  .retail-2 {
+    position: relative;
+    background: #fff4e6;
+    width: 76px;
+    height: 19px;
+    border-radius: 15px;
+    padding: 2px 10px 5px 20px;
+    color: #3d522b;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      top: 12px;
+      left: 5px;
+      background: #3d522b;
       border-radius: 50%;
     }
   }

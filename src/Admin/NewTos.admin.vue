@@ -23,8 +23,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
-        </div>
+<span>{{ this.currentUser }}</span>        </div>
       </div>
     </header>
     <!-- E Header  -->
@@ -56,9 +55,9 @@
         </li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+      <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -140,6 +139,7 @@ export default {
 
   data() {
     return {
+      currentUser : null,
       tos: " ",
       editorConfig: {
         enterMode: 2,
@@ -148,6 +148,10 @@ export default {
     };
   },
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
+
     publishTos() {
       this.$store.dispatch("PUBLISH_TOS", this.tos);
       return new Promise((resolve) => {
@@ -159,9 +163,12 @@ export default {
     },
   },
   computed:{
-  ...mapState(['successMsg','errMsg'])
+  ...mapState(['successMsg','errMsg', 'userProfile'])
 },
+created() {
+        this.currentUser = this.userProfile.name
 
+},
   metaInfo() {
     return {
       title: "Admin Panel - Terms of Service || KiaKia Gas ",

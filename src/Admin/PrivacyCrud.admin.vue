@@ -23,7 +23,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -35,11 +35,12 @@
       </div>
       <div class="post">
         <p>Posts</p>
-  
       </div>
       <ul>
         <li class="activePost">All Policy</li>
-             <li><router-link to="/admin/new/policy">Add New Policy</router-link></li>
+        <li>
+          <router-link to="/admin/new/policy">Add New Policy</router-link>
+        </li>
 
         <li><a href="">Categories</a></li>
       </ul>
@@ -48,14 +49,18 @@
       </div>
       <ul>
         <li><router-link to="/support">FAQ</router-link></li>
-        <li class="fw-bold"><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li class="fw-bold">
+          <router-link to="/support/policy">Privacy Policy</router-link>
+        </li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -64,49 +69,51 @@
     <div class="main">
       <div class="main-content">
         <div class="mb-4">
-            <span>
-        Privacy policies
-        </span>
-        <router-link to="/admin/new/policy">
-          <button class="btn btn-primary ">Add More Policy</button></router-link
-        >
-
+          <span>
+            Privacy policies
+          </span>
+          <router-link to="/admin/new/policy">
+            <button class="btn btn-primary ">
+              Add More Policy
+            </button></router-link
+          >
         </div>
-    
 
         <table>
           <thead>
             <tr>
               <td><input type="checkbox" /></td>
               <td>title</td>
-             
+
               <td>last updated</td>
               <td>Action</td>
             </tr>
-          </thead>  <div v-if="policies.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
-      </div>
+          </thead>
+          <div v-if="policies.length == 0" class="loading img-fluid">
+            <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+          </div>
           <tbody>
             <tr v-for="(policy, key) in policies" :key="key">
               <td><input type="checkbox" /></td>
-              <td v-html=" policy.policy.substring(0, 100)">...</td>
-           
+              <td v-html="policy.policy.substring(0, 100)">...</td>
+
               <td>
-              
                 <p>
                   {{ policy.createdOn }}
                 </p>
               </td>
               <td class="action">
                 <span class="edit">
-                  <router-link :to="{ name: 'EditPrivacy', query: { data: policy } }"
+                  <router-link
+                    :to="{ name: 'EditPrivacy', query: { data: policy } }"
                     >Edit</router-link
                   ></span
                 >
-                <span @click="deletePolicy(policy.id)" class="delete">Delete</span>
+                <span @click="deletePolicy(policy.id)" class="delete"
+                  >Delete</span
+                >
               </td>
             </tr>
-
           </tbody>
         </table>
         <div class="paging my-2"></div>
@@ -123,30 +130,25 @@ export default {
   metaInfo() {
     return {
       title: "Admin Panel - Policy || KiaKia Gas ",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+    };
+  },
+  data() {
+    return {
+      currentUser: null,
     };
   },
 
   created() {
     this.getPolicy();
+    this.currentUser = this.userProfile.name;
   },
   computed: {
-    ...mapState(["policies"]),
+    ...mapState(["policies", "userProfile"]),
   },
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     getPolicy() {
       this.$store.dispatch("GET_POLICY");
     },

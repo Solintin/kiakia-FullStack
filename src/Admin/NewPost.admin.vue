@@ -22,7 +22,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -37,7 +37,7 @@
         <p>Posts</p>
       </div>
       <ul>
-        <li><router-link to='/admin/blog'>All Posts</router-link></li>
+        <li><router-link to="/admin/blog">All Posts</router-link></li>
         <li><router-link to="/admin/new/post">Add New Post</router-link></li>
 
         <li><a href="">Categories</a></li>
@@ -54,9 +54,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -93,7 +93,6 @@
 
           <p class="mt-4 mb-0"><strong>Featured Image</strong></p>
           <input type="file" @change="uploadImage" />
-          
         </div>
       </div>
       <!-- E Main  -->
@@ -173,6 +172,7 @@ export default {
 
   data() {
     return {
+      currentUser: null,
       editorConfig: {
         enterMode: 2,
         autoParagraph: false,
@@ -212,11 +212,15 @@ export default {
     };
   },
   computed: {
-    ...mapState(["successMsg", "errMsg"]),
+    ...mapState(["successMsg", "errMsg", "userProfile"]),
   },
-
+  created() {
+    this.currentUser = this.userProfile.name;
+  },
   methods: {
-  
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     publishPost() {
       const form = {
         post: this.post,
@@ -253,11 +257,11 @@ export default {
     uploadImage(e) {
       let file = e.target.files[0];
       console.log(file);
-      const storageRef = fbAccess.storage().ref()
-       var thisRef = storageRef.child("Assets/" + file.name);
+      const storageRef = fbAccess.storage().ref();
+      var thisRef = storageRef.child("Assets/" + file.name);
       thisRef.put(file).then((snapshot) => {
-  console.log('Uploaded a blob or file!');
-});
+        console.log("Uploaded Image Successfully!");
+      });
       thisRef
         .getDownloadURL()
         .then((imageUrl) => {
@@ -266,7 +270,7 @@ export default {
           this.imageUploadSuccess = !this.imageUploadSuccess;
           console.log(this.imageUploadSuccess);
         })
-        
+
         .catch((error) => {
           console.log(error);
           console.log(this.imageUploadSuccess);

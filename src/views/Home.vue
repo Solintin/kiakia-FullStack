@@ -9,7 +9,7 @@
 
         <!--E Navbar -->
 
-        <div class="row " style="padding-top : 100px; ">
+        <div class="row ">
           <div class="col-md-6" style="margin-top: 120px">
             <div class="">
               <span class="display-5 fw-bold"

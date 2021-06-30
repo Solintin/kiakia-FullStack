@@ -26,8 +26,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
-        </div>
+<span>{{ this.currentUser }}</span>        </div>
       </div>
     </header>
     <!-- E Header  -->
@@ -56,9 +55,9 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -139,7 +138,8 @@ export default {
 
   data() {
     return {
-     policy: " ",
+      currentUser : null,
+      policy: " ",
        editorConfig: {
         enterMode: 2,
         autoParagraph: false,
@@ -147,6 +147,9 @@ export default {
     };
   }, 
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     publishPrivacyPolicy() {
       this.$store.dispatch("PUBLISH_POLICY", this.policy);
       return new Promise((resolve) => {
@@ -160,25 +163,15 @@ export default {
   metaInfo() {
     return {
       title: "Admin Panel - Privacy Policy|| KiaKia Gas ",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
     };
+  },
+  created() {
+          this.currentUser = this.userProfile.name
+
   },
     
     computed:{
-  ...mapState(['successMsg','errMsg'])
+  ...mapState(['successMsg','errMsg', 'userProfile'])
 },
 
 };

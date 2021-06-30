@@ -22,7 +22,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -38,7 +38,9 @@
         <p>{{ this.posts.length }}</p>
       </div>
       <ul>
-        <li class="activePost"><router-link to="/admin/blog">All Post</router-link></li>
+        <li class="activePost">
+          <router-link to="/admin/blog">All Post</router-link>
+        </li>
         <li><router-link to="/admin/new/post">Add New post</router-link></li>
         <li><a href="">Categories</a></li>
       </ul>
@@ -54,70 +56,74 @@
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+        <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
-    
-      <!-- Main  -->
-      <div class="main">
-        <h5 class="mb-4 text-center">Support Pages</h5>
-        <div class="main-content">
-          <router-link to="/admin/blog">
-            <div>
-              <i
-                class="fa fa-rss-square fa-4x text-center"
-                aria-hidden="true"
-              ></i>
-              Blog Posts
-            </div>
-          </router-link>
-          <router-link to="/admin/faqs">
-            <div>
-              <i
-                class="fa fa-question-circle fa-4x text-center"
-                aria-hidden="true"
-              ></i>
-              Frequently Asked Questions
-            </div>
-          </router-link>
-          <router-link to="/admin/cookie">
-            <div>
-              <i class="fa-4x text-center fas fa-cookie"></i>
-              Cookie Declaration
-            </div>
-          </router-link>
-          <router-link to="/admin/policy">
-            <div>
-              <i class="fa-4x text-center fas fa-shield-alt"></i>
-              Privacy of Policy
-            </div>
-       
-          </router-link>
-          <router-link to="/admin/tos">
-            <div>
-              <i class="fa-4x text-center fas fa-edit"></i>
-              Terms of Services
-            </div>
-          </router-link>
-          <router-link to="/waitlist">
-            <div>
-              <i class="fa-4x text-center fas fa-th-list"></i>
-              WaitList
-            </div>
-          </router-link>
 
-        </div>
+    <!-- Main  -->
+    <div class="main">
+      <h5 class="mb-4 text-center">Support Pages</h5>
+      <div class="main-content">
+        <router-link to="/admin/blog">
+          <div>
+            <i
+              class="fa fa-rss-square fa-4x text-center"
+              aria-hidden="true"
+            ></i>
+            Blog Posts
+          </div>
+        </router-link>
+        <router-link to="/admin/faqs">
+          <div>
+            <i
+              class="fa fa-question-circle fa-4x text-center"
+              aria-hidden="true"
+            ></i>
+            Frequently Asked Questions
+          </div>
+        </router-link>
+        <router-link to="/admin/cookie">
+          <div>
+            <i class="fa-4x text-center fas fa-cookie"></i>
+            Cookie Declaration
+          </div>
+        </router-link>
+        <router-link to="/admin/policy">
+          <div>
+            <i class="fa-4x text-center fas fa-shield-alt"></i>
+            Privacy of Policy
+          </div>
+        </router-link>
+        <router-link to="/admin/tos">
+          <div>
+            <i class="fa-4x text-center fas fa-edit"></i>
+            Terms of Services
+          </div>
+        </router-link>
+        <router-link to="/waitlist">
+          <div>
+            <i class="fa-4x text-center fas fa-th-list"></i>
+            WaitList
+          </div>
+        </router-link>
+        <router-link to="/admin/user-management">
+          <div>
+            <i class="fa-4x text-center far fa-id-card"></i>
+            User App Management
+          </div>
+        </router-link>
       </div>
-      <!-- E Main  -->
-    
+    </div>
+    <!-- E Main  -->
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
+import * as fb from "../firebase";
 export default {
   name: "EditPost",
   metaInfo() {
@@ -139,9 +145,24 @@ export default {
       // ],
     };
   },
-  computed:{
-    ...mapState(['posts'])
-  }
+  data() {
+    return {
+      currentUser: null,
+    };
+  },
+  computed: {
+    ...mapState(["posts", "userProfile"]),
+  },
+  created() {
+    if (fb.auth.currentUser) {
+      this.currentUser = this.userProfile.name;
+    }
+  },
+  methods: {
+    logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
+  },
 };
 </script>
 

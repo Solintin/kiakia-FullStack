@@ -24,8 +24,7 @@
             <span> <i class="fas fa-user-circle fa-2x"></i> </span>
           </div>
           <div>
-            <span>David Alenoghena</span>
-          </div>
+<span>{{ this.currentUser }}</span>          </div>
         </div>
       </div>
     </section>
@@ -120,7 +119,12 @@
                   <span class="me-2">
                     <i class="fas fa-user-circle text-primary fa-2x"></i
                   ></span>
-                  <span class="contact">
+                  <span
+                    class="contact"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                    @click="toggleModal(order.id)"
+                  >
                     <p>
                       {{ order.order.fullName || "No Data" }}
                     </p>
@@ -130,7 +134,7 @@
                 <div class="col-2">{{ order.time || "No Data" }}</div>
                 <div class="col-3">
                   <i class="fas fa-map-marker-alt text-primary"></i>
-                  {{ order.order.delivery_address || "No Data" }}
+                  {{ order.order.home_address || "No Data" }}
                 </div>
                 <div class="col-1">{{ order.order.size || "No Data" }}</div>
                 <div class="col-2 ps-2">
@@ -152,7 +156,12 @@
                   <span class="me-2">
                     <i class="fas fa-user-circle text-primary fa-2x"></i
                   ></span>
-                  <span class="contact">
+                  <span
+                    class="contact"
+                    data-toggle="modal"
+                    data-target="#exampleModalCenter"
+                    @click="toggleModal(order.id)"
+                  >
                     <p>
                       {{ order.order.fullName || "No Data" }}
                     </p>
@@ -253,7 +262,7 @@
                     <input
                       v-model="rider"
                       type="text"
-                      placeholder="Input Rider..."
+                      :placeholder="updatedOrder.rider"
                       @change="handleChanges(productId)"
                     />
                     <span class="ms-2 pencil-icon">
@@ -301,6 +310,7 @@ export default {
   },
   data() {
     return {
+      currentUser: null,
       onProcess: true,
       onTransit: false,
       onDelivered: false,
@@ -323,9 +333,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["posts", "orders"]),
+    ...mapState(["posts", "orders", "userProfile"]),
   },
   created() {
+    this.currentUser = this.userProfile.name;
     this.getData();
   },
 
@@ -340,24 +351,24 @@ export default {
             this.time = order.time;
             this.orderStatus = order.order.orderStatus;
             this.productId = order.id;
+            this.updatedOrder.rider = order.rider;
           }
-          console.log(this.productId);
         });
       } catch (error) {
         console.log(error);
       }
     },
 
-   async handleChanges(orderId) {
-       await   this.orders.filter((order) => {
+    async handleChanges(orderId) {
+      await this.orders.filter((order) => {
         if (order.id === orderId) {
           this.updatedOrder = order;
-          this.updatedOrder.activeItem = orderId;   
-          this.updatedOrder.rider = this.rider;
+          this.updatedOrder.activeItem = orderId;
+          this.updatedOrder.rider = this.updatedOrder.rider;
           order.order.orderStatus = this.orderStatus;
-          }
-      }),
-      console.log(this.orderStatus);
+          this.updatedOrder.rider = this.rider;
+        }
+      });
     },
 
     tabSelector() {
@@ -454,12 +465,10 @@ export default {
     toggleModal(orderId) {
       this.openModal = true;
       $("#exampleModalCenter").modal("show");
-      console.log(this.openModal);
       this.getOrdersDetail(orderId);
     },
 
     async closeModal(updatedOrder) {
-      console.log(this.updatedOrder);
       await this.$store.dispatch("EDIT_ORDER", updatedOrder);
       $("#exampleModalCenter").modal("hide");
     },

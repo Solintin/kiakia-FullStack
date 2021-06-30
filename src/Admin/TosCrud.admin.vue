@@ -9,7 +9,7 @@
       <div class="menu">
         <div>
           <a href="">
-            <i class="fas fa-envelope "></i>
+            <i class="fas fa-envelope"></i>
             <span class="badge rounded-pill badge-notification r">0</span>
           </a>
         </div>
@@ -23,7 +23,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -33,9 +33,8 @@
       <div class="dashboard">
         <p>Dashboard</p>
       </div>
-      <div class=" post">
+      <div class="post">
         <p>Terms</p>
-
       </div>
       <ul>
         <li class="activePost">All terms</li>
@@ -46,15 +45,19 @@
         <p>Support</p>
       </div>
       <ul>
-       <li><router-link to="/support">FAQ</router-link></li>
+        <li><router-link to="/support">FAQ</router-link></li>
         <li><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
-        <li class="fw-bold"><router-link to="/support/tos">Terms of Service</router-link></li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
+        <li class="fw-bold">
+          <router-link to="/support/tos">Terms of Service</router-link>
+        </li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+       <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -63,36 +66,31 @@
     <div class="main">
       <div class="main-content">
         <div class="mb-4">
-            <span>
-      Terms of Service
-        </span>
-        <router-link to="/admin/new/tos">
-          <button class="btn btn-primary ">Add More terms</button></router-link
-        >
-
+          <span> Terms of Service </span>
+          <router-link to="/admin/new/tos">
+            <button class="btn btn-primary">Add More terms</button></router-link
+          >
         </div>
- 
 
         <table>
           <thead>
             <tr>
               <td><input type="checkbox" /></td>
               <td>title</td>
-             
+
               <td>last updated</td>
               <td>Action</td>
             </tr>
           </thead>
           <tbody>
-              <div v-if="terms.length == 0" class="loading img-fluid">
-        <img src="../assets/loading-icon-animated-gif-19.jpg" alt="">
-      </div>
+            <div v-if="terms.length == 0" class="loading img-fluid">
+              <img src="../assets/loading-icon-animated-gif-19.jpg" alt="" />
+            </div>
             <tr v-for="(tos, key) in terms" :key="key">
               <td><input type="checkbox" /></td>
               <td v-html="tos.tos.substring(0, 100)">...</td>
-           
+
               <td>
-              
                 <p>
                   {{ tos.createdOn }}
                 </p>
@@ -106,7 +104,6 @@
                 <span @click="deleteTos(tos.id)" class="delete">Delete</span>
               </td>
             </tr>
-
           </tbody>
         </table>
         <div class="paging my-2"></div>
@@ -123,30 +120,25 @@ export default {
   metaInfo() {
     return {
       title: "Admin Panel - terms || KiaKia Gas ",
-      // meta: [
-      //   {
-      //     name: "description",
-      //     content:
-      //       "Epiloge is about connecting in your field of interest. Our vision is to help people share their knowledge, work, projects, papers and ideas and build their network through what they do rather where they live, study or work.",
-      //   },
-      //   {
-      //     property: "og:title",
-      //     content: "Epiloge - Build your network in your field of interest",
-      //   },
-      //   { property: "og:site_name", content: "Epiloge" },
-      //   { property: "og:type", content: "website" },
-      //   { name: "robots", content: "index,follow" },
-      // ],
+    };
+  },
+  data() {
+    return {
+      currentUser: null,
     };
   },
 
   created() {
     this.getTos();
+    this.currentUser = this.userProfile.name;
   },
   computed: {
-    ...mapState(["terms"]),
+    ...mapState(["terms", "userProfile"]),
   },
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     getTos() {
       this.$store.dispatch("GET_TOS");
     },

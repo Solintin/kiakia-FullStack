@@ -22,7 +22,7 @@
           <span> <i class="fas fa-user-circle fa-2x"></i> </span>
         </div>
         <div>
-          <span>David Alenoghena</span>
+          <span>{{ this.currentUser }}</span>
         </div>
       </div>
     </header>
@@ -35,7 +35,6 @@
       </div>
       <div class="post">
         <p>Post(s)</p>
-
       </div>
       <ul>
         <li>All posts</li>
@@ -47,14 +46,18 @@
       </div>
       <ul>
         <li><router-link to="/support">FAQ</router-link></li>
-        <li class="fw-bold"><router-link to="/support/policy">Privacy Policy</router-link></li>
-        <li><router-link to="/support/cookie">Cookie Declarartion</router-link></li>
+        <li class="fw-bold">
+          <router-link to="/support/policy">Privacy Policy</router-link>
+        </li>
+        <li>
+          <router-link to="/support/cookie">Cookie Declarartion</router-link>
+        </li>
         <li><router-link to="/support/tos">Terms of Service</router-link></li>
       </ul>
       <div id="log-out">
-        <span>
-          <h6>Log Out</h6>
-        </span>
+         <button @click="logOut" class="btn">
+          Logout
+        </button>
       </div>
     </div>
     <!-- E SideBar  -->
@@ -64,51 +67,51 @@
         <div class="main-content">
           <h6 class="fs-4 text-center mb-5">Privacy Policies</h6>
 
-         
           <strong>Privacy Policy</strong>
-         
+
           <ckeditor v-model="incomingData.policy" :config="editorConfig">
             {{ incomingData.policy }}
-
-
           </ckeditor>
         </div>
       </div>
       <!-- E Main  -->
 
       <!-- Right Sidebar -->
-           <!-- Notification -->
-        <div>
-          <div v-if="this.successMsg"
-            class="alert alert-success fade show"
-            role="alert"
+      <!-- Notification -->
+      <div>
+        <div
+          v-if="this.successMsg"
+          class="alert alert-success fade show"
+          role="alert"
+        >
+          <span class="me-3">{{ this.successMsg }}</span>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+            @click="remove"
           >
-            <span class="me-3">{{this.successMsg}}</span>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              @click="remove"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div v-else-if="this.errMsg"
-          class="alert alert-danger alert-dismissible fade show"
-            role="alert">
-            <strong>{{this.errMsg}}</strong>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <!-- E  Notification -->
+        <div
+          v-else-if="this.errMsg"
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong>{{ this.errMsg }}</strong>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      <!-- E  Notification -->
       <div class="right-sidebar">
         <div class="buttons">
           <button
@@ -138,28 +141,28 @@
 </template>
 
 <script>
-
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "EditPrivacy",
   data() {
     return {
-        editorConfig: {
+      editorConfig: {
         enterMode: 2,
         autoParagraph: false,
       },
       incomingData: {
-      policy: '',
+        policy: "",
         activeItem: null,
       },
       updateSuccess: false,
+      currentUser: null,
     };
   },
 
-computed:{
-  ...mapState(['successMsg','errMsg'])
-},
+  computed: {
+    ...mapState(["successMsg", "errMsg", "userProfile"]),
+  },
   metaInfo() {
     return {
       title: "Admin Panel - Edit Privacy|| KiaKia Gas ",
@@ -180,6 +183,9 @@ computed:{
     };
   },
   methods: {
+     logOut() {
+      this.$store.dispatch("LOGOUT");
+    },
     modifyPolicy(data) {
       this.$store.dispatch("EDIT_POLICY", data);
       return new Promise((resolve) => {
@@ -193,6 +199,7 @@ computed:{
     },
   },
   created() {
+    this.currentUser = this.userProfile.name;
     this.incomingData = this.$route.query.data;
     this.incomingData.activeItem = this.$route.query.data.id;
   },
