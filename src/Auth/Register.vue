@@ -63,8 +63,14 @@
                 </div>
               </div>
 
-              <button @click="register" class="w-100 btn btn-primary text-capitalize">
-                Sign Up
+              <button
+                @click="register"
+                class="w-100 btn btn-primary text-capitalize"
+              >
+                 <span v-if="loader" class="spinner-border text-white" role="status"></span>
+                <span v-else>
+                  Sign Up
+                </span>
               </button>
             </form>
           </div>
@@ -78,6 +84,8 @@
 export default {
   data() {
     return {
+      loader: false,
+
       email: "",
       password: "",
       name: "",
@@ -92,13 +100,17 @@ export default {
         passwordField.setAttribute("type", "text");
       else passwordField.setAttribute("type", "password");
     },
-    register() {
+    async register() {
+                this.loader = !this.loader;
+
       const signUpData = {
         email: this.email,
         password: this.password,
-        name : this.name
+        name: this.name,
       };
-      this.$store.dispatch("REGISTER", signUpData);
+      await this.$store.dispatch("REGISTER", signUpData);
+              this.loader = !this.loader;
+
     },
   },
 };
