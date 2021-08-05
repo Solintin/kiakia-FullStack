@@ -100,7 +100,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Cookies || KiaKia Gas 360",
+      title: "Cookies ||  Gas 360",
       meta: [
         {
           name: "description",
@@ -109,7 +109,7 @@ export default {
         },
         {
           property: "og:title",
-          content: "Cookie || KiaKia Gas 360.",
+          content: "Cookie ||  Gas 360.",
         },
         { property: "og:site_name", content: "gas360" },
         { property: "og:type", content: "website" },

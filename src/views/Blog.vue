@@ -272,7 +272,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Blog || KiaKia Gas 360",
+      title: "Blog || Gas 360",
       meta: [
         {
           name: "description",

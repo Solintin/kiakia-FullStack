@@ -76,7 +76,7 @@ export default {
 
   metaInfo() {
     return {
-      title: `${this.pageTitle} || KiaKia Gas 360`,
+      title: `${this.pageTitle} || Gas 360`,
       meta: [
         {
           name: "description",

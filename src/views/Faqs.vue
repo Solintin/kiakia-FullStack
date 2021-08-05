@@ -59,6 +59,7 @@
 
                 <div v-if="faqs.length == 0" class="loading img-fluid">
                   <img
+                    class="img-fluid"
                     src="../assets/loading-icon-animated-gif-19.jpg"
                     alt=""
                   />
@@ -171,7 +172,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Support || KiaKia Gas 360",
+      title: "Support ||  Gas 360",
       meta: [
         {
           name: "description",
@@ -180,7 +181,7 @@ export default {
         },
         {
           property: "og:title",
-          content: "FAQs || KiaKia Gas 360.",
+          content: "FAQs ||  Gas 360.",
         },
         { property: "og:site_name", content: "gas360" },
         { property: "og:type", content: "website" },
@@ -530,7 +531,7 @@ body {
     display: grid;
     flex: 1;
     width: 100% !important;
-    margin-left: -50px !important;
+    margin-left: -30px !important;
   }
   /* ======================= Footer====================== */
   .footer .footer-card {

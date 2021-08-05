@@ -97,7 +97,7 @@ export default {
 
   metaInfo() {
     return {
-      title: "Privacy Policy || KiaKia Gas 360",
+      title: "Privacy Policy ||  Gas 360",
       meta: [
         {
           name: "description",

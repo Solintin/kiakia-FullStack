@@ -120,7 +120,7 @@ export default {
   name: "Home",
   metaInfo() {
     return {
-      title: "KiaKia Gas 360 | Homepage",
+      title: "Gas 360 | Homepage",
       meta: [
         {
           name: "description",
@@ -129,7 +129,7 @@ export default {
         },
         {
           property: "og:title",
-          content: "Homepage || KiaKia Gas 360.",
+          content: "Homepage ||  Gas 360.",
         },
         { property: "og:site_name", content: "gas360" },
         { property: "og:type", content: "website" },

@@ -72,6 +72,14 @@
                   Sign Up
                 </span>
               </button>
+              <div class="my-2">
+                <span class="text-secondary"> Already have an account ? </span>
+                <span>
+                  <router-link class="text-primary" to="/login"
+                    >Login Here</router-link
+                  >
+                </span>
+              </div>
             </form>
           </div>
         </div>

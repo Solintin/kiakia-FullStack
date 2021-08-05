@@ -171,7 +171,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Terms Of Service || KiaKia Gas 360",
+      title: "Terms Of Service || Gas 360",
       meta: [
         {
           name: "description",
@@ -180,7 +180,7 @@ export default {
         },
         {
           property: "og:title",
-          content: "Terms Of Service || KiaKia Gas 360.",
+          content: "Terms Of Service ||  Gas 360.",
         },
         { property: "og:site_name", content: "gas360" },
         { property: "og:type", content: "website" },

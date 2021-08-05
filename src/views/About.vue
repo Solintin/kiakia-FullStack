@@ -123,7 +123,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "About || KiaKia Gas 360",
+      title: "About || Gas 360",
       meta: [
         {
           name: "description",
