@@ -1,6 +1,9 @@
 {
   "projects": {
     "gas360": "gas360-6aedd",
-    "default": "gas360-6aedd"
+    "default": "gas360-6aedd",
+    "Gas360": "gas360-6aedd",
+    "Gas360Website": "gas360-6aedd",
+    "gas360-6a": "gas360-6aedd"
   }
 }
